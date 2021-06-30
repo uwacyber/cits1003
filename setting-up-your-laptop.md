@@ -28,6 +28,25 @@ After this, restart windows.
 
 To test this out, type wsl in the search bar and run the command prompt. 
 
+{% hint style="info" %}
+There are a number of things that can go wrong doing this installation.
+
+You can't find cmd.exe or PowerShell:
+
+1. PowerShell can be installed from the Microsoft Store.
+2. You may be running in Windows S mode that will prevent you running and installing apps - to deactivate this feature: To **turn off Windows** 10 **S Mode**, click the Start button then go to Settings &gt; Update & Security &gt; Activation. Select Go to the Store and click **Get** under the Switch **out of S Mode**
+
+You encounter problems installing and running WSL 2
+
+1. Follow the instructions here [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the kernel update is the key thing
+
+If Docker Desktop fails to start
+
+1. Clean up data and try again
+{% endhint %}
+
+
+
 ## Installing and running Docker Desktop
 
 We will be using a technology called Docker Desktop to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines and so we will try and provide an alternative for people who want to use the lab machines. 
