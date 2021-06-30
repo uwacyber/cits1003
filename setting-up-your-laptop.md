@@ -79,19 +79,21 @@ We will be using containers in the various labs and so you will learn more about
 
 Go back to the powershell docker container. There is a file called flag.txt hidden somewhere. Can you find it? 
 
-&lt;details&gt;
+{% tabs %}
+{% tab title="" %}
+Click on Hint tab to reveal solution
+{% endtab %}
 
-&lt;summary&gt;You may not have learned the commands to navigate in the shell so to find the flag: Click to expand!&lt;/summary&gt;
-
+{% tab title="Hint" %}
+{% hint style="info" %}
 cd /root
 
 ls
 
 cat flag.txt
-
-&lt;/details&gt;
-
-
+{% endhint %}
+{% endtab %}
+{% endtabs %}
 
 
 
