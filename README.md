@@ -1,4 +1,6 @@
-# cits1003
+# CITS1003 Introduction to Cybersecurity
 
-UWA Introduction to Cybersecurity
+Placeholder for labs for CITS1003 Introduction to Cybersecurity at the University of Western Australia
+
+
 
