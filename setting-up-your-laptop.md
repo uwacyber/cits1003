@@ -63,7 +63,30 @@ First of all, make sure that your Docker Desktop application is running. Once it
 
 {% tabs %}
 {% tab title="Windows" %}
+```bash
+PS C:\Users\david\Documents\cits1003> docker pull cybernemosyne/cits1003:powershell
+powershell: Pulling from cybernemosyne/cits1003
+345e3491a907: Pull complete
+57671312ef6f: Pull complete
+5e9250ddb7d0: Pull complete
+5fac5b10dc75: Pull complete
+164545966a0f: Pull complete
+346af9298e18: Pull complete
+4beda6fc08a5: Pull complete
+Digest: sha256:691832551b79cd93e5592b54d234b89d23b253336934677e311e64eefc8b958b
+Status: Downloaded newer image for cybernemosyne/cits1003:powershell
+docker.io/cybernemosyne/cits1003:powershell
+PS C:\Users\david\Documents\cits1003> docker run -it cybernemosyne/cits1003:powershell
+PowerShell 7.1.3
+Copyright (c) Microsoft Corporation.
 
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS /> whoami
+root
+
+```
 {% endtab %}
 
 {% tab title="Mac OSX" %}
