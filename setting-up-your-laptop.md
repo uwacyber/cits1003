@@ -137,5 +137,7 @@ cat flag.txt
 {% endtab %}
 {% endtabs %}
 
+## Final Thoughts
 
+There is other software that you will need to install as we progress through the labs but we will deal with those as they arise.
 
