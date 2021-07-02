@@ -123,7 +123,16 @@ So what this will do is return \*all\* the users from the Users table. It just s
 
 SQL injection is very powerful. In other circumstances, we can use a variety of techniques to read the entire database, which in a commercial website may include credit card information, usernames and passwords and other details.
 
+In fact, if you go back to ZAP and look at the alerts \(it takes a while to finish\), you will see that it found 2 SQL Injection vulnerabilities in different locations. The most dangerous is in a search function:
+
+> [http://127.0.0.1:3000/rest/products/search?q=%27%28](http://127.0.0.1:3000/rest/products/search?q=%27%28
+> )
+
+We won't exploit this but we will use another of the REST API to look up all of the users.
+
 **FLAG: Now that you are logged in, go to the user's detail page by clicking on the email address under the Account menu and grab the flag!**
+
+## Using the REST API
 
 
 
