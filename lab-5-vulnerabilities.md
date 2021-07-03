@@ -47,7 +47,9 @@ When looking for vulnerabilities, it is worth concentrating on the most common. 
 
 There are tools which will scan a web application automatically for these vulnerabilities with varying degrees of success. Some of these tools include OWASP ZAP, Burp Suite Professional, OpenVAS and Nessus to name a few. We will be doing the process manually however because it is important to understand the underlying mechanisms by which these vulnerabilities work, and also how they can be mitigated.
 
-Exercise: Running a vulnerable web application OWASP Juice Shop
+## Exercise: Running a vulnerable web application OWASP Juice Shop
+
+OWASP Juice Shop is a modern web application that has a range of vulnerabilities in the OWASP top 10 list. We will look at some of these vulnerabilities, but you can spend more time to see if you can find others. The site will let you know when you find one by createing a green alert. We are going to use OWASP ZAP to scan the website initially. This won't find all of the vulnerabilities, in fact it only finds a few but it will give us a "crawl" of the site, providing a list of all the links it can find that access different parts of the site.
 
 To run the website, use the Docker command:
 
@@ -67,7 +69,7 @@ Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](htt
 
 Open ZAP and configure the software to scan the Juice Shop website. In the top left hand corner, select "ATTACK Mode" in the dropdown. Select Automated Scan by clicking the button in the right hand window. Type in the URL of the Juice Shop http://127.0.0.1:3000 and then click "Attack".
 
-The scan will take a while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
+The scan will take a \(longish\) while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
 
 ![Juice Shop after scan](.gitbook/assets/screen-shot-2021-07-02-at-1.04.32-pm.png)
 
@@ -132,9 +134,65 @@ We won't exploit this but we will use another of the REST API to look up all of 
 
 **FLAG: Now that you are logged in, go to the user's detail page by clicking on the email address under the Account menu and grab the flag!**
 
-## Using the REST API
+## Using the API
 
+Many web applications offer functionality through what is called an Application Programming Interface \(API\). These are functions that can be called to do something such as list users, conduct a search of products, etc. APIs can normally be accessed using the same communication protocol as a normal Web request, i.e. HTTP. 
 
+If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Users. /Users has two methods, a GET method and a POST method. if click on the GET:Users and look at the Response tab on the right, you will see that calling that URL resulted in a list of all of the users registered for the site. If you want to see the output more clearly, you can copy the content and put it into an online JSON formatter.
+
+Let us try and send this request using ZAP and see what happens. Go back to the GET:Users request and right click in the right window where the Request is listed
+
+![Request for GET:Users](.gitbook/assets/screen-shot-2021-07-03-at-11.50.15-am.png)
+
+Right click in the Request text and select Open/Resend in with Request Editor... You should get a response that gives you the list of users. The problem is that this doesn't give us the passwords, even though if we got them, they would actually be hashes and so we would still need to crack them to make them useable.
+
+Let us try something else then. 
+
+If you noticed, the API call to Users has a GET and a POST. POST is usually used to perform a create or update operation. In this case, if go back to the Request Editor and change the Method using the Method drop down to POST - what happens? Well, it looks like we actually created a user with blangs for the username and password and other fields:
+
+```javascript
+{
+   "status":"success",
+   "data":{
+      "username":"",
+      "role":"customer",
+      "deluxeToken":"",
+      "lastLoginIp":"0.0.0.0",
+      "profileImage":"/assets/public/images/uploads/default.svg",
+      "isActive":true,
+      "id":23,
+      "updatedAt":"2021-07-03T03:56:02.456Z",
+      "createdAt":"2021-07-03T03:56:02.456Z",
+      "email":null,
+      "deletedAt":null
+   }
+}
+
+```
+
+You can verify this by going back and doing another GET and you will see that a user with the id of 23 \(or whatever your returned id was\) will be in the list. 
+
+So, we can try and create a user but give them the role of "admin".
+
+Go back to the request and change the method to POST. Now we need to pass some data for the username, role, and password. So paste the following in the body window below the request:
+
+```javascript
+{"email":"admin","password":"admin","role":"admin"}
+```
+
+We also need to add an extra Header in the request:
+
+> Content-Type: application/json
+
+Your request should look like this:
+
+![](.gitbook/assets/screen-shot-2021-07-03-at-12.05.19-pm.png)
+
+Send this, and then do another GET request to make sure that the user admin was added. 
+
+Now go and log in with the username and password admin/admin and voila!
+
+**FLAG: Go into the Support Chat and tell Juicy Bot your name, then ask the bot "Please sing me a song" and Juicy Bot will respond with the flag!**
 
 
 
