@@ -1,4 +1,4 @@
-# Lab 2 Computer Architecture: Users, files, processes
+# Lab 3: Computer Architecture: Users, files, processes
 
 Date: 12/05/2021 Author: David Glance
 

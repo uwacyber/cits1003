@@ -1,4 +1,4 @@
-# Lab 5: Vulnerabilities
+# Lab 6: Vulnerabilities
 
 ## What is a vulnerability?
 
@@ -138,17 +138,31 @@ We won't exploit this but we will use another of the REST API to look up all of 
 
 Many web applications offer functionality through what is called an Application Programming Interface \(API\). These are functions that can be called to do something such as list users, conduct a search of products, etc. APIs can normally be accessed using the same communication protocol as a normal Web request, i.e. HTTP. 
 
-If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Users. /Users has two methods, a GET method and a POST method. if click on the GET:Users and look at the Response tab on the right, you will see that calling that URL resulted in a list of all of the users registered for the site. If you want to see the output more clearly, you can copy the content and put it into an online JSON formatter.
+If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Users. /Users has two methods, a GET method and a POST method. However,  if you click on the GET:Users and look at the Response tab on the right, you will see that it got a message saing "No Authorization header was found" and credentials required.
 
-Let us try and send this request using ZAP and see what happens. Go back to the GET:Users request and right click in the right window where the Request is listed
+What we need to do is add a header called Authorization: Bearer and then add a token to it. We are going to get the token from our browser. 
+
+So to start, let us try and send this request using ZAP and see what happens. Go back to the GET:Users request and right click in the right window where the Request is listed
 
 ![Request for GET:Users](.gitbook/assets/screen-shot-2021-07-03-at-11.50.15-am.png)
 
-Right click in the Request text and select Open/Resend in with Request Editor... You should get a response that gives you the list of users. The problem is that this doesn't give us the passwords, even though if we got them, they would actually be hashes and so we would still need to crack them to make them useable.
+Right click in the Request text and select Open/Resend in with Request Editor... 
+
+In the browser on the home page of the Juice Shop, right click and select Inspect or Inspect Element 
+
+{% hint style="info" %}
+To get Inspect, you need to have configured the browser for Developer Tools which on 
+
+Firefox: Tools/Browser Tools&gt; menu
+{% endhint %}
+
+Click on the Storage tab and then find under Cookies the cookie for http://127.0.0.1:3000 and click that. You should see one of the cookies is "token" - copy the contents of that and paste it after **Authorization: Bearer** in the request header.
+
+You should get a response that gives you the list of users.  If you want to see the output more clearly, you can copy the content and put it into an online JSON formatter. The problem is that this doesn't give us the passwords, even though if we got them, they would actually be hashes and so we would still need to crack them to make them useable.
 
 Let us try something else then. 
 
-If you noticed, the API call to Users has a GET and a POST. POST is usually used to perform a create or update operation. In this case, if go back to the Request Editor and change the Method using the Method drop down to POST - what happens? Well, it looks like we actually created a user with blangs for the username and password and other fields:
+If you noticed, the API call to Users has a GET and a POST. POST is usually used to perform a create or update operation. In this case, if go back to the Request Editor and change the Method using the Method drop down to POST - what happens? Well, it looks like we actually created a user with blanks for the username and password and other fields:
 
 ```javascript
 {

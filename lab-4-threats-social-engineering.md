@@ -1,4 +1,4 @@
-# Lab 4: Threats Social Engineering
+# Lab 5: Threats Social Engineering
 
 ## What is Social Engineering? <a id="what-is-social-engineering"></a>
 
