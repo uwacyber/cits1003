@@ -1,4 +1,4 @@
-# Setting up your laptop
+# Lab 1: Setting up your laptop
 
 We will set up various software that will be used in the labs, the principle one being Docker Desktop. However, it is a good idea to create a folder specifically for organising the different week's labs. 
 
