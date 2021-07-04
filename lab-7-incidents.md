@@ -21,9 +21,27 @@ In this lab, we are going to concentrate on the detection and analysis part of t
 
 ## Using Yara to identify Malware
 
-Yara is a tools that uses a set of configurable rules to identify and classify malware. Of course, your antimalware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is found, or machines and storage devices need to be searched to check if malware is present on them.
+Yara \([https://github.com/VirusTotal/yara](https://github.com/VirusTotal/yara)\) is a tools that uses a set of configurable rules to identify and classify malware. Of course, your antimalware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is found, or machines and storage devices need to be searched to check if malware is present on them.
 
-Yara tries to match text and binary from the malware it analyses. Before we start matching malware, 
+Yara tries to match text and binary from the malware it analyses. Before we start matching malware, let us try and write a rule that will match the text "hello, world!". 
+
+To start, run the docker container:
+
+```bash
+docker run -it cybernemosyne/cits1003:incident
+```
+
+Change directory to /opt/malware/test. This directory has a subdirectory ./files which has two files in it. One called bye.txt which contains the text "bye bye" and another file called hello.txt that has the text "hello, world!"
+
+We are going to create a Yara rules file which you can edit on the machine using the editor **vi**. If you haven't used vi before, don't worry, I will step you through the way to use it.
+
+Start editing the file by typing 
+
+```bash
+vi hello_world.yar
+```
+
+To start editing, type **i** for insert mode. Then type the following rule:
 
 ```bash
 rule hello_world
@@ -34,6 +52,59 @@ rule hello_world
 	   $hello
 }
 ```
+
+Once you have finished typing, hit the Escape key "esc" which puts you into command mode and then type **:wq** which will save the file and quit vi.
+
+Before we run the rule, let us go through what it is actually doing. The variable $hello is set to the value of the text \(the string\) "hello, world!". The condition simply says check if that string is in the file and if it is, the condition is satisfied and Yara reports a match. Let us run yara with this rules file in the directory /opt/malware/test as follows:
+
+```bash
+root@30fc2c3b6def:/opt/malware/test# yara hello_world.yar ./files
+hello_world ./files/hello.txt
+```
+
+We have run yara and told it to search the subdirectory ./files and it has found a match in the file hello.txt.
+
+Of course, Yara rules can get much more complicated but the principle is the same. Once you have found a piece of malware, you can write rules that will match that malware because of the text and binary data it contains. You can also find malware that is related to the malware in some way because it has reused some code for example.
+
+## Exercise: Recognising Malware Samples
+
+WARNING: The malware you are analysing is real and so \*do not\* try and remove it from the container or run it. 
+
+### Malware Sample 1
+
+Change directory into /opt/malware/malware\_sample1and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
+
+1. What is the name of the malware?
+2. What is the name of the group thought to be responsible for the malware?
+3. Who are the usual victims of the group thought to be?
+
+Hint: You should be able to find a document by Kaspersky giving you the answers to these questions. 
+
+An interesting point about this group is that not very much information is provided about it by the US site MITRE ATT&CK which details tactics, techniques and procedures of attack groups. There is a little more information on this GitHub repository which is a Chinese cybersecurity company's view on things:
+
+[https://github.com/RedDrip7/APT\_Digital\_Weapon/tree/master/Equation%20Group](https://github.com/RedDrip7/APT_Digital_Weapon/tree/master/Equation%20Group)
+
+**FLAG: Get the MD5 hash of the file malware 1 and enter that in as a hash.** 
+
+{% hint style="info" %}
+Actually, you could have just taken the hash of the file and done a Google search to find the name of the malware as it is in itself an IOC - but that doesn't work in the real world becuase the hash will change if a single byte is changed in the file and so it is very fragile.
+{% endhint %}
+
+### Malware Sample 2
+
+Change directory into /opt/malware/malware\_sample1and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
+
+1. What is the name of the malware?
+2. What is the name of the group thought to be responsible for the malware?
+3. Who are the usual victims of the group thought to be?
+
+With this malware, there is a long story related to it and we will cover this in the lectures on IoT, cyberphysical systems and critical infrastructure.
+
+**FLAG: Get the MD5 hash of the file malware 2 and enter that in as a hash.** 
+
+### Network log analysis
+
+
 
 \*\*\* During this process, it is important to think about the problem as a detective would think about a crime. What were the motivations of the attacker and do they normally attack this type of target? What is their mode of operation, i.e. what tactics, techniques and procedures do they normally adopt. With respect to the latter, we will be using the MITRE ATT&CK \([https://attack.mitre.org/](https://attack.mitre.org/)\) framework to identify the groups involved.
 
