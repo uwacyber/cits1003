@@ -17,7 +17,27 @@ However, it is also possible that attacks go unnoticed for extended periods of t
 
 ![NIST Incident Response Lifecycle](.gitbook/assets/incidentlifecycle.png)
 
-In this lab, we are going to concentrate on the detection and analysis part of the lifecycle. We are going to start with a range of observations that will give us potential indicators of compromise \(IOCs\) and techniques and procedures and we will eventually identify the specific group that carried out the attack. During this process, it is important to think about the problem as a detective would think about a crime. What were the motivations of the attacker and do they normally attack this type of target? What is their mode of operation, i.e. what tactics, techniques and procedures do they normally adopt. With respect to the latter, we will be suing the MITRE ATT&CK framework to identify the groups involved.
+In this lab, we are going to concentrate on the detection and analysis part of the lifecycle. We are going to start with a range of observations that will give us potential indicators of compromise \(IOCs\) and techniques and procedures and we will eventually identify the specific group that carried out the attack. 
+
+## Using Yara to identify Malware
+
+Yara is a tools that uses a set of configurable rules to identify and classify malware. Of course, your antimalware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is found, or machines and storage devices need to be searched to check if malware is present on them.
+
+Yara tries to match text and binary from the malware it analyses. Before we start matching malware, 
+
+```bash
+rule hello_world
+{
+	strings:
+	   $hello = "hello, world!"
+	condition:
+	   $hello
+}
+```
+
+\*\*\* During this process, it is important to think about the problem as a detective would think about a crime. What were the motivations of the attacker and do they normally attack this type of target? What is their mode of operation, i.e. what tactics, techniques and procedures do they normally adopt. With respect to the latter, we will be using the MITRE ATT&CK \([https://attack.mitre.org/](https://attack.mitre.org/)\) framework to identify the groups involved.
+
+
 
 
 
