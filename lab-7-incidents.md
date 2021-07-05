@@ -104,9 +104,28 @@ With this malware, there is a long story related to it and we will cover this in
 
 ### Network log analysis
 
+Malware often communicates with a command and control centre \(C2 server\) to send data and receive commands. The IP addresses and domain names used by malware are also IOCs. Of course, amongst IOCs, IP addresses and domains are relatively easy to change.
 
+There is a \(small\) network log in the directory /opt/malware/malware\_conn.  The important bits of information from the log are the two IP addresses. The first IP address is the source IP address which in this case is a single machine. That is followed by a port number. The second IP address is the destination followed by the port that is being connected to. 
 
-\*\*\* During this process, it is important to think about the problem as a detective would think about a crime. What were the motivations of the attacker and do they normally attack this type of target? What is their mode of operation, i.e. what tactics, techniques and procedures do they normally adopt. With respect to the latter, we will be using the MITRE ATT&CK \([https://attack.mitre.org/](https://attack.mitre.org/)\) framework to identify the groups involved.
+Examine the log and find any IP address that looks suspicious and check if indeed it is an IOC related to either of the two malware samples you have already identified. You should be able to:
+
+1. Identify the IP address\(es\) that are associated with IOCs
+2. Identify the malware that the IP address\(es\) belong to
+
+**FLAG: Enter the malware name associated with the IP address\(es\)**
+
+{% hint style="info" %}
+You can search through the file manually and see if you can spot anything but to make things easier you can use the following commands:
+
+```bash
+cat malware.log | awk -F ' ' '{print $3," ", $5, " ", $6}' | sort -u
+```
+
+The awk command will chunk each line based on text separated by spaces \(-F ' '\) and then print the source IP address, the destination IP address and the destination port. The sort -u command will sort the output and remove duplicates. 
+
+The other thing to remember is that the address range 192.168. 0.0 to 192.168. 255.255 is non-routable across the Internet i.e. it is a private IP address range meant for internal networks.
+{% endhint %}
 
 
 
