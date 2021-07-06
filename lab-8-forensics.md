@@ -340,7 +340,9 @@ Use the "--show --format=NT" options to display all of the cracked passwords rel
 Session completed. 
 ```
 
-Well there you go, we have the other half of the flag --&gt; **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
+In this command, we passed a passwords.txt file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for but John works very well normally because people tend to use  very easy to guess passwords. 
+
+Once we run John, we get a hit and the passwords is confirmed to be the other half of the flag --&gt; **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
 
 FLAG: **flag{you\_are\_good\_but1\_4m\_b3tt3r}**
 
