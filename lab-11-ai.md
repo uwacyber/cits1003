@@ -1,2 +1,2 @@
-# Lab 11: AI
+# Lab 10: AI
 

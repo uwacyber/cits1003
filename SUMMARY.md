@@ -10,7 +10,6 @@
 * [Lab 7: Incidents](lab-7-incidents.md)
 * [Lab 8: Forensics](lab-8-forensics.md)
 * [Lab 9: IoT CI & CPS](lab-9-iot-ci-and-cps.md)
-* [Lab 10: Cyber Law](lab-10-cyber-law.md)
-* [Lab 11: AI](lab-11-ai.md)
+* [Lab 10: AI](lab-11-ai.md)
 * [Project](project.md)
 
