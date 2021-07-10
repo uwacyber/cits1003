@@ -153,5 +153,93 @@ admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
 
 If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to. 
 
+**Flag: Run exploit.py and pass the argument flag.txt**
 
+## Searching for Hard Coded Credentials
+
+In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into **/opt/samples/DIR300**. Extract the firmware file with binwalk.
+
+```bash
+root@c3e1d7ac5055:/opt/samples/DIR300# binwalk -e DIR-300A1_FW105b09.bin 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+48            0x30            Unix path: /dev/mtdblock/2
+96            0x60            LZMA compressed data, properties: 0x5D, dictionary size: 8388608 bytes, uncompressed size: 1626112 bytes
+524384        0x80060         PackImg section delimiter tag, little endian size: 13638400 bytes; big endian size: 1822720 bytes
+524416        0x80080         Squashfs filesystem, big endian, version 2.0, size: 1819244 bytes, 895 inodes, blocksize: 65536 bytes, created: 2010-11-26 07:22:55
+
+root@c3e1d7ac5055:/opt/samples/DIR300# ls -al
+total 2316
+drwxr-xr-x 4 root root    4096 Jul 10 03:42 .
+drwxr-xr-x 1 root root    4096 Jul 10 02:14 ..
+-rw-r--r-- 1 root root 2347136 Feb 12  2016 DIR-300A1_FW105b09.bin
+drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
+```
+
+We can now cd into the directory _DIR-300A1_FW105b09.bin.extracted and then into the directory squashfs-root. Again we have a Linux filesystem
+
+```bash
+root@c3e1d7ac5055:/opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root# ls -al
+total 56
+drwxrwsr-x 14  528 1000 4096 Nov 26  2010 .
+drwxr-xr-x  3 root root 4096 Jul 10 02:14 ..
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 bin
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 dev
+drwxrwsr-x  9  528 1000 4096 Nov 26  2010 etc
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 home
+drwxrwsr-x  4  528 1000 4096 Nov 26  2010 htdocs
+drwxrwsr-x  4  528 1000 4096 Nov 26  2010 lib
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 mnt
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 proc
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 sbin
+lrwxrwxrwx  1  528 1000    8 Jul 10 02:14 tmp -> /var/tmp
+drwxrwsr-x  5  528 1000 4096 Nov 26  2010 usr
+drwxrwsr-x  2  528 1000 4096 Nov 26  2010 var
+drwxrwsr-x 11  528 1000 4096 Nov 26  2010 www
+
+```
+
+You can explore the file system a bit to see where things are but to shortcut, we are interested in the telnet service which allows remote access to the DLINK box. If we do a search for the word telnet in all of the files we get:
+
+```bash
+/squashfs-root# grep -ir telnet *
+etc/scripts/misc/telnetd.sh:TELNETD=`rgdb -g /sys/telnetd`
+etc/scripts/misc/telnetd.sh:if [ "$TELNETD" = "true" ]; then
+etc/scripts/misc/telnetd.sh:	echo "Start telnetd ..." > /dev/console
+etc/scripts/misc/telnetd.sh:		telnetd -l "/usr/sbin/login" -u Alphanetworks:$image_sign -i $lf &
+etc/scripts/misc/telnetd.sh:		telnetd &
+etc/scripts/system.sh:	# start telnet daemon
+etc/scripts/system.sh:	/etc/scripts/misc/telnetd.sh	> /dev/console
+etc/defnodes/S11setnodes.php:set("/sys/telnetd",			"true");
+Binary file usr/lib/tc/q_netem.so matches
+www/__adv_port.php:					<option value='Telnet'>Telnet</option>
+
+```
+
+The file that is interesting is the script telnetd.sh where there is a login command with a -u flag that passes in a username and password. If we open the script and look at it we notice that the variable $image\_sign gets set to the contents of a file:
+
+```bash
+#!/bin/sh
+image_sign=`cat /etc/config/image_sign`
+```
+
+And if we look at the contents of that file we get:
+
+```bash
+/squashfs-root# cat ./etc/config/image_sign 
+wrgg19_c_dlwbr_dir300
+```
+
+So the username and password for the device is 
+
+```bash
+Alphanetworks:wrgg19_c_dlwbr_dir300
+```
+
+The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers \([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink_telnet_backdoor_userpass.txt)\).
+
+**Flag: Enter the password to claim the flag**
+
+Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily. 
 
