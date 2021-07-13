@@ -15,53 +15,92 @@ Date: 12/05/2021 Author: David Glance
 
 Operating systems offer a number of different ways of interacting with files, processes and other aspects of the system through the use of commands typed in a terminal window. These commands can even be added to files and run as scripts to perform more complicated actions.
 
-On Windows, there is a program called the Command Prompt as well as a program called PowerShell, whilst on the Mac and Linux there is the Terminal program that runs various types of "shell" programs. Many of the commands in these systems are similar and so 
+On Windows, there is a program called the Command Prompt as well as a program called PowerShell, whilst on the Mac and Linux there is the Terminal program that runs various types of "shell" programs. Many of the commands in these systems are similar and so _**pwd**_ \(print working directory\) will print the current directory 
 
-_**pwd**_ \(print working directory\) will print the current directory 
+We are going to stick with Bash which runs on Windows \(WSL\), Mac OS and Linux. To do this, run the command:
 
-{% tabs %}
-{% tab title="cmd.exe" %}
 ```bash
-c:\Users\oztechmuse>pwd
-c:\Users\oztechmuse
-
-c:\Users\oztechmuse>
+$ docker run -it cybernemosyne/cits1003:bash
+root@86eba39a9594:/# pwd
+/
 ```
-{% endtab %}
 
-{% tab title="bash" %}
+The pwd command shows that we are in the root directory and when we list the contents of that directory using the **ls -al** command, we will get:
+
 ```bash
-┌─[oztechmuse@parrot]─[~]
-└──╼ $pwd
-/home/oztechmuse
-┌─[oztechmuse@parrot]─[~]
-└──╼ $
+root@86eba39a9594:/# ls -al
+total 60
+drwxr-xr-x   1 root root 4096 Jul 13 05:58 .
+drwxr-xr-x   1 root root 4096 Jul 13 05:58 ..
+-rwxr-xr-x   1 root root    0 Jul 13 05:58 .dockerenv
+lrwxrwxrwx   1 root root    7 Jun  9 07:27 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 15  2020 boot
+drwxr-xr-x   5 root root  360 Jul 13 05:58 dev
+drwxr-xr-x   1 root root 4096 Jul 13 05:58 etc
+drwxr-xr-x   2 root root 4096 Apr 15  2020 home
+lrwxrwxrwx   1 root root    7 Jun  9 07:27 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Jun  9 07:27 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    9 Jun  9 07:27 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root   10 Jun  9 07:27 libx32 -> usr/libx32
+drwxr-xr-x   2 root root 4096 Jun  9 07:27 media
+drwxr-xr-x   2 root root 4096 Jun  9 07:27 mnt
+drwxr-xr-x   2 root root 4096 Jun  9 07:27 opt
+dr-xr-xr-x 222 root root    0 Jul 13 05:58 proc
+drwx------   2 root root 4096 Jun  9 07:31 root
+drwxr-xr-x   5 root root 4096 Jun  9 07:31 run
+lrwxrwxrwx   1 root root    8 Jun  9 07:27 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Jun  9 07:27 srv
+dr-xr-xr-x  13 root root    0 Jul 13 05:58 sys
+drwxrwxrwt   1 root root 4096 Jul 13 05:54 tmp
+drwxr-xr-x  13 root root 4096 Jun  9 07:27 usr
+drwxr-xr-x   1 root root 4096 Jun  9 07:31 var
 ```
-{% endtab %}
-{% endtabs %}
 
-All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. Users have a _**home directory**_ which in Windows is usually located in c:\Users, on the Mac it is /Users and on Linux it is in /home
+All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. We used the ls command to list the contents of the root directory /. The flags \(arguments\) -al passed to the ls command means list all the contents and in a long version. The layout here is a typical format of a Linux file system. We will go throughwhat some of these directories are for but in summary:
+
+**/** is the root directory and only the user root has access to write in this directory. The user root's home directory is /root.
+
+**/bin** contains user binary executables like ps, ls, ping, grep etc. it is a symbolic link to **/usr/bin**
+
+**/sbin** contains system binaries like iptables, reboot, fdisk, ifconfig, etc.
+
+**/etc** contains configuration files and scripts for services running on the system. Also contains the passwd and shadow files that contain user and password information.
+
+**/dev** contains device files that are the interface with physical devices on, or attached to, the system such as tty devices /dev/tty1. 
+
+**/proc** contains files that store information about system processes like uptime for example.
+
+**/var** contains files like logs \(/var/logs\), backups \(/var/backups\), mail \(/var/mail\) and spool \(printing; /var/spool\). There is also a /var/tmp directory that can be used to run programs out of. This directory does survive reboots however. The directory /var/www/html is often used as the root directory of the web server.
+
+**/tmp** contains temporary files as mentioned previously. Files get deleted on reboot.
+
+**/usr** contains user binaries, libraries, documentation and source code
+
+**/usr/local** contains users programs that you install from source.
+
+**/home** contains user home directories
+
+**/boot** contains boot loader files
+
+**/lib** contains system libraries
+
+**/opt** contains optional add-on applications
+
+**/mnt** is a location for mounting temporary filesystems
+
+**/media** is a location for mounting removable media devices like CDs
+
+**/srv** contains specific service related data
+
+Users have a _**home directory**_ which in Windows is usually located in c:\Users, on the Mac it is /Users and on Linux it is in /home. On this container, it will be empty because we only have one user, root, whose home directory is /root
 
 Navigating around can be done using the **cd** \(change directory\) command with an argument that tells cd which directory you want to move to. Two special shortcuts are the "." \(single dot\) and ".." \(double dot\) that specify the current directory and the parent directory respectively.
 
-{% tabs %}
-{% tab title="cmd.exe" %}
 ```bash
-c:\Users\oztechmuse>cd ..
-
-c:\Users>
+root@86eba39a9594:/# cd /home
+root@86eba39a9594:/home# cd ..
+root@86eba39a9594:/# 
 ```
-{% endtab %}
-
-{% tab title="bash" %}
-```bash
-┌─[oztechmuse@parrot]─[~]
-└──╼ $cd ..
-┌─[oztechmuse@parrot]─[/home]
-└──╼ $
-```
-{% endtab %}
-{% endtabs %}
 
 The ls \(list\) command \(dir in Windows cmd.exe\) will list the files in a directory. Without arguments, it will list the contents of the current directory, otherwise it will list the directory specified in the argument. Commands can take arguments but also options that control the way the command works including the output it produces. In the case of ls -al the options -al specify that we want to see all files and to display the results in a long listing format.
 
