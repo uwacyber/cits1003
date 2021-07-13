@@ -41,6 +41,8 @@ You suspect it has been encrypted using a Caesar cipher but you need to find out
 
 Remember that to decrypt a Caesar cipher, you need to use a shift that is 26 - shift number
 
+Flag: Enter the plaintext
+
 ### Text encoding
 
 #### ASCII Code
@@ -121,7 +123,7 @@ You don't know the key but you can assume it is one byte long and it uses XOR as
 
 Use the operation "_**XOR Brute Force**_" to find the key in Hexadecimal. What was the original message? 
 
-> 95 If a machine is expected to be infallible, it cannot also be intelligent.
+**Flag: Enter the plaintext**
 
 ## Modern Ciphers
 
@@ -165,7 +167,7 @@ The key is snowdenquotation and the IV is 0102030405060708090a0b0c0d0e0f10
 
 What is the decrypted text?
 
-> Hemingway once wrote, the way to make people trustworthy is to trust them.
+**Flag: Enter the plaintext**
 
 ### PGP
 
@@ -328,7 +330,7 @@ There are public servers where you can list your public key for others to use. Y
 
 There are numerous command line and GUI-based software products that allow you to use PGP more easily. Some integrate with email clients as well. 
 
-## Exercise: Decrypt another of Snowden's Messages
+## Question 4. Decrypt another of Snowden's Messages
 
 Let's say you have the following PGP private and public key pair.
 
@@ -446,7 +448,7 @@ ZjfR95tsPJcurSpOsW5ed4PAndTIfZgxX791xG3CnfHt1ELgYfG8EcWtAShl2AVj
 
 **FLAG: What is the secret message that he sent to you?**
 
-## **Bonus Question**
+## **Question 5. Bonus Question**
 
 ### Crypto Mess
 
