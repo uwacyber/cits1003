@@ -31,7 +31,7 @@ CyberChef is a website that has been developed by the UK GCHQ a government cyber
 
 ![](.gitbook/assets/cyberchef-rot13.png)
 
-### Question 1
+### Question 1. Unravelling Caesar
 
 We can now try some "cryptanalysis" albeit using the unsophisticated approach of brute force. You have intercepted some encrypted text:
 
@@ -113,7 +113,7 @@ To test that we are not making things up and that our encryption worked, we can 
 
 We should get our original input "The quick brown fox"
 
-### Question 2
+### Question 2. Brute forcing XOR
 
 You are given the following Base64 encoded text
 
@@ -157,7 +157,7 @@ You can verify that you can decrypt this by adding the operation AES Decrypt to 
 
 An interesting thing to note is if you change a single character in the IV, you still get most of the output correct. Changing a single character in the key however will cause the decryption to fail. 
 
-### Question 3
+### Question 3. Decrytping Snowden's message
 
 You are given the following Base64 encoded text
 
@@ -448,9 +448,7 @@ ZjfR95tsPJcurSpOsW5ed4PAndTIfZgxX791xG3CnfHt1ELgYfG8EcWtAShl2AVj
 
 **FLAG: What is the secret message that he sent to you?**
 
-## **Question 5. Bonus Question**
-
-### Crypto Mess
+## **Question 5. Bonus Question:** Crypto Mess
 
 One of my friends sent me the following cipher text and it looks horrible! They said they made it by combining multiple ciphers and I could not be able to decode the message.
 
