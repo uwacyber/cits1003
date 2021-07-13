@@ -117,7 +117,7 @@ Once you have finished with a container, you can remove the image that was downl
 
 We will be using containers in the various labs and so you will learn more about using Docker and how containers work generally as we proceed. 
 
-## Exercise: Find your first flag
+## Question 1. Find your first flag
 
 Go back to the powershell docker container. There is a file called flag.txt hidden somewhere. Can you find it? 
 
