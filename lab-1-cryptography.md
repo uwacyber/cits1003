@@ -330,7 +330,7 @@ There are public servers where you can list your public key for others to use. Y
 
 There are numerous command line and GUI-based software products that allow you to use PGP more easily. Some integrate with email clients as well. 
 
-## Question 4. Decrypt another of Snowden's Messages
+### Question 4. Decrypt another of Snowden's Messages
 
 Let's say you have the following PGP private and public key pair.
 
@@ -448,7 +448,7 @@ ZjfR95tsPJcurSpOsW5ed4PAndTIfZgxX791xG3CnfHt1ELgYfG8EcWtAShl2AVj
 
 **FLAG: What is the secret message that he sent to you?**
 
-## **Question 5. Bonus Question:** Crypto Mess
+### **Question 5. Bonus Question:** Crypto Mess
 
 One of my friends sent me the following cipher text and it looks horrible! They said they made it by combining multiple ciphers and I could not be able to decode the message.
 
