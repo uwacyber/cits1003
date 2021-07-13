@@ -102,153 +102,24 @@ root@86eba39a9594:/home# cd ..
 root@86eba39a9594:/# 
 ```
 
-The ls \(list\) command \(dir in Windows cmd.exe\) will list the files in a directory. Without arguments, it will list the contents of the current directory, otherwise it will list the directory specified in the argument. Commands can take arguments but also options that control the way the command works including the output it produces. In the case of ls -al the options -al specify that we want to see all files and to display the results in a long listing format.
 
-{% tabs %}
-{% tab title="cmd.exe" %}
-```bash
-c:\>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\
-
-11/18/2019  09:06 AM    <DIR>          PerfLogs
-01/26/2021  07:31 PM    <DIR>          Program Files
-01/05/2021  08:20 PM    <DIR>          Program Files (x86)
-07/16/2020  03:31 PM    <DIR>          Users
-10/22/2020  03:03 PM    <DIR>          Windows
-               2 File(s)         43,852 bytes
-              12 Dir(s)  15,207,464,960 bytes free
-              
-```
-{% endtab %}
-
-{% tab title="bash" %}
-```bash
-┌─[oztechmuse@parrot]─[/]
-└──╼ $ls -al
-total 2097225
-drwxr-xr-x   1 root root        292 Apr 24 21:25 .
-drwxr-xr-x   1 root root        292 Apr 24 21:25 ..
-lrwxrwxrwx   1 root root          7 Sep 12  2020 bin -> usr/bin
-drwxr-xr-x   4 root root       1024 Apr 28 12:16 boot
-drwxr-xr-x  19 root root       3380 Apr 28 12:06 dev
-drwxr-xr-x   1 root root       6358 Apr 24 21:34 etc
-drwxr-xr-x   1 root root         20 Sep 12  2020 home
-lrwxrwxrwx   1 root root         37 Apr 24 21:25 initrd.img -> boot/initrd.img-5.10.0-6parrot1-amd64
-lrwxrwxrwx   1 root root          7 Sep 12  2020 lib -> usr/lib
-lrwxrwxrwx   1 root root          9 Sep 12  2020 lib32 -> usr/lib32
-lrwxrwxrwx   1 root root          9 Sep 12  2020 lib64 -> usr/lib64
-lrwxrwxrwx   1 root root         10 Sep 12  2020 libx32 -> usr/libx32
-drwxr-xr-x   1 root root         22 Aug  8  2020 media
-drwxr-xr-x   1 root root         16 Sep 17  2020 mnt
-drwxr-xr-x   1 root root        674 Feb  4 12:18 opt
-dr-xr-xr-x 296 root root          0 Apr 28 12:06 proc
-drwxr-xr-x   1 root root        860 Apr 28 12:47 root
-drwxr-xr-x  46 root root       1220 May 15 16:58 run
-drwxr-xr-x   1 root root          0 May  6  2020 sandbox
-lrwxrwxrwx   1 root root          8 Sep 12  2020 sbin -> usr/sbin
-drwxr-xr-x   1 root root          8 Sep 12  2020 srv
--rw-------   1 root root 2147483648 Sep 12  2020 swapfile
-dr-xr-xr-x  13 root root          0 Apr 28 12:06 sys
-drwxrwxrwt   1 root root       1608 May 15 16:58 tmp
-drwxr-xr-x   1 root root        122 Sep 12  2020 usr
-drwxr-xr-x   1 root root        142 Dec 12 20:15 var
-
-```
-{% endtab %}
-{% endtabs %}
-
-There are a few differences between the information that is listed on the different platforms. In Bash, a file listing will give more information about who the owner of the file is and the permissions that are associated with the file. 
 
 #### Creating, deleting, copying and moving a file
 
-{% tabs %}
-{% tab title="cmd.exe" %}
 ```bash
-c:\Users\oztechmuse\test>echo "Test Content" > file.txt
-
-c:\Users\oztechmuse\test>type file.txt
-"Test Content"
-
-c:\Users\oztechmuse\test>copy file.txt file2.txt
-        1 file(s) copied.
-
-c:\Users\oztechmuse\test>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\test
-
-05/16/2021  05:03 PM    <DIR>          .
-05/16/2021  05:03 PM    <DIR>          ..
-05/16/2021  05:02 PM                17 file.txt
-05/16/2021  05:02 PM                17 file2.txt
-               2 File(s)             34 bytes
-               2 Dir(s)  15,902,515,200 bytes free
-
-c:\Users\oztechmuse\test>del file2.txt
-
-c:\Users\oztechmuse\test>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\test
-
-05/16/2021  05:03 PM    <DIR>          .
-05/16/2021  05:03 PM    <DIR>          ..
-05/16/2021  05:02 PM                17 file.txt
-               1 File(s)             17 bytes
-               2 Dir(s)  15,902,515,200 bytes free
-
-c:\Users\oztechmuse\test>move file.txt file2.txt
-        1 file(s) moved.
-
-c:\Users\oztechmuse\test>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\test
-
-05/16/2021  05:03 PM    <DIR>          .
-05/16/2021  05:03 PM    <DIR>          ..
-05/16/2021  05:02 PM                17 file2.txt
-               1 File(s)             17 bytes
-               2 Dir(s)  15,902,515,200 bytes free
-
-c:\Users\oztechmuse\test>
-```
-{% endtab %}
-
-{% tab title="bash" %}
-```bash
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $touch file.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls
+root@86eba39a9594:/# cd /root
+root@86eba39a9594:~# touch file.txt
+root@86eba39a9594:~# ls
 file.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $cp file.txt file2.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls
-file2.txt  file.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $rm file2.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls
-file.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $mv file.txt file2.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls
+root@86eba39a9594:~# cp file.txt file2.txt
+root@86eba39a9594:~# ls
+file.txt  file2.txt
+root@86eba39a9594:~# rm file2.txt
+root@86eba39a9594:~# mv file.txt file2.txt
+root@86eba39a9594:~# ls
 file2.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $
-
+root@86eba39a9594:~# rm file2.txt
 ```
-{% endtab %}
-{% endtabs %}
 
 {% hint style="info" %}
 If you ever want help with a command, you can type _**help &lt;command&gt;**_ on Windows or _**man &lt;command&gt;**_ on Linux or Mac.
@@ -262,119 +133,56 @@ Linux has a find command that can be used for finding files. The basic syntax is
 
 find will look in all sub-directories and report on any files that match the name provided
 
-On Windows, it is slightly more complicated if we just use the command prompt:
-
 ```bash
-c:\Users\oztechmuse\test>dir /s /b . | findstr /i file
-c:\Users\oztechmuse\test\file2.txt
-c:\Users\oztechmuse\test\subtest\file3.txt
+root@86eba39a9594:~# find / -name ls
+/usr/bin/ls
 ```
 
-Note that his is actually using 2 commands that are chained with the _**pipe**_ command **\|** What pipe does is takes the output from the command on the left of it and passes it as input to the command on the right. In this case, we do a _**dir**_ command that lists all of the files in the current directory and then search the output for text that matches the argument to the _**findstr**_ command.
+We can use wildcard characters as follows:
+
+```bash
+root@86eba39a9594:~# find / -name host*
+/var/lib/dpkg/info/hostname.list
+/var/lib/dpkg/info/hostname.md5sums
+/etc/host.conf
+/etc/hosts
+/etc/hostname
+/proc/sys/kernel/hostname
+/usr/share/doc/hostname
+/usr/bin/hostid
+/usr/bin/hostname
+```
 
 ### Hidden Files and other Attributes
 
 In Linux, files that start with a period \(.\) are hidden from the directory listing command ls. To see them, you need to use the -a flag:
 
 ```bash
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls  -l
-total 0
--rw-r--r-- 1 oztechmuse oztechmuse 0 May 16 17:04 file.txt
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ls -al
-total 0
-drwxr-xr-x 1 oztechmuse oztechmuse   40 May 18 09:59 .
-drwxr-xr-x 1 oztechmuse oztechmuse 1386 May 16 19:17 ..
--rw-r--r-- 1 oztechmuse oztechmuse    0 May 16 17:04 file.txt
--rw-r--r-- 1 oztechmuse oztechmuse    0 May 18 09:59 .hiddenfile
+root@86eba39a9594:~# ls  
+root@86eba39a9594:~# ls -al
+total 16
+drwx------ 1 root root 4096 Jul 13 07:53 .
+drwxr-xr-x 1 root root 4096 Jul 13 05:58 ..
+-rw-r--r-- 1 root root 3106 Dec  5  2019 .bashrc
+-rw-r--r-- 1 root root  161 Dec  5  2019 .profile
 
 ```
 
-Linux has a limited set of specific attributes on a file that control how the file is accessed. One attribute for example is the Append Only attribute that only allows write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using lsattr and chattr programs.
-
-Windows' files have a wider range of attributes that determine characteristics and these can be managed using the **attrib** command.  Some of these attributes are:
-
-* **Hidden** \(H\):  commands like dir and File Explorer do not show hidden files by default, unless asked to do so
-* **System** \(S\): When set, indicates that the hosting file is a critical system file that is necessary for the computer to operate properly. Like hidden files, dir and File Explorer do not show these files by default
-* **Directory** \(D\): The entry is a subdirectory, containing file and directory entries of its own.
-
-We can illustrate how to change attributes as follows:
-
-```bash
-c:\Users\oztechmuse\attribfiles>echo "Hidden File" > hiddenfile.txt
-
-c:\Users\oztechmuse\attribfiles>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\attribfiles
-
-05/18/2021  10:14 AM    <DIR>          .
-05/18/2021  10:14 AM    <DIR>          ..
-05/18/2021  10:14 AM                16 hiddenfile.txt
-               1 File(s)             16 bytes
-               2 Dir(s)  15,715,061,760 bytes free
-
-c:\Users\oztechmuse\attribfiles>attrib +H hiddenfile.txt
-
-c:\Users\oztechmuse\attribfiles>dir
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\attribfiles
-
-05/18/2021  10:14 AM    <DIR>          .
-05/18/2021  10:14 AM    <DIR>          ..
-               0 File(s)              0 bytes
-               2 Dir(s)  15,715,061,760 bytes free
-
-
-c:\Users\oztechmuse\attribfiles>dir /A
- Volume in drive C has no label.
- Volume Serial Number is 54C8-8A2B
-
- Directory of c:\Users\oztechmuse\attribfiles
-
-05/18/2021  10:14 AM    <DIR>          .
-05/18/2021  10:14 AM    <DIR>          ..
-05/18/2021  10:14 AM                16 hiddenfile.txt
-               1 File(s)             16 bytes
-               2 Dir(s)  15,715,061,760 bytes free
-```
-
-Here we create a file called hiddenfile.txt \(1\) which is visible when we do the dir command \(3\). We add the Hidden attribute using attrib +H \(15\) and now the file no longer shows up with a dir command \(17\). To see hidden files, we need to specify the /A switch on the dir command \(29\).
-
-{% hint style="info" %}
-Normally when using the GUI to show folders and files, it will keep hidden files and system files hidden as well as not showing file extensions. You can set the options in File Explorer to see all of these files.
-{% endhint %}
+Linux has a limited set of specific attributes on a file that control how the file is accessed. One attribute for example is the Append Only attribute that only allows write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using lsattr and chattr programs
 
 ### PowerShell
 
 On Windows, there is a second environment called PowerShell that is closer to bash than the default command terminal. PowerShell commands can be aliased so that they seem similar to the commands already listed above. For example the PowerShell command \(called a cmdlet\) for cd \(change directory\) is actually **Set-Location**. But you can still use cd.
 
-To get into PowerShell, you can either start the PowerShell window, or simply type powershell in the command prompt:
+To get into PowerShell, run the container 
 
 ```bash
-c:\Users\oztechmuse\test>powershell
-Windows PowerShell
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-PS C:\Users\oztechmuse\test> pwd
-
-Path
-----
-C:\Users\oztechmuse\test
-
-
-PS C:\Users\oztechmuse\test>
+docker run -it cybernemosyne/cits1003:powershell
 ```
 
-We will cover more PowerShell specific commands in the following exercise.
+Remember, this is running on a Linux environment, if you run this natively on Windows, it will be slightly different
 
-### Exercise
-
-It will be easier if you do this exercise on Windows. However, it is  is possible to install PowerShell on Linux and Mac  \([https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-7.1](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-7.1)\).
+### Question 1: Find the file
 
 We are going to download a file to our computer and so open a powershell window and create a directory called cits1003. Create another subdirectory called Lab2. cd into this directory and then use the command "Invoke-WebRequest" to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
 
@@ -386,136 +194,162 @@ Invoke-WebRequest -Uri "https://github.com/uwacsp/opentrace/archive/refs/heads/m
 Invoke-WebRequest is aliased as curl - a tool that can be used on Linux to download files
 {% endhint %}
 
-1. unzip the zip file using the command unzip
-2. Rename the directory that is created to opentrace and delete the zip file
-3. Use the command Get-ChildItem to search the opentrace directory for the file **AppDelegate.swift** \(you can find information on using this cmdlet here [https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/](https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/)\)
-4. Using the PowerShell cmdlet Get-ChildItem, set the Hidden attribute on the AppDelegate.swift and check that it is not visible when using Get-ChildItem without any attribute arguments \(You will have to do an Internet search to find out how to do this\)
+1. Change directory to /root
+2. unzip the zip file using the powershell command **Expand-Archive master.zip**
+3. Rename the directory that is created to opentrace and delete the zip file
+4. Use the command Get-ChildItem to search the opentrace directory for the file **AppDelegate.swift** \(you can find information on using this cmdlet here [https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/](https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/)\)
+5. Using the PowerShell cmdlet Get-ChildItem, set the Hidden attribute on the AppDelegate.swift and check that it is not visible when using Get-ChildItem without any attribute arguments \(You will have to do an Internet search to find out how to do this\)
+
+**Flag: Enter the directory that you found AppDelegate.swift in** 
 
 ### Processes
 
-There are a number of different ways of viewing the running processes on the system. From the command line, you can use the commands ps on Linux and tasklist on Windows. 
+There are a number of different ways of viewing the running processes on the system. In PowerShell, the Get-Process command will list the running processes
 
-{% tabs %}
-{% tab title="cmd.exe" %}
-```bash
-c:\Users\oztechmuse\test>tasklist
+```text
+PS /root/cits1003/lab3> Get-Process
 
-Image Name                     PID Session Name        Session#    Mem Usage
-========================= ======== ================ =========== ============
-System Idle Process              0 Services                   0          8 K
-System                           4 Services                   0         16 K
-smss.exe                       292 Services                   0        116 K
-csrss.exe                      412 Services                   0      1,372 K
-wininit.exe                    500 Services                   0          4 K
-csrss.exe                      508 Console                    1    100,212 K
-services.exe                   596 Services                   0      4,048 K
-winlogon.exe                   604 Console                    1        604 K
-lsass.exe                      644 Services                   0      8,800 K
-svchost.exe                    772 Services                   0     14,736 K
-fontdrvhost.exe                796 Services                   0         96 K
-fontdrvhost.exe                804 Console                    1      2,612 K
-svchost.exe                    880 Services                   0      7,736 K
-dwm.exe                       1012 Console                    1     22,664 K
-svchost.exe                    348 Services                   0     30,480 K
-<SNIP...>
-```
-{% endtab %}
+NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
+------    -----      -----     ------      --  -- -----------
+     0     0.00     150.37       8.33       1   1 pwsh
 
-{% tab title="bash" %}
-```bash
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $ps -f
-UID          PID    PPID  C STIME TTY          TIME CMD
-oztechm+   11876   11875  0 May15 pts/1    00:00:00 -bash
-oztechm+  239127   11876  0 19:16 pts/1    00:00:00 bash
-oztechm+  239185  239127  0 19:17 pts/1    00:00:00 ps -f
-```
-{% endtab %}
-{% endtabs %}
-
-The output is cut on the Windows output. The bash output for the program **ps** shows the parent process ID \(PPID\). The processes listed here are those bein run by the current user. This includes the command ps itself and as you can see, the parent PID of ps is the bash shell that we are currently running in. 
-
-On Windows there are GUIs that provide a simpler and more detailed look at processes running on this machine. One program is called Process Hacker which shows the processes running on the machine as a hierarchy":
-
-![Process Hacker Main Screen ](.gitbook/assets/screen-shot-2021-05-16-at-7.25.40-pm%20%281%29.png)
-
-{% hint style="info" %}
-You can install Process Hacker for Windows by downloading the latest setup file from here [https://github.com/processhacker/processhacker/releases](https://github.com/processhacker/processhacker/releases)  
-{% endhint %}
-
-From a user perspective, when looking at process information, we are interested in the amount of processing time \(CPU\) and memory the process is consuming. The other two measures that are also of interest from a security perspective are the Disk and Network usage.
-
-There are other commands that allow you to manage processes from the command line. You can run a new process by simply typing the name of the program and hitting return. For example, if you run cmd, you will get a new command prompt within the same Window. If you have Process Hacker running, it will show a new cmd.exe running as a child of the cmd session your ran it from. 
-
-You can type **exit** to terminate the new cmd session and return to the previous one. 
-
-```bash
-c:\Users\oztechmuse>cmd
-Microsoft Windows [Version 10.0.16299.1508]
-(c) 2017 Microsoft Corporation. All rights reserved.
-
-c:\Users\oztechmuse>exit
-
-c:\Users\oztechmuse>
+PS /root/cits1003/lab3>
 ```
 
-You can launch programs using the **start** command which will start the cmd program but in a new window. 
+As this is Linux, we can also use the Linux command ps which together with the -ef flags shows extended information about all processes
 
 ```bash
-c:\Users\oztechmuse>tasklist | findstr cmd
-cmd.exe                      11140 Console                    1      2,872 K
-cmd.exe                       4800 Console                    1      3,452 K
-
-c:\Users\oztechmuse>start cmd
-
-c:\Users\oztechmuse>tasklist | findstr cmd
-cmd.exe                      11140 Console                    1      2,872 K
-cmd.exe                       4800 Console                    1      3,352 K
-cmd.exe                       1456 Console                    1      2,740 K
+PS /root/cits1003/lab3> ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 09:35 pts/0    00:00:08 pwsh
+root       639     1  0 11:07 pts/0    00:00:00 /usr/bin/ps -ef
+PS /root/cits1003/lab3> 
 ```
 
-Here we are using the command tasklist and filtering the output to show only the cmd.exe processes. 
+Note that there is a difference between the two outputs. Since we are running in a container, there is only one process running which is the PowerShell command pwsh. In the Linux version, it also shows the ps command that was running to get the process information!
 
-We can stop \(Kill\) the new process using the taskkill command
+If we want to get more detailed information about the process, we can use the PowerShell command:
 
 ```bash
-c:\Users\oztechmuse>taskkill /PID 1456
-SUCCESS: Sent termination signal to the process with PID 1456.
+PS /root/cits1003/lab3> Get-Process | Select-Object *
 
-c:\Users\oztechmuse>
+Name                       : pwsh
+Id                         : 1
+PriorityClass              : Normal
+FileVersion                : 
+HandleCount                : 116
+WorkingSet                 : 160940032
+PagedMemorySize            : 0
+PrivateMemorySize          : 237903872
+VirtualMemorySize          : -133316608
+TotalProcessorTime         : 00:00:08.7800000
+SI                         : 1
+Handles                    : 116
+VM                         : 4161650688
+WS                         : 160940032
+PM                         : 0
+NPM                        : 0
+Path                       : /opt/microsoft/powershell/7/pwsh
+CommandLine                : pwsh
+Parent                     : 
+Company                    : 
+CPU                        : 8.7899999
+ProductVersion             : 
+Description                : 
+Product                    : 
+__NounName                 : Process
+SafeHandle                 : Microsoft.Win32.SafeHandles.SafeProcessHandle
+Handle                     : 732
+BasePriority               : 0
+ExitCode                   : 
+HasExited                  : False
+StartTime                  : 7/13/2021 9:35:46 AM
+ExitTime                   : 
+MachineName                : .
+MaxWorkingSet              : 9223372036854771712
+MinWorkingSet              : 0
+Modules                    : {System.Diagnostics.ProcessModule (pwsh), System.Diagnostics.ProcessModule (libSystem.IO.Compression.Native.so), System.Diagnostics.ProcessModule 
+                             (libz.so.1.2.11), System.Diagnostics.ProcessModule (libcrypto.so.1.1)…}
+NonpagedSystemMemorySize64 : 0
+NonpagedSystemMemorySize   : 0
+PagedMemorySize64          : 0
+PagedSystemMemorySize64    : 0
+PagedSystemMemorySize      : 0
+PeakPagedMemorySize64      : 0
+PeakPagedMemorySize        : 0
+PeakWorkingSet64           : 160964608
+PeakWorkingSet             : 160964608
+PeakVirtualMemorySize64    : 4255137792
+PeakVirtualMemorySize      : -39829504
+PriorityBoostEnabled       : False
+PrivateMemorySize64        : 237903872
+ProcessName                : pwsh
+ProcessorAffinity          : 255
+SessionId                  : 1
+StartInfo                  : 
+Threads                    : {1, 9, 10, 11…}
+VirtualMemorySize64        : 4161650688
+EnableRaisingEvents        : False
+StandardInput              : 
+StandardOutput             : 
+StandardError              : 
+WorkingSet64               : 160940032
+SynchronizingObject        : 
+MainModule                 : System.Diagnostics.ProcessModule (pwsh)
+MainWindowHandle           : 0
+MainWindowTitle            : 
+Responding                 : True
+PrivilegedProcessorTime    : 00:00:02.1300000
+UserProcessorTime          : 00:00:06.7100000
+Site                       : 
+Container                  : 
 ```
+
+Let us start another PowerShell process by running pwsh again and then doing a Get-Process again:
+
+```bash
+PS /root/cits1003/lab3> pwsh
+PowerShell 7.1.3
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+PS /root/cits1003/lab3> Get-Process
+
+ NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
+ ------    -----      -----     ------      --  -- -----------
+      0     0.00     157.22      22.90       1   1 pwsh
+      0     0.00      96.64       0.93     725   1 pwsh
+
+PS /root/cits1003/lab3>
+```
+
+We can now see that there are the two pwsh processes listed. We can show that the second pwsh is the child of the first by looking at the parent id of the process in the following way:
+
+```bash
+PS /root/cits1003/lab3> $proc = Get-Process -ID 725
+PS /root/cits1003/lab3> $proc.Parent.Id
+1
+```
+
+This is important because it is possible to find abnormal processes running on a system that are the child process of something that looks normal. This is an indicator that it may be malware for example.  
+
+Using the ps command, the parent process id is shown in the output:
+
+```bash
+PS /root/cits1003/lab3> ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 09:35 pts/0    00:00:26 pwsh
+root       725     1  0 11:34 pts/0    00:00:01 /opt/microsoft/powershell/7/pwsh
+root       837   725  0 11:41 pts/0    00:00:00 /usr/bin/ps -ef
+PS /root/cits1003/lab3> 
+```
+
+To stop a process we can use Stop-Process and pass the id of the process we want to stop. In the case of the second pwsh command we ran, we can simply type exit to stop it.
 
 In PowerShell, we can get more information about the process and we will explore this in the exercise 
 
-### Exercise
-
-Install and run Process Hacker. Spend some time familiarising yourself with the information provided.
-
-  1. Find the process called System - what is its file path?
-
-Start a cmd.exe window \(Command Prompt\) 
-
-  2. How many new processes are running as a result?
-
-Start PowerShell within the cmd.exe window and notice the new process appearing in Process Hacker 
-
-Find the process id of the cmd.exe process that is the parent of the PowerShell process. We are going to retrieve all of the information we can from the process using the following PowerShell commands:
-
-```bash
-PS C:\Users\oztechmuse> $p = get-process -PID 4800
-PS C:\Users\oztechmuse> $p | select-object *
-
-
-Name                       : cmd
-Id                         : 4800
-PriorityClass              : Normal
-FileVersion                : 10.0.16299.15 (WinBuild.160101.0800)
-HandleCount                : 45
-WorkingSet                 : 3211264
-<SNIP...>
-```
-
-Note that the processes you will see in Process Hacker are those that you have authority to see as a normal user. You will get a great deal more information if you run Process Hacker as Administrator \(only possible on your own computer\).
+**Flag: Enter the full path of the pwsh program**
 
 ### Users and Groups
 
@@ -531,57 +365,92 @@ There are a variety of ways of getting user and group information using PowerShe
 * Get-LocalGroup will list the groups 
 * Get-LocalGroupMember &lt;group name&gt; will list the members of a group
 
-For information about the current logged on user you can use the command:
-
-**whoami /all**
+Again these won't work in PowerShell run on Linux
 
 #### For Linux and Mac
 
-You can use whoami to get the currently logged in user and the commands:
+Go back to the bash container you were running above. You can use whoami to get the currently logged in user:
+
+```bash
+root@86eba39a9594:~# whoami
+roo
+```
 
 id &lt;user&gt; will list the groups the user is a member of
+
+```bash
+root@86eba39a9594:~# id
+uid=0(root) gid=0(root) groups=0(root)
+```
 
 If you want to know all of the groups on the computer, you can list the contents of the file /etc/groups
 
 ```bash
-0x4447734D4250:~$ cat /etc/group
-##
-# Group Database
-# 
-# Note that this file is consulted directly only when the system is running
-# in single-user mode.  At other times this information is provided by
-# Open Directory.
-#
-# See the opendirectoryd(8) man page for additional information about
-# Open Directory.
-##
-nobody:*:-2:
-nogroup:*:-1:
-wheel:*:0:root
-daemon:*:1:root
-<SNIP...>
+root@86eba39a9594:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:
+floppy:x:25:
+tape:x:26:
+sudo:x:27:
+audio:x:29:
+dip:x:30:
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
 ```
 
 You can also list the passwd file which will list all of the users of the system
 
 ```bash
-0x4447734D4250:~$ cat /etc/passwd
-##
-# User Database
-# 
-# Note that this file is consulted directly only when the system is running
-# in single-user mode.  At other times this information is provided by
-# Open Directory.
-#
-# See the opendirectoryd(8) man page for additional information about
-# Open Directory.
-##
-nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
-root:*:0:0:System Administrator:/var/root:/bin/sh
-daemon:*:1:1:System Services:/var/root:/usr/bin/false
-_uucp:*:4:4:Unix to Unix Copy Protocol:/var/spool/uucp:/usr/sbin/uucico
-_taskgated:*:13:13:Task Gate Daemon:/var/empty:/usr/bin/false
-<SNIP...>
+root@86eba39a9594:~# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 ```
 
 ### File Permissions
@@ -591,85 +460,37 @@ _taskgated:*:13:13:Task Gate Daemon:/var/empty:/usr/bin/false
 All files on Linux have an user and a group that is assigned specific access to read \(r\), write \(w\) and execute  \(x\) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl
 
 ```bash
-┌─[oztechmuse@parrot]─[~/test]
-└──╼ $getfacl ./file2.txt 
-# file: file2.txt
-# owner: oztechmuse
-# group: oztechmuse
+root@86eba39a9594:~# getfacl file.txt
+# file: file.txt
+# owner: root
+# group: root
 user::rw-
 group::r--
 other::r--
-
 ```
 
-We won't go into too much detail but this shows that the user has read and write access, the groupt and everyone else has just read access. The file is not marked as being executable and so there is no 'x' involved.
+We won't go into too much detail but this shows that the user has read and write access, the group root and everyone else has just read access. The file is not marked as being executable and so there is no 'x' involved.
 
 You can also see the permissions using the ls -al command on Mac and Linux
 
 ```bash
-0x4447734D4250:~$ ls -al afile.txt
--rw-r--r--  1 dglance  staff  66 27 Aug  2020 afile.txt
+root@86eba39a9594:~# ls -al file.txt 
+-rw-r--r-- 1 root root 0 Jul 13 11:54 file.txt
 ```
-
-Note that in this example, the group is "staff" whereas in the previous example it was "oztechmuse"
 
 You can change permissions on files and directories using the chmod command. To mark a program as being executable for a user for example you can do:
 
 ```bash
-0x4447734D4250:~$ ls -al afile.txt
--rw-r--r--  1 dglance  staff  66 27 Aug  2020 afile.txt
-0x4447734D4250:~$ chmod u+x afile.txt
-0x4447734D4250:~$ ls -al afile.txt
--rwxr--r--  1 dglance  staff  66 27 Aug  2020 afile.txt
+root@86eba39a9594:~# chmod u+x file.txt
+root@86eba39a9594:~# ls -al file.txt 
+-rwxr--r-- 1 root root 0 Jul 13 11:54 file.txt
 ```
 
-#### Windows
+### Question 2: Run for the flag
 
-We can use the PowerShell command Get-Acl to get the access  control list from a file on Windows
+Change directory into /opt/q2 and run the program showflag to get the flag. You will have to sort out why it won't run.
 
-```bash
-PS C:\Users\oztechmuse\test> get-acl master.zip | select *
-
-
-PSPath                  : Microsoft.PowerShell.Core\FileSystem::C:\Users\oztechmuse\test\master.zip
-PSParentPath            : Microsoft.PowerShell.Core\FileSystem::C:\Users\oztechmuse\test
-PSChildName             : master.zip
-PSDrive                 : C
-PSProvider              : Microsoft.PowerShell.Core\FileSystem
-CentralAccessPolicyId   :
-CentralAccessPolicyName :
-Path                    : Microsoft.PowerShell.Core\FileSystem::C:\Users\oztechmuse\test\master.zip
-Owner                   : DESKTOP-IRRKDNQ\David Glance
-Group                   : DESKTOP-IRRKDNQ\None
-Access                  : {System.Security.AccessControl.FileSystemAccessRule, System.Security.AccessControl.FileSystemAccessRule, System.Security.AccessControl.FileSystemAccessRule}
-Sddl                    : O:S-1-5-21-99674670-1004200984-2391121708-1000G:S-1-5-21-99674670-1004200984-2391121708-513D:(A;ID;FA;;;SY)(A;ID;FA;;;BA)(A;ID;FA;;;S-1-5-21-99674670-1004200984
-                          -2391121708-1000)
-AccessToString          : NT AUTHORITY\SYSTEM Allow  FullControl
-                          BUILTIN\Administrators Allow  FullControl
-                          DESKTOP-IRRKDNQ\David Glance Allow  FullControl
-AuditToString           :
-AccessRightType         : System.Security.AccessControl.FileSystemRights
-AccessRuleType          : System.Security.AccessControl.FileSystemAccessRule
-AuditRuleType           : System.Security.AccessControl.FileSystemAuditRule
-AreAccessRulesProtected : False
-AreAuditRulesProtected  : False
-AreAccessRulesCanonical : True
-AreAuditRulesCanonical  : True
-```
-
-There is a great deal of information that is provided in the output of this, but essentially it will let you know which users and groups have access to the file. Note the difference betweeen Windows and Linux - multiple groups can be specified as having access to a Windows file or directory whereas on Linux you only specify one group.
-
-Note that on Windows, you can right click on a file and view properties to see the permissions under the security tab. 
-
-Changing permissions on a file in Windows is easiest through File Explorer. If you want to do it in PowerShell, you can do it as follows:
-
-```bash
-PS \test> $newacl = Get-Acl .\afile.txt
-PS \test> $isProtected = $true
-PS \test> $preserveInheritance = $true
-PS \test> $newacl.SetAccessRuleProtection($isProtected, $preserveInheritance)
-PS \test> Set-Acl .\afile.txt -AclObject $newacl
-```
+**Flag: Enter the flag returned by showflag**
 
 
 
