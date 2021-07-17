@@ -25,7 +25,7 @@ We are going to look at phishing in more detail by exploring the use of a social
 
 Phishing provides the largest and potentially most effective way of getting malware onto a computer or convincing a target to reveal their user credentials, personal or financial information and even take other actions on the attacker's behalf. Phishing's most common channel is email and there are a number of tools that simplify the ability to create phishing emails, send them to targets and monitor the responses.
 
-Although there are a couple of tools on Parrot OS, they are dated, and their source code is not maintained. The tool we will use is called Gophish \(which can be installed from [https://github.com/gophish/gophish\](https://github.com/gophish/gophish/)\) which is written in the programming language Go and handles phishing campaigns and monitor the results. Although it can be used for attacking, it can also be used for training staff in cybersecurity awareness by auditing how many would respond to a particular phishing attack.
+The tool we will use is called **Gophish** which is written in the programming language Go and handles phishing campaigns and monitor the results. Although it can be used for attacking, it can also be used for training staff in cybersecurity awareness by auditing how many would respond to a particular phishing attack.
 
 Phishing attacks are generally never one-off events but are instead part of a campaign which is a series of attacks carried out over a period of time to achieve a set of goals.
 
@@ -43,39 +43,94 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 
 ## Creating a phishing campaign in Gophish <a id="creating-a-phishing-campaign-in-gophish"></a>
 
-To install Gophish, you can download a release, unzip and use it directly \([https://github.com/gophish/gophish/releases/\](https://github.com/gophish/gophish/releases//)\). When run as root, Gophish will start two web servers, one on port 80 that will host the phishing landing pages and the other on port 3333 which is the administration site. Opening the admin site in a browser, you can log in with the user admin and the password that was printed out on the console when you ran it. You will be prompted to change the admin password. You will see the Dashboard shown here.
+To run Gophish, start the Docker container as follows
+
+```bash
+$ docker run -p 3333:3333 -p 8880:80 -it gophish/gophish
+<SNIP...>
+"Please login with the username admin and the password 5b6f2c097defcce6"
+time="2021-07-16T01:40:32Z" level=info msg="Creating new self-signed certificates for administration interface"
+time="2021-07-16T01:40:32Z" level=info msg="Starting phishing server at http://0.0.0.0:80"
+time="2021-07-16T01:40:32Z" level=info msg="Background Worker Started Successfully - Waiting for Campaigns"
+time="2021-07-16T01:40:32Z" level=info msg="Starting IMAP monitor manager"
+time="2021-07-16T01:40:32Z" level=info msg="Starting new IMAP monitor for user admin"
+time="2021-07-16T01:40:32Z" level=info msg="TLS Certificate Generation complete"
+time="2021-07-16T01:40:32Z" level=info msg="Starting admin server at https://0.0.0.0:3333"
+
+
+```
+
+When run, Gophish will start two web servers, one on port 80 \(which we have mapped to port 8880 on our local machine\) that will host the phishing landing pages and the other on port 3333 \(mapped to the same port on our local machine\) which is the administration site. Open the admin site in a browser by going to https://127.0.0.1:3333
+
+{% hint style="danger" %}
+Gophish uses https and we haven't set up a certificate for it. To proceed to the site, the browser will ask you to accept the risks and proceed. How you do this will depend on the browser.
+{% endhint %}
+
+You can log in with the user admin and the password that was printed out on the console when you ran it. You will be prompted to change the admin password. You will see the Dashboard shown here.
 
 ![Gophish Dashboard page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hVuxhCaQ6k8bB7%2F0.png?alt=media)
 
-To start, we will create a sending profile. For this, I am going to use a Gmail account that I have created specifically to use for this example. If you create an account on Gmail, you will need to change the security settings for Gmail to allow non-secure applications to access the account. Click on Sending Profiles and then Add New and then complete the form using the details of your Gmail account as shown in Figure 6-2. In the From field, the name that you add here will be displayed in the receiver's inbox. If you are using Gmail, the from email address will always be the email of the account you are using to send the email. To change this, you would need to use your own SMTP server. This is not so much of a problem as many users will not check this when reading emails.
+To start, we will create a sending profile. 
 
-![Creating a new sending profile in Gophish](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hWSS3wSOQ4ShPY%2F1.png?alt=media)
+We are going to run a mail server as another container and so when asked, the host name for the email server is **host.docker.internal:1025**.
 
-Next, we are going to create an email template that will be based on the invitations that GitHub sends to users to collaborate on a repository. I have copied the HTML from a real email but if you don't have one, you can just type an email in the editor. Email templates will substitute values in the template that are in double braces . The ones we are using here are the target's email address , and the phishing URL which is used as a link in the text.
+Let us do that now. In another terminal, run the following container:
 
-![](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hXtV0Ld5HKo-Jd%2F2.png?alt=media)
+```bash
+$ docker run -it -p 1080:80 -p 1025:25  maildev/maildev
+MailDev webapp running at http://0.0.0.0:80
+MailDev SMTP Server running at 0.0.0.0:25
+```
 
-Save the template and now click on Landing Page and Add New to create a new landing page \(Figure 6-4\). We can use the Import Site button to import the page from the GitHub Login page and add the same URL to redirect to after the credentials are captured.
+This mailserver will allow you to see what emails are arriving by going to the address http://127.0.0.1:1080
+
+Click on Sending Profiles and then Add New and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server \(like Gmail\) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server. 
+
+This is not so much of a problem as many users will not check this when reading emails.
+
+You can send a test email and verify that it shows up in the MailDev interface. Delete it once done. Save the profile.
+
+Next, we are going to create an email template. We are going to keep this simple. In a real phishing campaign you could model this on something a little more realistic but never underestimate what people will click on.
+
+In the template, give it a name and then select HTML. Enter the HTML below.
+
+We are using a few template variables that will be replaced with the recipient's first name and the sender's information \(you can look up what other variables you can use in emails on the Gophish GitHub page\). Most importantly, the URL that will be clicked will be replaced with the landing page we will create and also pass an ID that will allow us to track which users clicked on the email.
+
+![](.gitbook/assets/screen-shot-2021-07-17-at-11.12.10-am.png)
+
+```bash
+Dear {{.FirstName}},
+</br></br>
+Please click to <a href={{.URL}}>track</a> your parcel.
+</br></br>
+Regards,
+</br></br>
+Fedex
+</br>
+{{.From}}
+```
+
+
+
+Save the template and now click on Landing Page and Add New to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page \(https://github.com/login\) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in {{ }} so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
+
+Select to track submitted data \*and\* to capture passwords \(well, why not?\)
 
 ![Creating a landing page in Gophish](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hYyoLG-jpsu7Mr%2F3.png?alt=media)
 
-Now that this has been done, we need to define the list of users to send emails to in the Users & Groups page. Here, just add your own email address or create another account to receive the emails. The first and last name and position can all be used within the email templates to add to the personalization of the emails sent.
+Now that this has been done, we need to define the list of users to send emails to in the Users & Groups page. Here, just add 2 made up users, it doesn't really matter what they are. The first and last name and position can all be used within the email templates to add to the personalization of the emails sent.
 
-Finally, we can create a campaign and send the phishing email. In Campaign, click New Campaign and fill out the details. For the URL, you want to use your own IP address.Creating a new campaign in Gophish
+Finally, we can create a campaign and send the phishing email. In Campaign, click New Campaign and fill out the details. For the URL, you want to use http://127.0.0.1:8880 as the address but later we are going to run a user simulation and we will change this to http://host.docker.internal:8880.
 
-![](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hZ0jrd7zEgj186%2F4.png?alt=media)
+![](.gitbook/assets/screen-shot-2021-07-17-at-10.56.28-am.png)
 
-Once the Launch Campaign button is pressed, the email should be sent and you should receive an email based on the template you used.
+Once the Launch Campaign button is pressed, the email should be sent and you should see the emails in MailDev
 
-![Phishing email sent from Gophish](https://gblobscdn.gitbook.com/assets%2F-M8JUFT2qjA1kHV7SeEI%2F-MZGDbfPvhLivi0-cB-D%2F-MZGF6bUOyFbKiBpdmoJ%2Fgophish1.png?alt=media&token=5fcce1ff-e69e-43e1-9b3d-adf82d23a1e3)
-
-Clicking on the accept or decline link will take you to the phishing landing page shown here.
-
-![Spoofed Github login page](https://gblobscdn.gitbook.com/assets%2F-M8JUFT2qjA1kHV7SeEI%2F-MZGDbfPvhLivi0-cB-D%2F-MZGFH-H7M4mJ0_2waBQ%2Fgophish2.png?alt=media&token=97ff3c2a-9bcf-475f-8c73-9693c51d8ed7)
+Select one of the emails and click on the link.
 
 Entering a username and password and clicking Sign in should then redirect you to the GitHub login page with no feedback. Note that if you actually have a GitHub account and are already authenticated by the browser, when the phishing landing page redirects, it will take you straight to your default GitHub page and so it will look like the login was successful.
 
-The Dashboard page on Gophish will update to say that the email was clicked and that you visited the landing page \(Figure 6-8\).
+The Dashboard page on Gophish will update to say that the email was clicked and that you visited the landing page .
 
 ![Creating a new campaign in Gophish](https://gblobscdn.gitbook.com/assets%2F-M8JUFT2qjA1kHV7SeEI%2F-MZGDbfPvhLivi0-cB-D%2F-MZGFNNZIlOz0FCfnVfv%2Fgophish3.png?alt=media&token=0475238b-9165-4152-aa58-a3edf26366af)
 
@@ -84,4 +139,17 @@ You can click the Submitted Data button to view the details of the interaction w
 ![Details of the interactions of the target with the email and landing page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hcgYF7sBTa7Iwb%2F8.png?alt=media)
 
 ![.Details of the data entered in the landing page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hdYKWWWnsFXt6f%2F9.png?alt=media)
+
+### Question 1. User Simulation
+
+We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link \(it happens about 30% of the time\). 
+
+```bash
+$ docker run -it cybernemosyne/cits1003:usersim 
+deleting Z3MGBGKK
+deleting wMKhhn09
+Clicking on http://host.docker.internal:8880?rid=EDi8ErW
+```
+
+**Flag: After running usersim, look at the emails in MailDev. You should see the flag.**
 
