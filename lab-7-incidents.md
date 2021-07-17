@@ -66,7 +66,7 @@ We have run yara and told it to search the subdirectory ./files and it has found
 
 Of course, Yara rules can get much more complicated but the principle is the same. Once you have found a piece of malware, you can write rules that will match that malware because of the text and binary data it contains. You can also find malware that is related to the malware in some way because it has reused some code for example.
 
-## Exercise: Recognising Malware Samples
+## Recognising Malware Samples
 
 WARNING: The malware you are analysing is real and so \*do not\* try and remove it from the container or run it. 
 
@@ -84,6 +84,8 @@ An interesting point about this group is that not very much information is provi
 
 [https://github.com/RedDrip7/APT\_Digital\_Weapon/tree/master/Equation%20Group](https://github.com/RedDrip7/APT_Digital_Weapon/tree/master/Equation%20Group)
 
+### **Question 1. Find the malware1 hash**
+
 **FLAG: Get the MD5 hash of the file malware 1 and enter that in as a hash.** 
 
 {% hint style="info" %}
@@ -100,6 +102,8 @@ Change directory into /opt/malware/malware\_sample1and run yara using the rules 
 
 With this malware, there is a long story related to it and we will cover this in the lectures on IoT, cyberphysical systems and critical infrastructure.
 
+### Question 2. Find the malware2 hash
+
 **FLAG: Get the MD5 hash of the file malware 2 and enter that in as a hash.** 
 
 ### Network log analysis
@@ -113,7 +117,9 @@ Examine the log and find any IP address that looks suspicious and check if indee
 1. Identify the IP address\(es\) that are associated with IOCs
 2. Identify the malware that the IP address\(es\) belong to
 
-**FLAG: Enter the malware name associated with the IP address\(es\)**
+### Question 3. Identify the APT Group
+
+**FLAG: Enter the APT Group Name associated with the IP address\(es\)**
 
 {% hint style="info" %}
 You can search through the file manually and see if you can spot anything but to make things easier you can use the following commands:
