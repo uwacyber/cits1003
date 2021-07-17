@@ -142,7 +142,7 @@ You can click the Submitted Data button to view the details of the interaction w
 
 ### Question 1. User Simulation
 
-We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link \(it happens about 30% of the time\). 
+We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link \(it happens about 30% of the time\). In another terminal, run:
 
 ```bash
 $ docker run -it cybernemosyne/cits1003:usersim 
@@ -150,6 +150,8 @@ deleting Z3MGBGKK
 deleting wMKhhn09
 Clicking on http://host.docker.internal:8880?rid=EDi8ErW
 ```
+
+Launch another campaign and you should see the usersim simulate clicks.
 
 **Flag: After running usersim, look at the emails in MailDev. You should see the flag.**
 
