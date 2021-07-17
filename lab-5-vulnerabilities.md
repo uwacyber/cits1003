@@ -54,7 +54,7 @@ OWASP Juice Shop is a modern web application that has a range of vulnerabilities
 To run the website, use the Docker command:
 
 ```bash
-docker run -d -p 3000:3000 bkimminich/juice-shop
+docker run -it -p 3000:3000 cybernemosyne/cits1003:juiceshop
 ```
 
 This will start the website on the port 3000. You can access it using the URL http://127.0.0.1:3000 and should see the home page:
@@ -65,9 +65,17 @@ Before we look at the site, we are going to install a program called OWASP ZAP t
 
 {% hint style="info" %}
 Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](https://www.zaproxy.org/download/)
+
+You can run OWASP ZAP as a Docker container by using the command:
+
+docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
+
+You then access it through your browser using theURL http://localhost:8080/zap
+
+Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address host.docker.internal instead of 127.0.0.1
 {% endhint %}
 
-Open ZAP and configure the software to scan the Juice Shop website. In the top left hand corner, select "ATTACK Mode" in the dropdown. Select Automated Scan by clicking the button in the right hand window. Type in the URL of the Juice Shop http://127.0.0.1:3000 and then click "Attack".
+Open ZAP and configure the software to scan the Juice Shop website. In the top left hand corner, select "ATTACK Mode" in the dropdown. Select Automated Scan by clicking the button in the right hand window. Type in the URL of the Juice Shop http://127.0.0.1:3000 \(or http://host.docker.internal:3000 if using the container version\) and then click "Attack".
 
 The scan will take a \(longish\) while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
 
@@ -77,7 +85,11 @@ The first alert suggests that you have found a confidential document. If you go 
 
 ![](.gitbook/assets/screen-shot-2021-07-02-at-1.07.08-pm.png)
 
-FTP is the File Transfer Protocol and is used to allow users to get files from a server i.e. an early version of DropBox or OneDrive. If you click on the FTP node, you will see a number of files including one called "acquisitions.md". Click on it and in the right hand window, select the &lt;-- Response tab button. You should be able to read the text of the file in the bottom window.
+FTP is the File Transfer Protocol and is used to allow users to get files from a server i.e. an early version of DropBox or OneDrive. 
+
+### Question 1. Read the FTP files
+
+If you click on the FTP node, you will see a number of files including one called "acquisitions.md". Click on it and in the right hand window, select the &lt;-- Response tab button. You should be able to read the text of the file in the bottom window.
 
 **FLAG: there is a flag in this file, grab it and enter it on CTFd**
 
@@ -131,6 +143,8 @@ In fact, if you go back to ZAP and look at the alerts \(it takes a while to fini
 > )
 
 We won't exploit this but we will use another of the REST API to look up all of the users.
+
+### Question 2. Pwn admin
 
 **FLAG: Now that you are logged in, go to the user's detail page by clicking on the email address under the Account menu and grab the flag!**
 
@@ -205,6 +219,8 @@ Your request should look like this:
 Send this, and then do another GET request to make sure that the user admin was added. 
 
 Now go and log in with the username and password admin/admin and voila!
+
+### Question 3. Get help from support
 
 **FLAG: Go into the Support Chat and tell Juicy Bot your name, then ask the bot "Please sing me a song" and Juicy Bot will respond with the flag!**
 
