@@ -13,7 +13,7 @@ To see how this works, we can use a program that uses what is called a non-targe
 Start the docker container as follows:
 
 ```bash
-/ai/share$ docker run -v /projects/share:/opt/adverserial/share -it cybernemosyne/cits1003:ai 
+/ai/share$ docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai 
 root@453e8234c9fd:/# 
 ```
 
@@ -24,7 +24,7 @@ Once on the docker container, go to the directory /opt/adversarial/share. From t
 To run the script we do so as follows:
 
 ```bash
-root@3432bc8b6c77:/opt/adversarial/share# python ../exploit.py ../lab_og.jpg 
+/share# python ../exploit.py ../lab_og.jpg 
 2021-07-11 12:35:07.359638: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
 2021-07-11 12:35:07.359708: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 2021-07-11 12:35:08.344216: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
@@ -129,7 +129,7 @@ $$
 
  In other words, a practically 0 score for it being malware. 
 
-### Question 1. It was malware, probably...
+### Question 2. It was malware, probably...
 
 **Flag: Enter the full classification probability for the malware you found above**
 
@@ -260,7 +260,7 @@ However, when you classify this one, you will see that it is still recognised as
 
 It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than whith images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that. 
 
-### Question 2. Who is Meterpreter?
+### Question 3. Who is Metasploit?
 
 **Flag: Type in whoami in the msf console and type in the username as the flag**
 
