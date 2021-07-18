@@ -169,9 +169,6 @@ Observing closely, we notice some processes which require some attention.
 * cmd.exe
 * DumpIt.exe
 * explorer.exe
-
-
-
 * cmd.exe
   * This is the process responsible for the command prompt. Extracting the content from this process might give us the details as to what commands were executed in the system
 * DumpIt.exe
@@ -344,7 +341,9 @@ In this command, we passed a passwords.txt file that contains the passwords we a
 
 Once we run John, we get a hit and the passwords is confirmed to be the other half of the flag --&gt; **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
 
-FLAG: **flag{you\_are\_good\_but1\_4m\_b3tt3r}**
+### Question 1. What was the whole flag?
+
+FLAG: Enter the flag to claim the prize
 
 
 
