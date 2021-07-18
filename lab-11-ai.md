@@ -65,6 +65,8 @@ Back on your own machine, these files should be in the directory you specified t
 
 Load the first image, Input.jpg, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with Epsilon = 0.010.jpg and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image which has had the most perturbations applied to it. 
 
+### Question 1. Enter the wrong dog
+
 **Flag: Enter the name of the dog type that Wolfram recognises when the "Epsilon = 0.150.jpg" file is uploaded.**
 
 To a human eye, the dog is still a Labrador albeit a bit fuzzy. Remember that this is not a targetted attack in that we haven't trained the attack using the specific neural network used by the Wolfram site. If we did, we could develop something that would work at much lower levels of disturbance.
@@ -126,6 +128,8 @@ $$
 $$
 
  In other words, a practically 0 score for it being malware. 
+
+### Question 1. It was malware, probably...
 
 **Flag: Enter the full classification probability for the malware you found above**
 
@@ -255,6 +259,8 @@ Msfvenom has other encoders that try and obfuscate the file to avoid detection. 
 However, when you classify this one, you will see that it is still recognised as malware.
 
 It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than whith images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that. 
+
+### Question 2. Who is Meterpreter?
 
 **Flag: Type in whoami in the msf console and type in the username as the flag**
 

@@ -153,6 +153,8 @@ admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
 
 If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to. 
 
+## Question 1. Exploit to find the flag
+
 **Flag: Run exploit.py and pass the argument flag.txt**
 
 ## Searching for Hard Coded Credentials
@@ -238,6 +240,8 @@ Alphanetworks:wrgg19_c_dlwbr_dir300
 ```
 
 The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers \([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink_telnet_backdoor_userpass.txt)\).
+
+### **Question 2. Enter the password**
 
 **Flag: Enter the password to claim the flag**
 
