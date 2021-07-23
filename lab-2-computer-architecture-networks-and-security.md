@@ -349,8 +349,6 @@ To stop a process we can use Stop-Process and pass the id of the process we want
 
 In PowerShell, we can get more information about the process and we will explore this in the exercise 
 
-### Question 2. Where is the shell?
-
 **Flag: Enter the full path of the pwsh program**
 
 ### Users and Groups
@@ -488,9 +486,9 @@ root@86eba39a9594:~# ls -al file.txt
 -rwxr--r-- 1 root root 0 Jul 13 11:54 file.txt
 ```
 
-### Question 3: Run for the flag
+### Question 2: Run for the flag
 
-Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to sort out why it won't run.
+Change directory into /opt/q2 and run the program showflag to get the flag. You will have to sort out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
 

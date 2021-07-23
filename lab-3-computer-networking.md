@@ -366,7 +366,7 @@ The other DNS service is paired with an HTTP proxy. This is a piece of software 
 Now that we know the basics of using nmap, let us use it on a new host. Keep the network container running from above \(or start it if you haven't got it running\). In a new terminal, start the docker container:
 
 ```bash
- docker run -it cybernemosyne/cits1003:cowrie
+ docker run -p 2222:2222 -it cowrie/cowrie
 ```
 
 Back in the network container, do a ping scan of the 172.17.0.1-16 network and find what hosts are up. Run nmap against the IP of the second container you ran using all scripts and versions. 
@@ -401,13 +401,13 @@ Try connecting to the service you found using the user root and no password.
 {% tab title="Hint" %}
 To connect by ssh you use the command:
 
-ssh root@172.17.0.3
+ssh -p 2222 root@172.17.0.3
 {% endtab %}
 {% endtabs %}
 
-Once on the machine, have a look at the file /etc/passwd
+Once on the machine, go to the /home directory. There will be the home directory of a user there
 
-Flag: Enter the flag you found in /etc/passwd
+Flag: Enter the username of the user who owns the home directory.
 
 {% hint style="info" %}
 The cowrie container you started is actually a HoneyPot and logs everything that anyone does when interacting with it. Have a look at the output in the terminal where you ran it. 
