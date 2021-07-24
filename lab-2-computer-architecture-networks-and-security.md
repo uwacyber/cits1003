@@ -170,186 +170,93 @@ drwxr-xr-x 1 root root 4096 Jul 13 05:58 ..
 
 Linux has a limited set of specific attributes on a file that control how the file is accessed. One attribute for example is the Append Only attribute that only allows write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using lsattr and chattr programs
 
-### PowerShell
-
-On Windows, there is a second environment called PowerShell that is closer to bash than the default command terminal. PowerShell commands can be aliased so that they seem similar to the commands already listed above. For example the PowerShell command \(called a cmdlet\) for cd \(change directory\) is actually **Set-Location**. But you can still use cd.
-
-To get into PowerShell, run the container 
-
-```bash
-docker run -it cybernemosyne/cits1003:powershell
-```
-
-Remember, this is running on a Linux environment, if you run this natively on Windows, it will be slightly different
+### Downloading Files 
 
 ### Question 1: Find the file
 
-We are going to download a file to our computer and so open a powershell window and create a directory called cits1003. Create another subdirectory called Lab2. cd into this directory and then use the command "Invoke-WebRequest" to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
+In the /root directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **curl** to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
 
 ```bash
-Invoke-WebRequest -Uri "https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip" -OutFile "master.zip"
+# wget https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip              
+--2021-07-24 05:39:40--  https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip
+Resolving github.com (github.com)... 52.64.108.95
+Connecting to github.com (github.com)|52.64.108.95|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/uwacsp/opentrace/zip/refs/heads/master [following]
+--2021-07-24 05:39:40--  https://codeload.github.com/uwacsp/opentrace/zip/refs/heads/master
+Resolving codeload.github.com (codeload.github.com)... 52.63.100.255
+Connecting to codeload.github.com (codeload.github.com)|52.63.100.255|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: 'master.zip'
+
+master.zip                                                  [   <=>                                                                                                                          ]   3.39M  7.10MB/s    in 0.5s    
+
+2021-07-24 05:39:41 (7.10 MB/s) - 'master.zip' saved [3552764]
 ```
 
-{% hint style="info" %}
-Invoke-WebRequest is aliased as curl - a tool that can be used on Linux to download files
-{% endhint %}
+1. Unzip the file using the command unzip
+2. Rename the directory that was created to opentrace
+3. Use the find command to search the opentrace directory for the file **AppDelegate.swift** 
 
-1. Change directory to /root
-2. unzip the zip file using the powershell command **Expand-Archive master.zip**
-3. Rename the directory that is created to opentrace and delete the zip file
-4. Use the command Get-ChildItem to search the opentrace directory for the file **AppDelegate.swift** \(you can find information on using this cmdlet here [https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/](https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/)\)
-5. Using the PowerShell cmdlet Get-ChildItem, set the Hidden attribute on the AppDelegate.swift and check that it is not visible when using Get-ChildItem without any attribute arguments \(You will have to do an Internet search to find out how to do this\)
-
-**Flag: Enter the directory that you found AppDelegate.swift in** 
+**Flag: Enter the directory that you found AppDelegate.swift in \(the full path without the file and the trailing /\) - it is case sensitive.**
 
 ### Processes
 
-There are a number of different ways of viewing the running processes on the system. In PowerShell, the Get-Process command will list the running processes
-
-```text
-PS /root/cits1003/lab3> Get-Process
-
-NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
-------    -----      -----     ------      --  -- -----------
-     0     0.00     150.37       8.33       1   1 pwsh
-
-PS /root/cits1003/lab3>
-```
-
-As this is Linux, we can also use the Linux command ps which together with the -ef flags shows extended information about all processes
+As this is Linux, we can also use the Linux command ps which together with the -AF flags shows all proesses and extended information
 
 ```bash
-PS /root/cits1003/lab3> ps -ef
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 09:35 pts/0    00:00:08 pwsh
-root       639     1  0 11:07 pts/0    00:00:00 /usr/bin/ps -ef
-PS /root/cits1003/lab3> 
+root@5979d8d16a9b:~/cits1003/lab3# ps -AF
+UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root         1     0  0  1062  3512   1 05:30 pts/0    00:00:00 /bin/bash
+root       115     1  0  1476  2856   6 05:56 pts/0    00:00:00 ps -AF
 ```
 
-Note that there is a difference between the two outputs. Since we are running in a container, there is only one process running which is the PowerShell command pwsh. In the Linux version, it also shows the ps command that was running to get the process information!
+In the output, the UID is the ID of the user that owns the process. On this container, that is root. The PID is the process ID and since this container is only run a bash shell, that is given the process ID of 1 with a parent process ID \(PPID\) of 0. The second process is the ps command we actually ran. This has a process ID of 115 and a parent process ID of 1 as it was run from that bash shell.
 
-If we want to get more detailed information about the process, we can use the PowerShell command:
+We can run another bash shell and then try the ps command again:
 
 ```bash
-PS /root/cits1003/lab3> Get-Process | Select-Object *
-
-Name                       : pwsh
-Id                         : 1
-PriorityClass              : Normal
-FileVersion                : 
-HandleCount                : 116
-WorkingSet                 : 160940032
-PagedMemorySize            : 0
-PrivateMemorySize          : 237903872
-VirtualMemorySize          : -133316608
-TotalProcessorTime         : 00:00:08.7800000
-SI                         : 1
-Handles                    : 116
-VM                         : 4161650688
-WS                         : 160940032
-PM                         : 0
-NPM                        : 0
-Path                       : /opt/microsoft/powershell/7/pwsh
-CommandLine                : pwsh
-Parent                     : 
-Company                    : 
-CPU                        : 8.7899999
-ProductVersion             : 
-Description                : 
-Product                    : 
-__NounName                 : Process
-SafeHandle                 : Microsoft.Win32.SafeHandles.SafeProcessHandle
-Handle                     : 732
-BasePriority               : 0
-ExitCode                   : 
-HasExited                  : False
-StartTime                  : 7/13/2021 9:35:46 AM
-ExitTime                   : 
-MachineName                : .
-MaxWorkingSet              : 9223372036854771712
-MinWorkingSet              : 0
-Modules                    : {System.Diagnostics.ProcessModule (pwsh), System.Diagnostics.ProcessModule (libSystem.IO.Compression.Native.so), System.Diagnostics.ProcessModule 
-                             (libz.so.1.2.11), System.Diagnostics.ProcessModule (libcrypto.so.1.1)…}
-NonpagedSystemMemorySize64 : 0
-NonpagedSystemMemorySize   : 0
-PagedMemorySize64          : 0
-PagedSystemMemorySize64    : 0
-PagedSystemMemorySize      : 0
-PeakPagedMemorySize64      : 0
-PeakPagedMemorySize        : 0
-PeakWorkingSet64           : 160964608
-PeakWorkingSet             : 160964608
-PeakVirtualMemorySize64    : 4255137792
-PeakVirtualMemorySize      : -39829504
-PriorityBoostEnabled       : False
-PrivateMemorySize64        : 237903872
-ProcessName                : pwsh
-ProcessorAffinity          : 255
-SessionId                  : 1
-StartInfo                  : 
-Threads                    : {1, 9, 10, 11…}
-VirtualMemorySize64        : 4161650688
-EnableRaisingEvents        : False
-StandardInput              : 
-StandardOutput             : 
-StandardError              : 
-WorkingSet64               : 160940032
-SynchronizingObject        : 
-MainModule                 : System.Diagnostics.ProcessModule (pwsh)
-MainWindowHandle           : 0
-MainWindowTitle            : 
-Responding                 : True
-PrivilegedProcessorTime    : 00:00:02.1300000
-UserProcessorTime          : 00:00:06.7100000
-Site                       : 
-Container                  : 
+root@5979d8d16a9b:~/cits1003/lab3# ps -AF
+UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root         1     0  0  1062  3512   1 05:30 pts/0    00:00:00 /bin/bash
+root       116     1  0  1062  3416   7 06:00 pts/0    00:00:00 bash
+root       127   116  0  1476  2876   5 06:02 pts/0    00:00:00 ps -AF
 ```
 
-Let us start another PowerShell process by running pwsh again and then doing a Get-Process again:
+We can now see that there are the two bash processes listed. To show the heirarchy, we can use a program called pstree:
 
 ```bash
-PS /root/cits1003/lab3> pwsh
-PowerShell 7.1.3
-Copyright (c) Microsoft Corporation.
-
-https://aka.ms/powershell
-Type 'help' to get help.
-PS /root/cits1003/lab3> Get-Process
-
- NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
- ------    -----      -----     ------      --  -- -----------
-      0     0.00     157.22      22.90       1   1 pwsh
-      0     0.00      96.64       0.93     725   1 pwsh
-
-PS /root/cits1003/lab3>
+root@5979d8d16a9b:~/cits1003/lab3# pstree -apG
+bash,1
+  └─bash,116
+      └─pstree,128 -apG
 ```
 
-We can now see that there are the two pwsh processes listed. We can show that the second pwsh is the child of the first by looking at the parent id of the process in the following way:
+So the parent bash process \(1\) is the parent, or root, of the tree, then the bash shell we ran \(116\) and finally the pstree command with the arguments -apG \(show arguments, process ids and format the symbols\).
+
+Being able to show running processes is important when trying to detect processes running that shouldn't be. This is especially true in Windows where malware can disguise itself as a normal running process or even implant itself in a normal process. 
+
+To stop a process you can use the kill command with the process id. Sometimes, you can force the process to stop using the -9 command:
 
 ```bash
-PS /root/cits1003/lab3> $proc = Get-Process -ID 725
-PS /root/cits1003/lab3> $proc.Parent.Id
-1
+root@5979d8d16a9b:~/cits1003/lab3# kill -9 116
+Killed
+root@5979d8d16a9b:~/cits1003/lab3# ps -AF
+UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root         1     0  0  1062  3512   1 05:30 pts/0    00:00:00 /bin/bash
+root       130     1  0  1476  2860   3 06:13 pts/0    00:00:00 ps -AF
 ```
 
-This is important because it is possible to find abnormal processes running on a system that are the child process of something that looks normal. This is an indicator that it may be malware for example.  
+### Question 2. What a state this process is in!
 
-Using the ps command, the parent process id is shown in the output:
+You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we anted to get information about the bash process running in the container, we would use the command \(replacing the &lt;PID&gt; with the process ID\):
 
 ```bash
-PS /root/cits1003/lab3> ps -ef
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 09:35 pts/0    00:00:26 pwsh
-root       725     1  0 11:34 pts/0    00:00:01 /opt/microsoft/powershell/7/pwsh
-root       837   725  0 11:41 pts/0    00:00:00 /usr/bin/ps -ef
-PS /root/cits1003/lab3> 
+cat /proc/<PID>/status
 ```
 
-To stop a process we can use Stop-Process and pass the id of the process we want to stop. In the case of the second pwsh command we ran, we can simply type exit to stop it.
-
-In PowerShell, we can get more information about the process and we will explore this in the exercise 
-
-**Flag: Enter the full path of the pwsh program**
+**Flag: Enter the description of the state of the process**
 
 ### Users and Groups
 
@@ -486,9 +393,9 @@ root@86eba39a9594:~# ls -al file.txt
 -rwxr--r-- 1 root root 0 Jul 13 11:54 file.txt
 ```
 
-### Question 2: Run for the flag
+### Question 3: Run for the flag
 
-Change directory into /opt/q2 and run the program showflag to get the flag. You will have to sort out why it won't run.
+Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to sort out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
 
