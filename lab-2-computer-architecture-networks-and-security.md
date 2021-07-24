@@ -283,7 +283,7 @@ root@86eba39a9594:~# whoami
 roo
 ```
 
-id &lt;user&gt; will list the groups the user is a member of
+**id** &lt;user&gt; will list the groups the user is a member of
 
 ```bash
 root@86eba39a9594:~# id
@@ -364,7 +364,7 @@ _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 
 #### Linux
 
-All files on Linux have an user and a group that is assigned specific access to read \(r\), write \(w\) and execute  \(x\) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl
+All files on Linux have an user and a group that is assigned specific access to read \(r\), write \(w\) and execute  \(x\) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl. Create a file called file.txt using the command **touch file.txt**. Then run 
 
 ```bash
 root@86eba39a9594:~# getfacl file.txt
