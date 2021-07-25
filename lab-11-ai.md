@@ -39,11 +39,11 @@ Processing image: prediction: Labrador_retriever confidence: 41.81845486164093
 Saving Input
 Processing image: prediction: Labrador_retriever confidence: 41.81845486164093
 Saving Epsilon = 0.010
-Processing image: prediction: S***** confidence: 13.087703287601471
+Processing image: prediction: Saluki confidence: 13.087703287601471
 Saving Epsilon = 0.100
-Processing image: prediction: W******* confidence: 14.949022233486176
+Processing image: prediction: Weimaraner confidence: 14.949022233486176
 Saving Epsilon = 0.150
-Processing image: prediction: W******* confidence: 16.211819648742676
+Processing image: prediction: Weimaraner confidence: 16.211819648742676
 ```
 
 This takes the initial image of lab\_og.jpg and then creates different versions of the image with the perturbations added. The script tests these images against the neural network and very quickly stops recognising a Labrador and starts recognising other dog types such as the Saluki and Weimaraner, although note that the levels of confidence in that result are very low ~ 16%.
@@ -68,16 +68,6 @@ Load the first image, Input.jpg, into the site and verify that it is correctly r
 ### Question 1. Enter the wrong dog
 
 **Flag: Enter the name of the dog type that Wolfram recognises when the "Epsilon = 0.150.jpg" file is uploaded.**
-
-{% tabs %}
-{% tab title="" %}
-
-{% endtab %}
-
-{% tab title="Hint" %}
-If Wolfram isn't working for you, it was the same prediction as the exploit script gave!
-{% endtab %}
-{% endtabs %}
 
 To a human eye, the dog is still a Labrador albeit a bit fuzzy. Remember that this is not a targetted attack in that we haven't trained the attack using the specific neural network used by the Wolfram site. If we did, we could develop something that would work at much lower levels of disturbance.
 

@@ -410,7 +410,7 @@ ssh -p 2222 root@172.17.0.3
 
 Once on the machine, go to the /home directory. There will be the home directory of a user there
 
-Flag: Enter the username of the user who owns the home directory.
+**Flag: Enter the username of the user who owns the directory in /home.**
 
 {% hint style="info" %}
 The cowrie container you started is actually a HoneyPot and logs everything that anyone does when interacting with it. Have a look at the output in the terminal where you ran it. 
