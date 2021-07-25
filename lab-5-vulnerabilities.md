@@ -75,7 +75,7 @@ You then access it through your browser using theURL http://localhost:8080/zap
 Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address host.docker.internal instead of 127.0.0.1
 {% endhint %}
 
-Open ZAP and configure the software to scan the Juice Shop website. In the top left hand corner, select "ATTACK Mode" in the dropdown. Select Automated Scan by clicking the button in the right hand window. Type in the URL of the Juice Shop http://127.0.0.1:3000 \(or http://host.docker.internal:3000 if using the container version\) and then click "Attack".
+Open ZAP and configure the software to scan the Juice Shop website. **In the top left hand corner, select "ATTACK Mode" in the dropdown**. Select Automated Scan by clicking the button in the right hand window. Type in the URL of the Juice Shop http://127.0.0.1:3000 \(or http://host.docker.internal:3000 if using the container version\) and then click "Attack".
 
 The scan will take a \(longish\) while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
 
@@ -146,7 +146,7 @@ We won't exploit this but we will use another of the REST API to look up all of 
 
 ### Question 2. Pwn admin
 
-**FLAG: Now that you are logged in, go to the user's detail page by clicking on the email address under the Account menu and grab the flag!**
+**FLAG: Now that you are logged in enter the admin email address for the flag**
 
 ## Using the API
 
