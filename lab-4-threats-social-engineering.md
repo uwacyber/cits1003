@@ -45,8 +45,14 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 
 To run Gophish, start the Docker container as follows
 
+{% hint style="info" %}
+Apple Silicon: 
+
+> docker run -p 3333:3333 -p 8880:80 -it cybernemosyne/cits1003:gophish-x
+{% endhint %}
+
 ```bash
-$ docker run -p 3333:3333 -p 8880:80 -it gophish/gophish
+$ docker run -p 3333:3333 -p 8880:80 -it cybernemosyne/cits1003:gophish
 <SNIP...>
 "Please login with the username admin and the password 5b6f2c097defcce6"
 time="2021-07-16T01:40:32Z" level=info msg="Creating new self-signed certificates for administration interface"
@@ -76,8 +82,14 @@ We are going to run a mail server as another container and so when asked, the ho
 
 Let us do that now. In another terminal, run the following container:
 
+{% hint style="info" %}
+Apple Silicon:
+
+> docker run -it -p 1080:1080 -p 1025:1025  cybernemosyne/cits1003:maildev-x
+{% endhint %}
+
 ```bash
-$ docker run -it -p 1080:80 -p 1025:25  maildev/maildev
+$ docker run -it -p 1080:1080 -p 1025:1025  cybernemosyne/cits1003:maildev
 MailDev webapp running at http://0.0.0.0:80
 MailDev SMTP Server running at 0.0.0.0:25
 ```
@@ -87,6 +99,8 @@ This mailserver will allow you to see what emails are arriving by going to the a
 Click on Sending Profiles and then Add New and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server \(like Gmail\) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server. 
 
 This is not so much of a problem as many users will not check this when reading emails.
+
+![](.gitbook/assets/image-28-7-21-at-10.39-am.jpg)
 
 You can send a test email and verify that it shows up in the MailDev interface. Delete it once done. Save the profile.
 
@@ -143,6 +157,12 @@ You can click the Submitted Data button to view the details of the interaction w
 ### Question 1. User Simulation
 
 We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link \(it happens about 30% of the time\). In another terminal, run:
+
+{% hint style="info" %}
+Apple Silicon:
+
+> docker run -it cybernemosyne/cits1003:usersim-x
+{% endhint %}
 
 ```bash
 $ docker run -it cybernemosyne/cits1003:usersim 
