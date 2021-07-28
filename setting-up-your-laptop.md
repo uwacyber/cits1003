@@ -108,6 +108,20 @@ root
 root@45fe3a838ef0:/# 
 ```
 {% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+MyComputer:~$ docker pull cybernemosyne/cits1003:bash-x
+Digest: sha256:691832551b79cd93e5592b54d234b89d23b253336934677e311e64eefc8b958b
+Status: Image is up to date for cybernemosyne/cits1003:bash-x
+cybernemosyne/cits1003:bash
+
+0x4447734D4250:~$ docker run -it cybernemosyne/cits1003:bash-x
+root@45fe3a838ef0:/# whoami
+root
+root@45fe3a838ef0:/# 
+```
+{% endtab %}
 {% endtabs %}
 
 The _**docker pull**_ command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the _**docker run**_ command as shown above. 
