@@ -51,11 +51,21 @@ There are tools which will scan a web application automatically for these vulner
 
 OWASP Juice Shop is a modern web application that has a range of vulnerabilities in the OWASP top 10 list. We will look at some of these vulnerabilities, but you can spend more time to see if you can find others. The site will let you know when you find one by createing a green alert. We are going to use OWASP ZAP to scan the website initially. This won't find all of the vulnerabilities, in fact it only finds a few but it will give us a "crawl" of the site, providing a list of all the links it can find that access different parts of the site.
 
-To run the website, use the Docker command:
+To run the website, use the Docker command :
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
 ```bash
 docker run -it -p 3000:3000 cybernemosyne/cits1003:juiceshop
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```bash
+docker run -it -p 3000:3000 cybernemosyne/cits1003:juiceshop-x
+```
+{% endtab %}
+{% endtabs %}
 
 This will start the website on the port 3000. You can access it using the URL http://127.0.0.1:3000 and should see the home page:
 
@@ -68,9 +78,15 @@ Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](htt
 
 You can run OWASP ZAP as a Docker container by using the command:
 
-docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
+docker run -u zap -p 8080:8080 -p 8090:8090 -i cybernemosyne/cits1003:zaproxy zap-webswing.sh
 
-You then access it through your browser using theURL http://localhost:8080/zap
+or 
+
+Apple Silicon
+
+docker run -u zap -p 8080:8080 -p 8090:8090 -i cybernemosyne/cits1003:zaproxy-x zap-webswing.sh
+
+You then access it through your browser using the URL http://localhost:8080/zap
 
 Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address host.docker.internal instead of 127.0.0.1
 {% endhint %}
