@@ -121,7 +121,7 @@ You are given the following Base64 encoded text
 
 You don't know the key but you can assume it is one byte long and it uses XOR as the algorithm. You are going to try and brute force it to find the key.
 
-Use the operation "_**XOR Brute Force**_" in Cyberchef to find the key in Hexadecimal. What was the original message? 
+Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexadecimal. What was the original message? 
 
 **Flag: Enter the plaintext**
 
