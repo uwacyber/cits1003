@@ -27,19 +27,9 @@ Yara tries to match text and binary from the malware it analyses. Before we star
 
 To start, run the docker container:
 
-{% tabs %}
-{% tab title="Windows/Apple Intel" %}
 ```bash
 docker run -it cybernemosyne/cits1003:incident
 ```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```
-docker run -it cybernemosyne/cits1003:incident-x
-```
-{% endtab %}
-{% endtabs %}
 
 Change directory to /opt/malware/test. This directory has a subdirectory ./files which has two files in it. One called bye.txt which contains the text "bye bye" and another file called hello.txt that has the text "hello, world!"
 

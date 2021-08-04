@@ -32,10 +32,21 @@ Volatility 2 needs to know the version of operating system that the memory dump 
 
 To get started, run the docker container:
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
 ```bash
 docker pull cybernemosyne/cits1003:volatility
 docker run -it cybernemosyne/cits1003:volatility
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+docker pull cybernemosyne/cits1003:volatility-x
+docker run -it cybernemosyne/cits1003:volatility-x
+```
+{% endtab %}
+{% endtabs %}
 
 Change into the directory /opt/memory
 
