@@ -121,7 +121,7 @@ You are given the following Base64 encoded text
 
 You don't know the key but you can assume it is one byte long and it uses XOR as the algorithm. You are going to try and brute force it to find the key.
 
-Use the operation "_**XOR Brute Force**_" to find the key in Hexadecimal. What was the original message? 
+Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexadecimal. What was the original message? 
 
 **Flag: Enter the plaintext**
 
@@ -151,7 +151,7 @@ UTF8 is Unicode which expanded the number of bytes used to encode characters to 
 
 The hex output of he encrypted text is:
 
-> 0f1ee3bc7b64c9a266bb19aa3eb7e4a731164ae97f3f1fe9b272c62de7cb4420
+> 0f1ee3bc7b64c9a266bb19aa3eb7e4a780bc1d201a444b3106d8e8ca4c7e7dc5
 
 You can verify that you can decrypt this by adding the operation AES Decrypt to the recipe and use the same key and IV to decrypt.
 
