@@ -98,6 +98,20 @@ For both Mac and Windows, the Graphical User Interface versions of network confi
 
 Start the docker container and run ifconfig
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
+```bash
+docker run -it  cybernemosyne/cits1003:network 
+```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```bash
+docker run -it  cybernemosyne/cits1003:network-x
+```
+{% endtab %}
+{% endtabs %}
+
 ```bash
 /network$ docker run -it  cybernemosyne/cits1003:network 
 root@3921e4d47009:/# ifconfig
