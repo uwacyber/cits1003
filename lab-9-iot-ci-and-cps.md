@@ -14,9 +14,19 @@ The device ships with a default username of **admin** and a password of **passwo
 
 Let us start by using the docker container as follows
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
 ```bash
 docker run -p 8000:8000 -it cybernemosyne/cits1003:iot 
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+docker run -p 8000:8000 -it cybernemosyne/cits1003:iot-x 
+```
+{% endtab %}
+{% endtabs %}
 
 Change directory to /opt/samples/WNAP320
 
