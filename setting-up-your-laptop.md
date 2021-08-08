@@ -45,7 +45,17 @@ If Docker Desktop fails to start
 1. Clean up data and try again
 {% endhint %}
 
+## Running Windows 10 on Azure
 
+If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. To do this, you will need a student account created on https://portal.azure.com/.
+
+You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 machine. Use all of the default settings but select Australia as the region to run it in \(if you are located internationally, pick a region close to you\).
+
+Once created, you can connect to the machine via remote desktop and then configure the machine as above. 
+
+{% hint style="info" %}
+Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it. 
+{% endhint %}
 
 ## Apple Mac M1 \(Apple Silicon\) Users: Enable Rosetta
 
