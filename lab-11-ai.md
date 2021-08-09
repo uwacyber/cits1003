@@ -185,7 +185,7 @@ msfconsole
 
 and answer yes to the following question and no to the second.
 
-After doing that, you should see something like this:
+After doing that, you should see something like this \(the actual graphic changes each time\):
 
 ```bash
 [!] The following modules could not be loaded!..\
