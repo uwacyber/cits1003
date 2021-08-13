@@ -165,7 +165,7 @@ To get started, we are going to run Metasploit, and to do this we will run a Doc
 {% tabs %}
 {% tab title="Windows/Apple Intel" %}
 ```bash
-docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
+docker run -v /projects/share:/opt/share -it heywoodlh/metasploit
 ```
 {% endtab %}
 
@@ -177,7 +177,7 @@ docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
 {% endtab %}
 {% endtabs %}
 
-Instead of $\(pwd\) put the same local folder you were running for the AI container above.
+Instead of /projects/share put the same local folder you were running for the AI container above.
 
 Once this is running, you can type
 
