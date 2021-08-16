@@ -165,13 +165,13 @@ To get started, we are going to run Metasploit, and to do this we will run a Doc
 {% tabs %}
 {% tab title="Windows/Apple Intel" %}
 ```bash
-docker run -v /projects/share:/opt/share -it cybernemosyne/cits003:metasploit
+docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:metasploit
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-docker run -v $(pwd)/share:/opt/share -it cybernemosyne/cits003:metasploit-x
+docker run -v $(pwd)/share:/opt/share -it cybernemosyne/cits1003:metasploit-x
 
 ```
 {% endtab %}
