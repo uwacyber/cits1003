@@ -174,7 +174,7 @@ Linux has a limited set of specific attributes on a file that control how the fi
 
 ### Question 1: Find the file
 
-In the "**/root**" directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
+In the /root directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
 
 ```bash
 # wget https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip              

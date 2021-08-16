@@ -15,13 +15,13 @@ Start the docker container as follows:
 {% tabs %}
 {% tab title="Windows/Apple Intel" %}
 ```bash
-docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai
+docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:ai
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-docker run -v /projects/share:/opt/adversarial/share -it cybernemosyne/cits1003:ai-x
+docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:ai-x
 ```
 {% endtab %}
 {% endtabs %}
@@ -33,7 +33,7 @@ Once on the docker container, go to the directory /opt/adversarial/share. From t
 To run the script we do so as follows:
 
 ```bash
-/share# python exploit.py lab_og.jpg 
+/opt/adversarial/share# python exploit.py lab_og.jpg 
 2021-07-11 12:35:07.359638: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
 2021-07-11 12:35:07.359708: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 2021-07-11 12:35:08.344216: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
@@ -69,6 +69,8 @@ drwxr-xr-x 1 root root   4096 Jul 11 12:35  ..
 -rw-r--r-- 1 root root 200878 Jul 11 12:39 'Epsilon = 0.150.jpg'
 -rw-r--r-- 1 root root 134549 Jul 11 12:39  Input.jpg
 ```
+
+Copy these files to the shared folder with your machine: /opt/share 
 
 Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
@@ -163,19 +165,19 @@ To get started, we are going to run Metasploit, and to do this we will run a Doc
 {% tabs %}
 {% tab title="Windows/Apple Intel" %}
 ```bash
-docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
+docker run -v /projects/share:/opt/share -it cybernemosyne/cits003:metasploit
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-docker run -v $(pwd)/share:/opt/share -it heywoodlh/metasploit
+docker run -v $(pwd)/share:/opt/share -it cybernemosyne/cits003:metasploit-x
 
 ```
 {% endtab %}
 {% endtabs %}
 
-Instead of $\(pwd\) put the same local folder you were running for the AI container above.
+Instead of /projects/share put the same local folder you were running for the AI container above.
 
 Once this is running, you can type
 

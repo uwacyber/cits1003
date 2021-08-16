@@ -51,21 +51,11 @@ There are tools which will scan a web application automatically for these vulner
 
 OWASP Juice Shop is a modern web application that has a range of vulnerabilities in the OWASP top 10 list. We will look at some of these vulnerabilities, but you can spend more time to see if you can find others. The site will let you know when you find one by createing a green alert. We are going to use OWASP ZAP to scan the website initially. This won't find all of the vulnerabilities, in fact it only finds a few but it will give us a "crawl" of the site, providing a list of all the links it can find that access different parts of the site.
 
-To run the website, use the Docker command :
+To run the website, use the Docker command:
 
-{% tabs %}
-{% tab title="Windows/Apple Intel" %}
 ```bash
 docker run -it -p 3000:3000 cybernemosyne/cits1003:juiceshop
 ```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```bash
-docker run -it -p 3000:3000 cybernemosyne/cits1003:juiceshop-x
-```
-{% endtab %}
-{% endtabs %}
 
 This will start the website on the port 3000. You can access it using the URL http://127.0.0.1:3000 and should see the home page:
 
@@ -78,15 +68,9 @@ Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](htt
 
 You can run OWASP ZAP as a Docker container by using the command:
 
-docker run -u zap -p 8080:8080 -p 8090:8090 -i cybernemosyne/cits1003:zaproxy zap-webswing.sh
+docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
 
-or 
-
-Apple Silicon
-
-docker run -u zap -p 8080:8080 -p 8090:8090 -i cybernemosyne/cits1003:zaproxy-x zap-webswing.sh
-
-You then access it through your browser using the URL http://localhost:8080/zap
+You then access it through your browser using theURL http://localhost:8080/zap
 
 Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address host.docker.internal instead of 127.0.0.1
 {% endhint %}
@@ -168,15 +152,7 @@ We won't exploit this but we will use another of the REST API to look up all of 
 
 Many web applications offer functionality through what is called an Application Programming Interface \(API\). These are functions that can be called to do something such as list users, conduct a search of products, etc. APIs can normally be accessed using the same communication protocol as a normal Web request, i.e. HTTP. 
 
-If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Quantitys. There is actually another set of methods \(although it doesn't always show up on an initial scan\) called /Users.
-
-/Users actually has two methods, a GET method and a POST method that you could have discovered by simply trying them. 
-
-What we are going to do is to create 
-
-
-
-However,  if you click on the GET:Users and look at the Response tab on the right, you will see that it got a message saing "No Authorization header was found" and credentials required.
+If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Users. /Users has two methods, a GET method and a POST method. However,  if you click on the GET:Users and look at the Response tab on the right, you will see that it got a message saing "No Authorization header was found" and credentials required.
 
 What we need to do is add a header called Authorization: Bearer and then add a token to it. We are going to get the token from our browser. 
 
