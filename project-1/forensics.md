@@ -1,5 +1,15 @@
 # Forensics
 
+## Introduction
+
+These exercises require Wireshark. You can install this on your computer or you can run it from docker:
+
+```bash
+ docker run -v /yourfolder:/opt/share -p 3000:3000 linuxserver/wireshark
+```
+
+Replace /yourfolder with a path to a directory or folder on your machine. This will allow you to share data with Wireshark. Once the container is running, you can run it from your browser by going to http://127.0.0.1:3000
+
 ## Flag 1**7**: Who is that?
 
 **All the forensic challenges use the captured.pcapng that you can download from Task 1!**
@@ -16,7 +26,7 @@ For an example:
 
 **`australia:120.123.69.5`**
 
-We will use a tool called **wireshark**, which is used to capture and analysis. Read the `README.pdf` file to learn how to run wireshark using Docker and load the `captured.pcapng` file that has the data from the network dump.
+We will use **wireshark** to examine the capture file `captured.pcapng` that has the data from the network dump.
 
 Once you have loaded the `captured.pcapng` file, look at the **statistics** for **IPv4** \(there is a statistics button on the top bar\). The suspicious user has the highest count of packets being captured, besides the host which has the IP address of 10.0.0.4.
 
