@@ -4,17 +4,17 @@
 
 We have recently been testing a new shared lab environment for all students to use! However, we had some serious security issues and we got hacked! Fortunately, we were able to revert to an older version and changed the SSH port so hackers cannot easily get in! We believe our systems are secure, but we have requested that you do a penetration test for us to make sure our systems are secure!
 
-Firstly, can you find the new SSH port? You'll need to use a port scanner like **nmap** to find the new port number for SSH and if you do find it you can login using the following credentials. However, we doubt that you can find it since it is no longer port 22!
+Hint: We can't scan the service and so we will try a few well-known variants: Try ports 22 \(they may be lying\), 2200, 2022 using ssh. The correct port will let you in immediately
+
+You are given:
+
+**Server**: cits3projtg2.cybernemosyne.xyz
 
 **Username**: student
 
 **Password**: cybernemosynecits1003
 
-Once you find the new SSH port you can login to a terminal using the following command replacing `<port number>` with the port number of the SSH server.
-
-```text
-ssh -p <port number> student@<address for challenge>
-```
+The flag is in the home directory **/home/student**.
 
 ## Flag 2: Finding the hidden creds
 

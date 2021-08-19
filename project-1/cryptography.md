@@ -24,7 +24,29 @@ I was on the train the other day going to **crack station** when this person cam
 365d38c60c4e98ca5ca6dbc02d396e53
 ```
 
-## **Flag 9: Missing Letter**
+## **Flag 9:** ECBrypted Image
+
+On a late afternoon working hard as a NSA agent, you see an encrypted image sent between two suspected Kinder Surprise smugglers. After you inspect the communications further, you discover that the sender used AES encryption using the **ECB mode to encrypt the image**.
+
+The original image was a **PPM file** and had a width and height of **1920 by 1080 pixels** respectively. However, you were unable to figure out what was the key used to encrypt the image.
+
+**Can you still see the hidden message within the image?**
+
+**Hint:**
+
+Remember the lectures about ECB? But how do you view the image? A PPM file needs a header to be recognised. The specification for PPM is here [http://netpbm.sourceforge.net/doc/ppm.html](http://netpbm.sourceforge.net/doc/ppm.html)
+
+To add a header to the file you can create a file with the header \(say, imgwithheader.ppm\) and then do:
+
+```text
+cat encrypted_image.bin >> imgwithheader.ppm
+```
+
+This will copy the contents of encrypted\_image.bin and concatenate \(add\) it to the file imgwithheader.ppm.
+
+{% file src="../.gitbook/assets/encrypted\_image.bin" %}
+
+## **Flag 10: Missing Letter**
 
 Help I have forgotten the end of my encryption key and I cannot decrypt my data!
 
