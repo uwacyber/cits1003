@@ -250,7 +250,7 @@ root       130     1  0  1476  2860   3 06:13 pts/0    00:00:00 ps -AF
 
 ### Question 2. What a state this process is in!
 
-You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we anted to get information about the bash process running in the container, we would use the command \(replacing the &lt;PID&gt; with the process ID\):
+You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we wanted to get information about the bash process running in the container, we would use the command \(replacing the &lt;PID&gt; with the process ID\):
 
 ```bash
 cat /proc/<PID>/status
