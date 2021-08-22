@@ -104,7 +104,7 @@ Actually, you could have just taken the hash of the file and done a Google searc
 
 ### Malware Sample 2
 
-Change directory into /opt/malware/malware\_sample1and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
+Change directory into /opt/malware/malware\_sample2 and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
 
 1. What is the name of the malware?
 2. What is the name of the group thought to be responsible for the malware?
