@@ -173,5 +173,15 @@ Clicking on http://host.docker.internal:8880?rid=EDi8ErW
 
 Launch another campaign and you should see the usersim simulate clicks.
 
+{% hint style="info" %}
+Linux:
+
+usersim uses host.docker.internal which Linux containers don't know about so you need to run it as:
+
+```bash
+docker run -it --add-host host.docker.internal:172.17.0.1 cybernemosyne/cits1003:usersim
+```
+{% endhint %}
+
 **Flag: After running usersim, look at the emails in MailDev. You should see the flag.**
 
