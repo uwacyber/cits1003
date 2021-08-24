@@ -177,14 +177,11 @@ Executing this command gives us a list of processes which were running when the 
 
 Observing closely, we notice some processes which require some attention.
 
-* cmd.exe
-* DumpIt.exe
-* explorer.exe
-* cmd.exe
+* **cmd.exe**
   * This is the process responsible for the command prompt. Extracting the content from this process might give us the details as to what commands were executed in the system
-* DumpIt.exe
+* **DumpIt.exe**
   * This process was used by me to acquire the memory dump of the system.
-* Explorer.exe
+* **Explorer.exe**
   * This process is the one which handles the File Explorer.
 
 Now since we have seen that **cmd.exe** was running, let us try to see if there were any commands executed in the shell/terminal.
