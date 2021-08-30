@@ -14,7 +14,7 @@ Vulnerabilities are usually quantified in some way using a range of different ch
 
 ## How do we find vulnerabilities?
 
-The complexity of vulnerabilities Vulnerabilities can be split into known and unknown types. For the known vulnerabilities, they will relate to a particular configuration or version of the software. If you know you have a particular version of Windows for example, there will be a list of known vulnerabilities that can be looked up in a vulnerability database. For this reason, finding vulnerabilities usually starts with understanding all of the software and systems that are running, especially the versions of the software and the way they have been configured and deployed. 
+Vulnerabilities can be split into known and unknown types. For the known vulnerabilities, they will relate to a particular configuration or version of the software. If you know you have a particular version of Windows for example, there will be a list of known vulnerabilities that can be looked up in a vulnerability database. For this reason, finding vulnerabilities usually starts with understanding all of the software and systems that are running, especially the versions of the software and the way they have been configured and deployed. 
 
 There are tools that will do automated scans of software, especially web servers. But what is a web server and what are the applications that they run?
 
