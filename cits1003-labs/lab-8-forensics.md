@@ -333,7 +333,7 @@ hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
 Then run john using the following command:
 
 ```bash
-..:/opt/memory# john  --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt 
+..:/opt/memory# /opt/john/run/john  --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt 
 Using default input encoding: UTF-8
 Loaded 1 password hash (NT [MD4 256/256 AVX2 8x3])
 Warning: no OpenMP support for this hash type, consider --fork=4
