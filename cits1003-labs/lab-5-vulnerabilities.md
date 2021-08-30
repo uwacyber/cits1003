@@ -170,13 +170,13 @@ Many web applications offer functionality through what is called an Application 
 
 If we go back to ZAP and look at the Site map in the left hand window, you will see a node called **api** that has a number of functions such as /Challenges, /SecurityQuestions, and /Quantitys. There is actually another set of methods \(although it doesn't always show up on an initial scan\) called /Users.
 
+{% hint style="info" %}
+If /Users does not show up in your scan, please refer to the video where I walk through how to create a request manually. Once that is done, you can proceeds as below.
+{% endhint %}
+
 /Users actually has two methods, a GET method and a POST method that you could have discovered by simply trying them. 
 
-What we are going to do is to create 
-
-
-
-However,  if you click on the GET:Users and look at the Response tab on the right, you will see that it got a message saing "No Authorization header was found" and credentials required.
+However,  if you click on the GET:Users and look at the Response tab on the right, you will see that it got a message saying "No Authorization header was found" and credentials required.
 
 What we need to do is add a header called Authorization: Bearer and then add a token to it. We are going to get the token from our browser. 
 
