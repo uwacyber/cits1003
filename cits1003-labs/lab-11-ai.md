@@ -74,13 +74,17 @@ drwxr-xr-x 1 root root   4096 Jul 11 12:35  ..
 
 Copy these files to the shared folder with your machine: /opt/share 
 
+{% hint style="danger" %}
+Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program exploit.py printed out
+{% endhint %}
+
 Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
 Load the first image, Input.jpg, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with Epsilon = 0.010.jpg and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image which has had the most perturbations applied to it. 
 
 ### Question 1. Enter the wrong dog
 
-**Flag: Enter the name of the dog type that Wolfram recognises when the "Epsilon = 0.150.jpg" file is uploaded.**
+**Flag: Enter the name of the dog type that Wolfram or exploit.py recognises when the "Epsilon = 0.150.jpg" file is uploaded.**
 
 {% tabs %}
 {% tab title="" %}
