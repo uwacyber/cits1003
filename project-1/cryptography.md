@@ -24,6 +24,10 @@ I was on the train the other day going to **crack station** when this person cam
 365d38c60c4e98ca5ca6dbc02d396e53
 ```
 
+{% hint style="info" %}
+If you can't get to the crack station - just try searching on the web using the hash.
+{% endhint %}
+
 ## **Flag 9:** ECBrypted Image
 
 On a late afternoon working hard as a NSA agent, you see an encrypted image sent between two suspected Kinder Surprise smugglers. After you inspect the communications further, you discover that the sender used AES encryption using the **ECB mode to encrypt the image**.
