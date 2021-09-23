@@ -2,7 +2,7 @@
 
 ## Flag 1**1**: Armageddon 1
 
-You are testing a site for a client which is located at [http://cits3projtg.cybernemosyne.xyz](http://cits3projtg.cybernemosyne.xyz)
+You are testing a site for a client which is located at [http://cits3projtg2.cybernemosyne.xyz](http://cits3projtg.cybernemosyne.xyz)
 
 Start by identifying the name of the Content Management System \(CMS\) that is used on the site?
 
