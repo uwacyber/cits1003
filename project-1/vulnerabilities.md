@@ -2,7 +2,7 @@
 
 ## Flag 1**1**: Armageddon 1
 
-You are testing a site for a client which is located at [http://cits3projtg2.cybernemosyne.xyz](http://cits3projtg.cybernemosyne.xyz)
+You are testing a site for a client which is located at [http://cits3projtg2.cybernemosyne.xyz](http://cits3projtg2.cybernemosyne.xyz)
 
 Start by identifying the name of the Content Management System \(CMS\) that is used on the site?
 
@@ -34,7 +34,7 @@ Can you sign up for this even though their sign up form has been disabled?
 
 Some kid joined my Minecraft server and threatened that they were going to DDoS me using this dodgy website. In the end they just pinged my server, but I am 99% certain you can do a lot more with that website.
 
-It is located here [http://cits3projtg.cybernemosyne.xyz:1004](http://cits3projtg.cybernemosyne.xyz:1004)
+It is located here [http://cits3projtg2.cybernemosyne.xyz:1004](http://cits3projtg2.cybernemosyne.xyz:1004)
 
 **Can you find a vulnerability on the dodgy website and exploit it to read the flag at `/flag` on the server?**
 
