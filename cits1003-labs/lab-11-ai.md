@@ -21,9 +21,10 @@ docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:ai
 
 {% tab title="Apple Silicon" %}
 ```
-Tensorflow won't work on ARM and so you will need to run the intel version 
+Tensorflow won't work on ARM and so you will have to
+ skip this bit - the flag is weimaraner
 
-docker run -v /projects/share:/opt/share -it --platform=linux/amd64 cybernemosyne/cits1003:ai
+
 ```
 {% endtab %}
 {% endtabs %}
