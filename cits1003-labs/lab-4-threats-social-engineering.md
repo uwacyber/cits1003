@@ -1,6 +1,6 @@
 # Lab 5: Threats Social Engineering
 
-## What is Social Engineering? <a id="what-is-social-engineering"></a>
+## What is Social Engineering? <a href="#what-is-social-engineering" id="what-is-social-engineering"></a>
 
 In many cases, if you want access to a network, machine or even physical premises, the easiest thing to do is to simply ask for it, especially if you pretend to be someone that has a legitimate reason to be asking. More formally, social engineering is the use of deception to manipulate a person into revealing some information or taking some sort of inappropriate action on the attacker's behalf. Social engineering relies on exploiting human behavior based on both their general human behaviors, and also through manipulation of individuals based on their personal life or work.
 
@@ -21,7 +21,7 @@ The goal of a phishing attack is to either get a user to click on a link that ta
 
 We are going to look at phishing in more detail by exploring the use of a social engineering tool called Gophish. We will focus on attacks that trick a user into providing credentials on a fake login page copied from a genuine service.
 
-## Going Phishing with Gophish <a id="going-phishing-with-gophish"></a>
+## Going Phishing with Gophish <a href="#going-phishing-with-gophish" id="going-phishing-with-gophish"></a>
 
 Phishing provides the largest and potentially most effective way of getting malware onto a computer or convincing a target to reveal their user credentials, personal or financial information and even take other actions on the attacker's behalf. Phishing's most common channel is email and there are a number of tools that simplify the ability to create phishing emails, send them to targets and monitor the responses.
 
@@ -41,12 +41,12 @@ Setting up a spoofed website is perhaps the easiest part of the phishing campaig
 
 Normally, an attacker would make the site more convincing by using SSL and having a certificate that matched the domain name chosen for the site. Users have been taught to make sure that the sites they visit are protected by looking for the padlock in the browser that indicates the site is using SSL and that the certificate is valid. Browsers will now warn users when they visit a site that is not SSL protected. Also, you would want a URL that is close enough to the real URL you are spoofing in order to pass casual scrutiny by the user. In our exercise, we are not going to bother with SSL certificates or setting up a domain for the URL.
 
-## Creating a phishing campaign in Gophish <a id="creating-a-phishing-campaign-in-gophish"></a>
+## Creating a phishing campaign in Gophish <a href="#creating-a-phishing-campaign-in-gophish" id="creating-a-phishing-campaign-in-gophish"></a>
 
 To run Gophish, start the Docker container as follows
 
 {% hint style="info" %}
-Apple Silicon: 
+Apple Silicon:
 
 > docker run -p 3333:3333 -p 8880:80 -it cybernemosyne/cits1003:gophish-x
 {% endhint %}
@@ -63,10 +63,9 @@ time="2021-07-16T01:40:32Z" level=info msg="Starting new IMAP monitor for user a
 time="2021-07-16T01:40:32Z" level=info msg="TLS Certificate Generation complete"
 time="2021-07-16T01:40:32Z" level=info msg="Starting admin server at https://0.0.0.0:3333"
 
-
 ```
 
-When run, Gophish will start two web servers, one on port 80 \(which we have mapped to port 8880 on our local machine\) that will host the phishing landing pages and the other on port 3333 \(mapped to the same port on our local machine\) which is the administration site. Open the admin site in a browser by going to https://127.0.0.1:3333
+When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to https://127.0.0.1:3333
 
 {% hint style="danger" %}
 Gophish uses https and we haven't set up a certificate for it. To proceed to the site, the browser will ask you to accept the risks and proceed. How you do this will depend on the browser.
@@ -76,7 +75,7 @@ You can log in with the user admin and the password that was printed out on the 
 
 ![Gophish Dashboard page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hVuxhCaQ6k8bB7%2F0.png?alt=media)
 
-To start, we will create a sending profile. 
+To start, we will create a sending profile.
 
 We are going to run a mail server as another container and so when asked, the host name for the email server is **host.docker.internal:1025**.
 
@@ -85,7 +84,7 @@ Let us do that now. In another terminal, run the following container:
 {% hint style="info" %}
 Apple Silicon:
 
-> docker run -it -p 1080:1080 -p 1025:1025  cybernemosyne/cits1003:maildev-x
+> docker run -it -p 1080:1080 -p 1025:1025 cybernemosyne/cits1003:maildev-x
 {% endhint %}
 
 ```bash
@@ -96,7 +95,7 @@ MailDev SMTP Server running at 0.0.0.0:25
 
 This mailserver will allow you to see what emails are arriving by going to the address http://127.0.0.1:1080
 
-Click on Sending Profiles and then Add New and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server \(like Gmail\) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server. 
+Click on Sending Profiles and then Add New and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server (like Gmail) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server.
 
 This is not so much of a problem as many users will not check this when reading emails.
 
@@ -108,7 +107,7 @@ Next, we are going to create an email template. We are going to keep this simple
 
 In the template, give it a name and then select HTML. Enter the HTML below.
 
-We are using a few template variables that will be replaced with the recipient's first name and the sender's information \(you can look up what other variables you can use in emails on the Gophish GitHub page\). Most importantly, the URL that will be clicked will be replaced with the landing page we will create and also pass an ID that will allow us to track which users clicked on the email.
+We are using a few template variables that will be replaced with the recipient's first name and the sender's information (you can look up what other variables you can use in emails on the Gophish GitHub page). Most importantly, the URL that will be clicked will be replaced with the landing page we will create and also pass an ID that will allow us to track which users clicked on the email.
 
 ![](../.gitbook/assets/screen-shot-2021-07-17-at-11.12.10-am.png)
 
@@ -124,11 +123,9 @@ Fedex
 {{.From}}
 ```
 
+Save the template and now click on Landing Page and Add New to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page (https://github.com/login) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in {{ }} so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
 
-
-Save the template and now click on Landing Page and Add New to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page \(https://github.com/login\) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in {{ }} so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
-
-Select to track submitted data \*and\* to capture passwords \(well, why not?\)
+Select to track submitted data \*and\* to capture passwords (well, why not?)
 
 ![Creating a landing page in Gophish](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hYyoLG-jpsu7Mr%2F3.png?alt=media)
 
@@ -146,9 +143,9 @@ Entering a username and password and clicking Sign in should then redirect you t
 
 The Dashboard page on Gophish will update to say that the email was clicked and that you visited the landing page .
 
-![Creating a new campaign in Gophish](https://gblobscdn.gitbook.com/assets%2F-M8JUFT2qjA1kHV7SeEI%2F-MZGDbfPvhLivi0-cB-D%2F-MZGFNNZIlOz0FCfnVfv%2Fgophish3.png?alt=media&token=0475238b-9165-4152-aa58-a3edf26366af)
+![Creating a new campaign in Gophish](https://gblobscdn.gitbook.com/assets%2F-M8JUFT2qjA1kHV7SeEI%2F-MZGDbfPvhLivi0-cB-D%2F-MZGFNNZIlOz0FCfnVfv%2Fgophish3.png?alt=media\&token=0475238b-9165-4152-aa58-a3edf26366af)
 
-You can click the Submitted Data button to view the details of the interaction with the target page  and see the data entered in the login page. 
+You can click the Submitted Data button to view the details of the interaction with the target page and see the data entered in the login page.
 
 ![Details of the interactions of the target with the email and landing page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hcgYF7sBTa7Iwb%2F8.png?alt=media)
 
@@ -156,7 +153,7 @@ You can click the Submitted Data button to view the details of the interaction w
 
 ### Question 1. User Simulation
 
-We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link \(it happens about 30% of the time\). In another terminal, run:
+We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link (it happens about 30% of the time). In another terminal, run:
 
 {% hint style="info" %}
 Apple Silicon:
@@ -184,4 +181,3 @@ docker run -it --add-host host.docker.internal:172.17.0.1 cybernemosyne/cits1003
 {% endhint %}
 
 **Flag: After running usersim, look at the emails in MailDev. You should see the flag.**
-
