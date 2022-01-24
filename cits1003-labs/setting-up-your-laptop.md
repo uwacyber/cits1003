@@ -86,7 +86,7 @@ To start with, make sure that your Docker Desktop application is running. Once i
 {% tabs %}
 {% tab title="Windows" %}
 ```bash
-PS C:\Users\david\Documents\cits1003> docker pull uwacyber/cits1003-labs:bash
+PS C:\> docker pull uwacyber/cits1003-labs:bash
 bash: Pulling from uwacyber/cits1003-labs
 a31c7b29f4ad: Pull complete
 56dc59d71033: Pull complete
@@ -98,7 +98,7 @@ a31c7b29f4ad: Pull complete
 Digest: sha256:3aa1540adfa7a7bdd8e0955845e24372d2a7a28d5a9aa45f957abc9714a29aa2
 Status: Downloaded newer image for uwacyber/cits1003-labs:bash
 docker.io/uwacyber/cits1003-labs:bash
-PS C:\Users\david\Documents\cits1003> docker run -it uwacyber/cits1003-labs:bash
+PS C:\> docker run -it uwacyber/cits1003-labs:bash
 root@9215e663eb9d:/# whoami
 root
 root@9215e663eb9d:/#
