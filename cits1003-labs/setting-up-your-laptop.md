@@ -120,7 +120,7 @@ root@9215e663eb9d:/#
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
-```
+```bash
 MyComputer:~$ docker pull uwacyber/cits1003-labs:bash-x
 Digest: sha256:3aa1540adfa7a7bdd8e0955845e24372d2a7a28d5a9aa45f957abc9714a29aa2
 Status: Image is up to date for uwacyber/cits1003-labs:bash-x
