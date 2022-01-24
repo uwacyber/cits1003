@@ -1,6 +1,6 @@
 # Table of contents
 
-* [🐈⬛ CITS1003 Introduction to Cybersecurity](README.md)
+* [🐈⬛ 🐈⬛ CITS1003 Introduction to Cybersecurity](README.md)
 
 ## 😼 CITS1003 Labs
 
