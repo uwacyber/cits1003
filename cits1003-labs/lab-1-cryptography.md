@@ -45,9 +45,9 @@ Flag: Enter the plaintext
 
 #### ASCII Code
 
-We are going to use CyberChef to explore how text is represented by the ASCII system. ASCII stands for the American Standard Code for Information Interchange. Eac h character is represented by a number between 0 - 254. So the letter 'a' is 97 and the ltter 'z' is 122. You can find the full chart here [http://www.asciitable. com/](https://www.asciitable.com).
+We are going to use CyberChef to explore how text is represented by the ASCII system. ASCII stands for the American Standard Code for Information Interchange. Each character is represented by a number between 0 - 254. So the letter 'a' is 97 and the letter 'z' is 122, etc. You can find the full chart here [http://www.asciitable.com/](https://www.asciitable.com).
 
-To convert text to ASCII, we can use to "To Decimal" recipe in CyberChef and then type the text "The quick brown fox". Your screen should look like this:
+To convert text to ASCII, we can use to "To Decimal" recipe under the Data format menu in CyberChef and then type the text "The quick brown fox". Your screen should look like this:
 
 ![](../.gitbook/assets/cyberchef1.png)
 
@@ -57,22 +57,20 @@ The ASCII in decimal is:
 
 Remember that the space character is converted as well (to 32)
 
-The binary representation of these numbers can be found using he "To Binary" operation:
+The binary representation of these numbers can be found using the "To Binary" operation:
 
 Note: Normally ASCII is represented as Hexadecimal when programming
 
 > 01010100 01101000 01100101 00100000 01110001 01110101 01101001 01100011 01101011 00100000 01100010 01110010 01101111 01110111 01101110 00100000 01100110 01101111 01111000
 
-## Encrypting with XOR
+## Encrypting with XOR (⊕)
 
 We can pick a key to encrypt our text using the XOR operation. Remember that XOR works as follows:
 
-| Bit 1 | Bit 2 | XOR Result |
-| ----- | ----- | ---------- |
-| 0     | 0     | 0          |
-| 0     | 1     | 1          |
-| 1     | 0     | 1          |
-| 1     | 1     | 0          |
+0 ⊕ 0 = 0\
+0 ⊕ 1 = 1\
+1 ⊕ 0 = 1\
+1 ⊕ 1 = 0
 
 Let us take the binary from the previous example and XOR it with a key which is 1 byte long 00000001
 
@@ -115,7 +113,7 @@ We should get our original input "The quick brown fox"
 
 You are given the following Base64 encoded text
 
-> 3PO19LX49Pb9/PvwtfzmtfDt5fD24fDxteH6tffwtfz78/T5+fz3+fC5tfzhtfb0+/v64bX0+eb6tffwtfz74fD5+fzy8Pvhuw==
+> xvDqv/vw8bjrv/Tx8Oi/6/f6v/T65r/96uu/5vDqv/z+8b/+7Ozq8vq/9uu/9uy/8PH6v/3m6/q/8/Dx+LE=
 
 You don't know the key but you can assume it is one byte long and it uses XOR as the algorithm. You are going to try and brute force it to find the key.
 
