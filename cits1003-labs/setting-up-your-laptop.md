@@ -167,7 +167,7 @@ To find the file, we will first go to the home directory of the user root by usi
 
 command. This will change the current directory to /root
 
-Once there, we can list the contents of that directory by using the **ls** command
+Once there, we can list the contents of that directory by using the **ls** command (don't worry about the "-al" for now)
 
 > ls -al
 
@@ -178,7 +178,7 @@ There will be a file called flag.txt in the directory. We can view the contents 
 {% endtab %}
 {% endtabs %}
 
-**Flag: Submit the flag that you got when you executed the cat flag.txt command**
+**Flag: Submit the flag on the CTF server that you just found!**
 
 ## Final Thoughts
 
