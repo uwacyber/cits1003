@@ -1,7 +1,5 @@
 # Lab 3: Computer Architecture: Users, files, processes
 
-Date: 12/05/2021 Author: David Glance
-
 ### Learning Objectives
 
 1. Explore various aspects of computer architecture such as processes, file systems, users and access control
@@ -15,9 +13,9 @@ Date: 12/05/2021 Author: David Glance
 
 Operating systems offer a number of different ways of interacting with files, processes and other aspects of the system through the use of commands typed in a terminal window. These commands can even be added to files and run as scripts to perform more complicated actions.
 
-On Windows, there is a program called the Command Prompt as well as a program called PowerShell, whilst on the Mac and Linux there is the Terminal program that runs various types of "shell" programs. Many of the commands in these systems are similar and so _**pwd**_ \(print working directory\) will print the current directory 
+On Windows, there is a program called the Command Prompt as well as a program called PowerShell, whilst on the Mac and Linux there is the Terminal program that runs various types of "shell" programs. Many of the commands in these systems are similar and so _**pwd**_ (print working directory) will print the current directory
 
-We are going to stick with Bash which runs on Windows \(WSL\), Mac OS and Linux. To do this, run the command \(Apple Silicon: docker run -it cybernemosyne/cits1003:bash-x\):
+We are going to stick with Bash which runs on Windows (WSL), Mac OS and Linux. To do this, run the command (Apple Silicon: docker run -it cybernemosyne/cits1003:bash-x):
 
 ```bash
 $ docker run -it cybernemosyne/cits1003:bash
@@ -56,7 +54,7 @@ drwxr-xr-x  13 root root 4096 Jun  9 07:27 usr
 drwxr-xr-x   1 root root 4096 Jun  9 07:31 var
 ```
 
-All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. We used the ls command to list the contents of the root directory /. The flags \(arguments\) -al passed to the ls command means list all the contents and in a long version. The layout here is a typical format of a Linux file system. We will go throughwhat some of these directories are for but in summary:
+All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. We used the ls command to list the contents of the root directory /. The flags (arguments) -al passed to the ls command means list all the contents and in a long version. The layout here is a typical format of a Linux file system. We will go throughwhat some of these directories are for but in summary:
 
 **/** is the root directory and only the user root has access to write in this directory. The user root's home directory is /root.
 
@@ -66,11 +64,11 @@ All operating systems have file systems that operate on the basis of a hierarchy
 
 **/etc** contains configuration files and scripts for services running on the system. Also contains the passwd and shadow files that contain user and password information.
 
-**/dev** contains device files that are the interface with physical devices on, or attached to, the system such as tty devices /dev/tty1. 
+**/dev** contains device files that are the interface with physical devices on, or attached to, the system such as tty devices /dev/tty1.
 
 **/proc** contains files that store information about system processes like uptime for example.
 
-**/var** contains files like logs \(/var/logs\), backups \(/var/backups\), mail \(/var/mail\) and spool \(printing; /var/spool\). There is also a /var/tmp directory that can be used to run programs out of. This directory does survive reboots however. The directory /var/www/html is often used as the root directory of the web server.
+**/var** contains files like logs (/var/logs), backups (/var/backups), mail (/var/mail) and spool (printing; /var/spool). There is also a /var/tmp directory that can be used to run programs out of. This directory does survive reboots however. The directory /var/www/html is often used as the root directory of the web server.
 
 **/tmp** contains temporary files as mentioned previously. Files get deleted on reboot.
 
@@ -94,15 +92,13 @@ All operating systems have file systems that operate on the basis of a hierarchy
 
 Users have a _**home directory**_ which in Windows is usually located in c:\Users, on the Mac it is /Users and on Linux it is in /home. On this container, it will be empty because we only have one user, root, whose home directory is /root
 
-Navigating around can be done using the **cd** \(change directory\) command with an argument that tells cd which directory you want to move to. Two special shortcuts are the "." \(single dot\) and ".." \(double dot\) that specify the current directory and the parent directory respectively.
+Navigating around can be done using the **cd** (change directory) command with an argument that tells cd which directory you want to move to. Two special shortcuts are the "." (single dot) and ".." (double dot) that specify the current directory and the parent directory respectively.
 
 ```bash
 root@86eba39a9594:/# cd /home
 root@86eba39a9594:/home# cd ..
 root@86eba39a9594:/# 
 ```
-
-
 
 #### Creating, deleting, copying and moving a file
 
@@ -122,14 +118,14 @@ root@86eba39a9594:~# rm file2.txt
 ```
 
 {% hint style="info" %}
-If you ever want help with a command, you can type _**help &lt;command&gt;**_ on Windows or _**man &lt;command&gt;**_ on Linux or Mac.
+If you ever want help with a command, you can type _**help \<command>**_ on Windows or _**man \<command>**_ on Linux or Mac.
 {% endhint %}
 
 #### Finding files
 
 Linux has a find command that can be used for finding files. The basic syntax is:
 
-> _**find &lt;starting directory&gt; -name &lt;file to find&gt;**_
+> _**find \<starting directory> -name \<file to find>**_
 
 find will look in all sub-directories and report on any files that match the name provided
 
@@ -155,7 +151,7 @@ root@86eba39a9594:~# find / -name host*
 
 ### Hidden Files and other Attributes
 
-In Linux, files that start with a period \(.\) are hidden from the directory listing command ls. To see them, you need to use the -a flag:
+In Linux, files that start with a period (.) are hidden from the directory listing command ls. To see them, you need to use the -a flag:
 
 ```bash
 root@86eba39a9594:~# ls  
@@ -165,16 +161,15 @@ drwx------ 1 root root 4096 Jul 13 07:53 .
 drwxr-xr-x 1 root root 4096 Jul 13 05:58 ..
 -rw-r--r-- 1 root root 3106 Dec  5  2019 .bashrc
 -rw-r--r-- 1 root root  161 Dec  5  2019 .profile
-
 ```
 
 Linux has a limited set of specific attributes on a file that control how the file is accessed. One attribute for example is the Append Only attribute that only allows write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using lsattr and chattr programs
 
-### Downloading Files 
+### Downloading Files
 
 ### Question 1: Find the file
 
-In the "**/root**" directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at  "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)" 
+In the "**/root**" directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)"
 
 ```bash
 # wget https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip              
@@ -197,9 +192,9 @@ master.zip                                                  [   <=>             
 
 1. Unzip the file using the command unzip
 2. Rename the directory that was created to opentrace
-3. Use the find command to search the opentrace directory for the file **AppDelegate.swift** 
+3. Use the find command to search the opentrace directory for the file **AppDelegate.swift**
 
-**Flag: Enter the directory that you found AppDelegate.swift in \(the full path without the file and the trailing /\) - it is case sensitive.**
+**Flag: Enter the directory that you found AppDelegate.swift in (the full path without the file and the trailing /) - it is case sensitive.**
 
 ### Processes
 
@@ -212,7 +207,7 @@ root         1     0  0  1062  3512   1 05:30 pts/0    00:00:00 /bin/bash
 root       115     1  0  1476  2856   6 05:56 pts/0    00:00:00 ps -AF
 ```
 
-In the output, the UID is the ID of the user that owns the process. On this container, that is root. The PID is the process ID and since this container is only run a bash shell, that is given the process ID of 1 with a parent process ID \(PPID\) of 0. The second process is the ps command we actually ran. This has a process ID of 115 and a parent process ID of 1 as it was run from that bash shell.
+In the output, the UID is the ID of the user that owns the process. On this container, that is root. The PID is the process ID and since this container is only run a bash shell, that is given the process ID of 1 with a parent process ID (PPID) of 0. The second process is the ps command we actually ran. This has a process ID of 115 and a parent process ID of 1 as it was run from that bash shell.
 
 We can run another bash shell and then try the ps command again:
 
@@ -233,9 +228,9 @@ bash,1
       └─pstree,128 -apG
 ```
 
-So the parent bash process \(1\) is the parent, or root, of the tree, then the bash shell we ran \(116\) and finally the pstree command with the arguments -apG \(show arguments, process ids and format the symbols\).
+So the parent bash process (1) is the parent, or root, of the tree, then the bash shell we ran (116) and finally the pstree command with the arguments -apG (show arguments, process ids and format the symbols).
 
-Being able to show running processes is important when trying to detect processes running that shouldn't be. This is especially true in Windows where malware can disguise itself as a normal running process or even implant itself in a normal process. 
+Being able to show running processes is important when trying to detect processes running that shouldn't be. This is especially true in Windows where malware can disguise itself as a normal running process or even implant itself in a normal process.
 
 To stop a process you can use the kill command with the process id. Sometimes, you can force the process to stop using the -9 command:
 
@@ -250,7 +245,7 @@ root       130     1  0  1476  2860   3 06:13 pts/0    00:00:00 ps -AF
 
 ### Question 2. What a state this process is in!
 
-You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we wanted to get information about the bash process running in the container, we would use the command \(replacing the &lt;PID&gt; with the process ID\):
+You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we wanted to get information about the bash process running in the container, we would use the command (replacing the \<PID> with the process ID):
 
 ```bash
 cat /proc/<PID>/status
@@ -260,17 +255,17 @@ cat /proc/<PID>/status
 
 ### Users and Groups
 
-Both Windows and Linux implement Role Based Access Control \(RBAC\) based on groups of users. On Windows 10, as the principle user of a PC, you will likely have Administrator access and so you will be part of a group called BUILTIN\Administrators. Windows does not let you perform actions as part of this role however and so will ask you for confirmation when you run an application as Administrator for example. 
+Both Windows and Linux implement Role Based Access Control (RBAC) based on groups of users. On Windows 10, as the principle user of a PC, you will likely have Administrator access and so you will be part of a group called BUILTIN\Administrators. Windows does not let you perform actions as part of this role however and so will ask you for confirmation when you run an application as Administrator for example.
 
-You can view details of the users and groups on your machine by looking at Computer Management \(only if you have administrator access to the machine\). 
+You can view details of the users and groups on your machine by looking at Computer Management (only if you have administrator access to the machine).
 
 ![Computer Management of Groups](../.gitbook/assets/screen-shot-2021-05-19-at-11.56.25-am.png)
 
 There are a variety of ways of getting user and group information using PowerShell:
 
 * Get-LocalUser will list the users of the machine
-* Get-LocalGroup will list the groups 
-* Get-LocalGroupMember &lt;group name&gt; will list the members of a group
+* Get-LocalGroup will list the groups
+* Get-LocalGroupMember \<group name> will list the members of a group
 
 Again these won't work in PowerShell run on Linux
 
@@ -283,7 +278,7 @@ root@86eba39a9594:~# whoami
 roo
 ```
 
-**id** &lt;user&gt; will list the groups the user is a member of
+**id** \<user> will list the groups the user is a member of
 
 ```bash
 root@86eba39a9594:~# id
@@ -364,7 +359,7 @@ _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 
 #### Linux
 
-All files on Linux have an user and a group that is assigned specific access to read \(r\), write \(w\) and execute  \(x\) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl. Create a file called file.txt using the command **touch file.txt**. Then run 
+All files on Linux have an user and a group that is assigned specific access to read (r), write (w) and execute (x) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl. Create a file called file.txt using the command **touch file.txt**. Then run
 
 ```bash
 root@86eba39a9594:~# getfacl file.txt
@@ -398,6 +393,3 @@ root@86eba39a9594:~# ls -al file.txt
 Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to sort out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
-
-
-
