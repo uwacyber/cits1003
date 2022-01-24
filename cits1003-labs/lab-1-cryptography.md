@@ -1,11 +1,9 @@
 # Lab 2: Cryptography
 
-Date: 12/05/2021 Author: David Glance
-
 ### Learning Objectives
 
 1. Using CyberChef to explore encodings and encryption using operations and recipes
-2. Understand different number representations such as binary and hexadecimal and character representations such as ASCII 
+2. Understand different number representations such as binary and hexadecimal and character representations such as ASCII
 3. Understand the use of shift ciphers, XOR and modern cryptography systems like AES and PGP
 
 ### Technologies Covered
@@ -14,7 +12,7 @@ Date: 12/05/2021 Author: David Glance
 * Binary, Hexadecimal
 * CyberChef
 * Caesar Cipher
-* XOR encryption 
+* XOR encryption
 * AES
 * PGP
 
@@ -22,7 +20,7 @@ Date: 12/05/2021 Author: David Glance
 
 #### CyberChef
 
-CyberChef is a website that has been developed by the UK GCHQ a government cyber and security agency. It allows the simple chaining of a large number of different operations on inputs such as text to create an output. If we want to use the Caesar cipher to encode text for example, we can search for ROT13 in the operations, drag it into the Recipe window and simply type in the input window. The output will be transformed using the recipe automatically. In case you were wondering, RO T13 stands for rotate \(Shift\) by 13. The original Caesar cipher performed a shift of 3.
+CyberChef is a website that has been developed by the UK GCHQ, a government cyber and security agency. It allows the simple chaining of a large number of different operations on inputs such as text to create an output. If we want to use the Caesar cipher to encode text for example, we can search for ROT13 in the operations, drag it into the Recipe window and simply type in the input window. The output will be transformed using the recipe automatically. In case you were wondering, ROT13 stands for rotate (Shift) by 13. The original Caesar cipher performed a shift of 3. Let's try this ourselves.
 
 1. Go to CyberChef here [https://gchq.github.io/CyberChef](https://gchq.github.io/CyberChef)
 2. Search for ROT13 and drag the operation to the Recipe window
@@ -35,11 +33,11 @@ CyberChef is a website that has been developed by the UK GCHQ a government cyber
 
 We can now try some "cryptanalysis" albeit using the unsophisticated approach of brute force. You have intercepted some encrypted text:
 
-> Vogvizvetv zj kyv kvrtyvi fw rcc kyzexj zj r hlfkv wifd Alczlj Trvjri
+> Nyf nflcu yrmv xlvjjvu kyrk tpsvijvtlizkp zemfcmvu srbzex
 
 You suspect it has been encrypted using a Caesar cipher but you need to find out the shift number. How would you find out?
 
-Remember that to decrypt a Caesar cipher, you need to use a shift that is 26 - shift number
+Remember that to decrypt a Caesar cipher, you need to use a shift that is 26 - shift number. For this question, leave the "Rotate lower case chars" and "Rotate upper case chars" selected (and no numbers are used).
 
 Flag: Enter the plaintext
 
@@ -57,7 +55,7 @@ The ASCII in decimal is:
 
 > 84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120
 
-Remember that the space character is converted as well \(to 32\)
+Remember that the space character is converted as well (to 32)
 
 The binary representation of these numbers can be found using he "To Binary" operation:
 
@@ -70,25 +68,25 @@ Note: Normally ASCII is represented as Hexadecimal when programming
 We can pick a key to encrypt our text using the XOR operation. Remember that XOR works as follows:
 
 | Bit 1 | Bit 2 | XOR Result |
-| :--- | :--- | :--- |
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 0 |
+| ----- | ----- | ---------- |
+| 0     | 0     | 0          |
+| 0     | 1     | 1          |
+| 1     | 0     | 1          |
+| 1     | 1     | 0          |
 
 Let us take the binary from the previous example and XOR it with a key which is 1 byte long 00000001
 
-To XOR the key against the binary for "The quick brown fox", we can repeat the key until it is the correct length \(19 characters = 19 bytes\)
+To XOR the key against the binary for "The quick brown fox", we can repeat the key until it is the correct length (19 characters = 19 bytes)
 
 > 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001
 
 Try doing the XOR operation by hand and taking the binary output and converting it back to decimal and then to ASCII
 
-There is an easier way of doing this of course, we can just use the XOR operation in CyberChef and take as the key the value 1. If you do this in CyberChef using "The quick brown fox", you will get 
+There is an easier way of doing this of course, we can just use the XOR operation in CyberChef and take as the key the value 1. If you do this in CyberChef using "The quick brown fox", you will get
 
 > Uid!pthbj!csnvo!gny
 
-The exclamation marks are the result of the space character being XOR'd. 
+The exclamation marks are the result of the space character being XOR'd.
 
 ### Non-printable characters and Base64 encoding
 
@@ -98,7 +96,7 @@ Often the result of an XOR on ASCII characters will be non-printable characters.
 
 To handle this situation, we can encode the output into Base64 which is a binary-to-text encoding designed to carry binary data in text form.
 
-If you replace the "To Decimal" operation with the "To Base64"  operation in your recipe, you will get 
+If you replace the "To Decimal" operation with the "To Base64" operation in your recipe, you will get
 
 > KxcaXw4KFhwUXx0NEAgRXxkQBw==
 
@@ -121,7 +119,7 @@ You are given the following Base64 encoded text
 
 You don't know the key but you can assume it is one byte long and it uses XOR as the algorithm. You are going to try and brute force it to find the key.
 
-Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexadecimal. What was the original message? 
+Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexadecimal. What was the original message?
 
 **Flag: Enter the plaintext**
 
@@ -129,24 +127,24 @@ Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexade
 
 ### AES
 
-The Advanced Encryption Standard \(AES\) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret". Select CBC Mode and for the IV \(Initialisation Vector\) and HEX as the format and enter:
+The Advanced Encryption Standard (AES) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret". Select CBC Mode and for the IV (Initialisation Vector) and HEX as the format and enter:
 
 > 0102030405060708090a0b0c0d0e0f10
 
 {% hint style="info" %}
 AES IV length is 16 bytes. The key length is:
 
-* 16 bytes = AES-128 
-* 24 bytes = AES-192 
+* 16 bytes = AES-128
+* 24 bytes = AES-192
 * 32 bytes = AES-256
 {% endhint %}
 
-Enter the key in UTF8 format: 
+Enter the key in UTF8 format:
 
 > specialsecretkey
 
 {% hint style="info" %}
-UTF8 is Unicode which expanded the number of bytes used to encode characters to 4 bytes \(ASCII uses 1 byte\). It is backwards compatible with ASCII but supports up to 1,112,064 characters and so supports Chinese and other languages.
+UTF8 is Unicode which expanded the number of bytes used to encode characters to 4 bytes (ASCII uses 1 byte). It is backwards compatible with ASCII but supports up to 1,112,064 characters and so supports Chinese and other languages.
 {% endhint %}
 
 The hex output of he encrypted text is:
@@ -155,7 +153,7 @@ The hex output of he encrypted text is:
 
 You can verify that you can decrypt this by adding the operation AES Decrypt to the recipe and use the same key and IV to decrypt.
 
-An interesting thing to note is if you change a single character in the IV, you still get most of the output correct. Changing a single character in the key however will cause the decryption to fail. 
+An interesting thing to note is if you change a single character in the IV, you still get most of the output correct. Changing a single character in the key however will cause the decryption to fail.
 
 ### Question 3. Decrytping Snowden's message
 
@@ -163,7 +161,7 @@ You are given the following Base64 encoded text
 
 > 9GUTUbeUQOm5inHgz+I2DcJ7MoBC3LyEuFzB6GcQSnuoWPGE9FazhYtEbdyomYmfJhjz18bdFm0bJPM6GQgg+clX+xE0/FN6D+wWDSndJII=
 
-The key is snowdenquotation and the IV is 0102030405060708090a0b0c0d0e0f10 
+The key is snowdenquotation and the IV is 0102030405060708090a0b0c0d0e0f10
 
 What is the decrypted text?
 
@@ -171,21 +169,21 @@ What is the decrypted text?
 
 ### PGP
 
-Pretty Good Privacy \(PGP\) is an  encryption program that uses public key cryptography to encrypt and digitally sign data. The following diagram illustrates how it works:
+Pretty Good Privacy (PGP) is an encryption program that uses public key cryptography to encrypt and digitally sign data. The following diagram illustrates how it works:
 
-![How PGP works \(From Wikipedia: https://en.wikipedia.org/wiki/Pretty\_Good\_Privacy\)](../.gitbook/assets/1000px-pgp_diagram.svg.png)
+![How PGP works (From Wikipedia: https://en.wikipedia.org/wiki/Pretty\_Good\_Privacy)](../.gitbook/assets/1000px-pgp\_diagram.svg.png)
 
-Note that we still use symmetric encryption to encrypt the main data because it is much faster than using the recipient's public key to encrypt. 
+Note that we still use symmetric encryption to encrypt the main data because it is much faster than using the recipient's public key to encrypt.
 
 #### Generating a Public/Private Keys
 
 To start with, you will need to generate public and private keys which you can do in CyberChef using the "Generate PGP Key Pair" operation. It is a good idea to put in your name and email address because it will be incorporated into the public key. This way, when you send someone your public key, this information will automatically be available to them making it easier to add your key to a Keyring and retrieve it later.
 
-Note that for the Key type, there are several options RSA of various key lengths and ECC. ECC is Elliptic Curve Cryptography and uses smaller keys than RSA. Since it is a newer protocol, it may not be as widely supported as RSA is. 
+Note that for the Key type, there are several options RSA of various key lengths and ECC. ECC is Elliptic Curve Cryptography and uses smaller keys than RSA. Since it is a newer protocol, it may not be as widely supported as RSA is.
 
-Select RSA-1024 as the Key type and enter your name and email address into the fields provided. The output will be a private and public key. Select the text for the private key and copy it to a file called private.key and save it in a folder on your computer. Take all of the text starting and ending with the comment lines: 
+Select RSA-1024 as the Key type and enter your name and email address into the fields provided. The output will be a private and public key. Select the text for the private key and copy it to a file called private.key and save it in a folder on your computer. Take all of the text starting and ending with the comment lines:
 
-```text
+```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 
 -----END PGP PRIVATE KEY BLOCK-----
@@ -193,9 +191,9 @@ Select RSA-1024 as the Key type and enter your name and email address into the f
 
 Do the same with the public key, saving it to a file called public.key.
 
-We are now going to send an encrypted and digitally signed email to Edward Snowden. We have been given his public and private key: 
+We are now going to send an encrypted and digitally signed email to Edward Snowden. We have been given his public and private key:
 
-```text
+```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: Keybase OpenPGP v2.1.15
 Comment: https://keybase.io/crypto
@@ -299,7 +297,7 @@ Remember that you need to use
 
 Take the output which should look something like this:
 
-```text
+```
 -----BEGIN PGP MESSAGE-----
 Version: Keybase OpenPGP v2.1.15
 Comment: https://keybase.io/crypto
@@ -328,13 +326,13 @@ And that is it, you can now send encrypted and digitally signed messages to your
 There are public servers where you can list your public key for others to use. You can also simply append it to your emails so that anyone wanting to send you encrypted messages can use that.
 {% endhint %}
 
-There are numerous command line and GUI-based software products that allow you to use PGP more easily. Some integrate with email clients as well. 
+There are numerous command line and GUI-based software products that allow you to use PGP more easily. Some integrate with email clients as well.
 
 ### Question 4. Decrypt and verify another of Snowden's Messages
 
 Let's say you have the following PGP private and public key pair.
 
-```text
+```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: Keybase OpenPGP v2.1.15
 Comment: https://keybase.io/crypto
@@ -427,7 +425,7 @@ C5OYl22QdwPh9ID9macf5Hk=
 
 And you receive the following message from Edward Snowden.
 
-```text
+```
 -----BEGIN PGP MESSAGE-----
 Version: Keybase OpenPGP v2.1.15
 Comment: https://keybase.io/crypto
@@ -454,9 +452,8 @@ One of my friends sent me the following text and it looks horrible! They said th
 
 Can you retrieve the plaintext?
 
-```text
+```
 4qCo4qCo4qCo4qCo4qCk4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgqOKgpOKggOKgpOKgpOKgpOKgpOKgqArioKjioKjioKjioKjioKjioIDioKjioKjioKjioKjioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgpOKgpArioKTioKTioKjioKjioKjioIDioKTioKjioKjioKgK4qCk4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgpOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCk4qCo4qCo4qCo4qCo4qCA4qCk4qCo4qCo4qCoCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKTioKjioKjioKjioKjioIDioKgK4qCo4qCo4qCo4qCo4qCk4qCA4qCk4qCk4qCo4qCo4qCoCuKgqOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgpOKgqArioKTioKTioKjioKjioKjioIDioKjioKjioKjioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgpOKgqOKgqOKgqOKgqOKggOKgpOKgqOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKTioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgpOKgpArioKjioKjioKjioKTioKTioIDioKjioKTioKTioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgqOKgpOKggOKgpOKgpOKgpOKgqOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCk4qCkCuKgpOKgpOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgqOKgpArioKjioKjioKjioKjioKTioIDioKjioKjioKjioKjioKgK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCk4qCk4qCo4qCoCuKgqOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgqOKgpArioKjioKjioKTioKTioKTioIDioKjioKTioKTioKTioKQK4qCo4qCo4qCo4qCo4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKjioKTioKTioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCo4qCk4qCk4qCk4qCkCuKgpOKgpOKgqOKgqOKgqOKggOKgpOKgqOKgqA==
 ```
 
 **Flag: Enter the plaintext**
-
