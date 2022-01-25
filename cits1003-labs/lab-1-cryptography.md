@@ -125,9 +125,17 @@ Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexade
 
 ### AES
 
-The Advanced Encryption Standard (AES) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret". Select CBC Mode and for the IV (Initialisation Vector) and HEX as the format and enter:
+The Advanced Encryption Standard (AES) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret".&#x20;
+
+Enter the key in UTF8 format:
+
+> specialsecretkey
+
+For the IV (Initialisation Vector) in HEX, enter:
 
 > 0102030405060708090a0b0c0d0e0f10
+
+Select CBC Mode (leave the rest as is i.e., "Input = Raw" and "Output = Hex").
 
 {% hint style="info" %}
 AES IV length is 16 bytes. The key length is:
@@ -137,29 +145,25 @@ AES IV length is 16 bytes. The key length is:
 * 32 bytes = AES-256
 {% endhint %}
 
-Enter the key in UTF8 format:
-
-> specialsecretkey
-
 {% hint style="info" %}
 UTF8 is Unicode which expanded the number of bytes used to encode characters to 4 bytes (ASCII uses 1 byte). It is backwards compatible with ASCII but supports up to 1,112,064 characters and so supports Chinese and other languages.
 {% endhint %}
 
-The hex output of he encrypted text is:
+The hex output of the encrypted text is:
 
 > 0f1ee3bc7b64c9a266bb19aa3eb7e4a780bc1d201a444b3106d8e8ca4c7e7dc5
 
-You can verify that you can decrypt this by adding the operation AES Decrypt to the recipe and use the same key and IV to decrypt.
+You can verify that you can decrypt this by adding the operation AES Decrypt to the recipe and using the same key and IV to decrypt.
 
 An interesting thing to note is if you change a single character in the IV, you still get most of the output correct. Changing a single character in the key however will cause the decryption to fail.
 
-### Question 3. Decrytping Snowden's message
+### Question 3. Decrypting Snowden's message
 
 You are given the following Base64 encoded text
 
-> 9GUTUbeUQOm5inHgz+I2DcJ7MoBC3LyEuFzB6GcQSnuoWPGE9FazhYtEbdyomYmfJhjz18bdFm0bJPM6GQgg+clX+xE0/FN6D+wWDSndJII=
+> iEeNEJB7CA01OU7HnoMR/3cqVYAPAlx2aAkXOllDynrnyVAchvG/qX6/liO20gsOAG3iGSn7BuRCBUkWfnZx091Ff3wVWijKGNQJaFEnUPI=
 
-The key is snowdenquotation and the IV is 0102030405060708090a0b0c0d0e0f10
+The key is _snowdenquotation_ and the IV is 0102030405060708090a0b0c0d0e0f10
 
 What is the decrypted text?
 
@@ -167,7 +171,7 @@ What is the decrypted text?
 
 ### PGP
 
-Pretty Good Privacy (PGP) is an encryption program that uses public key cryptography to encrypt and digitally sign data. The following diagram illustrates how it works:
+Pretty Good Privacy (PGP) is an encryption program that uses _public-key cryptography_ to encrypt and digitally sign data. The following diagram illustrates how it works:
 
 ![How PGP works (From Wikipedia: https://en.wikipedia.org/wiki/Pretty\_Good\_Privacy)](../.gitbook/assets/1000px-pgp\_diagram.svg.png)
 
@@ -189,7 +193,7 @@ Select RSA-1024 as the Key type and enter your name and email address into the f
 
 Do the same with the public key, saving it to a file called public.key.
 
-We are now going to send an encrypted and digitally signed email to Edward Snowden. We have been given his public and private key:
+We are now going to send an encrypted and digitally signed email to Edward Snowden. We have been given his public and private keys:
 
 ```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
@@ -284,16 +288,24 @@ Kwp5hrmJ5/y/ALOUCh4=
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
+{% hint style="info" %}
+It is never a good idea to publicly share your private key.
+{% endhint %}
+
 Use the PGP Encrypt and Sign operation to encrypt the following text:
 
 > This is a secret email
+
+{% hint style="info" %}
+When entering the keys, you must include the lines that specify the "BEGIN" and "END".
+{% endhint %}
 
 Remember that you need to use
 
 1. Snowden's public key to encrypt the message
 2. Your private key to sign the message
 
-Take the output which should look something like this:
+Take the output which should look something like this (similar, but not exactly as your private key differs from ours):
 
 ```
 -----BEGIN PGP MESSAGE-----
@@ -313,7 +325,7 @@ gI3IWf+gdgln7qQmK2KxjTw=
 -----END PGP MESSAGE-----
 ```
 
-And use the operation PGP Decrypt and Verify to make sure that you can check the signature and decrypt the message. Remember to do this you need:
+And use the operation PGP Decrypt and Verify to make sure that you can check the signature and decrypt the message. Remember, to do this, you need:
 
 1. Snowden's private key to decrypt the message
 2. Your public key to verify the signature
@@ -428,17 +440,16 @@ And you receive the following message from Edward Snowden.
 Version: Keybase OpenPGP v2.1.15
 Comment: https://keybase.io/crypto
 
-wYwDduSnxbNIXxMBA/4tyAO/zOOQgARlU3sQQVBvUk5NaWkA0J5Kxq8nN4SJGM0c
-6vj99YBJcYM2sNOFrrhZgQPLLDqj5n4S3zZumD/6yX443luansch10YLWpX0BY4t
-ZZj5woUt0ElkDCbxY0GhzKZ4nu2gHQXRL1eyOnrOBk32Q0wMf23D4enen0s72dLA
-bwFD3lD+LNmYUtScElEV2KkzGnhZSWIBbo5ab4jz1vqn9uk7PTvUNWa0/LRPOTi0
-RSo/pppd9ycQkpT97cycv9WqWo4s8Y0Ix//DGklrcv69yXBF/5KhgT5MjPcW5pJ9
-o1TvtzFuZHAKWUcdEImDdkQA+dWLxn1LmINACSaHDmq+KzSwDNg5/kzNNQZfuoQi
-7DHIdiQ0i/qtjheF/wn44C5Vu/8OYm/NObVu0FKzZqbfUoxGQYfpEiOwGXryaP5Q
-ZjfR95tsPJcurSpOsW5ed4PAndTIfZgxX791xG3CnfHt1ELgYfG8EcWtAShl2AVj
-6FmGXx7lzXtcmhD9zrOps+0y1WCmYv1R3S3RxjLTwHo6IEFww2O/4ejn93cf/B0g
-6AyOXYaVYFFS0K9npykbfw==
-=Epd7
+wYwDduSnxbNIXxMBA/9gdOQNtcpiu5lZlka4vmqdWKjSXhmpyyNOZtIUZUambwqN
+86fmfTRh0LfK7VdJp7Ue6UdXaxb+eMFBQG4gy/i1owN//UrEX1Q7YG7Xdx4lcBr/
+F3dTv5OUj/6FTg1YfYUxf2g/ORjjFUEW+12CydTy7XlCtTp0BRkHM+DLfmhThtLA
+VwHQclVCqboij3AM7cxn/FomR3wOjjXjuxzfmji/MlKuPGf3sYrn3k8rl980KjWL
+TuUngQB14KpuE/ytYD/xHOodg2nai7IruwmmZa6DVIWKcmP9Xsf057xxL8XT3OxW
+XsaJJ6BB99EmGPEozZHHNLR0p62s/NULYb8b+OsTVLIUcBb5iI43RhvX634zoXgJ
+rHUSxdPpSJ52IiqLbmL6racNFFgNt8BJ9oUx3gO+3+kL9spP9ggsfYm0gHFuA5If
+KAeblKMgFkcGiEQB5sJLMobA6bAx4CED6rW+PMzf1xYP70shjFlOzwwCLz94ep9Q
+9HFYRvLFgJSOActI67b50jR1ckLX+j4gH9rljnl2k7AxxMtsse3bnA==
+=ROer
 -----END PGP MESSAGE-----
 ```
 
@@ -451,7 +462,7 @@ One of my friends sent me the following text and it looks horrible! They said th
 Can you retrieve the plaintext?
 
 ```
-4qCo4qCo4qCo4qCo4qCk4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgqOKgpOKggOKgpOKgpOKgpOKgpOKgqArioKjioKjioKjioKjioKjioIDioKjioKjioKjioKjioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgpOKgpArioKTioKTioKjioKjioKjioIDioKTioKjioKjioKgK4qCk4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgpOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCk4qCo4qCo4qCo4qCo4qCA4qCk4qCo4qCo4qCoCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKTioKjioKjioKjioKjioIDioKgK4qCo4qCo4qCo4qCo4qCk4qCA4qCk4qCk4qCo4qCo4qCoCuKgqOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgpOKgqArioKTioKTioKjioKjioKjioIDioKjioKjioKjioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgpOKgqOKgqOKgqOKgqOKggOKgpOKgqOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKTioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgpOKgpArioKjioKjioKjioKTioKTioIDioKjioKTioKTioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgqOKgpOKggOKgpOKgpOKgpOKgqOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCk4qCkCuKgpOKgpOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgqOKgpArioKjioKjioKjioKjioKTioIDioKjioKjioKjioKjioKgK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCk4qCk4qCo4qCoCuKgqOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgqOKgpArioKjioKjioKTioKTioKTioIDioKjioKTioKTioKTioKQK4qCo4qCo4qCo4qCo4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKjioKTioKTioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCo4qCk4qCk4qCk4qCkCuKgpOKgpOKgqOKgqOKgqOKggOKgpOKgqOKgqA==
+4qCo4qCo4qCo4qCo4qCk4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgqOKgpOKggOKgpOKgpOKgpOKgpOKgqArioKjioKjioKjioKjioKjioIDioKjioKjioKjioKjioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCo4qCo4qCo4qCk4qCk4qCA4qCk4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgpOKgpArioKTioKTioKjioKjioKjioIDioKTioKjioKjioKgK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCk4qCk4qCk4qCoCuKgqOKgqOKgqOKgpOKgpOKggOKgpOKgpOKgpOKgpOKgpArioKTioKTioKjioKjioKjioIDioKjioKjioKjioKjioKgK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgqOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgpOKgpArioKjioKjioKjioKTioKTioIDioKTioKTioKTioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCo4qCo4qCo4qCo4qCoCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgpOKgpOKgpOKgpArioKTioKjioKjioKjioKjioIDioKjioKjioKjioKjioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgqOKgqOKgqOKgqOKggOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCo4qCo4qCo4qCoCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgpOKgpArioKTioKTioKjioKjioKjioIDioKjioKjioKTioKTioKQK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgqOKgqOKgqOKgqOKggOKgpOKgpOKgqOKgqOKgqArioKTioKTioKjioKjioKjioIDioKjioKjioKjioKjioKgK4qCo4qCo4qCo4qCk4qCk4qCA4qCo4qCo4qCo4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgqOKgqArioKjioKjioKjioKTioKTioIDioKjioKjioKjioKjioKgK4qCo4qCo4qCo4qCo4qCo4qCA4qCo4qCo4qCk4qCoCuKgpOKgpOKgqOKgqOKgqOKggOKgqOKgqOKgqOKgqOKgpArioKTioKjioKjioKjioKjioIDioKTioKTioKTioKjioKgK4qCo4qCo4qCo4qCk4qCk4qCA4qCo4qCk4qCk4qCk4qCkCuKgqOKgqOKgqOKgpOKgpOKggOKgqOKgqOKgqOKgqOKgqArioKjioKjioKTioKTioKTioIDioKjioKTioKTioKTioKQK4qCk4qCk4qCo4qCo4qCo4qCA4qCk4qCo4qCo
 ```
 
 **Flag: Enter the plaintext**
