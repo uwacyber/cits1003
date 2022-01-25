@@ -1,22 +1,22 @@
 # Lab 1: Setting up your laptop
 
-We will set up various software that will be used in the labs, the principle one being Docker Desktop. However, it is a good idea to create a folder specifically for organising the different week's labs.
+We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
 ## Windows users only: Installing Windows Subsystem for Linux (WSL)
 
-This is a necessary step for the unit and also for running Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
+This is a necessary step for the unit and also for running the Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
 
-To get started, you need to launch a command prompt in Administrator mode. Search for cmd and then right click on the command prompt and select run as Administrator.
+To get started, you need to launch a command prompt in Administrator mode. Search for cmd and then right-click on the command prompt and select run as Administrator.
 
 ![Running Command Prompt as Administrator](../.gitbook/assets/screen-shot-2021-06-30-at-10.12.47-am.png)
 
-Then enter the following commands:
+Then enter the following commands (2 separate lines):
 
 > dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 >
 > dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-Now type powershell to get a powershell prompt and continue with the commands:
+Now type _powershell_ to get a powershell prompt and continue with the commands (two separate lines):
 
 > Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
 >
@@ -65,13 +65,13 @@ Apple's computers are increasingly using the new M1 chip that uses a different i
 1. Open a Terminal window
 2. Type (paste) the command `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
 
-Once this is done, you can proceed with installing and running Docker Desktop
+Once this is done, you can proceed with installing and running Docker Desktop (below).
 
-Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). I have created specific versions of Docker Images for the Apple M1 and where these are available, you can run those in preference. Look at each lab for details but generally, they will have a '-x' on the end of the name.
+Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). We have created a multi-platform version for some images, which should be auto-selected when those images are used.&#x20;
 
 ## Installing and running Docker Desktop
 
-We will be using a technology called Docker Desktop to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines and so we will try and provide an alternative for people who want to use the lab machines.
+We will be using a technology called Docker Desktop to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so we will try and provide an alternative for people who want to use the lab machines.
 
 You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
@@ -83,9 +83,7 @@ To test the environment, we will run a simple container that allows you to acces
 
 To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following commands (please note, the process may take a while on your machine).
 
-{% tabs %}
-{% tab title="Windows" %}
-```bash
+```
 PS C:\> docker pull uwacyber/cits1003-labs:bash
 bash: Pulling from uwacyber/cits1003-labs
 a31c7b29f4ad: Pull complete
@@ -103,36 +101,6 @@ root@9215e663eb9d:/# whoami
 root
 root@9215e663eb9d:/#
 ```
-{% endtab %}
-
-{% tab title="Mac OSX" %}
-```bash
-MyComputer:~$ docker pull uwacyber/cits1003-labs:bash
-Digest: sha256:3aa1540adfa7a7bdd8e0955845e24372d2a7a28d5a9aa45f957abc9714a29aa2
-Status: Image is up to date for uwacyber/cits1003-labs:bash
-uwacyber/cits1003-labs:bash
-
-0x4447734D4250:~$ docker run -it uwacyber/cits1003-labs:bash
-root@9215e663eb9d:/# whoami
-root
-root@9215e663eb9d:/#
-```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```bash
-MyComputer:~$ docker pull uwacyber/cits1003-labs:bash-x
-Digest: sha256:3aa1540adfa7a7bdd8e0955845e24372d2a7a28d5a9aa45f957abc9714a29aa2
-Status: Image is up to date for uwacyber/cits1003-labs:bash-x
-uwacyber/cits1003-labs:bash
-
-0x4447734D4250:~$ docker run -it uwacyber/cits1003-labs:bash-x
-root@9215e663eb9d:/# whoami
-root
-root@9215e663eb9d:/# 
-```
-{% endtab %}
-{% endtabs %}
 
 The _**docker pull**_ command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the _**docker run**_ command as shown above.
 
@@ -156,7 +124,7 @@ Go back to the bash docker container. There is a file called flag.txt hidden som
 
 {% tabs %}
 {% tab title="" %}
-Click on Hint tab to reveal solution
+Click on the Hint tab to reveal the solution
 {% endtab %}
 
 {% tab title="Hint" %}
@@ -167,7 +135,7 @@ To find the file, we will first go to the home directory of the user root by usi
 
 command. This will change the current directory to /root
 
-Once there, we can list the contents of that directory by using the **ls** command (don't worry about the "-al" for now)
+Once there, we can list the contents of that directory by using the **ls** command (don't worry about the meaning of "-al" flag for now)
 
 > ls -al
 
