@@ -9,6 +9,14 @@
 * Windows, MacOS, Linux
 * Bash, PowerShell, Command Prompt
 
+
+
+Walkthrough video:
+
+**Computer Architecture: Users, files, processes 3-1** [https://www.youtube.com/watch?v=qdEr98Lqak0](https://www.youtube.com/watch?v=qdEr98Lqak0)
+
+****
+
 ### Command Line
 
 Operating systems offer a number of different ways of interacting with files, processes and other aspects of the system through the use of commands typed in a terminal window. These commands can even be added to files and run as scripts to perform more complicated actions.

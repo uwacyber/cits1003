@@ -13,6 +13,14 @@
 * Networking
 * nmap, Bash pingsweeps
 
+
+
+Walkthrough video:
+
+**Networks 4-1** [https://www.youtube.com/watch?v=Tq6cKMcNavw](https://www.youtube.com/watch?v=Tq6cKMcNavw)
+
+****
+
 ### Network Interface
 
 To communicate with a TCP/IP network, a computer uses a network interface. This may be connected to a fixed network via an ethernet cable or via a Wi-Fi network. From a TCP/IP perspective, there is little difference and the attributes of the interfaces are the same. The main attributes we are interested in are:

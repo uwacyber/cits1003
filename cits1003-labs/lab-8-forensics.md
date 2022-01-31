@@ -1,12 +1,16 @@
 # Lab 8: Forensics
 
+Walkthrough video:
+
+**Forensics 8-1** [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)
+
 ## **Memory Forensics**
 
 This is adapted from [https://github.com/stuxnet999/MemLabs/blob/master/Lab%200/README.md](https://github.com/stuxnet999/MemLabs/blob/master/Lab%200/README.md)
 
-Memory forensics involves the analysis of a snapshot of memory in a computer that preserves the running state of the computer at the time the snapshot was taken. This allows foresenic examiners to see what users may have been doing on the computer at the time, what processes were running and what data they may have been accessing. 
+Memory forensics involves the analysis of a snapshot of memory in a computer that preserves the running state of the computer at the time the snapshot was taken. This allows foresenic examiners to see what users may have been doing on the computer at the time, what processes were running and what data they may have been accessing.
 
-We can use memory forensics to identify malware that may have been only resident in memory and never saved on disk. We can also use it for evidence as to the activities of a user at a given time. 
+We can use memory forensics to identify malware that may have been only resident in memory and never saved on disk. We can also use it for evidence as to the activities of a user at a given time.
 
 ## Taking a Memory Snapshot
 
@@ -18,7 +22,7 @@ There are a variety of software programs that will take a memory snapshot suitab
   * Acquire
 * Linux
   * AVML
-  * LiME \(also does Android\)
+  * LiME (also does Android)
 * Mac
   * MacQuisition
 
@@ -26,7 +30,7 @@ These tools create a file that can then be analysed using tools such as Volatili
 
 ### **Memory Analysis**
 
-We'll be analyzing the memory dump file \(**Challenge.raw**\) using **Volatility 2.6.**
+We'll be analyzing the memory dump file (**Challenge.raw**) using **Volatility 2.6.**
 
 Volatility 2 needs to know the version of operating system that the memory dump was from and this determines the specific profile that Volatility uses. To determine this, we can use the command imageinfo.
 
@@ -115,7 +119,6 @@ Version64                     : 0x273cb50 (Major: 15, Minor: 7601)
 PsActiveProcessHead           : 0x82751d70
 PsLoadedModuleList            : 0x82759730
 KernelBase                    : 0x82604000
-
 ```
 
 So we can now use the profile WinXPSP2x86 which is the Windows XP Service Pack 2 version of the OS.
@@ -124,8 +127,8 @@ Now as a forensic analyst, one of the most important things we would like to kno
 
 * Active processes
 * Commands executed in the shell/terminal/Command prompt
-* Hidden processes \(if any\) or Exited processes
-* Browser History \(This is very much subjective to the scenario involved\)
+* Hidden processes (if any) or Exited processes
+* Browser History (This is very much subjective to the scenario involved)
 
 And many more...
 
@@ -216,11 +219,9 @@ Cmd #36 @ 0x2800c4: *?+?(???(
 Cmd #37 @ 0x2ad070: +?(????
 ```
 
-
-
 If you can see from the above, a Python file was executed. The executed command was
 
- `C:\Python27\python.exe C:\Users\hello\Desktop\demon.py.txt`
+`C:\Python27\python.exe C:\Users\hello\Desktop\demon.py.txt`
 
 So our next step would be check if this python script sent any output to **stdout**. For this, we use the **consoles** plugin.
 
@@ -256,7 +257,7 @@ C:\Users\hello>C:\Python27\python.exe C:\Users\hello\Desktop\demon.py.txt
 <SNIP...>
 ```
 
-We see that a certain string `335d366f5d6031767631707f` has been written out to **stdout**. If you put this text into a HEX to ASCII converter online, you will see that it produces rubbish and so it is likely to be encrypted. 
+We see that a certain string `335d366f5d6031767631707f` has been written out to **stdout**. If you put this text into a HEX to ASCII converter online, you will see that it produces rubbish and so it is likely to be encrypted.
 
 We will leave this for now and carry on with our investigation.
 
@@ -306,9 +307,9 @@ Pid      Process              Block      Variable                       Value
     <SNIP...>
 ```
 
-We are mainly interested in the environment variables for the cmd.exe process that was running the Python file. If you look at the environment variables, there is one called Thanos \(A fictional supervillain\) that has text which says "xor and password". So, let us try and brutefoce the hex characters we got with XOR. 
+We are mainly interested in the environment variables for the cmd.exe process that was running the Python file. If you look at the environment variables, there is one called Thanos (A fictional supervillain) that has text which says "xor and password". So, let us try and brutefoce the hex characters we got with XOR.
 
-We can do this in Cyberchef using 2 recipes. The first is FromHex which converts the Hex characters to ASCII, the second is XOR Brute Force which will successively try numbers from 1 to 100  and XOR them against the input. Looking through the output, we see that the 2nd entry is "1\_4m\_b3tt3r}" which looks like slightly meaningful text since it is Leet for "I am better" \(and has the format of half of a flag for the challenge\). 
+We can do this in Cyberchef using 2 recipes. The first is FromHex which converts the Hex characters to ASCII, the second is XOR Brute Force which will successively try numbers from 1 to 100 and XOR them against the input. Looking through the output, we see that the 2nd entry is "1\_4m\_b3tt3r}" which looks like slightly meaningful text since it is Leet for "I am better" (and has the format of half of a flag for the challenge).
 
 Volatility can also extract password hashes from accounts and we can try that using the **hashdump** command.
 
@@ -322,7 +323,7 @@ Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
 ```
 
-These hashes are in a particular format that Microsoft used for passwords called NTLM. The specific hash we are interested in is the NT hash which is the number : `101da33f44e92c27835e64322d72e8b7`. 
+These hashes are in a particular format that Microsoft used for passwords called NTLM. The specific hash we are interested in is the NT hash which is the number : `101da33f44e92c27835e64322d72e8b7`.
 
 To crack this, we are going to use a program called John The Ripper, or john for short. Create a file called hash.txt and insert the entire hash line into it:
 
@@ -345,13 +346,10 @@ Use the "--show --format=NT" options to display all of the cracked passwords rel
 Session completed. 
 ```
 
-In this command, we passed a passwords.txt file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for but John works very well normally because people tend to use  very easy to guess passwords. 
+In this command, we passed a passwords.txt file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for but John works very well normally because people tend to use very easy to guess passwords.
 
-Once we run John, we get a hit and the passwords is confirmed to be the other half of the flag --&gt; **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
+Once we run John, we get a hit and the passwords is confirmed to be the other half of the flag --> **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
 
 ### Question 1. What was the whole flag?
 
 FLAG: Enter the flag to claim the prize
-
-
-
