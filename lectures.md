@@ -1,10 +1,10 @@
 # Lectures
 
-#### Below are links to the preparation lecture videos, which you are expected to watch before coming to the scheduled lectures.&#x20;
+Below are links to the preparation lecture videos, which you are expected to watch before coming to the scheduled lectures.&#x20;
 
-#### Videos
+### >> Videos
 
-**Introduction To CyberSecurity**
+**# 01. Introduction To CyberSecurity**
 
 Introduction 1-1 [https://www.youtube.com/watch?v=7GQP-wEeRA8](https://www.youtube.com/watch?v=7GQP-wEeRA8)
 
@@ -12,7 +12,9 @@ Introduction 1-2 [https://www.youtube.com/watch?v=y6JQYunjpMo](https://www.youtu
 
 Introduction 1-3 [https://www.youtube.com/watch?v=w42enDcxON4](https://www.youtube.com/watch?v=w42enDcxON4)
 
-**Cryptography**
+****
+
+**# 02. Cryptography**
 
 Cryptography 2-1 [https://www.youtube.com/watch?v=5OmHsIO-\_yo](https://www.youtube.com/watch?v=5OmHsIO-\_yo)
 
@@ -20,85 +22,103 @@ Cryptography 2-2 [https://www.youtube.com/watch?v=OR29ooH2u5g](https://www.youtu
 
 Cryptography 2-3 [https://www.youtube.com/watch?v=uHskdclxh\_o](https://www.youtube.com/watch?v=uHskdclxh\_o)
 
-**Computers and Networks**
+****
 
-Computers and Networks 4-1 [https://www.youtube.com/watch?v=OI1DQCml\_jE](https://www.youtube.com/watch?v=OI1DQCml\_jE)
+**# 03. Computers and Networks**
 
-Computers and Networks 4-2 [https://www.youtube.com/watch?v=aS5TKA2QrFM](https://www.youtube.com/watch?v=aS5TKA2QrFM)
+Computers and Networks 3-1 [https://www.youtube.com/watch?v=OI1DQCml\_jE](https://www.youtube.com/watch?v=OI1DQCml\_jE)
 
-**Threats**
+Computers and Networks 3-2 [https://www.youtube.com/watch?v=aS5TKA2QrFM](https://www.youtube.com/watch?v=aS5TKA2QrFM)
 
-Threats 5-1 [https://www.youtube.com/watch?v=7Px70\_ycYEc](https://www.youtube.com/watch?v=7Px70\_ycYEc)
+****
 
-Threats 5-2 [https://www.youtube.com/watch?v=Td1iYh89KWA](https://www.youtube.com/watch?v=Td1iYh89KWA)
+**# 04. Threats**
 
-**Vulnerabilities**
+Threats 4-1 [https://www.youtube.com/watch?v=7Px70\_ycYEc](https://www.youtube.com/watch?v=7Px70\_ycYEc)
 
-Vulnerabilities 6-1 [https://www.youtube.com/watch?v=yd6xNIjRU6U](https://www.youtube.com/watch?v=yd6xNIjRU6U)
+Threats 4-2 [https://www.youtube.com/watch?v=Td1iYh89KWA](https://www.youtube.com/watch?v=Td1iYh89KWA)
 
-Vulnerabilities 6-2 [https://www.youtube.com/watch?v=89KQ6xMfMZc](https://www.youtube.com/watch?v=89KQ6xMfMZc)
+****
 
-Vulnerabilities 6-3 [https://www.youtube.com/watch?v=BtN8LprPPRg](https://www.youtube.com/watch?v=BtN8LprPPRg)
+**# 05. Vulnerabilities**
 
-**Security Management**
+Vulnerabilities 5-1 [https://www.youtube.com/watch?v=yd6xNIjRU6U](https://www.youtube.com/watch?v=yd6xNIjRU6U)
 
-Security Management 7-1 [https://www.youtube.com/watch?v=ntX5x9HmAcM](https://www.youtube.com/watch?v=ntX5x9HmAcM)
+Vulnerabilities 5-2 [https://www.youtube.com/watch?v=89KQ6xMfMZc](https://www.youtube.com/watch?v=89KQ6xMfMZc)
 
-Security Management 7-2 [https://www.youtube.com/watch?v=rKki7sROUWc](https://www.youtube.com/watch?v=rKki7sROUWc)
+Vulnerabilities 5-3 [https://www.youtube.com/watch?v=BtN8LprPPRg](https://www.youtube.com/watch?v=BtN8LprPPRg)
 
-**Incidents**
+****
 
-Incidents 8-1 [https://www.youtube.com/watch?v=cWY1iSz70Og](https://www.youtube.com/watch?v=cWY1iSz70Og)
+**# 06. Security Management**
 
-Incidents 8-2 [https://www.youtube.com/watch?v=g3N2jmzPiOg](https://www.youtube.com/watch?v=g3N2jmzPiOg)
+Security Management 6-1 [https://www.youtube.com/watch?v=ntX5x9HmAcM](https://www.youtube.com/watch?v=ntX5x9HmAcM)
 
-**Digital Forensics**
+Security Management 6-2 [https://www.youtube.com/watch?v=rKki7sROUWc](https://www.youtube.com/watch?v=rKki7sROUWc)
 
-Digital Forensics 9-1 [https://www.youtube.com/watch?v=GNgQ6HZ4XB0](https://www.youtube.com/watch?v=GNgQ6HZ4XB0)
+****
 
-Digital Forensics 9-2 [https://www.youtube.com/watch?v=oxxNtQsYi5Y](https://www.youtube.com/watch?v=oxxNtQsYi5Y)
+**# 07. Incidents**
 
-Digital Forensics 9-3 [https://www.youtube.com/watch?v=VXFnYKhiSDI](https://www.youtube.com/watch?v=VXFnYKhiSDI)
+Incidents 7-1 [https://www.youtube.com/watch?v=cWY1iSz70Og](https://www.youtube.com/watch?v=cWY1iSz70Og)
 
-**Critical Infrastructure and Cyberphysical Systems**
+Incidents 7-2 [https://www.youtube.com/watch?v=g3N2jmzPiOg](https://www.youtube.com/watch?v=g3N2jmzPiOg)
 
-CI & CPS 10-1 [https://www.youtube.com/watch?v=aFPUehQ3Gm0](https://www.youtube.com/watch?v=aFPUehQ3Gm0)
+****
 
-CI & CPS 10-2 [https://www.youtube.com/watch?v=MmbG2f8Jk8E](https://www.youtube.com/watch?v=MmbG2f8Jk8E)
+**# 08. Digital Forensics**
 
-**Cyberlaw**
+Digital Forensics 8-1 [https://www.youtube.com/watch?v=GNgQ6HZ4XB0](https://www.youtube.com/watch?v=GNgQ6HZ4XB0)
 
-Cyberlaw 11-1 [https://www.youtube.com/watch?v=VRpRdWWNjZc](https://www.youtube.com/watch?v=VRpRdWWNjZc)
+Digital Forensics 8-2 [https://www.youtube.com/watch?v=oxxNtQsYi5Y](https://www.youtube.com/watch?v=oxxNtQsYi5Y)
 
-Cyberlaw 11-2 [https://www.youtube.com/watch?v=oW4pd5n13rA](https://www.youtube.com/watch?v=oW4pd5n13rA)
+Digital Forensics 8-3 [https://www.youtube.com/watch?v=VXFnYKhiSDI](https://www.youtube.com/watch?v=VXFnYKhiSDI)
 
-**AI & Cybersecurity**
+****
 
-AI and Cybersecurity 12-1 [https://www.youtube.com/watch?v=7Eg7ygkHFgI](https://www.youtube.com/watch?v=7Eg7ygkHFgI)
+**# 09. Critical Infrastructure and Cyberphysical Systems**
 
-AI and Cybersecurity 12-2 [https://www.youtube.com/watch?v=04jC0sIiTMY](https://www.youtube.com/watch?v=04jC0sIiTMY)
+CI & CPS 9-1 [https://www.youtube.com/watch?v=aFPUehQ3Gm0](https://www.youtube.com/watch?v=aFPUehQ3Gm0)
+
+CI & CPS 9-2 [https://www.youtube.com/watch?v=MmbG2f8Jk8E](https://www.youtube.com/watch?v=MmbG2f8Jk8E)
+
+****
+
+**# 0A. Cyberlaw**
+
+Cyberlaw A-1 [https://www.youtube.com/watch?v=VRpRdWWNjZc](https://www.youtube.com/watch?v=VRpRdWWNjZc)
+
+Cyberlaw A-2 [https://www.youtube.com/watch?v=oW4pd5n13rA](https://www.youtube.com/watch?v=oW4pd5n13rA)
+
+****
+
+**# 0B. AI & Cybersecurity**
+
+AI and Cybersecurity B-1 [https://www.youtube.com/watch?v=7Eg7ygkHFgI](https://www.youtube.com/watch?v=7Eg7ygkHFgI)
+
+AI and Cybersecurity B-2 [https://www.youtube.com/watch?v=04jC0sIiTMY](https://www.youtube.com/watch?v=04jC0sIiTMY)
 
 
 
-#### Exam Example Question
+#### # 0C. Exam Example Question
 
-Exam Example Question [https://www.youtube.com/watch?v=yiHz1AIo0Pg](https://www.youtube.com/watch?v=yiHz1AIo0Pg)
+Exam Example Question C-1 [https://www.youtube.com/watch?v=yiHz1AIo0Pg](https://www.youtube.com/watch?v=yiHz1AIo0Pg)
 
 
 
-#### Outcomes
+### >> Outcomes
 
 Students are able to (1) describe the concepts of cybersecurity and information security as made up by the different domains of knowledge in the unit outline; (2) specify the role of cybersecurity risk management in an overall strategy of providing information security by applying mitigations in the different cybersecurity domains; and (3) define the legal and ethical responsibilities of a cybersecurity professional.
 
 ####
 
-#### Assessment (subject to change)
+### >> Assessment
 
-There are 10 practical lab assignments which can be found here [https://introlabs.cybermnemosyne.xyz](https://introlabs.cybermnemosyne.xyz) that is worth 25% of the unit marks There will be a project worth 25% of unit marks that will be released on, or prior to, week 6 There will be a final exam worth 50% of unit marks
+There are 10 practical lab assignments (see the LABS tab) that is worth a total of 25% of unit marks. There will be a project worth 25% of unit marks that will be released on week 6 (tbc). There will be a final exam worth 50% of unit marks. Please note that assessment items and schedules may change, and you will be notified if it does change.
 
 ####
 
-#### License Terms
+### >> License Terms
 
 Copyright © David Glance 2021. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).
 
