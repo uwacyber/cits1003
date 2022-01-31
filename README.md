@@ -1,4 +1,4 @@
-# 🐈⬛ CITS1003 Introduction to Cybersecurity
+# CITS1003 Introduction to Cybersecurity
 
 ### >> Content
 
