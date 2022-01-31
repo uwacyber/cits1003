@@ -17,6 +17,6 @@
 * [Lab 9: IoT CI & CPS](cits1003-labs/lab-9-iot-ci-and-cps.md)
 * [Lab 10: AI](cits1003-labs/lab-11-ai.md)
 
-## 🎓 Assignment
+## 🎓 Project
 
-* [Overview](assignment/overview.md)
+* [Overview](project/overview.md)
