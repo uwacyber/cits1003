@@ -1,12 +1,12 @@
 # Lab 1: Setting up your laptop
 
-We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
-
-
-
 Walkthrough video:
 
 **Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
+
+## Getting started
+
+We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
 ## Windows users only: Installing Windows Subsystem for Linux (WSL)
 

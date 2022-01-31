@@ -1,5 +1,9 @@
 # Lab 4: Computer Networking
 
+Walkthrough video:
+
+**Networks 4-1** [https://www.youtube.com/watch?v=Tq6cKMcNavw](https://www.youtube.com/watch?v=Tq6cKMcNavw)
+
 ### Learning Objectives
 
 1. Investigate the networking configuration of a docker container and its local area network
@@ -14,12 +18,6 @@
 * nmap, Bash pingsweeps
 
 
-
-Walkthrough video:
-
-**Networks 4-1** [https://www.youtube.com/watch?v=Tq6cKMcNavw](https://www.youtube.com/watch?v=Tq6cKMcNavw)
-
-****
 
 ### Network Interface
 

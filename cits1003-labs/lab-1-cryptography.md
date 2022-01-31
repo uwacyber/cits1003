@@ -1,5 +1,7 @@
 # Lab 2: Cryptography
 
+There is no walkthrough video for this lab, please talk to one of our facilitators (during the scheduled lab times) or discuss in the group chat if you need further assistance.
+
 ### Learning Objectives
 
 1. Using CyberChef to explore encodings and encryption using operations and recipes
