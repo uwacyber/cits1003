@@ -1,12 +1,12 @@
 # Table of contents
 
-* [🐈⬛ CITS1003 Introduction to Cybersecurity](README.md)
+* CITS1003 Introduction to Cybersecurity](README.md)
 
-## 😼 CITS1003 Lectures
+## CITS1003 Lectures
 
 * [Lecture Materials](lecture-materials.md)
 
-## 😼 CITS1003 Labs
+## CITS1003 Labs
 
 * [Introduction to Labs](cits1003-labs/introduction-to-labs.md)
 * [Lab 1: Setting up your laptop](cits1003-labs/setting-up-your-laptop.md)
@@ -20,6 +20,6 @@
 * [Lab 9: IoT CI & CPS](cits1003-labs/lab-9-iot-ci-and-cps.md)
 * [Lab 10: AI](cits1003-labs/lab-11-ai.md)
 
-## 🎓 Project
+## Project
 
 * [Overview](project/overview.md)
