@@ -106,20 +106,3 @@ Exam Example Question C-1 [https://www.youtube.com/watch?v=yiHz1AIo0Pg](https://
 
 
 
-### >> Outcomes
-
-Students are able to (1) describe the concepts of cybersecurity and information security as made up by the different domains of knowledge in the unit outline; (2) specify the role of cybersecurity risk management in an overall strategy of providing information security by applying mitigations in the different cybersecurity domains; and (3) define the legal and ethical responsibilities of a cybersecurity professional.
-
-####
-
-### >> Assessment
-
-There are 10 practical lab assignments (see the LABS tab) that is worth a total of 25% of unit marks. There will be a project worth 25% of unit marks that will be released on week 6 (tbc). There will be a final exam worth 50% of unit marks. Please note that assessment items and schedules may change, and you will be notified if it does change.
-
-####
-
-### >> License Terms
-
-Copyright © David Glance 2021. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).
-
-Contents on this page are further developed by Jin Hong.
