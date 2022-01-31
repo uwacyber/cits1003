@@ -5,6 +5,7 @@
 
 ## 😼 CITS1003 Labs
 
+* [Introduction to Labs](cits1003-labs/introduction-to-labs.md)
 * [Lab 1: Setting up your laptop](cits1003-labs/setting-up-your-laptop.md)
 * [Lab 2: Cryptography](cits1003-labs/lab-1-cryptography.md)
 * [Lab 3: Computer Architecture: Users, files, processes](cits1003-labs/lab-2-computer-architecture-networks-and-security.md)

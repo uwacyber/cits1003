@@ -1,5 +1,11 @@
 # Lab 10: AI
 
+Walkthrough video:
+
+**AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
+
+## Intro to AI and Cybersecurity
+
 Artificial Intelligence is a collection of technologies that allows computers to simulate human intelligence. Its applicability in cybersecurity involves all aspects of AI, including natural language processing, speech recognition, expert systems, robotics and vision. Fundamental to these types of AI is machine learning, a technology that uses an approach to learning that tries and mimics the way nerve cells work in the brain.
 
 One area of active research in machine learning is the use of adversarial images. This is where slight changes in the image causes machine learning systems to incorrectly classify objects within the image. So for example, a panda is wrongly recognised as a gibbon. The changes to the image can be imperceptible to a human and so this type of attack could be used to alter a radiological image and change a negative diagnosis of cancer to a positive one in a system that is automatically screening for cancer.
@@ -23,14 +29,13 @@ docker run -v /projects/share:/opt/share -it cybernemosyne/cits1003:ai
 ```
 Tensorflow won't work on ARM and so you will have to
  skip this bit - the flag is weimaraner
-
 ```
 {% endtab %}
 {% endtabs %}
 
 The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it.
 
-Once on the docker container, go to the directory /opt/adversarial/share. From there, run the exploit.py program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes for a toolkit called Foolbox ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
+Once on the docker container, go to the directory /opt/adversarial/share. From there, run the exploit.py program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes for a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
 To run the script we do so as follows:
 

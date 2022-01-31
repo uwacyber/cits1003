@@ -2,6 +2,12 @@
 
 We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
+
+
+Walkthrough video:
+
+**Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
+
 ## Windows users only: Installing Windows Subsystem for Linux (WSL)
 
 This is a necessary step for the unit and also for running the Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
@@ -67,7 +73,7 @@ Apple's computers are increasingly using the new M1 chip that uses a different i
 
 Once this is done, you can proceed with installing and running Docker Desktop (below).
 
-Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). We have created a multi-platform version for some images, which should be auto-selected when those images are used.&#x20;
+Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
 ## Installing and running Docker Desktop
 

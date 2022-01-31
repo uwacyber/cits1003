@@ -1,14 +1,6 @@
 # Lectures
 
-#### Content
-
-This unit introduces students to the fundamental concepts of cybersecurity. Starting with an understanding that cybersecurity aims to protect information systems (hardware, software and associated infrastructure), the data on them, and the services they provide, from unauthorised access, harm or misuse. As a fundamental part of this, information security is the preservation of confidentiality, integrity and availability of information.
-
-The unit will cover areas as defined in the Cyber Security Book of Knowledge (CyBoK) as recommended by the Australian Computer Society (ACS). These areas include: (1) Human, Organisational and Human, Organisational and Regulatory Aspects; (2) Attacks and Defences; (3) Security; (4) Software Platform Security; and (5) Infrastructure Security.
-
-####
-
-#### Lectures
+#### Below are links to the preparation lecture videos, which you are expected to watch before coming to the scheduled lectures.&#x20;
 
 #### Videos
 
@@ -85,30 +77,6 @@ Cyberlaw 11-2 [https://www.youtube.com/watch?v=oW4pd5n13rA](https://www.youtube.
 AI and Cybersecurity 12-1 [https://www.youtube.com/watch?v=7Eg7ygkHFgI](https://www.youtube.com/watch?v=7Eg7ygkHFgI)
 
 AI and Cybersecurity 12-2 [https://www.youtube.com/watch?v=04jC0sIiTMY](https://www.youtube.com/watch?v=04jC0sIiTMY)
-
-
-
-
-
-Labs Walkthrough Videos
-
-**Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
-
-**Computer Architecture: Users, files, processes 3-1** [https://www.youtube.com/watch?v=qdEr98Lqak0](https://www.youtube.com/watch?v=qdEr98Lqak0)
-
-**Networks 4-1** [https://www.youtube.com/watch?v=Tq6cKMcNavw](https://www.youtube.com/watch?v=Tq6cKMcNavw)
-
-**Social Engineering 5-1** [https://www.youtube.com/watch?v=JJ4teHYInDg](https://www.youtube.com/watch?v=JJ4teHYInDg)
-
-**Vulnerabilities 6-1** [https://www.youtube.com/watch?v=UgY3n4xplR4](https://www.youtube.com/watch?v=UgY3n4xplR4)
-
-**Incidents 7-1** [https://www.youtube.com/watch?v=SiGKMrr-qdY](https://www.youtube.com/watch?v=SiGKMrr-qdY)
-
-**Forensics 8-1** [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)
-
-**IoT & CPS 9-1** [https://www.youtube.com/watch?v=nTjmkLGOJZ0](https://www.youtube.com/watch?v=nTjmkLGOJZ0)
-
-**AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
 
 
 

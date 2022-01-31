@@ -1,12 +1,18 @@
 # Lab 9: IoT CI & CPS
 
-A challenge of dealing with IoT and Cyberphysical Systems in general is that the software runs on specific hardware rather than general purpose computers. Also, there are a number of different operating systems that these devices can use.  IoT are different from normal computers in that they have less resources like memory to operate with and usually are diskless. 
+Walkthrough video:
 
-Having said that, a large number of consumer devices operate on a linux or linux-like system and so that makes analysis of these devices and even software emulation somewhat simpler. 
+**IoT & CPS 9-1** [https://www.youtube.com/watch?v=nTjmkLGOJZ0](https://www.youtube.com/watch?v=nTjmkLGOJZ0)
+
+## Intro to IoT CI & CPS
+
+A challenge of dealing with IoT and Cyberphysical Systems in general is that the software runs on specific hardware rather than general purpose computers. Also, there are a number of different operating systems that these devices can use. IoT are different from normal computers in that they have less resources like memory to operate with and usually are diskless.
+
+Having said that, a large number of consumer devices operate on a linux or linux-like system and so that makes analysis of these devices and even software emulation somewhat simpler.
 
 IoT have a history of poor security. One of the principle areas of concern, and one we will look at in this lab has been the use of hard-coded passwords for remote access to the devices and leaving access to those services open by default.
 
-## Examining firmware 
+## Examining firmware
 
 In this exercise, we are going to be looking at the firmware from a Netgear Wireless Router the WNAP320 which was a consumer wireless router which went on sale in 2010 but was available for several years after that. Like all consumer router devices, it provides a web interface to administer the device. It also supports remote access using Telnet and SSH which are not enabled by default. The administration function is normally accessed by being on the local network or by using a direct cable to connect to the device. Some details of the device are provided here: [https://usermanual.wiki/Netgear/NetgearWnap320QuickReferenceGuide.33658341/html](https://usermanual.wiki/Netgear/NetgearWnap320QuickReferenceGuide.33658341/html)
 
@@ -30,7 +36,7 @@ docker run -p 8000:8000 -it cybernemosyne/cits1003:iot-x
 
 Change directory to /opt/samples/WNAP320
 
-In that directory is a ZIP file which is the firmware for the WNAP320 router \(alternatively, you can still download the firmware from Netgear http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip\)
+In that directory is a ZIP file which is the firmware for the WNAP320 router (alternatively, you can still download the firmware from Netgear http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip)
 
 Let us unzip the file and see what it contains
 
@@ -41,7 +47,7 @@ Archive:  WNAP320 Firmware Version 2.0.3.zip
   inflating: WNAP320_V2.0.3_firmware.tar  
 ```
 
-The file WNAPP320V2.0.3\_firmware.tar file is another archive file \(colloquially called a tarball\). We can extract this using the tar utility:
+The file WNAPP320V2.0.3\_firmware.tar file is another archive file (colloquially called a tarball). We can extract this using the tar utility:
 
 ```bash
 > tar -xvf WNAP320_V2.0.3_firmware.tar 
@@ -95,7 +101,7 @@ drwxr-xr-x  7 root root 4096 Jun 23  2011 usr
 drwxr-xr-x  2 root root 4096 Nov 11  2008 var
 ```
 
-This is the layout of a normal linux-based operating system. 
+This is the layout of a normal linux-based operating system.
 
 When exploring the firmware, we would start by looking at where the source code for the management functionality is stored. In this software, that is in /home/www and if you look in that directory, you will find PHP files that represent the code that runs the administration website:
 
@@ -107,7 +113,7 @@ background.html   button.html      common.php        getBoardConfig.php  images 
 boardDataNA.php   checkConfig.php  config.php        getJsonData.php     include     login_button.html  monitorFile.cfg   redirect.php       templates       titleLogo.php
 ```
 
-It turns out that there is a vulnerability in a number of these files that allows for remote command execution \(RCE\) that has the CVE CVE-2016-1555. The exploit code is listed on exploit-db here [https://www.exploit-db.com/exploits/45909](https://www.exploit-db.com/exploits/45909)
+It turns out that there is a vulnerability in a number of these files that allows for remote command execution (RCE) that has the CVE CVE-2016-1555. The exploit code is listed on exploit-db here [https://www.exploit-db.com/exploits/45909](https://www.exploit-db.com/exploits/45909)
 
 One of the affected files is boardDataWW.php and the specific code at fault is:
 
@@ -122,13 +128,13 @@ This code file is responsible for showing this page to capture a MAC address for
 
 ![Screen handled by boardDataWW.php](../.gitbook/assets/screen-shot-2021-07-09-at-2.26.16-pm.png)
 
-When the user enters a MAC address and clicks the submit button, the code above checks that it has been sent a valid MAC address \(12 characters, alphanumeric\) and a region code, and then it passes that to a command line utility called wr\_mfg\_data. If the MAC address was f8ffc201fae5 and region code was 1, the command that would be executed would be:
+When the user enters a MAC address and clicks the submit button, the code above checks that it has been sent a valid MAC address (12 characters, alphanumeric) and a region code, and then it passes that to a command line utility called wr\_mfg\_data. If the MAC address was f8ffc201fae5 and region code was 1, the command that would be executed would be:
 
 ```bash
 wr_mfg_data -m f8ffc201fae5 -c 1
 ```
 
-You will notice that there is no validation of the input to this command by the code. It just checks that the first 12 characters of the MAC address are alphanumeric. This means we can add data to the end of a valid MAC address and it will accept it. So if  we add a second command to the address, it will be executed as well. To do that, we use the command separator ; as follows:
+You will notice that there is no validation of the input to this command by the code. It just checks that the first 12 characters of the MAC address are alphanumeric. This means we can add data to the end of a valid MAC address and it will accept it. So if we add a second command to the address, it will be executed as well. To do that, we use the command separator ; as follows:
 
 ```bash
 wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
@@ -136,7 +142,7 @@ wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
 
 To achieve this we would put "f8ffc201fae5;cp /etc/passwd test.html;" into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website.
 
-For this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do. 
+For this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do.
 
 ### Testing the Vulnerability
 
@@ -161,7 +167,7 @@ sshd:x:103:99:Operator:/var:/bin/sh
 admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
 ```
 
-If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to. 
+If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to.
 
 ## Question 1. Exploit to find the flag
 
@@ -189,7 +195,7 @@ drwxr-xr-x 1 root root    4096 Jul 10 02:14 ..
 drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
 ```
 
-We can now cd into the directory _DIR-300A1_FW105b09.bin.extracted and then into the directory squashfs-root. Again we have a Linux filesystem
+We can now cd into the directory \_DIR-300A1\_FW105b09.bin.extracted and then into the directory squashfs-root. Again we have a Linux filesystem
 
 ```bash
 root@c3e1d7ac5055:/opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root# ls -al
@@ -209,7 +215,6 @@ lrwxrwxrwx  1  528 1000    8 Jul 10 02:14 tmp -> /var/tmp
 drwxrwsr-x  5  528 1000 4096 Nov 26  2010 usr
 drwxrwsr-x  2  528 1000 4096 Nov 26  2010 var
 drwxrwsr-x 11  528 1000 4096 Nov 26  2010 www
-
 ```
 
 You can explore the file system a bit to see where things are but to shortcut, we are interested in the telnet service which allows remote access to the DLINK box. If we do a search for the word telnet in all of the files we get:
@@ -226,7 +231,6 @@ etc/scripts/system.sh:	/etc/scripts/misc/telnetd.sh	> /dev/console
 etc/defnodes/S11setnodes.php:set("/sys/telnetd",			"true");
 Binary file usr/lib/tc/q_netem.so matches
 www/__adv_port.php:					<option value='Telnet'>Telnet</option>
-
 ```
 
 The file that is interesting is the script telnetd.sh where there is a login command with a -u flag that passes in a username and password. If we open the script and look at it we notice that the variable $image\_sign gets set to the contents of a file:
@@ -243,17 +247,16 @@ And if we look at the contents of that file we get:
 wrgg19_c_dlwbr_dir300
 ```
 
-So the username and password for the device is 
+So the username and password for the device is
 
 ```bash
 Alphanetworks:wrgg19_c_dlwbr_dir300
 ```
 
-The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers \([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink_telnet_backdoor_userpass.txt)\).
+The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers ([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt)).
 
 ### **Question 2. Enter the password**
 
 **Flag: Enter the password to claim the flag**
 
-Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily. 
-
+Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily.

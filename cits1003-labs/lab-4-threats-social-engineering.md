@@ -1,5 +1,11 @@
 # Lab 5: Threats Social Engineering
 
+Walkthrough video:
+
+**Social Engineering 5-1** [https://www.youtube.com/watch?v=JJ4teHYInDg](https://www.youtube.com/watch?v=JJ4teHYInDg)
+
+****
+
 ## What is Social Engineering? <a href="#what-is-social-engineering" id="what-is-social-engineering"></a>
 
 In many cases, if you want access to a network, machine or even physical premises, the easiest thing to do is to simply ask for it, especially if you pretend to be someone that has a legitimate reason to be asking. More formally, social engineering is the use of deception to manipulate a person into revealing some information or taking some sort of inappropriate action on the attacker's behalf. Social engineering relies on exploiting human behavior based on both their general human behaviors, and also through manipulation of individuals based on their personal life or work.
@@ -62,7 +68,6 @@ time="2021-07-16T01:40:32Z" level=info msg="Starting IMAP monitor manager"
 time="2021-07-16T01:40:32Z" level=info msg="Starting new IMAP monitor for user admin"
 time="2021-07-16T01:40:32Z" level=info msg="TLS Certificate Generation complete"
 time="2021-07-16T01:40:32Z" level=info msg="Starting admin server at https://0.0.0.0:3333"
-
 ```
 
 When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to https://127.0.0.1:3333

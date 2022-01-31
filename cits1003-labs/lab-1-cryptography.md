@@ -16,6 +16,8 @@
 * AES
 * PGP
 
+****
+
 ### Ciphers
 
 #### CyberChef
@@ -125,7 +127,7 @@ Use the operation "_**XOR Brute Force**_" in CyberChef to find the key in Hexade
 
 ### AES
 
-The Advanced Encryption Standard (AES) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret".&#x20;
+The Advanced Encryption Standard (AES) is the accepted standard block cipher that can use a variety of modes of operation. You can select AES Encrypt in CyberChef and input the text "Please keep this secret".
 
 Enter the key in UTF8 format:
 
