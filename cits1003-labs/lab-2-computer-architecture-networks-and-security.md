@@ -1,5 +1,9 @@
 # Lab 3: Computer Architecture: Users, files, processes
 
+Walkthrough video:
+
+**Computer Architecture: Users, files, processes 3-1** [https://www.youtube.com/watch?v=qdEr98Lqak0](https://www.youtube.com/watch?v=qdEr98Lqak0)
+
 ### Learning Objectives
 
 1. Explore various aspects of computer architecture such as processes, file systems, users and access control
@@ -8,12 +12,6 @@
 
 * Windows, MacOS, Linux
 * Bash, PowerShell, Command Prompt
-
-
-
-Walkthrough video:
-
-**Computer Architecture: Users, files, processes 3-1** [https://www.youtube.com/watch?v=qdEr98Lqak0](https://www.youtube.com/watch?v=qdEr98Lqak0)
 
 ****
 
