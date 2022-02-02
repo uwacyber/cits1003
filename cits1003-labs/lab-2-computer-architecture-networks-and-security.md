@@ -13,7 +13,7 @@ Walkthrough video:
 * Windows, MacOS, Linux
 * Bash, PowerShell, Command Prompt
 
-****
+***
 
 ### Command Line
 
@@ -494,6 +494,6 @@ root@c31804846451:/# ls -al file.txt
 
 ### Question 3: Run for the flag
 
-Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to sort out why it won't run.
+Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to figure out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
