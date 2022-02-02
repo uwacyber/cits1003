@@ -301,15 +301,11 @@ root         1     0  0  1062  3604   0 06:47 pts/0    00:00:00 bash
 root       320     1  0  1475  2884   4 07:03 pts/0    00:00:00 ps -AF
 ```
 
-### Question 2. What a state this process is in!
-
 You can get detailed process information on Linux by looking at the file that this information is stored in. For example, if we wanted to get information about the bash process running in the container, we would use the command (replacing the \<PID> with the process ID):
 
 ```bash
 cat /proc/<PID>/status
 ```
-
-**Flag: Enter the description of the state of the process**
 
 ### Users and Groups
 
@@ -492,7 +488,7 @@ root@c31804846451:/# ls -al file.txt
 -rwxr--r-- 1 root root 0 Jan 25 07:11 file.txt
 ```
 
-### Question 3: Run for the flag
+### Question 2: Run for the flag
 
 Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to figure out why it won't run.
 
