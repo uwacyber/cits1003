@@ -82,10 +82,6 @@ For both Mac and Windows, the Graphical User Interface versions of network confi
 
 Start the docker container and run `ip addr`
 
-```
-docker run -it uwacyber/cits1003-labs:network
-```
-
 ```bash
 /network$ docker run -it  uwacyber/cits1003-labs:network 
 root@d99d71e2318a:/# ip addr
@@ -103,7 +99,7 @@ root@d99d71e2318a:/# ip addr
        valid_lft forever preferred_lft forever
 ```
 
-We see that the container has 2 network interfaces (ignore the ones with \<NOARP>). The first is the main ethernet interface with the outside world **eth0** (item 8). It has an address in a private IP address range. The second interface is called the loopback interface (item 1) and has what is called the home address **127.0.0.1**.
+We see that the container has 2 network interfaces (ignore the ones with `<NOARP>`). The first is the main ethernet interface with the outside world **eth0** (item 8). It has an address in a private IP address range. The second interface is called the loopback interface (item 1) and has what is called the home address **127.0.0.1**.
 
 Alternatively, you can use a `route` command, where we will see the Gateway address is. A gateway is usually a router of some sort, if the machine is not communicating with other machines on the network, it will send its packets to the gateway for it to find where they need to go.
 
@@ -389,7 +385,7 @@ To scan with all scripts and versions of the specific target IP
 
 `$ nmap -sC -sV 172.17.0.3`
 
-If the IP address of the host you want to scan is different then use that address
+If the IP address of the host you want to scan is different then use that address instead
 {% endtab %}
 {% endtabs %}
 
