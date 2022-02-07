@@ -51,12 +51,6 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 
 To run Gophish, start the Docker container as follows
 
-{% hint style="info" %}
-Apple Silicon:
-
-> docker run -p 3333:3333 -p 8880:80 -it cybernemosyne/cits1003:gophish-x
-{% endhint %}
-
 ```bash
 $ docker run -p 3333:3333 -p 8880:80 -it uwacyber/cits1003-labs:gophish
 <SNIP...>
@@ -86,12 +80,6 @@ We are going to run a mail server as another container and so when asked, the ho
 
 Let us do that now. In another terminal, run the following container:
 
-{% hint style="info" %}
-Apple Silicon:
-
-> docker run -it -p 1080:1080 -p 1025:1025 cybernemosyne/cits1003:maildev-x
-{% endhint %}
-
 ```bash
 $ docker run -it -p 1080:1080 -p 1025:1025  uwacyber/cits1003-labs:maildev
 MailDev using directory /tmp/maildev-1
@@ -99,7 +87,7 @@ MailDev webapp running at http://0.0.0.0:1080
 MailDev SMTP Server running at 0.0.0.0:1025
 ```
 
-This mailserver will allow you to see what emails are arriving by going to the address http://127.0.0.1:1080
+This mailserver will allow you to see what emails are arriving by going to the address `http://127.0.0.1:1080`
 
 Back to `gophish` site, click on `Sending Profiles` and then add`New Profile` and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server (like Gmail) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server.
 
@@ -113,7 +101,7 @@ You can send a test email (you can populate the fields with random values) and v
 The test email will unlikely be sent to the address you have specified so don't worry whether you will be flooding someone's inbox or not.
 {% endhint %}
 
-Next, we are going to create an email template (go to `Email Templates` tab). We are going to keep this simple. In a real phishing campaign you could model this on something a little more realistic but never underestimate what people will click on.
+Next, we are going to create an email template (go to `Email Templates` tab). We are going to keep this simple. In a real phishing campaign, you could model this on something a little more realistic but never underestimate what people will click on.
 
 In the template, give it a name and then select HTML. Enter the HTML below.
 
@@ -133,7 +121,7 @@ Fedex
 
 ![](../.gitbook/assets/screen-shot-2021-07-17-at-11.12.10-am.png)
 
-Save the template and now click on `Landing Page` and add `New Page` to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page (https://github.com/login) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in {{ }} so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
+Save the template and now click on `Landing Page` and add `New Page` to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page (https://github.com/login) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in `{{ }}` so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
 
 Select to track submitted data \*and\* to capture passwords (well, why not?)
 
@@ -162,7 +150,9 @@ You can click the Submitted Data button to view the details of the interaction w
 ![.Details of the data entered in the landing page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hdYKWWWnsFXt6f%2F9.png?alt=media)
 
 {% hint style="info" %}
-You can click the link directly from the `maildev`, as you will unlikely to actually receive this phishing email yourself. Do remember NOT to input your real credentials!
+You can click the link directly from the `maildev`, as you will unlikely to actually receive this phishing email yourself. Because we are only phishing without piggybacking malicious scripts, it is safe to click the link.&#x20;
+
+Do remember NOT to input your real credentials though (traffic isn't encrypted)!
 {% endhint %}
 
 ### Question 1. User Simulation
