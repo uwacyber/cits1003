@@ -65,6 +65,14 @@ To run the website, use the Docker command :
 docker run -it -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 ```
 
+{% hint style="warning" %}
+If you are using Apple M1, you need to run:
+
+```
+docker run -it -p 3000:3000 --platform linux/amd64 uwacyber/cits1003-labs:juiceshop
+```
+{% endhint %}
+
 This will start the website on port 3000. You can access it using the URL `http://127.0.0.1:3000` and should see the home page:
 
 ![OWASP Juice Shop Home Page](../.gitbook/assets/screen-shot-2021-07-02-at-11.19.55-am.png)
@@ -80,7 +88,7 @@ You can run OWASP ZAP as a Docker container by using the command:
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
-Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address host.docker.internal instead of 127.0.0.1
+Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
 {% endhint %}
 
 Open ZAP and configure the software to scan the Juice Shop website:&#x20;
