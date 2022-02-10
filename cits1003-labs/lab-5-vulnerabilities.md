@@ -66,11 +66,13 @@ docker run -it -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 ```
 
 {% hint style="warning" %}
-If you are using Apple M1, you need to run:
+Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, you will need to run:
 
 ```
-docker run -it -p 3000:3000 --platform linux/amd64 uwacyber/cits1003-labs:juiceshop
+docker run -it -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juiceshop
 ```
+
+This message will be removed if the ARM64 image is successfully built.
 {% endhint %}
 
 This will start the website on port 3000. You can access it using the URL `http://127.0.0.1:3000` and should see the home page:
