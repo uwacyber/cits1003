@@ -39,20 +39,6 @@ To start, run the docker container:
 docker run -it uwacyber/cits1003-labs:incident
 ```
 
-{% tabs %}
-{% tab title="Windows/Apple Intel" %}
-```bash
-docker run -it uwacyber/cits1003-labs:incident
-```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```
-docker run -it cybernemosyne/cits1003:incident-x
-```
-{% endtab %}
-{% endtabs %}
-
 Change directory to `/opt/malware/test`. This directory has a subdirectory `./files` which has two files in it. One called `bye.txt` which contains the text `"bye bye"` and another file called `hello.txt` that has the text "`hello, world!"`
 
 We are going to create a Yara rules file which you can edit on the machine using the editor **vi**. If you haven't used vi before, don't worry, the steps are provided for you to use it.
@@ -103,14 +89,8 @@ WARNING: The malware you are analysing is real and so \*do not\* try and remove 
 Change directory into `/opt/malware/malware_sample1` and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
 
 1. What is the name of the malware?
-2. What is the name of the group thought to be responsible for the malware?
-3. Who are the usual victims of the group thought to be?
-
-Hint: You should be able to find a document by Kaspersky giving you the answers to these questions.
-
-An interesting point about this group is that not very much information is provided about it by the US site MITRE ATT\&CK which details tactics, techniques and procedures of attack groups. There is a little more information on this GitHub repository which is a Chinese cybersecurity company's view on things:
-
-[https://github.com/RedDrip7/APT\_Digital\_Weapon/tree/master/Equation%20Group](https://github.com/RedDrip7/APT\_Digital\_Weapon/tree/master/Equation%20Group)
+2. Which APT group is thought to be responsible for the malware?
+3. Which country did this malware target in 2014?
 
 ### **Question 1. Find the malware1 hash**
 
@@ -126,9 +106,7 @@ Change directory into /opt/malware/malware\_sample2 and run yara using the rules
 
 1. What is the name of the malware?
 2. What is the name of the group thought to be responsible for the malware?
-3. Who are the usual victims of the group thought to be?
-
-With this malware, there is a long story related to it and we will cover this in the lectures on IoT, cyber-physical systems and critical infrastructure.
+3. Roughly how many computers were infected?
 
 ### Question 2. Find the malware2 hash
 
