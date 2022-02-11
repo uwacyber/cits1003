@@ -181,7 +181,14 @@ Many web applications offer functionality through what is called an Application 
 If we go back to ZAP and look at the Site map in the left hand window, you will see a node called `api` that has a number of functions such as `/Challenges`, `/SecurityQuestions`, and `/Quantitys`. There is actually another set of methods (although it doesn't always show up on an initial scan) called `/Users`.
 
 {% hint style="info" %}
-If /Users does not show up in your scan, please follow the steps in the walkthrough video where the user request is created manually. Once that is done, you can proceed as below.
+If /Users does not show up in your scan, do the following:
+
+1. Click on the `/Challenges` directory under `api`
+2. On the right-hand pane, click `Request` at the top, then you should see the `GET` request.
+3. Right-click inside the GET request window, and press `Open/Resend with Request Editor...`
+4. Replace `/Challenges` with `/Users` in the top line, then press send
+
+If you are still not sure, please follow the steps in the walkthrough video where the user request is created manually. Once that is done, you can proceed as below.
 {% endhint %}
 
 `/Users` actually has two methods, a GET method and a POST method that you could have discovered by simply trying them.
@@ -204,7 +211,7 @@ To get `Inspect`, you need to have configured the browser for Developer Tools wh
 Firefox: Tools/Browser Tools> menu
 {% endhint %}
 
-Click on the `Storage` tab and then find under `Cookies` the cookie for `http://127.0.0.1:3000` and click that. You should see one of the cookies is `token` - copy the contents of that and paste it after `Authorization: Bearer` in the request header (as shown in the above screenshot). Now press `Send`.
+Click on the `Storage` tab (e.g., in Chrome, this is under `Application` tab) and then find under `Cookies` the cookie for `http://127.0.0.1:3000` and click that. You should see one of the cookies is `token` - copy the contents of that and paste it after `Authorization: Bearer` in the request header (as shown in the above screenshot). Now press `Send`.
 
 You should get a response that gives you the list of users. If you want to see the output more clearly, you can copy the content and put it into an online JSON formatter. The problem is that this doesn't give us the passwords, even though if we got them, they would actually be hashes and so we would still need to crack them to make them useable.
 
@@ -241,13 +248,11 @@ Go back to the request and change the method to POST. Now we need to pass some d
 {"email":"admin","password":"admin","role":"admin"}
 ```
 
-We also need to add an extra Header in the request:
+Actually, this probably didn't work - why? Because the data format we have given is in JSON, but the server may not interprete it as JSON but instead, as a raw text. So, if you don't see a new admin user in the list of users, this is probably what happened. To fix this, we also need to add an extra Header in the request:
 
 > Content-Type: application/json
 
-This tells the application that the format is in json (otherwise the application would get confused what type this is).
-
-Your request should look like this:
+This tells the application that the format is in JSON explicitly. Now, your request should look like this:
 
 ![](../.gitbook/assets/screen-shot-2021-07-03-at-12.05.19-pm.png)
 
