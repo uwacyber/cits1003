@@ -75,6 +75,10 @@ docker run -it -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juicesh
 This message will be removed if the ARM64 image is successfully built.
 {% endhint %}
 
+{% hint style="danger" %}
+You must run the provided juice-shop image, as it has been custom-built for this lab (the default image from OWASP will not contain the correct flags you need).
+{% endhint %}
+
 This will start the website on port 3000. You can access it using the URL `http://127.0.0.1:3000` and should see the home page:
 
 ![OWASP Juice Shop Home Page](../.gitbook/assets/screen-shot-2021-07-02-at-11.19.55-am.png)
@@ -86,11 +90,17 @@ Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](htt
 
 You can run OWASP ZAP as a Docker container by using the command:
 
-`$ docker run -u zap -p 8080:8080 -p 8090:8090 -i uwacyber/cits1003-labs:zaproxy zap-webswing.sh`
+`$ docker pull owasp/zap2docker-stable`
+
+`$ docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh`
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
-Remember that since it is running in a container, when you need to access the Juice Shop container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
+Remember that since it is running in a container when you need to access the Juice Shop container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
+{% endhint %}
+
+{% hint style="danger" %}
+Apple M1 users, don't forget to add the `--pltform linux/amd64` flag (zap doesn't support ARM64 yet).
 {% endhint %}
 
 Open ZAP and configure the software to scan the Juice Shop website:&#x20;
