@@ -366,7 +366,15 @@ volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /op
 
 The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it in Gimp (if you don't have Gimp, you should download and install it on your machine. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
 
-Play around with the viewing settings to see what is written in the image.&#x20;
+When you open, you have the ability to set the offset, width and height. Set it as follows:
+
+Offset: 5233385
+
+Width: 1500
+
+Height: 350
+
+Do you see what I see?
 
 ### Question 3. What was written in the image?
 
