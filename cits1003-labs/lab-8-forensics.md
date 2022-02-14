@@ -1,5 +1,9 @@
 # Lab 8: Forensics
 
+{% hint style="warning" %}
+PLEASE NOTE: This lab image uses a lot of storage space, so ensure you have enough space on your hard drive before proceeding.
+{% endhint %}
+
 Walkthrough video:
 
 **Forensics 8-1** [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)
@@ -8,7 +12,7 @@ Walkthrough video:
 
 This is adapted from [https://github.com/stuxnet999/MemLabs/blob/master/Lab%200/README.md](https://github.com/stuxnet999/MemLabs/blob/master/Lab%200/README.md)
 
-Memory forensics involves the analysis of a snapshot of memory in a computer that preserves the running state of the computer at the time the snapshot was taken. This allows foresenic examiners to see what users may have been doing on the computer at the time, what processes were running and what data they may have been accessing.
+Memory forensics involves the analysis of a snapshot of memory in a computer that preserves the running state of the computer at the time the snapshot was taken. This allows forensic examiners to see what users may have been doing on the computer at the time, what processes were running and what data they may have been accessing.
 
 We can use memory forensics to identify malware that may have been only resident in memory and never saved on disk. We can also use it for evidence as to the activities of a user at a given time.
 
@@ -30,34 +34,23 @@ These tools create a file that can then be analysed using tools such as Volatili
 
 ### **Memory Analysis**
 
-We'll be analyzing the memory dump file (**Challenge.raw**) using **Volatility 2.6.**
+We'll be analyzing the memory dump file (`Challenge.raw`) using `Volatility 2.6`**.**
 
-Volatility 2 needs to know the version of operating system that the memory dump was from and this determines the specific profile that Volatility uses. To determine this, we can use the command imageinfo.
+Volatility 2 needs to know the version of the operating system that the memory dump was from and this determines the specific profile that Volatility uses. To determine this, we can use the command `imageinfo`.
 
 To get started, run the docker container:
 
-{% tabs %}
-{% tab title="Windows/Apple Intel" %}
-```bash
-docker pull cybernemosyne/cits1003:volatility
-docker run -it cybernemosyne/cits1003:volatility
 ```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
+docker pull uwacyber/cits1003-labs:volatility
+docker run -it uwacyber/cits1003-labs:volatility
 ```
-docker pull cybernemosyne/cits1003:volatility-x
-docker run -it cybernemosyne/cits1003:volatility-x
-```
-{% endtab %}
-{% endtabs %}
 
-Change into the directory /opt/memory
+Change into the directory `/opt/memory`
 
-Run the command **imageinfo** to get the following output:
+Run the command `imageinfo` to get the following output:
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw imageinfo
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw imageinfo
 Volatility Foundation Volatility Framework 2.6.1
 INFO    : volatility.debug    : Determining profile based on KDBG search...
           Suggested Profile(s) : Win7SP1x86_23418, Win7SP0x86, Win7SP1x86_24000, Win7SP1x86
@@ -72,13 +65,12 @@ INFO    : volatility.debug    : Determining profile based on KDBG search...
              KUSER_SHARED_DATA : 0xffdf0000L
            Image date and time : 2018-10-23 08:30:51 UTC+0000
      Image local date and time : 2018-10-23 14:00:51 +0530
-root@3fc5f73f4a8e:/opt/memory# 
 ```
 
-The output returns a number of possible profiles that could be used. We can refine this by using another plugin called **kdbgscan**
+The output returns a number of possible profiles that could be used. We can refine this by using another plugin called `kdbgscan`
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw kdbgscan 
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw kdbgscan 
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 Instantiating KDBG using: /opt/memory/Challenge.raw WinXPSP2x86 (5.1.0 32bit)
@@ -121,7 +113,7 @@ PsLoadedModuleList            : 0x82759730
 KernelBase                    : 0x82604000
 ```
 
-So we can now use the profile WinXPSP2x86 which is the Windows XP Service Pack 2 version of the OS.
+So we can now use the profile `WinXPSP2x86` which is the Windows XP Service Pack 2 version of the OS.
 
 Now as a forensic analyst, one of the most important things we would like to know from a system during analysis would be:
 
@@ -132,10 +124,10 @@ Now as a forensic analyst, one of the most important things we would like to kno
 
 And many more...
 
-Now, to list the active or running processes, we use the help of the plugin **pslist**.
+Now, to list the active or running processes, we use the help of the plugin `pslist`.
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 pslist
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 pslist
 Volatility Foundation Volatility Framework 2.6.1
 Offset(V)  Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start                          Exit                          
 ---------- -------------------- ------ ------ ------ -------- ------ ------ ------------------------------ ------------------------------
@@ -173,26 +165,26 @@ Offset(V)  Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Star
 0x851a5cd8 conhost.exe            2104    380      2       52      1      0 2018-10-23 08:30:18 UTC+0000                                 
 0x845a8d20 DumpIt.exe             2412    324      2       38      1      0 2018-10-23 08:30:48 UTC+0000                                 
 0x84d83d20 conhost.exe            2424    380      2       51      1      0 2018-10-23 08:30:48 UTC+0000                                 
-root@3fc5f73f4a8e:/opt/memory# 
+root@0dfc31c0c084:/opt/memory# 
 ```
 
 Executing this command gives us a list of processes which were running when the memory dump was taken. The output of the command gives a fully formatted view which includes the name, PID, PPID, Threads, Handles, start time etc..
 
 Observing closely, we notice some processes which require some attention.
 
-* **cmd.exe**
+* `cmd.exe`
   * This is the process responsible for the command prompt. Extracting the content from this process might give us the details as to what commands were executed in the system
-* **DumpIt.exe**
+* `DumpIt.exe`
   * This process was used by me to acquire the memory dump of the system.
-* **Explorer.exe**
+* `Explorer.exe`
   * This process is the one which handles the File Explorer.
 
-Now since we have seen that **cmd.exe** was running, let us try to see if there were any commands executed in the shell/terminal.
+Now since we have seen that `cmd.exe` was running, let us try to see if there were any commands executed in the shell/terminal.
 
-For this, we use the **cmdscan** plugin.
+For this, we use the `cmdscan` plugin.
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 cmdscan
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 cmdscan
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 CommandProcess: conhost.exe Pid: 2104
@@ -223,10 +215,10 @@ If you can see from the above, a Python file was executed. The executed command 
 
 `C:\Python27\python.exe C:\Users\hello\Desktop\demon.py.txt`
 
-So our next step would be check if this python script sent any output to **stdout**. For this, we use the **consoles** plugin.
+So our next step would be to check if this python script sent any output to `stdout`. For this, we use the `consoles` plugin.
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 consoles
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 consoles
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 ConsoleProcess: conhost.exe Pid: 2104
@@ -257,14 +249,14 @@ C:\Users\hello>C:\Python27\python.exe C:\Users\hello\Desktop\demon.py.txt
 <SNIP...>
 ```
 
-We see that a certain string `335d366f5d6031767631707f` has been written out to **stdout**. If you put this text into a HEX to ASCII converter online, you will see that it produces rubbish and so it is likely to be encrypted.
+We see that a certain string `335d366f5d6031767631707f` has been written out to `stdout`. If you put this text into a HEX to ASCII converter online, you will see that it produces rubbish and so it is likely to be encrypted.
 
 We will leave this for now and carry on with our investigation.
 
-All operating systems support the concept of environment variables. These can be used by programs to customise how they are run, where they look for, or write, files, etc. We can use the envars command for volatility:
+All operating systems support the concept of environment variables. These can be used by programs to customise how they are run, where they look for, or write, files, etc. We can use the `envars` command for volatility:
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 envars  
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 envars  
 Volatility Foundation Volatility Framework 2.6.1
 Pid      Process              Block      Variable                       Value
 -------- -------------------- ---------- ------------------------------ -----
@@ -307,16 +299,16 @@ Pid      Process              Block      Variable                       Value
     <SNIP...>
 ```
 
-We are mainly interested in the environment variables for the cmd.exe process that was running the Python file. If you look at the environment variables, there is one called Thanos (A fictional supervillain) that has text which says "xor and password". So, let us try and brutefoce the hex characters we got with XOR.
+We are mainly interested in the environment variables for the `cmd.exe` process that was running the Python file. If you look at the environment variables, there is one called Thanos (A fictional supervillain) that has text which says "xor and password". So, let us try and brutefoce the hex characters we got with XOR.
 
-We can do this in Cyberchef using 2 recipes. The first is FromHex which converts the Hex characters to ASCII, the second is XOR Brute Force which will successively try numbers from 1 to 100 and XOR them against the input. Looking through the output, we see that the 2nd entry is "1\_4m\_b3tt3r}" which looks like slightly meaningful text since it is Leet for "I am better" (and has the format of half of a flag for the challenge).
+We can do this in _Cyberchef_ (see lab 2 if you forgot...) using 2 recipes. The first is `FromHex` which converts the Hex characters to ASCII, the second is `XOR Brute Force` which will successively try numbers from 1 to 100 and XOR them against the input. Looking through the output, we see that the 2nd entry is `1_4m_b3tt3r}` which looks like slightly meaningful text since it is Leet for "I am better" (and has the format of half of a flag for the challenge).
 
-Volatility can also extract password hashes from accounts and we can try that using the **hashdump** command.
+Volatility can also extract password hashes from accounts and we can try that using the `hashdump` command.
 
-Well, the next part is `password`. Using volatility, we can extract the NTLM password hashes using the **hashdump** plugin.
+Well, the next part is `password`. Using volatility, we can extract the NTLM password hashes using the `hashdump` plugin.
 
 ```bash
-root@3fc5f73f4a8e:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 hashdump
+root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 hashdump
 Volatility Foundation Volatility Framework 2.6.1
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
@@ -325,7 +317,7 @@ hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
 
 These hashes are in a particular format that Microsoft used for passwords called NTLM. The specific hash we are interested in is the NT hash which is the number : `101da33f44e92c27835e64322d72e8b7`.
 
-To crack this, we are going to use a program called John The Ripper, or john for short. Create a file called hash.txt and insert the entire hash line into it:
+To crack this, we are going to use a program called `John The Ripper`, or john for short. Create a file called `hash.txt` and insert the entire hash line into it:
 
 ```bash
 hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
@@ -334,22 +326,48 @@ hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
 Then run john using the following command:
 
 ```bash
-..:/opt/memory# /opt/john/run/john  --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt 
+root@0dfc31c0c084:/opt/memory# /opt/john/run/john --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt
 Using default input encoding: UTF-8
 Loaded 1 password hash (NT [MD4 256/256 AVX2 8x3])
-Warning: no OpenMP support for this hash type, consider --fork=4
+Warning: no OpenMP support for this hash type, consider --fork=8
 Press 'q' or Ctrl-C to abort, almost any other key for status
 Warning: Only 13 candidates left, minimum 24 needed for performance.
-flag{you_are_good_but (hello)     
-1g 0:00:00:00 DONE (2021-07-06 05:34) 100.0g/s 1300p/s 1300c/s 1300C/s 123456..1234567890
+flag{you_are_good_but (hello)
+1g 0:00:00:00 DONE (2022-02-14 06:35) 33.33g/s 433.3p/s 433.3c/s 433.3C/s 123456
 Use the "--show --format=NT" options to display all of the cracked passwords reliably
-Session completed. 
+Session completed.
 ```
 
-In this command, we passed a passwords.txt file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for but John works very well normally because people tend to use very easy to guess passwords.
+In this command, we passed a `passwords.txt` file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for, but John works very well normally because people tend to use very easy to guess passwords (you may not, but there are plenty out there).
 
-Once we run John, we get a hit and the passwords is confirmed to be the other half of the flag --> **flag{you\_are\_good\_but**. Concatenating the 2 parts gives us the whole flag.
+Once we run John, we get a hit and the password is confirmed to be the other half of the flag --> `flag{you_are_good_but`. Concatenating the 2 parts gives us the whole flag.
 
 ### Question 1. What was the whole flag?
 
 FLAG: Enter the flag to claim the prize
+
+### Question 2. Inspect cmd.exe
+
+There is another memory dump file `Challenge2.raw`. Inspect this file as above, and in particular, find out what output the `cmd.exe` has generated. The output is not encrypted, but in a different format (which hopefully looks familiar by now) - decode it.
+
+FLAG: Enter the flag you obtained by decoding the output from `cmd.exe`.
+
+## Image retrieval from the memory dump
+
+This section continues to use `Challenge2.raw` file for the analysis.
+
+Because the state of the machine is captured in the memory, it is possible to even view images if an image viewing application was running. Our next item of interest is `mspaint.exe`. The PID of this process is 2424. Luckily, we can dump the mspaint's process memory to extract the image!
+
+So let’s use `memdump` plugin to extract some data.
+
+```
+volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /opt/memory
+```
+
+The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it in Gimp (if you don't have Gimp, you should download and install it on your machine. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
+
+Play around with the viewing settings to see what is written in the image.&#x20;
+
+### Question 3. What was written in the image?
+
+Enter the flag you found in the image.
