@@ -374,8 +374,8 @@ Width: 1500
 
 Height: 350
 
-Do you see what I see?
+Once you open, you would still want to flip and then rotate 180 degrees to read  (although it is still possible to read the flag as is).
 
 ### Question 3. What was written in the image?
 
-Enter the flag you found in the image.
+Do you see what I see? Enter the flag you found in the image.
