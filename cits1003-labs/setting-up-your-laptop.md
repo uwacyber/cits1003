@@ -120,7 +120,47 @@ CONTAINER ID   IMAGE                         COMMAND       CREATED         STATU
 45fe3a838ef0
 ```
 
-Once you have finished with a container, you can remove the image that was downloaded using the Docker Desktop GUI. Remember that anything you have done in the container will be lost when you remove the container.
+By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag:
+
+```
+PS C:\> docker run -it --rm uwacyber/cits1003-labs:bash
+```
+
+This will automatically remove the container so you don't have to go to GUI to do it (of course, nothing you do in this container will be saved).
+
+If you saved the container and wants to restart that container that has stopped, first find the container ID you want to restart:
+
+```
+docker ps -a
+```
+
+Next, restart the container:
+
+```
+docker start -ai container_id
+```
+
+Here, the container ID is retrieved from the first column from the previous step (copy and paste).
+
+Finally, once you have finished with a container, you can remove the container that was saved by:&#x20;
+
+```
+docker rm container_id
+```
+
+Remember that anything you have done in the container will be lost when you remove the container.&#x20;
+
+You can also delete the image downloaded from the Docker Desktop GUI, or from the command line find the image ID (column `IMAGE ID`):
+
+```
+docker images
+```
+
+Delete the docker image:
+
+```
+docker rmi image_id
+```
 
 We will be using containers in the various labs and so you will learn more about using Docker and how containers work generally as we proceed.
 
