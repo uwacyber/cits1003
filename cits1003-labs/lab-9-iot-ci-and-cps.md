@@ -131,14 +131,6 @@ This code file is responsible for showing this page to capture a MAC address for
 
 ![Screen handled by boardDataWW.php](../.gitbook/assets/screen-shot-2021-07-09-at-2.26.16-pm.png)
 
-I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
-
-{% hint style="info" %}
-Currently, the emulator is running at [http://34.66.53.228](http://34.66.53.228) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
-
-If the address doesn't work, please let the Unit Coordinator know.
-{% endhint %}
-
 When the user enters a MAC address and clicks the submit button, the code above checks that it has been sent a valid MAC address (12 characters, alphanumeric) and a region code, and then it passes that to a command line utility called `wr_mfg_data`. If the MAC address was `f8ffc201fae5` and region code was 1, the command that would be executed would be:
 
 ```bash
@@ -155,7 +147,15 @@ To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the t
 
 ### Testing the Vulnerability
 
-Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator as I have setup above. There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
+Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
+
+{% hint style="info" %}
+Currently, the emulator is running at [http://34.66.53.228](http://34.66.53.228) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
+
+If the address doesn't work, please let the Unit Coordinator know.
+{% endhint %}
+
+There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
 
 ```bash
 root@c3e1d7ac5055:/opt/samples/WNAP320# ./exploit.py 34.66.53.228 /etc/passwd
@@ -183,6 +183,8 @@ Because this emulator will be shared with other students, you may see different 
 {% endhint %}
 
 If you are interested, you can look at the code in the Python script `exploit.py`. It takes two arguments, the address of the emulation and the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to (but it is outside the scope of this unit).
+
+If you would like to setup the emulation yourself and test it, I have included the instructions in the [Setup Your Emulation on Google Cloud](lab-9-iot-ci-and-cps.md#undefined) section.
 
 ## Question 1. Exploit to find the flag
 
@@ -261,3 +263,123 @@ The dir300 is the model number and the other parts of the password don't change 
 **Flag: Enter the password to claim the flag**
 
 Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily.
+
+### \[Optional] Setup Your Emulation on Google Cloud (\~45 mins)
+
+Running the firmware emulation is much easier on Linux systems, but most of you would have either a Windows or Mac machine. So instead, we will use the cloud, in particular Google Cloud, to setup the emulation.
+
+#### Create Google Cloud account
+
+If you haven't done already, create a google cloud account. For the newly joined accounts, Google (as far as I remember) provides free credit which is more than enough for you to do this. Once your account is created, create a project. You may find the tutorial provided by Google useful here.
+
+#### Creating a VM
+
+Emulation VM is a bit different to other VMs, as it requires nested virtualization enabled. By default, the project enables the nested virtualization, but not the VM which we have to do manually. Follow these steps to achieve this:
+
+1. Navigation menu -> compute engine -> disks -> create disk
+2. give the disk a name. e.g., `ubuntu1804`
+3. select region and zone, that supports Haswell or later processors (which is the majority). For example, I just selected US central, but Syndey would also work.
+4. Select the source image of ubuntu-1804-\[latest variant].
+5. set the disk size - 20GB is sufficient for this emulation.
+6. Create.
+
+Now, to enable the VMX (nested virtualization), open the cloud console (activate cloud shell at the top right side). Then, type in:
+
+```
+$ gcloud compute images create [IMAGE NAME] --source-disk-zone [DISK ZONE] --source-disk [DISK NAME] \
+  --licenses "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
+```
+
+The image name is set by you (e.g., `iot-emulation-image`). Other items should be filled in from the previous steps. Once done, now we can create the VM instance:
+
+1. compute engine -> create instance.
+2. enter the name e.g., `iot-emulator`.
+3. configure the hardware specs. For this emulation, `E2 small` is sufficient.
+4. select the boot disk to be the image created above.
+5. allow http traffic.
+
+Now the VM is ready, we need to setup emulator inside the VM. Inside the `VM instances` tab, your newly created instance should be running. Click the `ssh` button under the `connect` column. This should bring up a separate browser with the shell.
+
+We need the root privilege to configure networking, so we will work as root. We do this by running:
+
+```
+sudo passwd root
+[enter your root password]
+su
+```
+
+Now you should be working as root. Next, we install _Firmware Analysis Toolkit (FAT)_, which automates much of the _Firmadyne_ processes (the firmware emulator). Install by running these commands:
+
+```
+git clone https://github.com/attify/firmware-analysis-toolkit
+cd firmware-analysis-toolkit
+./setup.sh
+apt-get install -y libjpeg-dev zlib1g-dev
+```
+
+Next, we have to enable the web service for us to access it via the browser. Do this by installing nginx and running it.
+
+```
+apt-get install -y nginx
+ufw enable
+ufw allow http
+```
+
+Now, open in the editor `/etc/nginx/sites-enabled/default`.
+
+Replace the existing location block with the following:
+
+```
+location / {
+	proxy_pass [address of the emulation];
+}
+```
+
+For example, our NetGear WNAP320 firmware with address `192.168.0.100`, it would be:
+
+```
+location / {
+	proxy_pass http://192.168.0.100;
+}
+```
+
+Now, restart nginx and check it is running
+
+```
+service nginx restart
+service nginx status
+```
+
+The output should look like this:
+
+```
+/etc/nginx$ service nginx status
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2022-02-17 06:40:52 UTC; 15s ago
+     Docs: man:nginx(8)
+  Process: 1266 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+  Process: 1083 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+ Main PID: 1283 (nginx)
+    Tasks: 3 (limit: 1116)
+   CGroup: /system.slice/nginx.service
+           ├─1283 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           ├─1284 nginx: worker process
+           └─1285 nginx: worker process
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+```
+
+We are now ready to emulate!
+
+1. load the firmware into the VM (e.g., `wget http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip)`
+2. unzip, and extract the tar file.
+3. copy the `rootfs.squashfs` into the `firmware analysis toolkit` folder.
+4. start emulation e.g., `./fat.py rootfs.squashfs`
+
+Once the emulation is running, you can access by going to the external address of your VM. You can locate your `external IP address` of your VM in the `VM instances` tab. Press the link, and you should be able to access the router interface that you just have setup.
+
+{% hint style="danger" %}
+Once you finish playing with your emulator, make sure the **STOP** your VM - otherwise you will continue to lose your Google Cloud credit, and once it runs out you have to pay!
+
+Also, storing disks on Google Cloud gets charged (although very small), so if you won't be using it later, delete all disks and images as well.
+{% endhint %}
