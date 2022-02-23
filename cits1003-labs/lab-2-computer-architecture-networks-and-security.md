@@ -493,3 +493,41 @@ root@c31804846451:/# ls -al file.txt
 Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to figure out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
+
+## **Case study: Dirty COW**
+
+Dirty COW (Dirty copy-on-write) is a computer security vulnerability for the Linux kernel that affected all Linux-based operating systems, including Android devices, that used older versions of the Linux kernel created before 2018. It is a local privilege escalation bug that exploits a race condition in the implementation of the copy-on-write mechanism in the kernel's memory-management subsystem. Computers and devices that still use the older kernels remain vulnerable.
+
+Watch the following Computerphile Youtube video and answer the questions below: [https://www.youtube.com/watch?v=CQcgz43MEZg](https://www.youtube.com/watch?v=CQcgz43MEZg)
+
+### **Question 3. Kernel's role**
+
+Which of the following is not true?&#x20;
+
+1. The kernel is provided with a protected Kernel Space which is a separate area of memory. This area is shared with other application programs that require privileged access to resources.&#x20;
+2. The kernel is the program that constitutes the central core of an operating system.&#x20;
+3. The kernel is the first part of the operating system to be loaded into memory during the booting process.&#x20;
+4. The kernel is responsible for managing resources, allowing multiple processes to use the resources and provide services to various processes.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 4. Kernel's tasks
+
+Which of the options below matches the access level to its protection ring label?&#x20;
+
+1. Kernel: 0, Device Drivers: 1, Applications: 2&3&#x20;
+2. Kernel: 0, Device Drivers: 1 & 2, Applications: 3&#x20;
+3. Kernel: 0, Device Drivers: 2 & 3, Applications: 1&#x20;
+4. Kernel: 3, Device Drivers: 2 & 1, Applications: 0
+
+### Question 5. Privilege escalation
+
+The Dirty COW exploit allows an attacker to obtain root permissions on a Linux device. The process of elevating a user account’s permissions is known as privilege escalation. Which is not a description of malicious activities that can be performed due to this?&#x20;
+
+1. Certain binaries and files can not be and can only be modified or written to by a user of higher permissions, such as the root. If these can now be modified, an attack could change a file so that it performs additional, unexpected functions, such as keylogging.&#x20;
+2. A root shell can be accessed to perform arbitrary Linux commands, such as changing the root password.&#x20;
+3. An attack could infect privileged files with malicious code, such as a virus. When a user starts a program which has been infected they will inadvertently allow this virus to run. If this program is now run with root privileges, the virus will have those same privileges and cause damage to usually restricted files and systems.&#x20;
+4. A backdoor could be written into a binary file which would give an attacker root access at any time without knowing the actual root password.&#x20;
+5. None of the above

@@ -138,3 +138,45 @@ The `awk` command will chunk each line based on text separated by spaces (`-F ' 
 
 The other thing to remember is that the address range `192.168.0.0` to `192.168.255.255` is non-routable across the Internet (i.e. it is a private IP address range meant for internal networks).
 {% endhint %}
+
+## Case study: ACSC Guidelines for Cybersecurity Incidents
+
+The Australian Cyber Security Center (ACSC) provides some guidelines for organizations of all levels (individuals, small business, corporate, government) on how to detect, manage, and report cybersecurity incidents.
+
+Read through the following article and answer the questions below: [https://www.cyber.gov.au/acsc/view-all-content/advice/guidelines-cyber-security-incidents](https://www.cyber.gov.au/acsc/view-all-content/advice/guidelines-cyber-security-incidents)
+
+### Question 4. Log it
+
+System logs are an effective tool in detecting and investigating cyber security incidents. Which data source best fits the description: Logs that contain records of the requests made by both applications and users on a network.&#x20;
+
+1. Domain Name System logs&#x20;
+2. Email server logs&#x20;
+3. Operating system event logs&#x20;
+4. Security product logs&#x20;
+5. Virtual Private Network and remote access logs&#x20;
+6. Web proxy logs
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 5. Don't spill your data
+
+A data spill is the accidental or deliberate exposure of data into an uncontrolled or unauthorized environment, or to unauthorized persons. The sequence of actions listed below form a timeline of response actions to a potential data spill. Which is the least sensible course of action given its position in the sequence:&#x20;
+
+1. Identify: Recognise that a data spill has taken place.&#x20;
+2. Contain: Determine the breadth of the data spill.&#x20;
+3. Quantify: Determine the quantifiable loss and/or damages to the organization.&#x20;
+4. Assess: Decide on the most appropriate course of action to address the data spill.&#x20;
+5. Remediate: Remediate the data spill based on the course of action chosen.&#x20;
+6. Prevent: Implement prevention measures to stop similar incidents from occurring in the future.
+
+### Question 6. Not all security recommendations are great...
+
+The Australian Government Information Security Manual provides recommendations and guidance for a wide range of cyber security matters. Organizations are encouraged to apply the recommended security controls where appropriate within their risk management frameworks. What is not a recommended security control for handling and containing intrusions?&#x20;
+
+1. System owners are consulted before allowing intrusion activity to continue on a system for the purpose of collecting further data or evidence.&#x20;
+2. Intrusion detection and prevention strategy is developed and implemented that includes at least network-based intrusion detection and prevention, procedures and resources for maintaining detection signatures, and procedures and resources for the analysis of event logs and real-time alerts&#x20;
+3. To the extent possible, all intrusion remediation activities are conducted in a coordinated manner during the same planned outage.&#x20;
+4. Legal advice is sought before allowing intrusion activity to continue on a system for the purpose of collecting further data or evidence.&#x20;
+5. Following intrusion remediation activities, full network traffic is captured for at least seven days and analyzed to determine whether the adversary has been successfully removed from the system.

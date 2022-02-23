@@ -181,3 +181,77 @@ docker run -it --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs
 **Flag: After running `usersim`, look at the emails in MailDev. You should see the flag.**
 
 Note: change the square brackets to curly brackets when submitting the flag.
+
+## Case study: 2020 Twitter Account Hijacking
+
+“On July 15, 2020, between 20:00 and 22:00 UTC, reportedly 130 high-profile Twitter accounts were compromised by outside parties to promote a bitcoin scam. Twitter and other media sources confirmed that the perpetrators had gained access to Twitter's administrative tools so that they could alter the accounts themselves and post the tweets directly. They appeared to have used social engineering to gain access to the tools via Twitter employees. Three individuals were arrested by authorities on July 31, 2020, and charged with wire fraud, money laundering, identity theft, and unauthorized computer access related to the scam.
+
+The scam tweets asked individuals to send bitcoin currency to a specific cryptocurrency wallet, with the promise of the Twitter user that money sent would be doubled and returned as a charitable gesture. Within minutes from the initial tweets, more than 320 transactions had already taken place on one of the wallet addresses, and bitcoin to a value of more than US$110,000 had been deposited in one account before the scam messages were removed by Twitter.”
+
+[https://en.wikipedia.org/wiki/2020\_Twitter\_account\_hijacking](https://en.wikipedia.org/wiki/2020\_Twitter\_account\_hijacking)
+
+### Question 2. Describe the phish
+
+On July 14, 2020, one or more hackers called several Twitter employees and claimed to be calling from the Help Desk in Twitter’s IT department. The hackers claimed they were responding to a reported problem the employee was having with Twitter’s VPN, which was a reportedly legitimate issue for Twitter at the time. The hackers then tried to direct the employee to a phishing website that looked identical to the legitimate Twitter VPN website and was hosted by a similarly named domain. As the employee entered their credentials into the phishing website, the hackers would simultaneously enter the information into the real Twitter website. This false log-in generated an MFA notification requesting that the employees authenticate themselves, which some of the employees did. [https://www.dfs.ny.gov/Twitter\_Report](https://www.dfs.ny.gov/Twitter\_Report)&#x20;
+
+What type of phishing best describes this attack?
+
+* Whale phishing&#x20;
+* Vishing&#x20;
+* Spear phishing&#x20;
+* Email phishing
+
+{% hint style="info" %}
+Submit the correct option as your flag with spaces replaced with underscores (e.g., `CITS1003{Whale_phishing}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 3. Convincing phishes
+
+The image below shows an example of a scam tweet coming from a compromised Twitter account (Apple in this case). Which is the least likely reason that a Twitter user coming across this post would fall for this scam?&#x20;
+
+1. The promise of wealth for minimal effort.&#x20;
+2. People tend to trust high-profile, twitter-verified accounts, making the bitcoin offer seem genuine.&#x20;
+3. To support the wave of endorsements of cryptocurrencies by well-known figures. People coming across the scam may be financially desperate, leading to uninformed decision-making.&#x20;
+4. The sense of urgency due to the limited time offer.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+{% endhint %}
+
+![Convincing(?) email from Apple for Question 3.](https://lh3.googleusercontent.com/9LpjatCPeSyJXL3MM9jsv9MJWW94OLmUM8Argw59V2Pfqd0SY1P-9UH1LiU6K45OYLSo5atyfgV1YTaJP3gWN66OmyhyXKD1taFxew4oNfVBhfZhbYTHaVkvpRrLEzNj8ztUPO42)
+
+### Question 4. Bad mitigations
+
+Which of the following recommendations would be least effective at mitigating a similar attack?&#x20;
+
+1. Implementing a company-wide policy that prevents sharing login credentials over the phone.&#x20;
+2. Improving or commencing education programs to help employees identify phishing attempts and increase cybersecurity awareness.&#x20;
+3. When making internal calls, the caller must preface communications with standardized identification checklist questions, e.g. caller must ask for full name, date of birth and address.&#x20;
+4. Upgrading current MFA methods to hardware MFA which involves using a physical USB key and plugging it into a computer to authenticate users. Ans: 3 (if scammer knows this checklist then they can just ask these routine questions with minimal suspicion)
+
+## Case study 2: Scams and Phishing at UWA
+
+The University receives more than two million emails every day. More than 95 per cent of these are malicious and do not get delivered as they can cause harm.
+
+Read through the following article and answer the question below: [https://cybersecurity.it.uwa.edu.au/stay-secure/email-scams-phishing](https://cybersecurity.it.uwa.edu.au/stay-secure/email-scams-phishing)
+
+### Question 5. University IT's tips
+
+What is not one of the four tips the University IT provides in helping recognise phishing scams?&#x20;
+
+1. Check if the sender has supplied valid contact details in the email.&#x20;
+2. Identify misspellings in otherwise legitimate domain names, e.g. @rnicrosoft.com&#x20;
+3. Validating the sender email suffix; check that the address ends in @uwa.edu.au&#x20;
+4. If the email is asking you to send through personal details, it is likely a phishing attempt.&#x20;
+5. Check the list of recipients on the email, as phishing attempts often will try and target a large number of people.
+
+### Question 6. Report them phishes
+
+You can report emails you suspect to be phishing emails in Outlook by using the Report Message dropdown and selecting the \_\_\_\_\_\_\_\_ option:&#x20;
+
+* Junk&#x20;
+* Phishing&#x20;
+* Not Junk&#x20;
+* Options…&#x20;
+* Help
+

@@ -164,7 +164,7 @@ docker rmi image_id
 
 We will be using containers in the various labs and so you will learn more about using Docker and how containers work generally as we proceed.
 
-## Question 1. Find your first flag
+### Question 1. Find your first flag
 
 Go back to the bash docker container. There is a file called flag.txt hidden somewhere. Can you find it?
 
@@ -194,6 +194,45 @@ There will be a file called flag.txt in the directory. We can view the contents 
 
 **Flag: Submit the flag on the CTF server that you just found!**
 
-## Final Thoughts
+## Case study: The World’s First Data Embassy
 
-There is other software that you will need to install as we progress through the labs but we will deal with those as they arise.
+“Through its e-Estonia initiative, Estonia has built a digital society and developed the most technologically advanced government in the world. Practically every government service is paperless and performed electronically. As a result, Estonia is highly dependent on its information systems and the data stored on them. To protect its data, Estonia developed the concept of data embassies – servers outside the country that are legally under Estonian jurisdiction. The digital copies of key databases they store can be accessed in the event of a major data incident in the country, thereby protecting the digital lifeblood of this small Nordic country. Estonia is on its way to becoming a “country without borders”, and the data embassy is one of several Estonian programmes that blurs the lines of national borders and sovereign identity in a digital world.”
+
+Read through the following article and answer the questions below: [https://www.oecd.org/gov/innovative-government/Estonia-case-study-UAE-report-2018.pdf](https://www.oecd.org/gov/innovative-government/Estonia-case-study-UAE-report-2018.pdf)
+
+### Question 2. CIA
+
+The ​​2007 wave of cyber attacks against Estonian government agencies, banks and media websites were in the form of Distributed Denial of Service (DDoS) attacks. These resulted in disruptions to the display of Estonian internet sites. This is primarily a violation of which aspect of cybersecurity?&#x20;
+
+* Confidentiality&#x20;
+* Integrity&#x20;
+* Availability&#x20;
+* Authentication&#x20;
+* Accountability
+
+{% hint style="info" %}
+Submit your flag with the correct answer (e.g., `CITS1003{Confidentiality}` if option 1 was the correct answer).
+{% endhint %}
+
+### Question 3. Authentication types
+
+In Estonia, every citizen receives an electronic-ID in the form of an 11 digit personal identification number from the government. The ID is additionally issued with PIN codes enabling the person to use e-ID functionalities such as accessing state and private sector e-services. Primary electronic identification comes with a physical ID card, which is a mandatory identification document in Estonia. This form of identification can also be carried oute digitally, such as via mobile-ID. Additionally, during the application for obtaining this card, the applicant must be physically identified by Police and Border Guard officials at least once during the application process. Based on solely the above information, which type of authentication does this electronic-ID provide?&#x20;
+
+* Type 1&#x20;
+* Type 2&#x20;
+* Type 3&#x20;
+* Type 4
+
+{% hint style="info" %}
+Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{Type_1}` if option 1 was the correct answer).
+{% endhint %}
+
+### Question 4. CIA returns
+
+The article describes data centers in Estonia and Luxembourg and the associated challenges in keeping data in sync across them. One possible method could be providing object metadata by default for every object stored in the data center. This may include the entry date, content length, the last modified date and a hash of the content. Dissimilarities in metadata between data centers for the same object could help detect discrepancies. This measure would help maintain which aspect of cybersecurity?&#x20;
+
+* Confidentiality&#x20;
+* Integrity&#x20;
+* Availability&#x20;
+* Authorisation&#x20;
+* Non-repudiation

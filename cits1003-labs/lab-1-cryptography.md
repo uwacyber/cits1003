@@ -18,7 +18,7 @@ There is no walkthrough video for this lab, please talk to one of our facilitato
 * AES
 * PGP
 
-****
+***
 
 ### Ciphers
 
@@ -470,3 +470,36 @@ Can you retrieve the plaintext?
 ```
 
 **Flag: Enter the plaintext**
+
+## **Case study: Lava Lamps and Random Numbers**
+
+“Randomness is extremely important for secure encryption. Each new key that a computer uses to encrypt data must be truly random, so that an attacker won't be able to figure out the key and decrypt the data. However, computers are designed to provide predictable, logical outputs based on a given input. They aren't designed to produce the random data needed for creating unpredictable encryption keys.
+
+To produce the unpredictable, chaotic data necessary for strong encryption, a computer must have a source of random data. The "real world" turns out to be a great source for randomness, because events in the physical world are unpredictable.
+
+As one might expect, lava lamps are consistently random. The "lava" in a lava lamp never takes the same shape twice, and as a result, observing a group of lava lamps is a great source for random data.”
+
+Read through the following article and answer the questions below:&#x20;
+
+****[**https://www.cloudflare.com/en-au/learning/ssl/lava-lamp-encryption/**](https://www.cloudflare.com/en-au/learning/ssl/lava-lamp-encryption/)****
+
+### Question 6. Cryptography strategy
+
+Why are lava lamps used as part of Cloudflare’s cryptography strategy?&#x20;
+
+1. Hidden inside the lava lamps are physical encryption modules, where having many of them connected in series provides strong cryptographic performance.&#x20;
+2. The vibrant ambience in the Cloudflare office improves employee morale, thus increasing encryption productivity.&#x20;
+3. The vectorized image taken of the lava lamp array can be used as a sufficiently random encryption key.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 7. Importance of cryptography strategy
+
+Why is this strategy important?&#x20;
+
+1. If the encryption key is predictable, mathematical analysis can be used to compromise the key, which can lead to malicious attacks against, or misuse of the service.&#x20;
+2. The electricity used by the lava lamp array can be recorded as a business expense and contributes to a sizable tax offset on other expenses.&#x20;
+3. It is important, but less important than Cloudflare’s choice of robust encryption algorithms.
+
