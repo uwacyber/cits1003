@@ -379,3 +379,41 @@ Once you open, you would still want to flip and then rotate 180 degrees to read 
 ### Question 3. What was written in the image?
 
 Do you see what I see? Enter the flag you found in the image.
+
+## Case study: Legal Issues in Digital Forensics
+
+In 2015, researchers at Purdue University conducted a study to explore the different issues seen in the prosecution of digital forensic investigations. The study looks at 100 cases from different US federal appellate courts to analyze the cause of the appeal.
+
+Read through the following conference paper and answer the questions below: [https://commons.erau.edu/cgi/viewcontent.cgi?article=1321\&context=adfsl](https://commons.erau.edu/cgi/viewcontent.cgi?article=1321\&context=adfsl)
+
+### Question 4. Appeal cos you can
+
+Which of the following categories had the most number of cases appealed?&#x20;
+
+1. Whether or not an image of an abused child was real, virtual, or computer generated.&#x20;
+2. Sentencing issues which include double counting.&#x20;
+3. Exceeding the scope of the warrant.&#x20;
+4. Standards for probable cause were not met.&#x20;
+5. Errors in a programs’ output or a program not working correctly.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 5. what you see isn't real
+
+A common issue in image analysis is validating the authenticity of an examined image. Which of these is not a technique that can be used in image analysis to verify that its content is real and not generated or manipulated?&#x20;
+
+1. Comparing the bit-wise pixel difference between two instances of an image with different modification dates to check for discrepancies.&#x20;
+2. Using error level analysis to detect the distribution of error introduced after resaving the image at a specific compression rate.&#x20;
+3. Performing principal component analysis to highlight compression artifacts that could be indicative of image manipulation.&#x20;
+4. Perform an exhaustive search over the image pixels to detect if parts of it have been “cloned” elsewhere.
+
+### Question 6. this isn't recommended
+
+Which is a not recommendation that the authors of the study give for conducting better digital forensics?&#x20;
+
+1. More specific training for law enforcement officers in conducting search and seizure procedures for digital evidence.&#x20;
+2. Expanding the scope of search warrants to their highest degree before commencing forensic investigation to ensure no ambiguity in its scope.&#x20;
+3. Scientific testing of digital forensics tools to ensure precision and to refute claims of unreliability.&#x20;
+4. Developing better mechanisms of proving or disproving the authenticity of digital images.

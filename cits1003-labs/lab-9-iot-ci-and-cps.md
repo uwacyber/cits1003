@@ -264,7 +264,46 @@ The dir300 is the model number and the other parts of the password don't change 
 
 Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily.
 
-### \[Optional] Setup Your Emulation on Google Cloud (\~45 mins)
+## Case study: Mirai
+
+At its peak in September 2016, the Mirai malware botnet temporarily crippled several high-profile services such as OVH, Dyn, and Krebs on Security via massive distributed Denial of service attacks (DDoS). OVH reported that these attacks exceeded 1Tbps—the largest on public record (as of Dec 2017).
+
+What’s remarkable about these record-breaking attacks is they were carried out via small, innocuous Internet-of-Things (IoT) devices like home routers, air-quality monitors, and personal surveillance cameras. At its peak, Mirai enslaved over 600,000 vulnerable IoT devices.
+
+Read through the following article and answer the questions below: [https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/](https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/)
+
+### Question 3. What is a botnet?
+
+What is a botnet?&#x20;
+
+1. A piece of software code that inserts itself into a host or operating system to launch DoS attacks.&#x20;
+2. A coordinated network of computers that can scan and compromise other computers and launch DoS attacks.&#x20;
+3. A piece of code in a worm that spreads rapidly and exploits some known vulnerability.&#x20;
+4. A collection of a few hundred hijacked Internet computers that have been set up to forward traffic, including spam and viruses, to other computers on the Internet.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 4. Mirai is attracted to IoT?
+
+What made IoT devices most susceptible to infection by Mirai?&#x20;
+
+1. IoT devices have specific functions that warrant only limited computational abilities, leaving little room for robust security mechanisms and data protection.&#x20;
+2. The external interfaces that IoT devices use to communicate data are often insecure. They typically lack sufficient device authentication and authorization and use weaker encryption mechanisms.&#x20;
+3. Many IoT devices are left unmonitored and unmanaged. While exploits and attack attempts might be easy to detect, the fact that they are rarely maintained allowed Mirai to proliferate successfully uninhibited.&#x20;
+4. Many IoT devices do not have their default login configurations updated when being deployed. Mirai used a list of common default login credentials to compromise devices.
+
+### Question 5. Protect your IoT
+
+Since the release of the Mirai source code, many derived IoT-based botnet variants have spawned and proliferated, such as IoTroop and Mozi. Attacks on IoT devices have become an increasingly concerning issue, with 1.5 billion attacks on IoT devices reported In the first half of 2021. What mitigation strategies could be recommended to improve IoT device security?&#x20;
+
+1. Enforce the change of default credentials before the IoT device can be used.&#x20;
+2. Limit the rate at which an entity can attempt to log in to an IoT device.&#x20;
+3. Make auto-updates mandatory so that IoT devices are always up to date with the latest version.&#x20;
+4. All of the above
+
+## \[Optional] Setup Your Emulation on Google Cloud (\~45 mins)
 
 Running the firmware emulation is much easier on Linux systems, but most of you would have either a Windows or Mac machine. So instead, we will use the cloud, in particular Google Cloud, to setup the emulation.
 

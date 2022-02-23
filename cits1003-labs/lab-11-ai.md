@@ -4,6 +4,8 @@ Walkthrough video:
 
 **AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
 
+## (NOT READY)
+
 ## Intro to AI and Cybersecurity
 
 Artificial Intelligence is a collection of technologies that allows computers to simulate human intelligence. Its applicability in cybersecurity involves all aspects of AI, including natural language processing, speech recognition, expert systems, robotics and vision. Fundamental to these types of AI is machine learning, a technology that uses an approach to learning that tries and mimics the way nerve cells work in the brain.
@@ -310,3 +312,40 @@ It is important to note that machine learning evasion by masquerading as a norma
 **Flag: Type in whoami in the msf console and type in the username as the flag**
 
 If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there.
+
+## Case study: Building Resilience in Autonomous Vehicle Image Recognition
+
+Great strides have been made in recent years in improving autonomous vehicles and their ability to observe the world around them. Nowadays, autonomous vehicles are equipped with state-of-the art sensors that utilize cutting-edge analytics technologies, and are designed to automate, assist or replace many of the functions humans were formerly responsible for. With threats against AI models becoming an issue of increasing importance, the McAfee Advanced Threat Research team (ATR) set out to explore how adversaries could target and evade artificial intelligence, and in doing so, influence awareness, understanding and development of more secure technologies before they are implemented.
+
+Read through the following article and answer the following questions: [https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/)
+
+### Question 4. white vs black
+
+What is the difference between a white-box attack and a black-box attack?&#x20;
+
+1. In white-box attacks the attacker has access to the model's algorithm, while in black-box attacks, the attacker has no access to the algorithm.
+2. In white-box attacks the attacker has access to the model's loss function, while in black-box attacks, the attacker has no access to the loss function.&#x20;
+3. In white-box attacks the attacker has access to the model's parameters, while in black-box attacks, the attacker has no access to these parameters.&#x20;
+4. In white-box attacks the attacker has access to the model's training data, while in black-box attacks, the attacker has no access to the training data.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+{% endhint %}
+
+### Question 5. Did I see that correctly?
+
+ATR’s main focus was improving the resilience of AI models against the misclassification of traffic signs. Which of these is not an experiment designed to cause a traffic sign misclassification?&#x20;
+
+1. Adding a black sticker across this center of speed limit signs to achieve a misclassification of the predicted speed limit.&#x20;
+2. Adding colored stickers to stop signs caused a traffic sign classifier to misclassify the stop sign as an added lane sign.&#x20;
+3. Obstructing significant portions of speed limit signs.&#x20;
+4. Testing the model’s resilience to fluctuations in lighting conditions by constantly varying the camera’s color grading.
+
+### Question 6. Protect your AI
+
+Which of these is not a valid defense against attacks on AI systems&#x20;
+
+1. Limit access to detailed information about the AI model.&#x20;
+2. Build models using algorithms that are transformation invariant.&#x20;
+3. Training models with adversarial inputs.&#x20;
+4. Include perturbations in the training data to increase resilience against them.
