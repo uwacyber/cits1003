@@ -1,5 +1,9 @@
 # Lab 9: IoT CI & CPS
 
+{% hint style="warning" %}
+PLEASE NOTE: This lab image uses a lot of storage space (storage size is over 1GB!), so ensure you have enough space on your hard drive before proceeding.
+{% endhint %}
+
 Walkthrough video:
 
 **IoT & CPS 9-1** [https://www.youtube.com/watch?v=nTjmkLGOJZ0](https://www.youtube.com/watch?v=nTjmkLGOJZ0)
