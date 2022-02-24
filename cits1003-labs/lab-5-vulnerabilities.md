@@ -1,10 +1,12 @@
 # Lab 6: Vulnerabilities
 
+{% hint style="warning" %}
+PLEASE NOTE: This lab image uses a lot of storage space (storage size is over 2.5GB!), so ensure you have enough space on your hard drive before proceeding.
+{% endhint %}
+
 Walkthrough video:
 
 **Vulnerabilities 6-1** [https://www.youtube.com/watch?v=UgY3n4xplR4](https://www.youtube.com/watch?v=UgY3n4xplR4)
-
-***
 
 ## What is a vulnerability?
 

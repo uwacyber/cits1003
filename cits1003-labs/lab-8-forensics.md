@@ -1,7 +1,7 @@
 # Lab 8: Forensics
 
 {% hint style="warning" %}
-PLEASE NOTE: This lab image uses a lot of storage space (image size is 1GB!), so ensure you have enough space on your hard drive before proceeding.
+PLEASE NOTE: This lab image uses a lot of storage space (image size is 1GB and storage size is over 3GB!), so ensure you have enough space on your hard drive before proceeding.
 {% endhint %}
 
 Walkthrough video:
