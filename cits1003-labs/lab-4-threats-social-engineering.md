@@ -211,8 +211,9 @@ The image below shows an example of a scam tweet coming from a compromised Twitt
 
 1. The promise of wealth for minimal effort.&#x20;
 2. People tend to trust high-profile, twitter-verified accounts, making the bitcoin offer seem genuine.&#x20;
-3. To support the wave of endorsements of cryptocurrencies by well-known figures. People coming across the scam may be financially desperate, leading to uninformed decision-making.&#x20;
-4. The sense of urgency due to the limited time offer.
+3. To support the wave of endorsements of cryptocurrencies by well-known figures.&#x20;
+4. People coming across the scam may be financially desperate, leading to uninformed decision-making.&#x20;
+5. The sense of urgency due to the limited time offer.
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
@@ -227,7 +228,7 @@ Which of the following recommendations would be least effective at mitigating a 
 1. Implementing a company-wide policy that prevents sharing login credentials over the phone.&#x20;
 2. Improving or commencing education programs to help employees identify phishing attempts and increase cybersecurity awareness.&#x20;
 3. When making internal calls, the caller must preface communications with standardized identification checklist questions, e.g. caller must ask for full name, date of birth and address.&#x20;
-4. Upgrading current MFA methods to hardware MFA which involves using a physical USB key and plugging it into a computer to authenticate users. Ans: 3 (if scammer knows this checklist then they can just ask these routine questions with minimal suspicion)
+4. Upgrading current MFA methods to hardware MFA which involves using a physical USB key and plugging it into a computer to authenticate users.&#x20;
 
 ## Case study 2: Scams and Phishing at UWA
 
