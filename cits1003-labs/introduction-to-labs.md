@@ -24,3 +24,7 @@ This unit requires software that the University IT team can't install on the lab
 {% hint style="info" %}
 It is essential that you reserve at least 10GB of disk space to store the lab files (docker images). You can free disk space by removing completed lab files later.
 {% endhint %}
+
+## Setting up Virtual Machine (VM) to do labs
+
+coming soon...
