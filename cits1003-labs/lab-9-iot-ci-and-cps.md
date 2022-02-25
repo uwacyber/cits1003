@@ -190,7 +190,7 @@ If you are interested, you can look at the code in the Python script `exploit.py
 
 If you would like to setup the emulation yourself and test it, I have included the instructions in the [Setup Your Emulation on Google Cloud](lab-9-iot-ci-and-cps.md#undefined) section.
 
-## Question 1. Exploit to find the flag
+### Question 1. Exploit to find the flag
 
 Flag: Run `exploit.py` and pass the argument `flag.txt`
 
