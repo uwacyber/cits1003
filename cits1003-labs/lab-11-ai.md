@@ -5,7 +5,7 @@ PLEASE NOTE: This lab image uses a lot of storage space (image size is 2.2GB, st
 {% endhint %}
 
 {% hint style="danger" %}
-Please note, you should delete the container once you have finished the lab, as it contains live malware samples that should not be kept on your system. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab contains live malware samples. To minimize the risk, you are required to do this lab within a virtual machine (VM), such as using VirtualBox with Kali Linux image. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. Also, you should delete the container once you have finished the lab to remove all malware samples from your computer. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
