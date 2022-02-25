@@ -4,6 +4,10 @@
 PLEASE NOTE: This lab image uses a lot of storage space (image size is 2.2GB, storage size is almost 4GB!), so ensure you have enough space on your hard drive before proceeding.
 {% endhint %}
 
+{% hint style="danger" %}
+Please note, you should delete the container once you have finished the lab, as it contains live malware samples that should not be kept on your system. You can automatically delete the container by adding `--rm` flag when running the container.
+{% endhint %}
+
 Walkthrough video:
 
 **AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
