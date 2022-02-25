@@ -211,7 +211,7 @@ Linux has a limited set of specific attributes on a file that controls how the f
 
 ### Downloading Files
 
-### Question 1: Find the file
+### Question 1. Find the file
 
 In the "**/root**" directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)"
 
@@ -488,7 +488,7 @@ root@c31804846451:/# ls -al file.txt
 -rwxr--r-- 1 root root 0 Jan 25 07:11 file.txt
 ```
 
-### Question 2: Run for the flag
+### Question 2. Run for the flag
 
 Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to figure out why it won't run.
 
