@@ -1,5 +1,9 @@
 # Lab 7: Incidents
 
+{% hint style="danger" %}
+Please note, you should delete the container once you have finished the lab, as it contains live malware samples that should not be kept on your system. You can automatically delete the container by adding `--rm` flag when running the container.
+{% endhint %}
+
 Walkthrough video:
 
 **Incidents 7-1** [https://www.youtube.com/watch?v=SiGKMrr-qdY](https://www.youtube.com/watch?v=SiGKMrr-qdY)
