@@ -1,7 +1,7 @@
 # Lab 7: Incidents
 
 {% hint style="danger" %}
-Please note, you should delete the container once you have finished the lab, as it contains live malware samples that should not be kept on your system. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab contains live malware samples. To minimize the risk, you are required to do this lab within a virtual machine (VM), such as using VirtualBox with Kali Linux image. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. Also, you should delete the container once you have finished the lab to remove all malware samples from your computer. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
@@ -30,10 +30,6 @@ However, it is also possible that attacks go unnoticed for extended periods of t
 ![NIST Incident Response Lifecycle](../.gitbook/assets/incidentlifecycle.png)
 
 In this lab, we are going to concentrate on the detection and analysis part of the lifecycle. We are going to start with a range of observations that will give us potential indicators of compromise (IOCs) and techniques and procedures and we will eventually identify the specific group that carried out the attack.
-
-{% hint style="danger" %}
-This lab contains live malware samples. To minimize the risk, you are required to do this lab within a virtual machine (VM), such as using VirtualBox with Kali Linux image. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section.
-{% endhint %}
 
 ## Using Yara to identify Malware
 
