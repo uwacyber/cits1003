@@ -5,7 +5,7 @@ PLEASE NOTE: This lab image uses a lot of storage space (image size is 2.2GB, st
 {% endhint %}
 
 {% hint style="danger" %}
-This lab contains live malware samples. To minimize the risk, you are required to do this lab within a virtual machine (VM), such as using VirtualBox with Kali Linux image. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. Also, you should delete the container once you have finished the lab to remove all malware samples from your computer. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab contains live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu or Kali Linux. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
@@ -356,6 +356,10 @@ Signature PDB_20 is not implemented yet!
 Well, this one is still recognised as malware. Obviously, this encoder is not a good fit for the executable we are generating!
 
 It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than with images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that.
+
+{% hint style="danger" %}
+Don't forget to also delete the local volume you created that contains the meterpreter files.
+{% endhint %}
 
 ### Question 3. Who is Metasploit?
 
