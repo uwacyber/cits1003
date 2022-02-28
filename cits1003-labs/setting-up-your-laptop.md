@@ -85,6 +85,12 @@ The process for installing Docker Desktop is straightforward and involves using 
 
 {% embed url="https://www.docker.com/get-started" %}
 
+### Installing Docker on Ubuntu (on your VM)
+
+Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+
+
+
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
 To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following commands (please note, the process may take a while on your machine).
