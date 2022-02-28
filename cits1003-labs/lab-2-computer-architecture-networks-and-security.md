@@ -29,7 +29,7 @@ root@2577070501db:/# pwd
 /
 ```
 
-The pwd command shows that we are in the root directory and when we list the contents of that directory using the **ls -al** command, we will get:
+The `pwd` command shows that we are in the root directory and when we list the contents of that directory using the `ls -al` command, we will get:
 
 ```bash
 root@2577070501db:/# ls -al
@@ -60,45 +60,45 @@ drwxr-xr-x  13 root root 4096 Jun  9 07:27 usr
 drwxr-xr-x   1 root root 4096 Jun  9 07:31 var
 ```
 
-All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. We used the ls command to list the contents of the root directory /. The flags (arguments) -al passed to the ls command means to list all the contents and in a long version. The layout here is a typical format of a Linux file system. We will go through what some of these directories are for but in summary:
+All operating systems have file systems that operate on the basis of a hierarchy of directories or folders. We used the ls command to list the contents of the root directory `/`. The flags (arguments) `-al` passed to the ls command means to list all the contents and in a long version. The layout here is a typical format of a Linux file system. We will go through what some of these directories are for but in summary:
 
-**/** is the root directory and only the user root has access to write in this directory. The user root's home directory is /root.
+**`/`** is the root directory and only the user root has access to write in this directory. The user root's home directory is `/root`.
 
-**/bin** contains user binary executables like ps, ls, ping, grep etc. it is a symbolic link to **/usr/bin**
+**`/bin`** contains user binary executables like `ps`, `ls`, `ping`, `grep` etc. it is a symbolic link to **`/usr/bin`**
 
-**/sbin** contains system binaries like iptables, reboot, fdisk, ifconfig, etc.
+**`/sbin`** contains system binaries like `iptables`, `reboot`, `fdisk`, `ifconfig`, etc.
 
-**/etc** contains configuration files and scripts for services running on the system. Also contains the passwd and shadow files that contain user and password information.
+**`/etc`** contains configuration files and scripts for services running on the system. Also contains the `passwd` and shadow files that contain user and password information.
 
-**/dev** contains device files that are the interface with physical devices on, or attached to, the system such as tty devices /dev/tty1.
+**`/dev`** contains device files that are the interface with physical devices on, or attached to, the system such as tty devices `/dev/tty1`.
 
-**/proc** contains files that store information about system processes like uptime for example.
+**`/proc`** contains files that store information about system processes like uptime for example.
 
-**/var** contains files like logs (/var/logs), backups (/var/backups), mail (/var/mail) and spool (printing; /var/spool). There is also a /var/tmp directory that can be used to run programs out of. This directory does survive reboots however. The directory /var/www/html is often used as the root directory of the web server.
+**`/var`** contains files like logs (`/var/logs`), backups (`/var/backups`), mail (`/var/mail`) and spool (`printing`; `/var/spool`). There is also a `/var/tmp` directory that can be used to run programs out of. This directory does survive reboots however. The directory `/var/www/html` is often used as the root directory of the web server.
 
-**/tmp** contains temporary files as mentioned previously. Files get deleted on reboot.
+**`/tmp`** contains temporary files as mentioned previously. Files get deleted on reboot.
 
-**/usr** contains user binaries, libraries, documentation and source code
+**`/usr`** contains user binaries, libraries, documentation and source code
 
-**/usr/local** contains users programs that you install from source.
+**`/usr/local`** contains users programs that you install from source.
 
-**/home** contains user home directories
+**`/home`** contains user home directories
 
-**/boot** contains boot loader files
+**`/boot`** contains boot loader files
 
-**/lib** contains system libraries
+**`/lib`** contains system libraries
 
-**/opt** contains optional add-on applications
+**`/opt`** contains optional add-on applications
 
-**/mnt** is a location for mounting temporary filesystems
+**`/mnt`** is a location for mounting temporary filesystems
 
-**/media** is a location for mounting removable media devices like CDs
+**`/media`** is a location for mounting removable media devices like CDs
 
-**/srv** contains specific service related data
+**`/srv`** contains specific service related data
 
-Users have a _**home directory**_ which in Windows is usually located in c:\Users, on the Mac it is /Users and on Linux it is in /home. On this container, it will be empty because we only have one user, root, whose home directory is /root
+Users have a _**home directory**_ which in Windows is usually located in c:\Users, on the Mac it is `/Users` and on Linux it is in `/home`. On this container, it will be empty because we only have one user, root, whose home directory is /root
 
-Navigating around can be done using the **cd** (change directory) command with an argument that tells cd which directory you want to move to. Two special shortcuts are the "." (single dot) and ".." (double dot) that specify the current directory and the parent directory respectively.
+Navigating around can be done using the `cd` (change directory) command with an argument that tells cd which directory you want to move to. Two special shortcuts are the "." (single dot) and ".." (double dot) that specify the current directory and the parent directory respectively.
 
 ```bash
 root@2577070501db:/# cd /home
@@ -131,7 +131,7 @@ If you ever want help with a command, you can type _**help \<command>**_ on Wind
 
 Linux has a find command that can be used for finding files. The basic syntax is:
 
-> _**find \<starting directory> -name \<file to find>**_
+> `find <starting directory> -name <file to find>`
 
 find will look in all sub-directories and report on any files that match the name provided
 
@@ -170,7 +170,7 @@ root@2577070501db:/# find / -name host*
 
 ### Hidden Files and other Attributes
 
-In Linux, files that start with a period (.) are hidden from the directory listing command ls. To see them, you need to use the -a flag:
+In Linux, files that start with a period (.) are hidden from the directory listing command ls. To see them, you need to use the `-a` flag:
 
 ```bash
 root@2577070501db:/# ls
@@ -205,15 +205,15 @@ drwxr-xr-x  11 root root 4096 Jan  5 16:50 var
 root@2577070501db:/#
 ```
 
-For the above example, the .dockerenv is the hidden file.
+For the above example, the `.dockerenv` is the hidden file.
 
-Linux has a limited set of specific attributes on a file that controls how the file is accessed. One attribute for example is the Append Only attribute that only allows the write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using _lsattr_ and _chattr_ programs
+Linux has a limited set of specific attributes on a file that controls how the file is accessed. One attribute for example is the _Append Only_ attribute that only allows the write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using _`lsattr`_` ``` and _`chattr`_` ``` programs
 
 ### Downloading Files
 
 ### Question 1. Find the file
 
-In the "**/root**" directory, create a directory called cits1003. In that directory, create a subdirectory called lab3. cd into this directory and then use the command **wget** to download the file located at "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)"
+In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. `cd` into this directory and then use the command `wget` to download the file located at "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)"
 
 ```bash
 # wget https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip              
@@ -234,9 +234,9 @@ master.zip                                                    [   <=>           
 2022-01-25 06:49:59 (6.46 MB/s) - 'master.zip' saved [3552764]
 ```
 
-1. Unzip the file using the command unzip
-2. Rename the directory that was created to opentrace (research how!)
-3. Use the find command to search the opentrace directory for the file **AppDelegate.swift**
+1. Unzip the file using the command `unzip`
+2. Rename the directory that was created to `opentrace` (research how!)
+3. Use the find command to search the `opentrace` directory for the file `AppDelegate.swift`
 
 {% hint style="info" %}
 If you receive an error message "command not found", you can install the package yourself by typing in the shell:
@@ -249,7 +249,7 @@ apt-get install \[package name]
 
 ### Processes
 
-As this is Linux, we can also use the Linux command ps which together with the -AF flags shows all proesses and extended information
+As this is Linux, we can also use the Linux command ps which together with the `-AF` flags shows all proesses and extended information
 
 ```bash
 root@c31804846451:/cits1003/lab3/opentrace# ps -AF
@@ -258,9 +258,9 @@ root         1     0  0  1062  3604   7 06:47 pts/0    00:00:00 bash
 root       279     1  0  1475  2848   1 06:58 pts/0    00:00:00 ps -AF
 ```
 
-In the output, the UID is the ID of the user that owns the process. On this container, that is _root_. The PID is the process ID and since this container is only running a bash shell, that is given the process ID of 1 with a parent process ID (PPID) of 0. The second process is the ps command we actually ran. This has a process ID of 279 (yours will likely be different) and a parent process ID of 1 as it was run from that bash shell.
+In the output, the UID is the ID of the user that owns the process. On this container, that is `root`. The PID is the process ID and since this container is only running a bash shell, that is given the process ID of 1 with a parent process ID (PPID) of 0. The second process is the ps command we actually ran. This has a process ID of 279 (yours will likely be different) and a parent process ID of 1 as it was run from that bash shell.
 
-We can run another bash shell and then try the ps command again:
+We can run another `bash` shell and then try the ps command again:
 
 ```bash
 root@c31804846451:/cits1003/lab3/opentrace# bash
@@ -271,10 +271,10 @@ root       280     1  0  1061  3656   4 06:59 pts/0    00:00:00 bash
 root       283   280  0  1475  3028   6 06:59 pts/0    00:00:00 ps -AF
 ```
 
-We can now see that there are the two bash processes listed. To show the heirarchy, we can use a program called pstree:
+We can now see that there are the two `bash` processes listed. To show the hierarchy, we can use a program called `pstree`:
 
 {% hint style="info" %}
-pstree program is a package part of psmisc, so to install pstree, you must execute:
+If you cannot run `pstree`, you need to install it. `pstree` program is a part of package `psmisc`, so to install `pstree`, you must execute:
 
 apt-get install psmisc
 {% endhint %}
@@ -286,11 +286,11 @@ bash,1
       ☼└─pstree,319 -apG
 ```
 
-So the parent bash process (1) is the parent, or root, of the tree, then the bash shell we ran (280) and finally the pstree command with the arguments -apG (show arguments, process ids and format the symbols).
+So the parent `bash` process (1) is the parent, or root, of the tree, then the bash shell we ran (280) and finally the `pstree` command with the arguments `-apG` (show arguments, process ids and format the symbols).
 
 Being able to show running processes is important when trying to detect processes running that shouldn't be. This is especially true in Windows where malware can disguise itself as a normal running process or even implant itself in a normal process.
 
-To stop a process you can use the kill command with the process id. Sometimes, you can force the process to stop using the -9 command:
+To stop a process you can use the kill command with the process id. Sometimes, you can force the process to stop using the `-9` command:
 
 ```bash
 root@c31804846451:/cits1003/lab3/opentrace# kill -9 280
@@ -309,7 +309,7 @@ cat /proc/<PID>/status
 
 ### Users and Groups
 
-Both Windows and Linux implement Role Based Access Control (RBAC) based on groups of users. On Windows 10, as the principle user of a PC, you will likely have Administrator access and so you will be part of a group called BUILTIN\Administrators. Windows does not let you perform actions as part of this role however, so it will ask you for confirmation when you run an application as Administrator for example.
+Both Windows and Linux implement Role Based Access Control (RBAC) based on groups of users. On Windows 10, as the principle user of a PC, you will likely have Administrator access and so you will be part of a group called `BUILTIN\Administrators`. Windows does not let you perform actions as part of this role however, so it will ask you for confirmation when you run an application as Administrator for example.
 
 You can view details of the users and groups on your machine by looking at Computer Management (only if you have administrator access to the machine).
 
@@ -325,7 +325,7 @@ Again these won't work in PowerShell run on Linux
 
 #### For Linux and Mac
 
-Go back to the bash container you were running above. You can use whoami to get the currently logged in user:
+Go back to the bash container you were running above. You can use `whoami` to get the currently logged in user:
 
 ```bash
 root@c31804846451:~# whoami
@@ -339,7 +339,7 @@ root@c31804846451:~# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
 
-If you want to know all of the groups on the computer, you can list the contents of the file /etc/groups
+If you want to know all of the groups on the computer, you can list the contents of the file `/etc/groups`
 
 ```bash
 root@c31804846451:~# cat /etc/group
@@ -384,7 +384,7 @@ users:x:100:
 nogroup:x:65534:
 ```
 
-You can also list the passwd file which will list all of the users of the system
+You can also list the `passwd` file which will list all of the users of the system
 
 ```bash
 root@c31804846451:~# cat /etc/group
@@ -453,7 +453,7 @@ _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 
 #### Linux
 
-All files on Linux have a user and a group that is assigned specific access to read (r), write (w) and execute (x) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool getfacl. Create a file called file.txt using the command **touch file.txt**. Then run
+All files on Linux have a user and a group that is assigned specific access to read (r), write (w) and execute (x) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool `getfacl`. Create a file called file.txt using the command `touch file.txt`. Then run
 
 {% hint style="info" %}
 _getfacl_ is part of the package _acl_, i.e.,:
@@ -473,14 +473,14 @@ other::r--
 
 We won't go into too much detail but this shows that the user has read and write access, the group root and everyone else has just read access. The file is not marked as being executable and so there is no 'x' involved.
 
-You can also see the permissions using the ls -al command on Mac and Linux
+You can also see the permissions using the `ls -al` command on Mac and Linux
 
 ```bash
 root@c31804846451:/# ls -al file.txt 
 -rw-r--r-- 1 root root 0 Jan 25 07:11 file.txt
 ```
 
-You can change permissions on files and directories using the chmod command. To mark a program as being executable for a user for example you can do:
+You can change permissions on files and directories using the `chmod` command. To mark a program as being executable for a user for example you can do:
 
 ```bash
 root@c31804846451:/# chmod u+x file.txt
@@ -490,7 +490,7 @@ root@c31804846451:/# ls -al file.txt
 
 ### Question 2. Run for the flag
 
-Change directory into /opt/lab3 and run the program showflag to get the flag. You will have to figure out why it won't run.
+Change directory into `/opt/lab3` and run the program `showflag` to get the flag. You will have to figure out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
 
