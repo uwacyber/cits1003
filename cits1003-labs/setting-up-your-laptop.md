@@ -114,6 +114,10 @@ root
 root@9215e663eb9d:/#
 ```
 
+{% hint style="warning" %}
+If you get a `permission denied` message, you should add `sudo` at the beginning of your command.
+{% endhint %}
+
 The _**docker pull**_ command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the _**docker run**_ command as shown above.
 
 In the case of the bash container, to stop it, you simply type _**exit**_. Other containers can be stopped using the _**docker stop**_ command from another terminal. To do this, you need to provide the Container ID which you can do as follows:
