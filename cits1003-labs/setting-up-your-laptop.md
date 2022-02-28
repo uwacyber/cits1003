@@ -108,7 +108,10 @@ a31c7b29f4ad: Pull complete
 Digest: sha256:3aa1540adfa7a7bdd8e0955845e24372d2a7a28d5a9aa45f957abc9714a29aa2
 Status: Downloaded newer image for uwacyber/cits1003-labs:bash
 docker.io/uwacyber/cits1003-labs:bash
-PS C:\> docker run -it uwacyber/cits1003-labs:bash
+```
+
+```
+PS C:\> docker run -it --rm uwacyber/cits1003-labs:bash
 root@9215e663eb9d:/# whoami
 root
 root@9215e663eb9d:/#
@@ -118,12 +121,12 @@ root@9215e663eb9d:/#
 If you get a `permission denied` message, you should add `sudo` at the beginning of your command.
 {% endhint %}
 
-The _**docker pull**_ command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the _**docker run**_ command as shown above.
+The `docker pull` command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the `docker run` command as shown above.
 
-In the case of the bash container, to stop it, you simply type _**exit**_. Other containers can be stopped using the _**docker stop**_ command from another terminal. To do this, you need to provide the Container ID which you can do as follows:
+In the case of the bash container, to stop it, you simply type `exit`. Other containers can be stopped using the `docker stop` command from another terminal. To do this, you need to provide the Container ID which you can do as follows:
 
 ```bash
-0x4447734D4250:~$ docker ps
+0x4447734D4250:~$ docker ps -a
 CONTAINER ID   IMAGE                         COMMAND       CREATED         STATUS         PORTS     NAMES
 45fe3a838ef0   uwacyber/cits1003-labs:bash   "/bin/bash"   3 minutes ago   Up 3 minutes             hungry_hodgkin
 0x4447734D4250:~$ docker stop 45fe3a838ef0

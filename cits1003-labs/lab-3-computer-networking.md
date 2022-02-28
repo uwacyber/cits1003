@@ -83,7 +83,7 @@ For both Mac and Windows, the Graphical User Interface versions of network confi
 Start the docker container and run `ip addr`
 
 ```bash
-/network$ docker run -it  uwacyber/cits1003-labs:network 
+/network$ docker run -it --rm uwacyber/cits1003-labs:network 
 root@d99d71e2318a:/# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -116,7 +116,7 @@ We can see that the gateway address is `172.17.0.1`.
 Let us start another container and do an `ip addr`. You can do this by opening another terminal and using the same `docker run` command as above.
 
 ```bash
-PS H:\> docker run -it uwacyber/cits1003-labs:network      
+PS H:\> docker run -it --rm uwacyber/cits1003-labs:network      
 root@5434bfac0449:/# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -370,7 +370,7 @@ The other DNS service is paired with an HTTP proxy. This is a piece of software 
 Now that we know the basics of using `nmap`, let us use it on a new host. Keep the network container running from above (or start it if you haven't got it running). In a new terminal, start the docker container:
 
 ```
-docker run -p 2222:2222 -it uwacyber/cits1003-labs:cowrie
+docker run -p 2222:2222 -it --rm uwacyber/cits1003-labs:cowrie
 ```
 
 Back in the `network` container, do a ping scan of the `172.17.0.1-16` network and find what hosts are up. Run `nmap` against the IP of the second container you ran using all scripts and versions.
