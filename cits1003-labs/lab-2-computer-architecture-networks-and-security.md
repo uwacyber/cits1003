@@ -24,7 +24,7 @@ On Windows, there is a program called the Command Prompt as well as a program ca
 We are going to stick with Bash which runs on Windows (WSL), Mac OS and Linux. To do this, run the command:
 
 ```bash
-$ docker run -it uwacyber/cits1003-labs:bash
+$ docker run -it --rm uwacyber/cits1003-labs:bash
 root@2577070501db:/# pwd
 /
 ```

@@ -2,6 +2,8 @@
 
 {% hint style="warning" %}
 PLEASE NOTE: This lab image uses a lot of storage space (storage size is over 2.5GB!), so ensure you have enough space on your hard drive before proceeding.
+
+If using Ubuntu VM, ensure to add some extra processing power (e.g., 4GB RAM and 2CPU).
 {% endhint %}
 
 Walkthrough video:
@@ -64,14 +66,14 @@ OWASP Juice Shop is a modern web application that has a range of vulnerabilities
 To run the website, use the Docker command :
 
 ```
-docker run -it -p 3000:3000 uwacyber/cits1003-labs:juiceshop
+docker run -it --rm -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 ```
 
 {% hint style="warning" %}
-Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, you will need to run:
+Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, easiest to do this lab with your friend(s). You can try this command (I have not tested it):
 
 ```
-docker run -it -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juiceshop
+docker run -it --rm -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juiceshop
 ```
 
 This message will be removed if the ARM64 image is successfully built.
@@ -94,7 +96,7 @@ You can run OWASP ZAP as a Docker container by using the command:
 
 `$ docker pull owasp/zap2docker-stable`
 
-`$ docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh`
+`$ docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm owasp/zap2docker-stable zap-webswing.sh`
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
@@ -102,14 +104,14 @@ Remember that since it is running in a container when you need to access the Jui
 {% endhint %}
 
 {% hint style="danger" %}
-Apple M1 users, don't forget to add the `--pltform linux/amd64` flag (zap doesn't support ARM64 yet).
+Apple M1 users, I think you can run by adding the `--platform linux/amd64` flag (zap doesn't support ARM64 yet), but if not, please work with your friend(s) or do this lab on a non-M1 machine.
 {% endhint %}
 
 Open ZAP and configure the software to scan the Juice Shop website:&#x20;
 
 1. In the top left hand corner, select "ATTACK Mode" in the dropdown.&#x20;
 2. Select `Automated Scan` by clicking the button in the right-hand window.&#x20;
-3. Type in the URL of the Juice Shop `http://127.0.0.1:3000` (or `http://host.docker.internal:3000` if using the container version)&#x20;
+3. Type in the URL of the Juice Shop `http://127.0.0.1:3000` (or `http://host.docker.internal:3000` if using the container version, or `http://172.17.0.1:3000` if on Ubuntu VM)&#x20;
 4. Tick both `User traditional spider` and `Use ajax spider with Firefox Headless`, then click "Attack".
 
 The scan will take a (longish) while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
@@ -250,7 +252,7 @@ Go back to the request and change the method to POST. Now we need to pass some d
 {"email":"admin","password":"admin","role":"admin"}
 ```
 
-Actually, this probably didn't work - why? Because the data format we have given is in JSON, but the server may not interprete it as JSON but instead, as a raw text. So, if you don't see a new admin user in the list of users, this is probably what happened. To fix this, we also need to add an extra Header in the request:
+Actually, this probably didn't work - why? Because the data format we have given is in JSON, but the server may not interpret it as JSON but instead, as a raw text. So, if you don't see a new admin user in the list of users, this is probably what happened. To fix this, we also need to add an extra Header in the request:
 
 > Content-Type: application/json
 

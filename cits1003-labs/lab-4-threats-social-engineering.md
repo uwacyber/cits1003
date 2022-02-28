@@ -52,7 +52,7 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 To run Gophish, start the Docker container as follows
 
 ```bash
-$ docker run -p 3333:3333 -p 8880:80 -it uwacyber/cits1003-labs:gophish
+$ docker run -p 3333:3333 -p 8880:80 -it --rm uwacyber/cits1003-labs:gophish
 <SNIP...>
 "Please login with the username admin and the password 9c83d59621ff4573"
 time="2022-02-07T06:57:07Z" level=info msg="Starting IMAP monitor manager"
@@ -64,7 +64,11 @@ time="2022-02-07T06:57:07Z" level=info msg="TLS Certificate Generation complete"
 time="2022-02-07T06:57:07Z" level=info msg="Starting admin server at https://0.0.0.0:3333"
 ```
 
-When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to https://127.0.0.1:3333
+When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to `https://127.0.0.1:3333`
+
+{% hint style="info" %}
+Ubuntu VM users, go to `https://0.0.0.0:3333`
+{% endhint %}
 
 {% hint style="danger" %}
 Gophish uses https and we haven't set up a certificate for it. To proceed to the site, the browser will ask you to accept the risks and proceed. How you do this will depend on the browser.
@@ -76,18 +80,18 @@ You can log in with the user `admin` and the password that was printed out on th
 
 To start, we will create a sending profile.
 
-We are going to run a mail server as another container and so when asked, the hostname for the email server is `host.docker.internal:1025`.
+We are going to run a mail server as another container and so when asked, the hostname for the email server is `host.docker.internal:1025` (Ubuntu VM: `https://172.17.0.1:1025`).
 
 Let us do that now. In another terminal, run the following container:
 
 ```bash
-$ docker run -it -p 1080:1080 -p 1025:1025  uwacyber/cits1003-labs:maildev
+$ docker run -it --rm -p 1080:1080 -p 1025:1025 uwacyber/cits1003-labs:maildev
 MailDev using directory /tmp/maildev-1
 MailDev webapp running at http://0.0.0.0:1080
 MailDev SMTP Server running at 0.0.0.0:1025
 ```
 
-This mailserver will allow you to see what emails are arriving by going to the address `http://127.0.0.1:1080`
+This mailserver will allow you to see what emails are arriving by going to the address `http://127.0.0.1:1080` (Ubuntu VM: `http://0.0.0.0:1080`).
 
 Back to `gophish` site, click on `Sending Profiles` and then add`New Profile` and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server (like Gmail) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server.
 
@@ -160,7 +164,7 @@ Do remember NOT to input your real credentials though (traffic isn't encrypted)!
 We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link (it happens about 30% of the time). In another terminal (while `gophish` and `maildev` still running), run:
 
 ```bash
-$ docker run -it uwacyber/cits1003-labs:usersim 
+$ docker run -it --rm uwacyber/cits1003-labs:usersim 
 deleting Z3MGBGKK
 deleting wMKhhn09
 Clicking on http://host.docker.internal:8880?rid=EDi8ErW
@@ -174,7 +178,7 @@ Linux:
 usersim uses host.docker.internal which Linux containers don't know about so you need to run it as:
 
 ```bash
-docker run -it --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs:usersim
+docker run -it --rm --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs:usersim
 ```
 {% endhint %}
 
