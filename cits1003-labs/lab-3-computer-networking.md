@@ -174,10 +174,6 @@ So now our network looks like this:
 
 ![](../.gitbook/assets/network2.jpg)
 
-{% hint style="warning" %}
-If you are inside an Ubuntu VM, the host IP address would be something like 10.0.2.15.
-{% endhint %}
-
 It is actually a little more complicated than this but we will use another tool to explore the network.&#x20;
 
 ## Scanning the network
@@ -202,9 +198,13 @@ Using the ping command to send 1 ping (`-c 1`), we get a reply which took 1.563 
 
 `nmap` uses different ways of doing the same thing as a ping to determine if a computer is on the network. It isn't always reliable because sometimes computers are configured not to reply to pings, or a firewall will block them.
 
-If mobile devices such as an iPhone is connected to a network, it will stop responding to pings when it is not unlocked. Android phones (currently) do respond however.
+If mobile devices such as an iPhone is connected to a network, it will stop responding to pings when it is not unlocked. Android phones (currently) do respond however (last checked Dec 2021).
 
 Let us go back to our docker container and scan the network `192.168.65.0/24`\*. Just as a reminder, this notation means that we are going to check the computers with IP addresses that range from `192.168.65.0` - `192.168.65.255` (the `/24` means that the network part is `192.168.65` and so is fixed).
+
+{% hint style="info" %}
+Ubuntu VM users, scan `172.17.0.1` - `172.17.0.255`&#x20;
+{% endhint %}
 
 \*here, you should replace this address with the address you have found when pinging `host.docker.internal`.
 
@@ -236,7 +236,7 @@ On this network, we found 5 hosts (your result may vary depending on where you a
 
 `nmap` does have the ability to try and work out what operating system is running on a device and of course will discover services that are running as well. Before we look at that, let us try a different approach by using a script to discover hosts:
 
-The following script is in a file /root/pingsweep.sh
+The following script is in a file `/root/pingsweep.sh`
 
 ```bash
 #!/bin/bash
@@ -345,9 +345,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 5 IP addresses (5 hosts up) scanned in 250.21 seconds
 ```
 
-We run `nmap` using the `-sC` (all scripts) and `-sV` (determine the versions of software providing the services discovered). We specified the hosts to scan as 192.168.65.1-5 to just look at the hosts we found before.
+We run `nmap` using the `-sC` (all scripts) and `-sV` (determine the versions of software providing the services discovered). We specified the hosts to scan as `192.168.65.1-5` to just look at the hosts we found before (replace the range as appropriate).
 
-So what we have is:
+So what we have is (for this example):
 
 * 192.168.65.1 running DNS (53) and an HTTP Proxy (3128)
 * 192.168.65.2 this is the address for my PC (your output may vary)
@@ -363,7 +363,7 @@ root@04f7c0bbd066:/# cat /etc/resolv.conf
 nameserver 192.168.65.5
 ```
 
-The other DNS service is paired with an HTTP proxy. This is a piece of software through which requests for external websites are made. From the Docker documentation, the host 192.168.65.1 is used to proxy requests to the Docker registry, the other 2 hosts, 192.168.65.2 and .3 are used for internal purposes as well.
+The other DNS service is paired with an HTTP proxy. This is a piece of software through which requests for external websites are made. From the Docker documentation, the host 192.168.65.1 is used to proxy requests to the Docker registry, the other 2 hosts, `192.168.65.2` and `.3` are used for internal purposes as well.
 
 ### Question 1. Scanning a remote access service
 
@@ -373,7 +373,7 @@ Now that we know the basics of using `nmap`, let us use it on a new host. Keep t
 docker run -p 2222:2222 -it uwacyber/cits1003-labs:cowrie
 ```
 
-Back in the `network` container, do a ping scan of the 172.17.0.1-16 network and find what hosts are up. Run `nmap` against the IP of the second container you ran using all scripts and versions.
+Back in the `network` container, do a ping scan of the `172.17.0.1-16` network and find what hosts are up. Run `nmap` against the IP of the second container you ran using all scripts and versions.
 
 What is the service that you have found?
 
@@ -399,9 +399,9 @@ If the IP address of the host you want to scan is different then use that addres
 
 Try connecting to the service you found using the user root and no password. You will need to use a `ssh` command (try `ssh -help`), where you have to specify the port to be `2222`, and login as the `root`. Note, there is no password to login as root.
 
-Once you have successfully logged on the machine as root, look at the file /etc/passwd
+Once you have successfully logged on the machine as root, look at the file `/etc/passwd`
 
-**Flag: Enter the flag from /etc/passwd**
+**Flag: Enter the flag from** `/etc/passwd`
 
 {% hint style="info" %}
 The cowrie container you started is actually a HoneyPot and logs everything that anyone does when interacting with it. Have a look at the output in the terminal where you ran it.
