@@ -29,9 +29,15 @@ It is essential that you reserve at least 10GB of disk space to store the lab fi
 
 It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
 
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like Lubuntu, Puppy Linux or Linux Lite if you prefer.
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like Lubuntu, Puppy Linux or Linux Lite if you prefer.&#x20;
 
-You might want to look up an installation guide online.
+You should assign sufficient RAM and CPU during the setup (e.g., Ubuntu - 4GB RAM, 2CPU). But don't worry, these can be changed later. Assign 20GB disk space.&#x20;
+
+You might want to look up an installation guide online, such as this: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
+
+{% hint style="info" %}
+Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and usually it will work.
+{% endhint %}
 
 Once you have successfully installed and launched Ubuntu, it should bring up a GUI! Once this is done, you can carry on with the labs as instructed.
 
