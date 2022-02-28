@@ -99,7 +99,7 @@ root@d99d71e2318a:/# ip addr
        valid_lft forever preferred_lft forever
 ```
 
-We see that the container has 2 network interfaces (ignore the ones with `<NOARP>`). The first is the main ethernet interface with the outside world **eth0** (item 8). It has an address in a private IP address range. The second interface is called the loopback interface (item 1) and has what is called the home address **127.0.0.1**.
+We see that the container has 2 network interfaces (ignore the ones with `<NOARP>`). The first is the main ethernet interface with the outside world `eth0` **** (item 8). It has an address in a private IP address range. The second interface is called the loopback interface (item 1) and has what is called the home address `127.0.0.1`.
 
 Alternatively, you can use a `route` command, where we will see the Gateway address is. A gateway is usually a router of some sort, if the machine is not communicating with other machines on the network, it will send its packets to the gateway for it to find where they need to go.
 
@@ -111,7 +111,7 @@ default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
 172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
 ```
 
-We can see that the gateway address is 172.17.0.1.
+We can see that the gateway address is `172.17.0.1`.
 
 Let us start another container and do an `ip addr`. You can do this by opening another terminal and using the same `docker run` command as above.
 
@@ -132,13 +132,13 @@ root@5434bfac0449:/# ip addr
        valid_lft forever preferred_lft forever
 ```
 
-This container has been given an IP address of 172.17.0.3.
+This container has been given an IP address of `172.17.0.3`.
 
 So our network looks like this:
 
 ![](<../.gitbook/assets/network1 (1).jpg>)
 
-We can actually communicate between containers. To test this, use the ping command (example below is from the terminal with the address 172.17.0.2):
+We can actually communicate between containers. To test this, use the ping command (example below is from the terminal with the address `172.17.0.2`):
 
 ```bash
 root@d99d71e2318a:/# ping -c 1 172.17.0.3
@@ -153,6 +153,10 @@ rtt min/avg/max/mdev = 0.715/0.715/0.715/0.000 ms
 We will use ping below to scan the network but the way it works is to send a packet of a particular kind to the address and when received, the other host replies. Other than showing that there is a host responding at that address, you can also work out how far away it is because you get the round trip time (`rtt` at line 7) which in this case is 0.715 ms.
 
 The networking picture looks simple enough, but what happens when we want to communicate with the machine that Docker is running on? Well, Docker has a special address for that which is `host.docker.internal.` Let us ping that:
+
+{% hint style="info" %}
+In Ubuntu VM, you should use `172.17.0.1` instead of `host.docker.internal`.
+{% endhint %}
 
 ```bash
 root@d99d71e2318a:/# ping -c 1 host.docker.internal
@@ -170,6 +174,10 @@ So now our network looks like this:
 
 ![](../.gitbook/assets/network2.jpg)
 
+{% hint style="warning" %}
+If you are inside an Ubuntu VM, the host IP address would be something like 10.0.2.15.
+{% endhint %}
+
 It is actually a little more complicated than this but we will use another tool to explore the network.&#x20;
 
 ## Scanning the network
@@ -178,7 +186,7 @@ We are interested in finding out what other computers are on the network and we 
 
 `nmap` performs scans on computer networks to detect if other devices are connected. If it finds a host, it can also scan for open ports that indicate specific services that the computer is using. We are mainly interested in finding other hosts and so we will be limiting the scan to what is called a Ping Sweep. When you ping another computer on the network, it involves sending a TCP/IP packet to the computer to say "are you there" to which the other computer usually replies and says "yes". Technically, a ping is an ICMP Echo Request to which the response is an ICMP Echo Reply (don't worry, you will learn more about these in the networks unit).
 
-In the following example, our computer's IP address is 10.0.1.2 and the gateway (the router) is 10.0.1.1
+In the following example, our computer's IP address is `10.0.1.2` and the gateway (the router) is `10.0.1.1`
 
 ```bash
 $ ping -c 1 10.0.1.1
@@ -196,7 +204,7 @@ Using the ping command to send 1 ping (`-c 1`), we get a reply which took 1.563 
 
 If mobile devices such as an iPhone is connected to a network, it will stop responding to pings when it is not unlocked. Android phones (currently) do respond however.
 
-Let us go back to our docker container and scan the network `192.168.65.0/24`\*. Just as a reminder, this notation means that we are going to check the computers with IP addresses that range from 192.168.65.0 - 192.168.65.255 (the /24 means that the network part is 192.168.65 and so is fixed).
+Let us go back to our docker container and scan the network `192.168.65.0/24`\*. Just as a reminder, this notation means that we are going to check the computers with IP addresses that range from `192.168.65.0` - `192.168.65.255` (the `/24` means that the network part is `192.168.65` and so is fixed).
 
 \*here, you should replace this address with the address you have found when pinging `host.docker.internal`.
 
