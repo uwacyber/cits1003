@@ -3,7 +3,7 @@
 {% hint style="warning" %}
 PLEASE NOTE: This lab image uses a lot of storage space (storage size is over 2.5GB!), so ensure you have enough space on your hard drive before proceeding.
 
-If using Ubuntu VM, ensure to add some extra processing power (e.g., 4GB RAM and 2CPU).
+If using Ubuntu VM, ensure to add some extra processing power (e.g., 4GB RAM and 2CPU), and set Video RAM to 128MB.
 {% endhint %}
 
 Walkthrough video:
