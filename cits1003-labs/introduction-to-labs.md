@@ -29,14 +29,12 @@ It is essential that you reserve at least 10GB of disk space to store the lab fi
 
 It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
 
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software), but for the purpose of our labs, we would recommend [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/), a lightweight version of Ubuntu.
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like Lubuntu, Puppy Linux or Linux Lite if you prefer.
 
-As an example, this page shows you how to create an Ubuntu 20 VM on VirtualBox (which will be similar with Lubuntu):
+You might want to look up an installation guide online.
 
-[https://linuxhint.com/install\_ubuntu\_virtualbox\_2004/](https://linuxhint.com/install\_ubuntu\_virtualbox\_2004/)
-
-Once you have successfully loaded Ubuntu (or Kali), you can start the VM, which should bring up a GUI! Once this is done, you can carry on with the labs as instructed.
+Once you have successfully installed and launched Ubuntu, it should bring up a GUI! Once this is done, you can carry on with the labs as instructed.
 
 ### M1 MacBook Users
 
-Unfortunately, there are technical issues and challenges running virtualisation on M1 (Apple Silicon) MacBooks. These are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available.&#x20;
+Unfortunately, there are technical issues and challenges running VMs on M1 (Apple Silicon) MacBooks. These are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available.&#x20;
