@@ -2,8 +2,6 @@
 
 {% hint style="warning" %}
 PLEASE NOTE: This lab image uses a lot of storage space (storage size is over 2.5GB!), so ensure you have enough space on your hard drive before proceeding.
-
-If using Ubuntu VM, ensure to add some extra processing power (e.g., 4GB RAM and 2CPU), and set Video RAM to 128MB.
 {% endhint %}
 
 Walkthrough video:
@@ -70,7 +68,7 @@ docker run -it --rm -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 ```
 
 {% hint style="warning" %}
-Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, easiest to do this lab with your friend(s). You can try this command (I have not tested it):
+Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, the easiest to do this lab is with your friend(s). You can try this command (I have not tested it):
 
 ```
 docker run -it --rm -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juiceshop
@@ -89,23 +87,51 @@ This will start the website on port 3000. You can access it using the URL `http:
 
 Before we look at the site, we are going to install a program called OWASP ZAP that will perform an automated vulnerability scan on the site. Please remember, using tools such as ZAP on any of the servers that you do not have permission to do so is **ILLEGAL**.
 
-{% hint style="info" %}
-Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](https://www.zaproxy.org/download/)
+{% tabs %}
+{% tab title="Run ZAP docker (for all)" %}
+Note: VM users, please see the next tab first.
 
 You can run OWASP ZAP as a Docker container by using the command:
-
-`$ docker pull owasp/zap2docker-stable`
 
 `$ docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm owasp/zap2docker-stable zap-webswing.sh`
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
 Remember that since it is running in a container when you need to access the Juice Shop container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
-{% endhint %}
 
-{% hint style="danger" %}
-Apple M1 users, I think you can run by adding the `--platform linux/amd64` flag (zap doesn't support ARM64 yet), but if not, please work with your friend(s) or do this lab on a non-M1 machine.
-{% endhint %}
+If you receive a message to restart your ZAP session, it will be better for you to run the ZAP application instead.
+{% endtab %}
+
+{% tab title="Run ZAP application (for VM users)" %}
+If running on a VM, you are recommended to install ZAP application and use this instead
+
+&#x20;f of docker, as using ZAP via browser is resource-intensive and will likely freeze up your VM. Of course, you can still try the docker version using web if your host computer has sufficient computing resources.
+
+Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](https://www.zaproxy.org/download/)
+
+Now, follow the steps below to install and start ZAP application:
+
+1\) download the installer file from the link above.
+
+2\) install java: `sudo apt install default-jre`
+
+3\) set the root password: `sudo passwd root`
+
+4\) switch user to root: `su root`
+
+5\) install ZAP: `bash ZAP_11_1_unix.sh` (your version may be different, its okay)
+
+6\) follow the GUI installer instructions
+
+7\) start the ZAP application
+
+Your attack address will be `http://172.17.0.1/3000` in Ubuntu VM.
+{% endtab %}
+
+{% tab title="Apple Silicon (M1)" %}
+Apple M1 users, I think you can run by adding the `--platform linux/amd64` flag (zap doesn't support ARM64 yet), but if not, please work with your friend(s) or do this lab on a non-M1 machine.f
+{% endtab %}
+{% endtabs %}
 
 Open ZAP and configure the software to scan the Juice Shop website:&#x20;
 
