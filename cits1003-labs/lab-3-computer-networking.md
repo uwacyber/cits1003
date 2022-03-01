@@ -82,8 +82,11 @@ For both Mac and Windows, the Graphical User Interface versions of network confi
 
 Start the docker container and run `ip addr`
 
+```
+docker run -it --rm uwacyber/cits1003-labs:network 
+```
+
 ```bash
-/network$ docker run -it --rm uwacyber/cits1003-labs:network 
 root@d99d71e2318a:/# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -113,10 +116,13 @@ default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
 
 We can see that the gateway address is `172.17.0.1`.
 
-Let us start another container and do an `ip addr`. You can do this by opening another terminal and using the same `docker run` command as above.
+Let us start another container and do an `ip addr`. You can do this by opening another terminal and using the same `docker run` command as above. &#x20;
+
+```
+docker run -it --rm uwacyber/cits1003-labs:network
+```
 
 ```bash
-PS H:\> docker run -it --rm uwacyber/cits1003-labs:network      
 root@5434bfac0449:/# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -140,8 +146,11 @@ So our network looks like this:
 
 We can actually communicate between containers. To test this, use the ping command (example below is from the terminal with the address `172.17.0.2`):
 
+```
+ping -c 1 172.17.0.3
+```
+
 ```bash
-root@d99d71e2318a:/# ping -c 1 172.17.0.3
 PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
 64 bytes from 172.17.0.3: icmp_seq=1 ttl=64 time=0.715 ms
 
@@ -210,8 +219,11 @@ Ubuntu VM users, scan `172.17.0.1` - `172.17.0.255`&#x20;
 
 To use `nmap` to perform a ping scan we use the following (note, this takes some time):
 
+```
+nmap -sn 192.168.65.0/24
+```
+
 ```bash
-root@d99d71e2318a:/# nmap -sn 192.168.65.0/24
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-02 02:55 UTC
 Nmap scan report for 192.168.65.1
 Host is up (0.0081s latency).
@@ -253,8 +265,11 @@ done
 
 Run the script by doing:
 
+```
+./root/pingsweep.sh 192.168.65
+```
+
 ```bash
-root@d99d71e2318a:/# ./root/pingsweep.sh 192.168.65
 192.168.65.1
 192.168.65.2
 192.168.65.3
@@ -266,8 +281,11 @@ root@d99d71e2318a:/# ./root/pingsweep.sh 192.168.65
 
 Nmap uses a number of strategies to discover what services are running on a machine once it has discovered that it is actually available. Service discovery is done via a range of scripts that come with the `nmap` program. We can run them as follows (note, this takes a very long time!):
 
+```
+nmap -sC -sV 192.168.65.1-5
+```
+
 ```bash
-root@04f7c0bbd066:/# nmap -sC -sV 192.168.65.1-5
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-02 03:01 UTC
 Nmap scan report for 192.168.65.1
 Host is up (0.0044s latency).

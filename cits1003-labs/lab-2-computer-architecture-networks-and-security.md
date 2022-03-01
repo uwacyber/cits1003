@@ -23,8 +23,11 @@ On Windows, there is a program called the Command Prompt as well as a program ca
 
 We are going to stick with Bash which runs on Windows (WSL), Mac OS and Linux. To do this, run the command:
 
+```
+docker run -it --rm uwacyber/cits1003-labs:bash
+```
+
 ```bash
-$ docker run -it --rm uwacyber/cits1003-labs:bash
 root@2577070501db:/# pwd
 /
 ```
@@ -215,8 +218,11 @@ Linux has a limited set of specific attributes on a file that controls how the f
 
 In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. `cd` into this directory and then use the command `wget` to download the file located at "[https://github.com/uwacyber/cits1003/blob/2022s1/cits1003-labs/opentrace-master.zip](opentrace-master.zip)"
 
+```
+wget https://github.com/uwacyber/cits1003/blob/2022s1/cits1003-labs/opentrace-master.zip
+```
+
 ```bash
-# wget https://github.com/uwacyber/cits1003/blob/2022s1/cits1003-labs/opentrace-master.zip              
 --2022-01-25 06:49:37--  https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip
 Resolving github.com (github.com)... 13.237.44.5
 Connecting to github.com (github.com)|13.237.44.5|:443... connected.
@@ -387,46 +393,6 @@ nogroup:x:65534:
 You can also list the `passwd` file which will list all of the users of the system
 
 ```bash
-root@c31804846451:~# cat /etc/group
-root:x:0:
-daemon:x:1:
-bin:x:2:
-sys:x:3:
-adm:x:4:
-tty:x:5:
-disk:x:6:
-lp:x:7:
-mail:x:8:
-news:x:9:
-uucp:x:10:
-man:x:12:
-proxy:x:13:
-kmem:x:15:
-dialout:x:20:
-fax:x:21:
-voice:x:22:
-cdrom:x:24:
-floppy:x:25:
-tape:x:26:
-sudo:x:27:
-audio:x:29:
-dip:x:30:
-www-data:x:33:
-backup:x:34:
-operator:x:37:
-list:x:38:
-irc:x:39:
-src:x:40:
-gnats:x:41:
-shadow:x:42:
-utmp:x:43:
-video:x:44:
-sasl:x:45:
-plugdev:x:46:
-staff:x:50:
-games:x:60:
-users:x:100:
-nogroup:x:65534:
 root@c31804846451:/cits1003/lab3/opentrace# cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin

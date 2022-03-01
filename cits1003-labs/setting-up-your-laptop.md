@@ -93,10 +93,13 @@ Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](
 
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
-To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following commands (please note, the process may take a while on your machine).
+To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following command (please note, the process may take a while on your machine).
 
 ```
-PS C:\> docker pull uwacyber/cits1003-labs:bash
+docker pull uwacyber/cits1003-labs:bash
+```
+
+```
 bash: Pulling from uwacyber/cits1003-labs
 a31c7b29f4ad: Pull complete
 56dc59d71033: Pull complete
@@ -136,7 +139,7 @@ CONTAINER ID   IMAGE                         COMMAND       CREATED         STATU
 By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag:
 
 ```
-PS C:\> docker run -it --rm uwacyber/cits1003-labs:bash
+docker run -it --rm uwacyber/cits1003-labs:bash
 ```
 
 This will automatically remove the container so you don't have to go to GUI to do it (of course, nothing you do in this container will be saved).
