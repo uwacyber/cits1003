@@ -118,7 +118,7 @@ PsLoadedModuleList            : 0x82759730
 KernelBase                    : 0x82604000
 ```
 
-So we can now use the profile `WinXPSP2x86` which is the Windows XP Service Pack 2 version of the OS.
+So we can now use the profile `Win7SP1x86` which is the Windows 7 Service Pack 1 version of the OS.
 
 Now as a forensic analyst, one of the most important things we would like to know from a system during analysis would be:
 
@@ -361,9 +361,19 @@ Use the "--show --format=NT" options to display all of the cracked passwords rel
 Session completed.
 ```
 
+{% hint style="info" %}
+If you see an error message "AVX2 is required", you would have to reinstall john as follows:
+
+1\) change directory to `cd /opt/john/src`
+
+2\) (re)install john: `./configure && make -s clean && make -sj4`
+
+3\) try running john again (go back to the `/opt/memory` directory)
+{% endhint %}
+
 In this command, we passed a `passwords.txt` file that contains the passwords we are going to try and brute force using John. This example is slightly contrived because I have added the specific one that gives us the password we are looking for, but John works very well normally because people tend to use very easy to guess passwords (you may not, but there are plenty out there).
 
-Once we run John, we get a hit and the password is confirmed to be the other half of the flag --> `flag{you_are_good_but`. Concatenating the 2 parts gives us the whole flag.
+Once we run John, we get a hit and the password is confirmed to be the other half of the flag. Concatenating the 2 parts gives us the whole flag.
 
 ### Question 1. What was the whole flag?
 
@@ -387,13 +397,13 @@ So let’s use `memdump` plugin to extract some data.
 volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /opt/memory
 ```
 
-The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it in Gimp (if you don't have Gimp, you should download and install it on your machine. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
+The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it in Gimp (if you don't have Gimp, you should download and install it on your machine/VM. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
 
 When you open, you have the ability to set the offset, width and height. Set it as follows:
 
 Offset: 5233385
 
-Width: 1500
+Width: 1500 (or 1640)
 
 Height: 350
 
