@@ -29,13 +29,13 @@ Start the docker container as follows:
 {% tabs %}
 {% tab title="Windows" %}
 ```bash
-docker run -v C:/projects/share:/opt/share -it uwacyber/cits1003-labs:ai
+docker run -v C:/projects/share:/opt/share -it --rm uwacyber/cits1003-labs:ai
 ```
 {% endtab %}
 
 {% tab title="Linux" %}
 ```
-docker run -v /projects/share:/opt/share -it uwacyber/cits1003-labs:ai
+docker run -v /projects/share:/opt/share -it --rm uwacyber/cits1003-labs:ai
 ```
 {% endtab %}
 
@@ -48,7 +48,7 @@ docker run -v /projects/share:/opt/share -it uwacyber/cits1003-labs:ai
 {% endtab %}
 {% endtabs %}
 
-The -v flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it (change the path as you wish).
+The `-v` flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it (change the path as you wish).
 
 Once on the docker container, go to the directory `/opt/adversarial/share`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
@@ -97,7 +97,7 @@ drwxr-xr-x 1 root root   4096 Aug  8  2021  ..
 -rw-r--r-- 1 root root  83281 Jul 11  2021  lab_og.jpg
 ```
 
-Copy these files to the shared folder with your machine: /opt/share
+Copy these files to the shared folder with your machine: `/opt/share`
 
 {% hint style="danger" %}
 Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program `exploit.py` printed out
@@ -109,7 +109,7 @@ Load the first image, `Input.jpg`, into the site and verify that it is correctly
 
 ### Question 1. Enter the wrong dog
 
-**Flag: Enter the name of the dog type that exploit.py recognises with the "Epsilon = 0.150.jpg" file.**
+Flag: Enter the name of the dog type that `exploit.py` recognises with the "Epsilon = 0.150.jpg" file.
 
 {% tabs %}
 {% tab title="Hint" %}
@@ -117,7 +117,7 @@ Ideally Wolfram should produce the same prediction, but because its model is con
 {% endtab %}
 {% endtabs %}
 
-To a human eye, the dog is still a Labrador albeit a bit fuzzy. Remember that this is not a targetted attack in that we haven't trained the attack using the specific neural network used by the Wolfram site. If we did, we could develop something that would work at much lower levels of disturbance.
+To a human eye, the dog is still a Labrador albeit a bit fuzzy. Remember that this is not a targeted attack in that we haven't trained the attack using the specific neural network used by the Wolfram site. If we did, we could develop something that would work at much lower levels of disturbance.
 
 Try the same attack but this time using another picture - one of a bear:
 
@@ -185,7 +185,7 @@ In other words, a practically 0 score for it being malware.
 
 `Msfvenom` comes with a variety of evasion techniques to avoid detection but most are easily detected by anti-malware software. However, there exists one approach that does fool anti-malware, especially machine learning classifiers.
 
-To get started, we are going to run Metasploit. But firstly, we will create a local volume that we can attach to different containers - this is due to the files we are about to create will most likely be filtered automatically by your firewall. So let's create a temporary volume. In your PowerShell/termial:
+To get started, we are going to run Metasploit. But firstly, we will create a local volume that we can attach to different containers - this is due to the files we are about to create will most likely be filtered automatically by your firewall. So let's create a temporary volume. In your PowerShell/terminal:
 
 ```
 docker volume create volume1
@@ -204,13 +204,13 @@ docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 
 {% tab title="Linux" %}
 ```
-docker run -v /projects/share:/opt/share -it uwacyber/cits1003-labs:metasploit
+docker run -v /projects/share:/opt/share -it --rm uwacyber/cits1003-labs:metasploit
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-docker run -v $(pwd)/share:/opt/share -it uwacyber/cits1003-labs:metasploit
+docker run -v $(pwd)/share:/opt/share -it --rm uwacyber/cits1003-labs:metasploit
 ```
 {% endtab %}
 {% endtabs %}
@@ -340,7 +340,7 @@ WARNING:   in the feature calculations.
 0.00907516308707395
 ```
 
-So, according to the classifier, this is likely be a normal, and safe, binary/executable!
+So, according to the classifier, this is likely to be a normal, and safe, binary/executable!
 
 And for the last one:
 

@@ -24,19 +24,9 @@ The device ships with a default username of `admin` and a password of `password`
 
 Let us start by using the docker container as follows
 
-{% tabs %}
-{% tab title="Windows/Apple Intel" %}
-```bash
-docker run -p 8000:8000 -it cybernemosyne/cits1003:iot 
 ```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
+docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot 
 ```
-docker run -p 8000:8000 -it cybernemosyne/cits1003:iot-x 
-```
-{% endtab %}
-{% endtabs %}
 
 Change directory to `/opt/samples/WNAP320`
 
@@ -196,7 +186,7 @@ Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 ## Searching for Hard Coded Credentials
 
-In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into **/opt/samples/DIR300**. Extract the firmware file with binwalk.
+In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk`.
 
 ```bash
 root@c3e1d7ac5055:/opt/samples/DIR300# binwalk -e DIR-300A1_FW105b09.bin 
@@ -255,7 +245,7 @@ www/__adv_port.php:                                     <option value='Telnet'>T
 ```
 
 {% hint style="warning" %}
-On PowerShell, the path may not show in the console. You can copy the text and paste in a text editor to see them.
+On PowerShell, the path may not show in the console. You can copy the text and paste into a text editor to see them.
 {% endhint %}
 
 The file that is interesting is the script `telnetd.sh` where there is a login command with a `-u` flag that passes in a username (e.g., `Alphanetworks`) and password. Here, the password is passed in as a variable `image_sign`. So now let's inspect the `telnetd.sh` to see if we can find any information about `image_sign`. Keep tracking the leads and you should be able to find the password.
@@ -270,7 +260,7 @@ Clearly it is not a good thing that the password for the router is available on 
 
 ## Case study: Mirai
 
-At its peak in September 2016, the Mirai malware botnet temporarily crippled several high-profile services such as OVH, Dyn, and Krebs on Security via massive distributed Denial of service attacks (DDoS). OVH reported that these attacks exceeded 1Tbps—the largest on public record (as of Dec 2017).
+At its peak in September 2016, the Mirai malware botnet temporarily crippled several high-profile services such as OVH, Dyn, and Krebs on Security via massive distributed Denial of service attacks (DDoS). OVH reported that these attacks exceeded 1Tbps—the largest on the public record (as of Dec 2017).
 
 What’s remarkable about these record-breaking attacks is they were carried out via small, innocuous Internet-of-Things (IoT) devices like home routers, air-quality monitors, and personal surveillance cameras. At its peak, Mirai enslaved over 600,000 vulnerable IoT devices.
 

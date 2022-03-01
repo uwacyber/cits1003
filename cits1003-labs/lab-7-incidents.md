@@ -40,7 +40,7 @@ Yara tries to match text and binary from the malware it analyses. Before we star
 To start, run the docker container:
 
 ```
-docker run -it uwacyber/cits1003-labs:incident
+docker run -it --rm uwacyber/cits1003-labs:incident
 ```
 
 Change directory to `/opt/malware/test`. This directory has a subdirectory `./files` which has two files in it. One called `bye.txt` which contains the text `"bye bye"` and another file called `hello.txt` that has the text "`hello, world!"`

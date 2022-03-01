@@ -41,8 +41,7 @@ Volatility 2 needs to know the version of the operating system that the memory d
 To get started, run the docker container:
 
 ```
-docker pull uwacyber/cits1003-labs:volatility
-docker run -it uwacyber/cits1003-labs:volatility
+docker run -it --rm uwacyber/cits1003-labs:volatility
 ```
 
 Change into the directory `/opt/memory`
@@ -299,7 +298,7 @@ Pid      Process              Block      Variable                       Value
     <SNIP...>
 ```
 
-We are mainly interested in the environment variables for the `cmd.exe` process that was running the Python file. If you look at the environment variables, there is one called Thanos (A fictional supervillain) that has text which says "xor and password". So, let us try and brutefoce the hex characters we got with XOR.
+We are mainly interested in the environment variables for the `cmd.exe` process that was running the Python file. If you look at the environment variables, there is one called Thanos (A fictional supervillain) that has text which says "xor and password". So, let us try and bruteforce the hex characters we got with XOR.
 
 We can do this in _Cyberchef_ (see lab 2 if you forgot...) using 2 recipes. The first is `FromHex` which converts the Hex characters to ASCII, the second is `XOR Brute Force` which will successively try numbers from 1 to 100 and XOR them against the input. Looking through the output, we see that the 2nd entry is `1_4m_b3tt3r}` which looks like slightly meaningful text since it is Leet for "I am better" (and has the format of half of a flag for the challenge).
 
