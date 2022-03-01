@@ -34,17 +34,23 @@ In that directory is a ZIP file which is the firmware for the WNAP320 router (al
 
 Let us unzip the file and see what it contains
 
+```
+unzip WNAP320\ Firmware\ Version\ 2.0.3.zip
+```
+
 ```bash
-> unzip WNAP320\ Firmware\ Version\ 2.0.3.zip 
 Archive:  WNAP320 Firmware Version 2.0.3.zip
-  inflating: ReleaseNotes_WNAP320_fw_2.0.3.HTML  
-  inflating: WNAP320_V2.0.3_firmware.tar  
+inflating: ReleaseNotes_WNAP320_fw_2.0.3.HTML  
+inflating: WNAP320_V2.0.3_firmware.tar  
 ```
 
 The file `WNAPP320V2.0.3_firmware.tar` file is another archive file (colloquially called a tarball). We can extract this using the `tar` utility:
 
+```
+tar -xvf WNAP320_V2.0.3_firmware.tar 
+```
+
 ```bash
-> tar -xvf WNAP320_V2.0.3_firmware.tar 
 vmlinux.gz.uImage
 rootfs.squashfs
 root_fs.md5
@@ -53,8 +59,11 @@ kernel.md5
 
 The `vmlinux.gz.uImage` is the actual kernel of the operating system and contains all of the code that will run that when booted on a device. The `rootfs.sqaushfs` is the file system in `squashfs` format. The files with the md5 extension are the MD5 hashes of the image and `squashfs` files. To look at the contents of the `squashfs` file, we need to extract this file and we can use the `binwalk` tool to do this:
 
+```
+binwalk -e rootfs.squashfs
+```
+
 ```bash
-root@c05e6f92e214:/opt/samples/WNAP320# binwalk -e rootfs.squashfs
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
@@ -77,8 +86,11 @@ drwxr-xr-x 3 root root    4096 Feb 15 03:21  _rootfs.squashfs.extracted
 
 This will now extract a directory `_rootfs.squashfs.extracted` that contains `squashfs-root` which is the root of the filesystem for the firmware:
 
+```
+ls -al ./_rootfs.squashfs.extracted/squashfs-root/
+```
+
 ```bash
-root@c05e6f92e214:/opt/samples/WNAP320# ls -al ./_rootfs.squashfs.extracted/squashfs-root/
 total 52
 drwxr-xr-x 13 root root 4096 Jun 23  2011 .
 drwxr-xr-x  3 root root 4096 Feb 15 03:21 ..
@@ -151,8 +163,11 @@ If the address doesn't work, please let the Unit Coordinator know.
 
 There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
 
+```
+./exploit.py 34.66.53.228 /etc/passwd
+```
+
 ```bash
-root@c3e1d7ac5055:/opt/samples/WNAP320# ./exploit.py 34.66.53.228 /etc/passwd
 root:x:0:0:root:/root:/bin/sh
 daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 bin:x:2:2:bin:/bin:/bin/sh
@@ -188,8 +203,12 @@ Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk`.
 
+```
+cd /opt/samples/DIR300
+binwalk -e DIR-300A1_FW105b09.bin
+```
+
 ```bash
-root@c3e1d7ac5055:/opt/samples/DIR300# binwalk -e DIR-300A1_FW105b09.bin 
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
@@ -208,8 +227,12 @@ drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
 
 We can now cd into the directory `_DIR-300A1_FW105b09.bin.extracted` and then into the directory `squashfs-root`. Again we have a Linux filesystem
 
+```
+cd /opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root
+ls -al
+```
+
 ```bash
-root@c3e1d7ac5055:/opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root# ls -al
 total 56
 drwxrwsr-x 14  528 1000 4096 Nov 26  2010 .
 drwxr-xr-x  3 root root 4096 Jul 10 02:14 ..
@@ -230,8 +253,11 @@ drwxrwsr-x 11  528 1000 4096 Nov 26  2010 www
 
 You can explore the file system a bit to see where things are but to shortcut, we are interested in the telnet service which allows remote access to the DLINK box. If we do a search for the word telnet in all of the files we get:
 
+```
+grep -ir telnet *
+```
+
 ```bash
-/squashfs-root# grep -ir telnet *
 etc/defnodes/S11setnodes.php:set("/sys/telnetd",                        "true");
 etc/scripts/system.sh:  # start telnet daemon
 etc/scripts/system.sh:  /etc/scripts/misc/telnetd.sh    > /dev/console
