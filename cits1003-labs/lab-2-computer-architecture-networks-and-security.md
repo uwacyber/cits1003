@@ -213,10 +213,10 @@ Linux has a limited set of specific attributes on a file that controls how the f
 
 ### Question 1. Find the file
 
-In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. `cd` into this directory and then use the command `wget` to download the file located at "[https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip](https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip)"
+In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. `cd` into this directory and then use the command `wget` to download the file located at "[https://github.com/uwacyber/cits1003/blob/2022s1/cits1003-labs/opentrace-master.zip](opentrace-master.zip)"
 
 ```bash
-# wget https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip              
+# wget https://github.com/uwacyber/cits1003/blob/2022s1/cits1003-labs/opentrace-master.zip              
 --2022-01-25 06:49:37--  https://github.com/uwacsp/opentrace/archive/refs/heads/master.zip
 Resolving github.com (github.com)... 13.237.44.5
 Connecting to github.com (github.com)|13.237.44.5|:443... connected.
