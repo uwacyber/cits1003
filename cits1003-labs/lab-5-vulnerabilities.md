@@ -113,7 +113,7 @@ Now, follow the steps below to install and start ZAP application:
 
 1\) download the installer file from the link above.
 
-2\) install java: `sudo apt install default-jre`
+2\) install java: `sudo apt install default-jre -y`
 
 3\) set the root password: `sudo passwd root`
 
@@ -140,6 +140,10 @@ Open ZAP and configure the software to scan the Juice Shop website:&#x20;
 3. Type in the URL of the Juice Shop `http://127.0.0.1:3000` (or `http://host.docker.internal:3000` if using the container version, or `http://172.17.0.1:3000` if on Ubuntu VM)&#x20;
 4. Tick both `User traditional spider` and `Use ajax spider with Firefox Headless`, then click "Attack".
 
+{% hint style="warning" %}
+Sometimes it will tell you the URL is invalid. Just press the "Attack" button again and it should run okay.
+{% endhint %}
+
 The scan will take a (longish) while but you will notice that the Juice Shop has popped up green alerts announcing that you have solved two challenges!
 
 ![Juice Shop after scan](../.gitbook/assets/screen-shot-2021-07-02-at-1.04.32-pm.png)
@@ -163,6 +167,10 @@ Why is this a vulnerability? Well, for a start it didn't require usernames and p
 The second error reported that there was a problem with Error Handling. This vulnerability occurs when the application does not handle errors correctly and the application returns extra information about the error and where it occurred. This can reveal a lot about the website and the code it is running to an attacker.
 
 To find this error, go back to ZAP and click on the `Active Scan` tab in the bottom window. Sort the output by Code with the sort order showing the largest codes at the top. look until you can find a code of 500 which is an Internal Server Error. One of them is caused by an unexpected path to `api`. You should open the link in your browser (e.g., `http://127.0.0.1:3000/api`). You should see something like this:
+
+{% hint style="info" %}
+If there aren't anything in the `Active Scan` tab, you just start a new scan pointing at the juiceshop address.
+{% endhint %}
 
 ![Error information from URL http://127.0.0.1:3000/api/](../.gitbook/assets/screen-shot-2021-07-02-at-4.44.49-pm.png)
 
@@ -292,7 +300,7 @@ Now go and login with the username and password admin/admin and voila!
 
 ### Question 3. Get help from support
 
-**FLAG: Go into the Support Chat and tell Juicy Bot your name, then interact with the bot. With the right keyword(s), the bot should give you the flag!**
+**FLAG: Go into the Support Chat and tell Juicy Bot your name, then interact with the bot. With the right keyword(s), the bot should give you the flag! (hint: the bot is known to be a party animal!)**
 
 ## **Case study: Log4Shell**
 
