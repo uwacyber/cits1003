@@ -48,8 +48,11 @@ Change into the directory `/opt/memory`
 
 Run the command `imageinfo` to get the following output:
 
+```
+volatility -f Challenge.raw imageinfo
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw imageinfo
 Volatility Foundation Volatility Framework 2.6.1
 INFO    : volatility.debug    : Determining profile based on KDBG search...
           Suggested Profile(s) : Win7SP1x86_23418, Win7SP0x86, Win7SP1x86_24000, Win7SP1x86
@@ -68,8 +71,11 @@ INFO    : volatility.debug    : Determining profile based on KDBG search...
 
 The output returns a number of possible profiles that could be used. We can refine this by using another plugin called `kdbgscan`
 
+```
+volatility -f Challenge.raw kdbgscan 
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw kdbgscan 
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 Instantiating KDBG using: /opt/memory/Challenge.raw WinXPSP2x86 (5.1.0 32bit)
@@ -125,8 +131,11 @@ And many more...
 
 Now, to list the active or running processes, we use the help of the plugin `pslist`.
 
+```
+volatility -f Challenge.raw --profile=Win7SP1x86 pslist
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 pslist
 Volatility Foundation Volatility Framework 2.6.1
 Offset(V)  Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start                          Exit                          
 ---------- -------------------- ------ ------ ------ -------- ------ ------ ------------------------------ ------------------------------
@@ -182,8 +191,11 @@ Now since we have seen that `cmd.exe` was running, let us try to see if there we
 
 For this, we use the `cmdscan` plugin.
 
+```
+volatility -f Challenge.raw --profile=Win7SP1x86 cmdscan
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 cmdscan
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 CommandProcess: conhost.exe Pid: 2104
@@ -216,8 +228,11 @@ If you can see from the above, a Python file was executed. The executed command 
 
 So our next step would be to check if this python script sent any output to `stdout`. For this, we use the `consoles` plugin.
 
+```
+volatility -f Challenge.raw --profile=Win7SP1x86 consoles
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 consoles
 Volatility Foundation Volatility Framework 2.6.1
 **************************************************
 ConsoleProcess: conhost.exe Pid: 2104
@@ -254,9 +269,12 @@ We will leave this for now and carry on with our investigation.
 
 All operating systems support the concept of environment variables. These can be used by programs to customise how they are run, where they look for, or write, files, etc. We can use the `envars` command for volatility:
 
+```
+volatility -f Challenge.raw --profile=Win7SP1x86 envars 
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 envars  
-Volatility Foundation Volatility Framework 2.6.1
+ Volatility Foundation Volatility Framework 2.6.1
 Pid      Process              Block      Variable                       Value
 -------- -------------------- ---------- ------------------------------ -----
 <SNIP...>
@@ -306,8 +324,11 @@ Volatility can also extract password hashes from accounts and we can try that us
 
 Well, the next part is `password`. Using volatility, we can extract the NTLM password hashes using the `hashdump` plugin.
 
+```
+volatility -f Challenge.raw --profile=Win7SP1x86 hashdump
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# volatility -f Challenge.raw --profile=Win7SP1x86 hashdump
 Volatility Foundation Volatility Framework 2.6.1
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
@@ -324,8 +345,11 @@ hello:1000:aad3b435b51404eeaad3b435b51404ee:101da33f44e92c27835e64322d72e8b7:::
 
 Then run john using the following command:
 
+```
+/opt/john/run/john --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt
+```
+
 ```bash
-root@0dfc31c0c084:/opt/memory# /opt/john/run/john --pot=john.pot --format=NT --wordlist=passwords.txt hash.txt
 Using default input encoding: UTF-8
 Loaded 1 password hash (NT [MD4 256/256 AVX2 8x3])
 Warning: no OpenMP support for this hash type, consider --fork=8
