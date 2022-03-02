@@ -61,32 +61,28 @@ Once on the docker container, go to the directory `/opt`. From there, run the `e
 To run the script we do so as follows:
 
 ```
-python exploit.py lab_og.jpg
+python3 exploit.py lab_og.jpg
 ```
 
 ```bash
-2022-02-23 08:23:47.274847: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-02-23 08:23:47.274891: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
-2022-02-23 08:23:48.411448: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
-2022-02-23 08:23:48.411539: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)
-2022-02-23 08:23:48.411574: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (e53ca40f207d): /proc/driver/nvidia/version does not exist
-2022-02-23 08:23:48.411820: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+2022-03-02 07:45:46.213378: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-03-02 07:45:46.221981: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 3599995000 Hz
+2022-03-02 07:45:46.223227: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x11a7500 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2022-03-02 07:45:46.223267: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
 Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/mobilenet_v2/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_224.h5
-14540800/14536120 [==============================] - 1s 0us/step
-2022-02-23 08:23:52.450006: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
-2022-02-23 08:23:52.454021: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3600000000 Hz
+14540800/14536120 [==============================] - 2s 0us/step
 Downloading data from https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
 40960/35363 [==================================] - 0s 2us/step
-Processing image: prediction: Labrador_retriever confidence: 41.81845486164093
+Processing image: prediction: Labrador_retriever confidence: 41.81848764419556
 Saving Input
-Processing image: prediction: Labrador_retriever confidence: 41.81845486164093
+Processing image: prediction: Labrador_retriever confidence: 41.81848764419556
 Saving Epsilon = 0.010
-Processing image: prediction: Saluki confidence: 13.087695837020874
+Processing image: prediction: Saluki confidence: 13.087718188762665
 Saving Epsilon = 0.100
-Processing image: prediction: Weimaraner confidence: 14.948992431163788
+Processing image: prediction: Weimaraner confidence: 14.94901329278946
 Saving Epsilon = 0.150
-Processing image: prediction: Weimaraner confidence: 16.2118598818779
+Processing image: prediction: Weimaraner confidence: 16.2117943167686462118598818779
 ```
 
 This takes the initial image of `lab_og.jpg` and then creates different versions of the image with the perturbations added. The script tests these images against the neural network and very quickly stops recognising a Labrador and starts recognising other dog types such as the Saluki and Weimaraner, although note that the levels of confidence in that result are very low \~ 16%.
@@ -94,19 +90,19 @@ This takes the initial image of `lab_og.jpg` and then creates different versions
 After running the program, you should have some files:
 
 ```bash
-root@e53ca40f207d:/opt/adversarial/share# ls -al
-total 740
-drwxr-xr-x 1 root root   4096 Feb 23 08:23  .
-drwxr-xr-x 1 root root   4096 Aug  8  2021  ..
--rw-r--r-- 1 root root 135191 Feb 23 08:23 'Epsilon = 0.010.jpg'
--rw-r--r-- 1 root root 175515 Feb 23 08:23 'Epsilon = 0.100.jpg'
--rw-r--r-- 1 root root 200878 Feb 23 08:23 'Epsilon = 0.150.jpg'
--rw-r--r-- 1 root root 134549 Feb 23 08:23  Input.jpg
--rw-r--r-- 1 root root   3228 Aug  8  2021  exploit.py
--rw-r--r-- 1 root root  83281 Jul 11  2021  lab_og.jpg
+root@c6d12dab5096:/opt# ls -al
+total 736
+drwxr-xr-x 1 root root   4096 Mar  2 07:46  .
+drwxr-xr-x 1 root root   4096 Mar  2 07:45  ..
+-rw-r--r-- 1 root root 135191 Mar  2 07:46 'Epsilon = 0.010.jpg'
+-rw-r--r-- 1 root root 175515 Mar  2 07:46 'Epsilon = 0.100.jpg'
+-rw-r--r-- 1 root root 200878 Mar  2 07:46 'Epsilon = 0.150.jpg'
+-rw-r--r-- 1 root root 134549 Mar  2 07:46  Input.jpg
+-rwxr-xr-x 1 root root   3228 Aug  7  2021  exploit.py
+-rwxr-xr-x 1 root root  83281 Jul 10  2021  lab_og.jpg
 ```
 
-Copy these files to the shared folder with your machine: `/opt`
+Copy these files to the shared folder with your machine.
 
 {% hint style="danger" %}
 Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program `exploit.py` printed out
