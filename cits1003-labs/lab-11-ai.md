@@ -35,13 +35,13 @@ make sure you have created the share folder in your host machine first. You can 
 {% tabs %}
 {% tab title="Windows" %}
 ```bash
-docker run -v C:/projects/share:/opt/share -it --rm uwacyber/cits1003-labs:ai
+docker run -v C:/projects/share:/opt -it --rm uwacyber/cits1003-labs:ai-image
 ```
 {% endtab %}
 
 {% tab title="Linux" %}
 ```
-docker run -v /projects/share:/opt/share -it --rm uwacyber/cits1003-labs:ai
+docker run -v /projects/share:/opt -it --rm uwacyber/cits1003-labs:ai-image
 ```
 {% endtab %}
 
@@ -56,7 +56,7 @@ docker run -v /projects/share:/opt/share -it --rm uwacyber/cits1003-labs:ai
 
 The `-v` flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it (change the path as you wish).
 
-Once on the docker container, go to the directory `/opt/adversarial/share`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
+Once on the docker container, go to the directory `/opt`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
 To run the script we do so as follows:
 
@@ -106,7 +106,7 @@ drwxr-xr-x 1 root root   4096 Aug  8  2021  ..
 -rw-r--r-- 1 root root  83281 Jul 11  2021  lab_og.jpg
 ```
 
-Copy these files to the shared folder with your machine: `/opt/share`
+Copy these files to the shared folder with your machine: `/opt`
 
 {% hint style="danger" %}
 Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program `exploit.py` printed out
@@ -120,11 +120,9 @@ Load the first image, `Input.jpg`, into the site and verify that it is correctly
 
 Flag: Enter the name of the dog type that `exploit.py` recognises with the "Epsilon = 0.150.jpg" file.
 
-{% tabs %}
-{% tab title="Hint" %}
+{% hint style="info" %}
 Ideally Wolfram should produce the same prediction, but because its model is continuously updating, the prediction may not be the same.&#x20;
-{% endtab %}
-{% endtabs %}
+{% endhint %}
 
 To a human eye, the dog is still a Labrador albeit a bit fuzzy. Remember that this is not a targeted attack in that we haven't trained the attack using the specific neural network used by the Wolfram site. If we did, we could develop something that would work at much lower levels of disturbance.
 
@@ -143,6 +141,12 @@ Detecting malware relies on a static analysis of features such as the hash of th
 The Elastic Malware Benchmark for Empowering Researchers (Ember) ([https://github.com/elastic/ember](https://github.com/elastic/ember)) is a neural network that uses features extracted from binary files to train a model that can distinguish malware from regular Windows' programs.
 
 To do this, Ember uses a framework called LIEF that will analyse Windows (and other platforms) binaries ([https://github.com/lief-project/LIEF](https://github.com/lief-project/LIEF)). The data that LIEF produces is then uses a "fingerprint" of the binary and can be used to train the model.
+
+Let's start the docker container to run Ember:
+
+```
+docker run -it --rm uwacyber/cits1003-labs:ai
+```
 
 To test the model `cd` on the same docker container to the directory `/opt/ember`. The model has been pre-trained and so you don't need to do that, although if you are interested, you can (look at the GitHub page).
 
