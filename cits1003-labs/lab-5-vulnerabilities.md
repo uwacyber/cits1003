@@ -71,7 +71,7 @@ docker run -it --rm -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, the easiest to do this lab is with your friend(s). You can try this command (I have not tested it):
 
 ```
-docker run -it --rm -p 3000:3000 --pltform linux/amd64 uwacyber/cits1003-labs:juiceshop
+docker run -it --rm -p 3000:3000 --platform linux/amd64 uwacyber/cits1003-labs:juiceshop
 ```
 
 This message will be removed if the ARM64 image is successfully built.
