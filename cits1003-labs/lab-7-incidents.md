@@ -1,7 +1,9 @@
 # Lab 7: Incidents
 
+## (minor updates being made but you can still do the lab)
+
 {% hint style="danger" %}
-This lab contains live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab contains live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu. Please check the [Setup VM for Labs](setting-up-your-laptop.md#1.-setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
@@ -33,7 +35,7 @@ In this lab, we are going to concentrate on the detection and analysis part of t
 
 ## Using Yara to identify Malware
 
-Yara ([https://github.com/VirusTotal/yara](https://github.com/VirusTotal/yara)) is a tools that uses a set of configurable rules to identify and classify malware. Of course, your anti-malware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is not found, or machines and storage devices need to be searched to check if malware is present on them.
+Yara ([https://github.com/VirusTotal/yara](https://github.com/VirusTotal/yara)) is a tool that uses a set of configurable rules to identify and classify malware. Of course, your anti-malware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is not found, or machines and storage devices need to be searched to check if malware is present on them.
 
 Yara tries to match text and binary from the malware it analyses. Before we start matching malware, let us try and write a rule that will match the text "hello, world!".
 
