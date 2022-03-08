@@ -8,7 +8,43 @@ Walkthrough video:
 
 We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
-## Windows users only: Installing Windows Subsystem for Linux (WSL)
+## 1. Setting up Virtual Machine (VM) to do labs
+
+It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
+
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
+
+{% hint style="info" %}
+FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.
+{% endhint %}
+
+For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this). However, the base settings would be sufficient for most (possibly increase the RAM to 2GB).
+
+You might want to look up an installation guide online, such as this for Ubuntu: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
+
+{% hint style="info" %}
+When installing, always choose the light version/options available.
+{% endhint %}
+
+{% hint style="info" %}
+Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times.&#x20;
+{% endhint %}
+
+Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
+
+### M1 MacBook Users
+
+Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, VMWare has released a free version, please check here:
+
+[https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html](https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html)
+
+Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the VMWare option isn't working for you.&#x20;
+
+## 2. Doing labs on your host machine
+
+You can skip this if you have setup a VM to do the labs.
+
+### 2.1 Windows users only: Installing Windows Subsystem for Linux (WSL)
 
 This is a necessary step for the unit and also for running the Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
 
@@ -52,9 +88,13 @@ Problem 3: If Docker Desktop fails to start
 1. Clean up data and try again
 {% endhint %}
 
-## Running Windows 10 on Azure
+### 2.2 Running Windows 10 on Azure
 
-If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. To do this, you will need a student account created on https://portal.azure.com/.
+If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are using a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
+
+{% hint style="info" %}
+Alternate cloud providers include Google Cloud, Amazon AWS etc.
+{% endhint %}
 
 You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
 
@@ -64,7 +104,7 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-## Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
+### 2.3 Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
 Apple's computers are increasingly using the new M1 chip that uses a different instruction set than the Intel-based Macs. Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
 
@@ -75,21 +115,25 @@ Once this is done, you can proceed with installing and running Docker Desktop (b
 
 Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-## Installing and running Docker Desktop
+## 3. Installing and running Docker Desktop
 
 We will be using a technology called Docker Desktop to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so we will try and provide an alternative for people who want to use the lab machines.
 
 You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
+### 3.1 Installing Docker on Ubuntu (on your VM)
+
+Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+
+### 3.2 Installing Docker on your Host machine
+
+You can skip this step this if using the VM for labs.
+
 The process for installing Docker Desktop is straightforward and involves using the installer for the particular laptop you have:
 
 {% embed url="https://www.docker.com/get-started" %}
 
-### Installing Docker on Ubuntu (on your VM)
-
-Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
-
-
+### 3.3 Testing Docker
 
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
@@ -114,15 +158,20 @@ docker.io/uwacyber/cits1003-labs:bash
 ```
 
 ```
-PS C:\> docker run -it --rm uwacyber/cits1003-labs:bash
+docker run -it --rm uwacyber/cits1003-labs:bash
+```
+
+{% hint style="warning" %}
+If you get a `permission denied` message (likely on your VM), you should add `sudo` at the beginning of your command.
+{% endhint %}
+
+Once the container is running, you can try the below commands in the terminal:
+
+```
 root@9215e663eb9d:/# whoami
 root
 root@9215e663eb9d:/#
 ```
-
-{% hint style="warning" %}
-If you get a `permission denied` message, you should add `sudo` at the beginning of your command.
-{% endhint %}
 
 The `docker pull` command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the `docker run` command as shown above.
 
@@ -136,7 +185,7 @@ CONTAINER ID   IMAGE                         COMMAND       CREATED         STATU
 45fe3a838ef0
 ```
 
-By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag:
+By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag (this will be added in the examples by default):
 
 ```
 docker run -it --rm uwacyber/cits1003-labs:bash
@@ -144,7 +193,7 @@ docker run -it --rm uwacyber/cits1003-labs:bash
 
 This will automatically remove the container so you don't have to go to GUI to do it (of course, nothing you do in this container will be saved).
 
-If you saved the container and wants to restart that container that has stopped, first find the container ID you want to restart:
+If you saved the container (i.e., not using the `--rm` flag) and wants to restart that container that has stopped, first find the container ID you want to restart:
 
 ```
 docker ps -a

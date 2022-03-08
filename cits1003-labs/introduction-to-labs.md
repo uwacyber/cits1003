@@ -24,35 +24,3 @@ This unit requires software that the University IT team can't install on the lab
 {% hint style="info" %}
 It is essential that you reserve at least 10GB of disk space to store the lab files (docker images). You can free disk space by removing completed lab files later.
 {% endhint %}
-
-## Setting up Virtual Machine (VM) to do labs
-
-It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
-
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
-
-{% hint style="info" %}
-FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.
-{% endhint %}
-
-For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this). However, the base settings would be sufficient for most (possibly increase the RAM to 2GB).
-
-You might want to look up an installation guide online, such as this for Ubuntu: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
-
-{% hint style="info" %}
-When installing, always choose the light version/options available.
-{% endhint %}
-
-{% hint style="info" %}
-Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times.&#x20;
-{% endhint %}
-
-Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
-
-### M1 MacBook Users
-
-Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, VMWare has released a free version, please check here:
-
-[https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html](https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html)
-
-Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the VMWare option isn't working for you.&#x20;
