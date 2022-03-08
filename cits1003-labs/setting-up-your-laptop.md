@@ -42,7 +42,7 @@ Virtualisation techniques are getting better as vendors are trying to address th
 
 ## 2. Doing labs on your host machine
 
-You can skip this if you have setup a VM to do the labs.
+You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
 
 ### 2.1 Windows users only: Installing Windows Subsystem for Linux (WSL)
 
