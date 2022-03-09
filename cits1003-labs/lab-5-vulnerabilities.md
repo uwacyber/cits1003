@@ -26,7 +26,7 @@ Vulnerabilities can be split into known and unknown types. For the known vulnera
 
 There are tools that will do automated scans of software, especially web servers. But what is a web server and what are the applications that they run?
 
-## Web Applications
+## 1. Web Applications
 
 Websites are a collection of files that provide (static) formatting instructions as to a browser about how to layout content on a page. This comes in the form of HTML (Hypertext Markup Language), CSS (Cascading Style Sheets) and media files such as images. Dynamic behaviour to add interactivity to a page in the browser can be added, such as using _JavaScript_. JavaScript can also alter the formatting of a page by interacting with a rendered page's Document Object Model (DOM). The DOM is the way the browser organizes the HTML elements that control the formatting of the page. The below diagram provides an overview of how different elements interact with each other.
 
@@ -38,7 +38,7 @@ Web services that are provided by applications running on servers typically inte
 
 It is the interactivity of websites and applications that make them vulnerable to exploitation and give attackers the ability to execute commands on the remote machine, or view or alter files on that machine. Although there are many ways in which the interaction of browser, web applications, operating systems and databases can be exploited, we are going to focus on the top 10 most common types of vulnerabilities that are exploited by attackers.
 
-## OWASP Top 10 Web Vulnerabilities
+## 2. OWASP Top 10 Web Vulnerabilities
 
 Whilst browsing a website, there are a number of specific types of vulnerabilities that you would be looking for. This starts with identifying the software being used for the site, the directory structure as outlined in the previous chapter, and then concentrating on the functionality of the site.
 
@@ -57,7 +57,7 @@ When looking for vulnerabilities, it is worth concentrating on the most common. 
 
 There are tools that will scan a web application automatically for these vulnerabilities with varying degrees of success. Some of these tools include OWASP ZAP, Burp Suite Professional, OpenVAS and Nessus to name a few. We will be doing the process manually however because it is important to understand the underlying mechanisms by which these vulnerabilities work, and also how they can be mitigated.
 
-## Exercise: Running a vulnerable web application OWASP Juice Shop
+## 3. Exercise: Running a vulnerable web application OWASP Juice Shop
 
 OWASP Juice Shop is a modern web application that has a range of vulnerabilities in the OWASP top 10 list. We will look at some of these vulnerabilities, but you can spend more time to see if you can find others. The site will let you know when you find one by creating a green alert. We are going to use OWASP ZAP to scan the website initially. This won't find all of the vulnerabilities, in fact, it only finds a few but it will give us a "crawl" of the site, providing a list of all the links it can find that access different parts of the site.
 
@@ -162,7 +162,7 @@ If you click on the FTP node, you will see a number of files. Some of these file
 
 Why is this a vulnerability? Well, for a start it didn't require usernames and passwords to access, in other words, it allowed _anonymous_ access. Secondly, as mentioned previously, sensitive files should not be left on servers without encryption of any sort and even then, they should be made available only to the people who need to see it. So this is one of OWASP's _Broken Access Control_.
 
-## Second Error
+## 4. Second Error
 
 The second error reported that there was a problem with Error Handling. This vulnerability occurs when the application does not handle errors correctly and the application returns extra information about the error and where it occurred. This can reveal a lot about the website and the code it is running to an attacker.
 
@@ -176,7 +176,7 @@ If there aren't anything in the `Active Scan` tab, you just start a new scan poi
 
 The error information tells us that the application is a `Node.JS` application and that it is using the software Express, version 4.17.1 to run it. It also gives us information about the file structure of the application as well. At this point, you can look up what vulnerabilities are known for this software and be able to exploit them.
 
-## Getting Admin Access
+## 5. Getting Admin Access
 
 Some vulnerabilities are critical, such as ones that provide admin privilege. This vulnerability is something that as a professional penetration tester you would use other tools to search for manually. It involves bypassing the authentication process on the app. One popular method is SQL injection (SQLi). To fully understand why SQLi work, we need to understand how SQL works. However, this is beyond the scope of this unit and so we will just focus on how to do it. If you are interested, you can read more about this technique which works on an alarmingly large number of sites and explains why Injection is the top vulnerability on OWASP's top ten list.
 
@@ -212,7 +212,7 @@ SQL injection is very powerful. In other circumstances, we can use a variety of 
 
 **FLAG: Now that you are logged in, enter the admin email address for the flag**
 
-## Using the API
+## 6. Using the API
 
 Many web applications offer functionality through what is called an Application Programming Interface (API). These are functions that can be called to do something such as list users, conduct a search of products, etc. APIs can normally be accessed using the same communication protocol as a normal Web request, i.e. HTTP.
 

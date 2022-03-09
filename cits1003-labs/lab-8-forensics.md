@@ -16,7 +16,7 @@ Memory forensics involves the analysis of a snapshot of memory in a computer tha
 
 We can use memory forensics to identify malware that may have been only resident in memory and never saved on disk. We can also use it for evidence as to the activities of a user at a given time.
 
-## Taking a Memory Snapshot
+## 1. Taking a Memory Snapshot
 
 There are a variety of software programs that will take a memory snapshot suitable for analysis:
 
@@ -385,7 +385,7 @@ There is another memory dump file `Challenge2.raw`. Inspect this file as above, 
 
 FLAG: Enter the flag you obtained by decoding the output from `cmd.exe`.
 
-## Image retrieval from the memory dump
+## 2. Image retrieval from the memory dump
 
 This section continues to use `Challenge2.raw` file for the analysis.
 
