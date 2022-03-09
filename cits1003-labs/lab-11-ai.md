@@ -24,37 +24,53 @@ Adversarial attacks could become increasingly common as we come to rely on machi
 
 In the area of malware recognition, malware can adopt tactics to prevent recognition by taking an adversarial approach.
 
-To see how this works, we can use a program that uses what is called a non-targetted black box approach to adversarial images.
+To see how this works, we can use a program that uses what is called a non-targeted black box approach to adversarial images.
 
-Start the docker container as follows:
+Two methods you can do this lab - using pre-built image or using public TensorFlow image (only one method is needed):
 
-{% hint style="warning" %}
-make sure you have created the share folder in your host machine first. You can also share to existing folder by providing the path.
-{% endhint %}
+#### 1. Using pre-built image:
 
 {% tabs %}
-{% tab title="Windows" %}
+{% tab title="Windows/Linux" %}
 ```bash
-docker run -v C:/projects/share:/opt -it --rm uwacyber/cits1003-labs:ai-image
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-```
-docker run -v /projects/share:/opt -it --rm uwacyber/cits1003-labs:ai-image
+docker run -it --rm uwacyber/cits1003-labs:ai-image
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-# It is quite complicated to build an ARM64 image using tensorflow, 
-# so work with your friend and/or get help from the lab facilitators for
-# this task. You can do the next task as usual.
+# I have tried building an image as below:
+docker run -it --rm uwacyber/cits1003-labs:ai-image-arm 
+
+# but if it doesn't work, try the below method.
 ```
 {% endtab %}
 {% endtabs %}
 
-The `-v` flag will allow you to share a local directory with the container which we are going to use to get image files. So use a local directory with nothing in it (change the path as you wish).
+#### 2. Using public TensorFlow image (require further installation):
+
+{% tabs %}
+{% tab title="Windows/Linux" %}
+```bash
+docker run -it --rm tensorflow/tensorflow bash
+```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```
+docker pull -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
+```
+{% endtab %}
+{% endtabs %}
+
+Next, `cd` in to `/opt` directory and download lab files (execute line by line):
+
+```
+apt-get install wget
+wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/lab_og.jpg
+wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/exploit.py
+pip3 install matplotlib
+```
 
 Once on the docker container, go to the directory `/opt`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
@@ -102,13 +118,13 @@ drwxr-xr-x 1 root root   4096 Mar  2 07:45  ..
 -rwxr-xr-x 1 root root  83281 Jul 10  2021  lab_og.jpg
 ```
 
-Copy these files to the shared folder with your machine.
+Copy these files to your host VM/machine (open up another terminal and use `docker cp` command).
+
+Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
 {% hint style="danger" %}
 Note the Wolfram site only works intermittently - it isn't reliable. If you can't get it to work, don't worry - just use the predictions that the program `exploit.py` printed out
 {% endhint %}
-
-Back on your own machine, these files should be in the directory you specified to share with the docker container. We are now going to test these out on an image recognition program run by Wolfram which is here [https://www.imageidentify.com](https://www.imageidentify.com)
 
 Load the first image, `Input.jpg`, into the site and verify that it is correctly recognised. Then try with each of the other adversarial images starting with `Epsilon = 0.010.jpg` and going up. If the site errors out, wait a bit and then try again, it seems to not like images being loaded too quickly. Eventually, it should fail to recognise the last image (or misclassify) which has had the most perturbations applied to it.
 
@@ -214,7 +230,7 @@ Let's run a Docker container as follows:
 docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 ```
 
-this will create a folder called `volume1` in the root directory (you can name this something else e.g., `volume1:/extra`), which is attached to the local volume `volume1`.
+This will create a folder called `volume1` in the root directory (you can name this something else e.g., `volume1:/extra`), which is attached to the local volume `volume1`.
 
 Then, we are going to need a file called `putty.exe` that we are going to use as a template for one of the Meterpreter versions. If you have a shared folder between the container and the host, download it by going to the address below and save it to the directory you have shared with the container (you can paste the link in the browser to download, and save it into the shared folder):
 
