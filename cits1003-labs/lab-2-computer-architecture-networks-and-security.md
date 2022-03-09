@@ -13,9 +13,9 @@ Walkthrough video:
 * Windows, MacOS, Linux
 * Bash, PowerShell, Command Prompt
 
-***
+## 1. Files, processes and others
 
-### Command Line
+### 1.1. Command Line
 
 Operating systems offer a number of different ways of interacting with files, processes and other aspects of the system through the use of commands typed in a terminal window. These commands can even be added to files and run as scripts to perform more complicated actions.
 
@@ -171,7 +171,7 @@ root@2577070501db:/# find / -name host*
 /var/lib/dpkg/info/hostname.list
 ```
 
-### Hidden Files and other Attributes
+### 1.2. Hidden Files and other Attributes
 
 In Linux, files that start with a period (.) are hidden from the directory listing command ls. To see them, you need to use the `-a` flag:
 
@@ -212,7 +212,7 @@ For the above example, the `.dockerenv` is the hidden file.
 
 Linux has a limited set of specific attributes on a file that controls how the file is accessed. One attribute for example is the _Append Only_ attribute that only allows the write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using _`lsattr`_` ``` and _`chattr`_` ``` programs
 
-### Downloading Files
+### 1.3. Downloading Files
 
 ### Question 1. Find the file
 
@@ -253,7 +253,7 @@ apt-get install \[package name]
 
 **Flag: Enter the directory that you found AppDelegate.swift in (from the root, the full path without the file and the trailing /) - it is case sensitive.**
 
-### Processes
+### 1.4. Processes
 
 As this is Linux, we can also use the Linux command ps which together with the `-AF` flags shows all proesses and extended information
 
@@ -313,7 +313,7 @@ You can get detailed process information on Linux by looking at the file that th
 cat /proc/<PID>/status
 ```
 
-### Users and Groups
+### 1.5. Users and Groups
 
 Both Windows and Linux implement Role Based Access Control (RBAC) based on groups of users. On Windows 10, as the principle user of a PC, you will likely have Administrator access and so you will be part of a group called `BUILTIN\Administrators`. Windows does not let you perform actions as part of this role however, so it will ask you for confirmation when you run an application as Administrator for example.
 
@@ -415,7 +415,7 @@ nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
 _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 ```
 
-### File Permissions
+### 1.6. File Permissions
 
 #### Linux
 

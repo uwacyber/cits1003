@@ -33,7 +33,7 @@ However, it is also possible that attacks go unnoticed for extended periods of t
 
 In this lab, we are going to concentrate on the detection and analysis part of the lifecycle. We are going to start with a range of observations that will give us potential indicators of compromise (IOCs) and techniques and procedures and we will eventually identify the specific group that carried out the attack.
 
-## Using Yara to identify Malware
+## 1. Using Yara to identify Malware
 
 Yara ([https://github.com/VirusTotal/yara](https://github.com/VirusTotal/yara)) is a tool that uses a set of configurable rules to identify and classify malware. Of course, your anti-malware software installed on desktops will try and identify any malware it finds and there are also online tools that will try and identify malware that is uploaded to them like [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/). However, there are situations where malware is not found, or machines and storage devices need to be searched to check if malware is present on them.
 
@@ -84,7 +84,7 @@ We have run yara and told it to search the subdirectory `./files` and it has fou
 
 Of course, Yara rules can get much more complicated but the principle is the same. Once you have found a piece of malware, you can write rules that will match that malware because of the text and binary data it contains. You can also find other malware that is related to another malware in some way because it has reused some code for example.
 
-## Recognising Malware Samples
+## 2. Recognising Malware Samples
 
 {% hint style="danger" %}
 WARNING: The malware you are analysing is real and so \*do not\* try and remove it from the container or run it.

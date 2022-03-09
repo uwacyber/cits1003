@@ -17,7 +17,7 @@ Walkthrough video:
 * Networking
 * nmap, Bash pingsweeps
 
-### Network Interface
+## 1. Network Interface
 
 To communicate with a TCP/IP network, a computer uses a network interface. This may be connected to a fixed network via an ethernet cable or via a Wi-Fi network. From a TCP/IP perspective, there is little difference and the attributes of the interfaces are the same. The main attributes we are interested in are:
 
@@ -185,7 +185,7 @@ So now our network looks like this:
 
 It is actually a little more complicated than this but we will use another tool to explore the network.&#x20;
 
-## Scanning the network
+## 2. Scanning the network
 
 We are interested in finding out what other computers are on the network and we can do that using a tool called `nmap`.
 
@@ -277,7 +277,7 @@ Run the script by doing:
 192.168.65.5
 ```
 
-## Service discovery with `nmap`
+## 3. Service discovery with `nmap`
 
 Nmap uses a number of strategies to discover what services are running on a machine once it has discovered that it is actually available. Service discovery is done via a range of scripts that come with the `nmap` program. We can run them as follows (note, this takes a very long time!):
 

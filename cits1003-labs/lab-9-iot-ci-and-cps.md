@@ -16,7 +16,7 @@ Having said that, a large number of consumer devices operate on a linux or linux
 
 IoT has a history of poor security. One of the principle areas of concern, and one we will look at in this lab has been the use of hard-coded passwords for remote access to the devices and leaving access to those services open by default. This is one of those "usability vs security" scenarios, and it should give you a good idea to always think about the importance of security.
 
-## Examining firmware
+## 1. Examining firmware
 
 In this exercise, we are going to be looking at the firmware from a Netgear Wireless Router the WNAP320 which was a consumer wireless router which went on sale in 2010 but was available for several years after that. Like all consumer router devices, it provides a web interface to administer the device. It also supports remote access using Telnet and SSH which are not enabled by default. The administration function is normally accessed by being on the local network or by using a direct cable to connect to the device. Some details of the device are provided here: [https://usermanual.wiki/Netgear/NetgearWnap320QuickReferenceGuide.33658341/html](https://usermanual.wiki/Netgear/NetgearWnap320QuickReferenceGuide.33658341/html)
 
@@ -151,7 +151,7 @@ wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
 
 To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website. However, for this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do, which we will do below.
 
-### Testing the Vulnerability
+### 1.1. Testing the Vulnerability
 
 Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
 
@@ -199,7 +199,7 @@ If you would like to setup the emulation yourself and test it, I have included t
 
 Flag: Run `exploit.py` and pass the argument `flag.txt`
 
-## Searching for Hard Coded Credentials
+## 2. Searching for Hard Coded Credentials
 
 In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk`.
 
