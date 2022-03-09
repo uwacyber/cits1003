@@ -1,7 +1,5 @@
 # Lab 10: AI
 
-## <<\<NOT READY>>>
-
 {% hint style="warning" %}
 PLEASE NOTE: This lab image uses a lot of storage space (image size is 2GB, storage size is almost 4GB!), so ensure you have enough space on your hard drive before proceeding.
 {% endhint %}
