@@ -56,7 +56,7 @@ docker run -it --rm tensorflow/tensorflow bash
 
 {% tab title="Apple Silicon" %}
 ```
-docker pull -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
+docker run -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
 ```
 {% endtab %}
 {% endtabs %}
@@ -330,7 +330,7 @@ Now that we have the three different samples, we can go back to our classifier i
 docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
-I have moved the meterpreter files into the `/opt/ember` directory. With the first version `meterpreter1.exe` we get:
+Now, move the meterpreter files into the `/opt/ember` directory. With the first version `meterpreter1.exe` we get:
 
 ```bash
 root@cb69acf0fc22:/opt/ember# python3 scripts/classify_binaries.py -m ember_model_2018.txt meterpreter1.exe
