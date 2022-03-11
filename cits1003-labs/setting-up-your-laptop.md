@@ -141,6 +141,10 @@ You can get a more comprehensive overview of what Docker is from here [https://d
 
 ### 3.1. Installing Docker on Ubuntu (on your VM)
 
+{% hint style="warning" %}
+Please note, the commands you are asked to type to install docker should be done inside the VM (i.e., terminal on Ubuntu), not on your host machine.
+{% endhint %}
+
 Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
 TL;DR - run the following two lines (line by line) of code in your VM's terminal and wait for it to install:
