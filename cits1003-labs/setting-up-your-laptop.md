@@ -8,9 +8,29 @@ Walkthrough video:
 
 We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
+There are three different ways to setup your lab environment:
+
+1. Using VM (recommended, industry best practice).
+2. Using your Host (could be dangerous, only for those of you who know what you are doing).
+3. Using Cloud (e.g., Azure, Google Cloud, AWS etc.).
+
+See below if you are planning to use VM.
+
+![](../.gitbook/assets/1003\_vm\_route.png)
+
+
+
+See below if you are planning to use Host.
+
+![](../.gitbook/assets/1003\_host\_route.png)
+
+If you are planning to use the cloud, see [section 2.2.](setting-up-your-laptop.md#2.2.-running-windows-10-on-azure)
+
 ## 1. Setting up Virtual Machine (VM) to do labs
 
 It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
+
+### 1.1. Windows/MacOS (non-M1)/Linux
 
 There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
 
@@ -32,7 +52,7 @@ Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it 
 
 Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
 
-### M1 MacBook Users
+### 1.2. M1 MacBook Users
 
 Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, VMWare has released a free version, please check here:
 
@@ -44,7 +64,7 @@ Virtualisation techniques are getting better as vendors are trying to address th
 
 You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
 
-### 2.1 Windows users only: Installing Windows Subsystem for Linux (WSL)
+### 2.1. Windows users only: Installing Windows Subsystem for Linux (WSL)
 
 This is a necessary step for the unit and also for running the Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
 
@@ -86,7 +106,7 @@ Problem 3: If Docker Desktop fails to start
 1. Clean up data and try again
 {% endhint %}
 
-### 2.2 Running Windows 10 on Azure
+### 2.2. Running Windows 10 on Azure
 
 If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are going to use a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
 
@@ -102,7 +122,7 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-### 2.3 Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
+### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
 Apple's computers are increasingly using the new M1 chip that uses a different instruction set than the Intel-based Macs. Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
 
@@ -119,11 +139,18 @@ We will be using a technology called Docker Desktop to run different environment
 
 You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
-### 3.1 Installing Docker on Ubuntu (on your VM)
+### 3.1. Installing Docker on Ubuntu (on your VM)
 
 Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
-### 3.2 Installing Docker on your Host machine
+TL;DR - run the following two lines (line by line) of code in your VM's terminal and wait for it to install:
+
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+### 3.2. Installing Docker on your Host machine
 
 You can skip this step this if using the VM for labs.
 
