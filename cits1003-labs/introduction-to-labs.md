@@ -8,7 +8,9 @@ For each lab, there will be a walkthrough video. You do not need to watch this v
 
 ## Laptop Requirement
 
-This unit requires software that the University IT team can't install on the lab machines and so you will need to use your own laptop. This can be either Windows, Mac or Linux and instructions will be provided for those platforms. If you do not have a laptop, you can request a loan laptop as follows:
+This unit requires software that the University IT team can't install on the lab machines and so you will need to use your own laptop. This can be either Windows, Mac or Linux and instructions will be provided for those platforms. For further details, you can see here: [https://teaching.csse.uwa.edu.au/units/unitinfo/laptops.php](https://teaching.csse.uwa.edu.au/units/unitinfo/laptops.php)
+
+If you do not have a laptop, you can request a loan laptop as follows:
 
 > Through the Student Success and Wellbeing IT Equipment Scheme we are able to provide two options to students – they can request either a loan or permanent laptop. For students with more than one semester left, I would encourage them to apply for permanent ownership rather than a loan.
 >
