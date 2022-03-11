@@ -26,7 +26,7 @@ To see how this works, we can use a program that uses what is called a non-targe
 
 Two methods you can do this lab - using pre-built image or using public TensorFlow image (only one method is needed):
 
-#### 1. Using pre-built image:
+#### Method 1. Using pre-built image:
 
 {% tabs %}
 {% tab title="Windows/Linux" %}
@@ -45,7 +45,13 @@ docker run -it --rm uwacyber/cits1003-labs:ai-image-arm
 {% endtab %}
 {% endtabs %}
 
-#### 2. Using public TensorFlow image (require further installation):
+Also install `matplotlib` to run the code later:
+
+```
+pip3 install matplotlib
+```
+
+#### Method 2. Using public TensorFlow image (require further installation):
 
 {% tabs %}
 {% tab title="Windows/Linux" %}
