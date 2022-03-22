@@ -1,9 +1,7 @@
 # Lab 7: Incidents
 
-## (minor updates being made but you can still do the lab)
-
 {% hint style="danger" %}
-This lab contains live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu. Please check the [Setup VM for Labs](setting-up-your-laptop.md#1.-setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab will be using live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu. Please check the [Setup VM for Labs](setting-up-your-laptop.md#1.-setting-up-virtual-machine-vm-to-do-labs) section to do this. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
@@ -98,7 +96,15 @@ WARNING: The malware you are analysing is real and so \*do not\* try and remove 
 
 ### Malware Sample 1
 
-Change directory into `/opt/malware/malware_sample1` and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
+Change directory into `/opt/malware/malware_sample1`. You need to first unzip the malware file `malware1.zip`.&#x20;
+
+```
+unzip malware1.zip
+```
+
+You will be prompted to enter a password, which you can type in `infected` - this is the industry best practice to always have malware samples encrypted with password `infected`.
+
+Now, run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
 
 1. What is the name of the malware?
 2. Which APT group is thought to be responsible for the malware?
@@ -114,7 +120,7 @@ Actually, you could have just taken the hash of the file and done a Google searc
 
 ### Malware Sample 2
 
-Change directory into /opt/malware/malware\_sample2 and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
+Change directory into `/opt/malware/malware_sample2`, decrypt the `malware2.zip` and run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
 
 1. What is the name of the malware?
 2. What is the name of the group thought to be responsible for the malware?
