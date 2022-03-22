@@ -166,6 +166,12 @@ docker run -it --rm uwacyber/cits1003-labs:ai-malware
 
 To test the model `cd` on the same docker container to the directory `/opt/ember`. The model has been pre-trained and so you don't need to do that, although if you are interested, you can (look at the GitHub page).
 
+First, unzip the malware (with the usual password: `infected`):
+
+```
+unzip malware.zip
+```
+
 To test the malware, we can use the following command:
 
 ```
@@ -377,7 +383,7 @@ Well, this one is still recognised as malware. Obviously, this encoder is not a 
 It is important to note that machine learning evasion by masquerading as a normal binary is not an adversarial technique. You have simply overwhelmed the classifier with enough features of normal binaries that it tips it into classifying it as such. Adversarial techniques in malware are more difficult than with images because you are more limited in what you can change. You still want a binary that works after your changes and so randomly changing bits of the file can easily stop it from doing that.
 
 {% hint style="danger" %}
-Don't forget to also delete the local volume you created that contains the meterpreter files.
+Don't forget to delete all malware samples and also delete the local volume you created that contains the meterpreter files.
 {% endhint %}
 
 ### Question 3. Who is Metasploit?
