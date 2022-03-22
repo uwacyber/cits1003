@@ -145,18 +145,18 @@ You can get a more comprehensive overview of what Docker is from here [https://d
 Please note, the commands you are asked to type to install docker should be done inside the VM (i.e., terminal on Ubuntu), not on your host machine.
 {% endhint %}
 
-Follow instructions from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
-
-TL;DR - run the following two lines (line by line) of code in your VM's terminal and wait for it to install:
+Run the following two lines (line by line) of code in your VM's terminal and wait for it to install:
 
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
+The full instruction can be found from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+
 ### 3.2. Installing Docker on your Host machine
 
-You can skip this step this if using the VM for labs.
+You can skip this step if using the VM for labs.
 
 The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have:
 
