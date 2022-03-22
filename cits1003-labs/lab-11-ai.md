@@ -5,7 +5,7 @@ PLEASE NOTE: This lab image uses a lot of storage space (image size is 2GB, stor
 {% endhint %}
 
 {% hint style="danger" %}
-This lab contains live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu or Kali Linux. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab will be using live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu or Kali Linux. Please check the [Setting up VM for labs](introduction-to-labs.md#setting-up-virtual-machine-vm-to-do-labs) section. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
 {% endhint %}
 
 Walkthrough video:
@@ -51,7 +51,7 @@ Also install `matplotlib` to run the code later:
 pip3 install matplotlib
 ```
 
-#### Method 2. Using public TensorFlow image (require further installation):
+#### Method 2. Using public TensorFlow image (require further installations):
 
 {% tabs %}
 {% tab title="Windows/Linux" %}
@@ -71,8 +71,8 @@ Next, `cd` in to `/opt` directory and download lab files (execute line by line):
 
 ```
 apt-get install wget
-wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/lab_og.jpg
-wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/exploit.py
+wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/files/lab_og.jpg
+wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/files/exploit.py
 pip3 install matplotlib
 ```
 
