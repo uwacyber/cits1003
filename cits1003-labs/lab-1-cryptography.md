@@ -459,7 +459,7 @@ KAeblKMgFkcGiEQB5sJLMobA6bAx4CED6rW+PMzf1xYP70shjFlOzwwCLz94ep9Q
 
 **FLAG: What is the secret message that he sent to you and was it really him?**
 
-### **Question 5. Bonus Question:** Crypto Mess
+### **Question 5.** Crypto Mess
 
 One of my friends sent me the following text and it looks horrible! They said they made it by combining multiple codes but I wasn't able to decode the message.
 
