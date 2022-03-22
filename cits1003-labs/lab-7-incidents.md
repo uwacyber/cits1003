@@ -47,7 +47,13 @@ docker run -it --rm uwacyber/cits1003-labs:incident
 
 Change directory to `/opt/malware/test`. This directory has a subdirectory `./files` which has two files in it. One called `bye.txt` which contains the text `"bye bye"` and another file called `hello.txt` that has the text "`hello, world!"`
 
-We are going to create a Yara rules file which you can edit on the machine using the editor **vi**. If you haven't used vi before, don't worry, the steps are provided for you to use it.
+We are going to create a Yara rules file which you can edit on the machine using the editor `vi`. If you haven't used `vi` before, don't worry, the steps are provided for you to use it.
+
+{% hint style="info" %}
+if `vi` is missing, install it:&#x20;
+
+`sudo apt-get update; sudo apt-get install -y vim`
+{% endhint %}
 
 Start editing the file by typing
 
