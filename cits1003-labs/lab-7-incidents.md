@@ -102,13 +102,19 @@ Change directory into `/opt/malware/malware_sample1`. You need to first unzip th
 unzip malware1.zip
 ```
 
-You will be prompted to enter a password, which you can type in `infected` - this is the industry best practice to always have malware samples encrypted with password `infected`.
+You will be prompted to enter a password, which you can type in `infected` - this is the industry best practice to always have malware sample(s) encrypted with the password `infected`.
 
 Now, run yara using the rules file against the malware. It should identify it with a name. Once you have found out the name of the malware, investigate the web to find out the following about the malware:
 
 1. What is the name of the malware?
 2. Which APT group is thought to be responsible for the malware?
 3. Which country did this malware target in 2014?
+
+{% hint style="info" %}
+Once finished with the malware sample, delete it:
+
+`rm malware1`
+{% endhint %}
 
 ### **Question 1. Find the malware1 hash**
 
@@ -125,6 +131,12 @@ Change directory into `/opt/malware/malware_sample2`, decrypt the `malware2.zip`
 1. What is the name of the malware?
 2. What is the name of the group thought to be responsible for the malware?
 3. Roughly how many computers were infected?
+
+{% hint style="info" %}
+Don't forget to delete the malware sample once finished:
+
+`rm malware2`
+{% endhint %}
 
 ### Question 2. Find the malware2 hash
 
