@@ -25,7 +25,7 @@ The device ships with a default username of `admin` and a password of `password`
 Let us start by using the docker container as follows
 
 ```
-docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot 
+sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot 
 ```
 
 Change directory to `/opt/samples/WNAP320`

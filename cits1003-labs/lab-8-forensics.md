@@ -41,7 +41,7 @@ Volatility 2 needs to know the version of the operating system that the memory d
 To get started, run the docker container:
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:volatility
+sudo docker run -it --rm uwacyber/cits1003-labs:volatility
 ```
 
 Change into the directory `/opt/memory`

