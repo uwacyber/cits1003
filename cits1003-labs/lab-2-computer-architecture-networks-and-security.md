@@ -24,7 +24,7 @@ On Windows, there is a program called the Command Prompt as well as a program ca
 We are going to stick with Bash which runs on Windows (WSL), Mac OS and Linux. To do this, run the command:
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:bash
+sudo docker run -it --rm uwacyber/cits1003-labs:bash
 ```
 
 ```bash
@@ -422,9 +422,9 @@ _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
 All files on Linux have a user and a group that is assigned specific access to read (r), write (w) and execute (x) the file. Looking at the access control list of a file, you can see that the permissions are specified for the user, group and other. We can do this using the tool `getfacl`. Create a file called file.txt using the command `touch file.txt`. Then run
 
 {% hint style="info" %}
-_getfacl_ is part of the package _acl_, i.e.,:
+`getfacl` is part of the package `acl`, i.e.,:
 
-apt-get install acl
+`apt-get install acl`
 {% endhint %}
 
 ```bash
@@ -459,6 +459,10 @@ root@c31804846451:/# ls -al file.txt
 Change directory into `/opt/lab3` and run the program `showflag` to get the flag. You will have to figure out why it won't run.
 
 **Flag: Enter the flag returned by showflag**
+
+{% hint style="info" %}
+If you get an error running showflag on M1 Macs, please ask the facilitator for help.
+{% endhint %}
 
 ## **Case study: Dirty COW**
 

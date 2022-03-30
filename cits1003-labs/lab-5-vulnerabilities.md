@@ -64,14 +64,14 @@ OWASP Juice Shop is a modern web application that has a range of vulnerabilities
 To run the website, use the Docker command :
 
 ```
-docker run -it --rm -p 3000:3000 uwacyber/cits1003-labs:juiceshop
+sudo docker run -it --rm -p 3000:3000 uwacyber/cits1003-labs:juiceshop
 ```
 
 {% hint style="warning" %}
 Due to recent updates on juice-shop and its dependencies, I was unable to build a docker image for ARM64. So, if you are using Apple M1, the easiest to do this lab is with your friend(s). You can try this command (I have not tested it):
 
 ```
-docker run -it --rm -p 3000:3000 --platform linux/amd64 uwacyber/cits1003-labs:juiceshop
+sudo docker run -it --rm -p 3000:3000 --platform linux/amd64 uwacyber/cits1003-labs:juiceshop
 ```
 
 This message will be removed if the ARM64 image is successfully built.
@@ -93,7 +93,7 @@ Note: VM users, please see the next tab first.
 
 You can run OWASP ZAP as a Docker container by using the command:
 
-`$ docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm owasp/zap2docker-stable zap-webswing.sh`
+`$ sudo docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm owasp/zap2docker-stable zap-webswing.sh`
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
@@ -137,7 +137,7 @@ Open ZAP and configure the software to scan the Juice Shop website:&#x20;
 
 1. In the top left hand corner, select "ATTACK Mode" in the dropdown.&#x20;
 2. Select `Automated Scan` by clicking the button in the right-hand window.&#x20;
-3. Type in the URL of the Juice Shop `http://127.0.0.1:3000` (or `http://host.docker.internal:3000` if using the container version, or `http://172.17.0.1:3000` if on Ubuntu VM)&#x20;
+3. Type in the URL of the Juice Shop `http://172.17.0.1:3000` (or `http://host.docker.internal:3000` if using the container version, or  if on host `http://127.0.0.1:3000` )&#x20;
 4. Tick both `User traditional spider` and `Use ajax spider with Firefox Headless`, then click "Attack".
 
 {% hint style="warning" %}
@@ -148,7 +148,7 @@ The scan will take a (longish) while but you will notice that the Juice Shop has
 
 ![Juice Shop after scan](../.gitbook/assets/screen-shot-2021-07-02-at-1.04.32-pm.png)
 
-The first alert suggests that you have found a confidential document. If you go back to ZAP and expand the node `http://127.0.0.1:3000` that is under the `Sites` listing on the left hand side, you will see a node in the tree that is called "ftp"
+The first alert suggests that you have found a confidential document. If you go back to ZAP and expand the node `http://172.17.0.1:3000` (or `http://127.0.0.1:3000`) that is under the `Sites` listing on the left hand side, you will see a node in the tree that is called "ftp"
 
 ![](../.gitbook/assets/screen-shot-2021-07-02-at-1.07.08-pm.png)
 
@@ -166,7 +166,7 @@ Why is this a vulnerability? Well, for a start it didn't require usernames and p
 
 The second error reported that there was a problem with Error Handling. This vulnerability occurs when the application does not handle errors correctly and the application returns extra information about the error and where it occurred. This can reveal a lot about the website and the code it is running to an attacker.
 
-To find this error, go back to ZAP and click on the `Active Scan` tab in the bottom window. Sort the output by Code with the sort order showing the largest codes at the top. look until you can find a code of 500 which is an Internal Server Error. One of them is caused by an unexpected path to `api`. You should open the link in your browser (e.g., `http://127.0.0.1:3000/api`). You should see something like this:
+To find this error, go back to ZAP and click on the `Active Scan` tab in the bottom window. Sort the output by Code with the sort order showing the largest codes at the top. look until you can find a code of 500 which is an Internal Server Error. One of them is caused by an unexpected path to `api`. You should open the link in your browser (e.g., `http://172.17.0.1:3000/api`). You should see something like this:
 
 {% hint style="info" %}
 If there aren't anything in the `Active Scan` tab, you just start a new scan pointing at the juiceshop address.
@@ -249,7 +249,7 @@ To get `Inspect`, you need to have configured the browser for Developer Tools wh
 Firefox: Tools/Browser Tools> menu
 {% endhint %}
 
-Click on the `Storage` tab (e.g., in Chrome, this is under `Application` tab) and then find under `Cookies` the cookie for `http://127.0.0.1:3000` and click that. You should see one of the cookies is `token` - copy the contents of that and paste it after `Authorization: Bearer` in the request header (as shown in the above screenshot). Now press `Send`.
+Click on the `Storage` tab (e.g., in Chrome, this is under `Application` tab) and then find under `Cookies` the cookie for `http://172.17.0.1:3000` and click that. You should see one of the cookies is `token` - copy the contents of that and paste it after `Authorization: Bearer` in the request header (as shown in the above screenshot). Now press `Send`.
 
 You should get a response that gives you the list of users. If you want to see the output more clearly, you can copy the content and put it into an online JSON formatter. The problem is that this doesn't give us the passwords, even though if we got them, they would actually be hashes and so we would still need to crack them to make them useable.
 

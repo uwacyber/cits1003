@@ -72,25 +72,21 @@ You can skip section 2 entirely if you have setup a VM to do the labs. But later
 
 ### 2.1. Windows users only: Installing Windows Subsystem for Linux (WSL)
 
-This is a necessary step for the unit and also for running the Docker Desktop. There are instructions for this on the web e.g. here: [https://andrewlock.net/installing-docker-desktop-for-windows/](https://andrewlock.net/installing-docker-desktop-for-windows/)
+This is a necessary step for the unit and also for running the Docker Desktop. The official document can be found here, and you are encouraged to read the documentation.&#x20;
 
-To get started, you need to launch a command prompt in Administrator mode. Search for cmd and then right-click on the command prompt and select run as Administrator.
+[https://docs.microsoft.com/en-us/windows/wsl/install](https://docs.microsoft.com/en-us/windows/wsl/install)
 
-![Running Command Prompt as Administrator](../.gitbook/assets/screen-shot-2021-06-30-at-10.12.47-am.png)
+{% hint style="info" %}
+You must be running Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11. If running an older version, go to the link above and follow the instructions.
+{% endhint %}
 
-Then enter the following commands (2 separate lines):
+Open **administrator** PowerShell or Windows Command Prompt and type in:
 
-> dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
->
-> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+wsl --install
+```
 
-Now type _powershell_ to get a powershell prompt and continue with the commands (two separate lines):
-
-> Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
->
-> wsl --set-default-version 2
-
-After this, restart windows.
+Once complete, restart your machine.&#x20;
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
@@ -100,12 +96,12 @@ There are a number of things that can go wrong doing this installation. Some com
 Problem 1: You can't find cmd.exe or PowerShell:
 
 1. PowerShell can be installed from the Microsoft Store.
-2. You may be running in Windows S mode that will prevent you running and installing apps - to deactivate this feature: To **turn off Windows** 10 **S Mode**, click the Start button then go to Settings > Update & Security > Activation. Select Go to the Store and click **Get** under the Switch **out of S Mode**
+2. You may be running in Windows S mode that will prevent you from running and installing apps - to deactivate this feature: To **turn off Windows** 10 **S Mode**, click the Start button then go to Settings > Update & Security > Activation. Select Go to the Store and click **Get** under the Switch **out of S Mode**
 
 Problem 2: You encounter problems installing and running WSL 2
 
 1. Follow the instructions here [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the kernel update is the key thing
-2. Please note, WSL 2 requires at least **Windows 10 version 1903**.
+2. Please note, WSL 2 requires at least **Windows 10 build 19041**.
 
 Problem 3: If Docker Desktop fails to start
 
@@ -130,11 +126,11 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this Windows 10 on Azure (or other VM) as your host. Go to [`Section 3.2. Installing Docker on Host`](setting-up-your-laptop.md#3.2.-installing-docker-on-your-host-machine)``
+Now you can treat this Windows 10 on Azure (or other VM) as your host. If you selected a Windows VM, then go to [Section 2.1. Installing WSL](setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.2. Installing Docker on Host`](setting-up-your-laptop.md#3.2.-installing-docker-on-your-host-machine)``
 
 ### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
-Apple's computers are increasingly using the new M1 chip that uses a different instruction set than the Intel-based Macs. Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
+Apple's computers are increasingly using the new M1 chip (ARM architecture) that uses a different instruction set than the Intel-based Macs (AMD architecture). Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
 
 1. Open a Terminal window
 2. Type (paste) the command `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
@@ -149,7 +145,7 @@ Installing Docker on VM works the same for installing Docker on Mac host.
 
 ## 3. Installing and running Docker Desktop
 
-We will be using a technology called Docker Desktop to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so we will try and provide an alternative for people who want to use the lab machines.
+We will be using a technology called _Docker Desktop_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so we will try and provide an alternative for people who want to use the lab machines. You will learn more about this in CITS2003, but for the sake of this unit, you do not need to understand how and why this works.
 
 You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
@@ -166,7 +162,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-The full instruction can be found from here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+The full instruction can be found here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
 Now go to [`Section 3.3. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)``
 
@@ -186,8 +182,12 @@ To test the environment, we will run a simple container that allows you to acces
 
 To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following command (please note, the process may take a while on your machine).
 
+{% hint style="warning" %}
+All commands are treated as running from the VM. If running from the host, remove `sudo` at the beginning if it complains it cannot find `sudo`.
+{% endhint %}
+
 ```
-docker pull uwacyber/cits1003-labs:bash
+sudo docker pull uwacyber/cits1003-labs:bash
 ```
 
 ```
@@ -205,19 +205,14 @@ docker.io/uwacyber/cits1003-labs:bash
 ```
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:bash
+sudo docker run -it uwacyber/cits1003-labs:bash
 ```
 
-{% hint style="warning" %}
-If you get a `permission denied` message (likely on your VM), you should add `sudo` at the beginning of your command.
-{% endhint %}
-
-Once the container is running, you can try the below commands in the terminal:
+Once the container is running, you can try the below command (first line only, second line is the output) in the terminal:
 
 ```
 root@9215e663eb9d:/# whoami
 root
-root@9215e663eb9d:/#
 ```
 
 The `docker pull` command downloads the docker image to your machine. The image contains all of the files and configurations needed to run the container. You run a container using the `docker run` command as shown above.
@@ -225,7 +220,7 @@ The `docker pull` command downloads the docker image to your machine. The image 
 In the case of the bash container, to stop it, you simply type `exit`. Other containers can be stopped using the `docker stop` command from another terminal. To do this, you need to provide the Container ID which you can do as follows:
 
 ```bash
-0x4447734D4250:~$ docker ps -a
+0x4447734D4250:~$ sudo docker ps -a
 CONTAINER ID   IMAGE                         COMMAND       CREATED         STATUS         PORTS     NAMES
 45fe3a838ef0   uwacyber/cits1003-labs:bash   "/bin/bash"   3 minutes ago   Up 3 minutes             hungry_hodgkin
 0x4447734D4250:~$ docker stop 45fe3a838ef0
@@ -235,7 +230,7 @@ CONTAINER ID   IMAGE                         COMMAND       CREATED         STATU
 By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag (this will be added in the examples by default):
 
 ```
-docker run -it --rm uwacyber/cits1003-labs:bash
+sudo docker run -it --rm uwacyber/cits1003-labs:bash
 ```
 
 This will automatically remove the container so you don't have to go to GUI to do it (of course, nothing you do in this container will be saved).
@@ -243,13 +238,13 @@ This will automatically remove the container so you don't have to go to GUI to d
 If you saved the container (i.e., not using the `--rm` flag) and wants to restart that container that has stopped, first find the container ID you want to restart:
 
 ```
-docker ps -a
+sudo docker ps -a
 ```
 
 Next, restart the container:
 
 ```
-docker start -ai container_id
+sudo docker start -ai container_id
 ```
 
 Here, the container ID is retrieved from the first column from the previous step (copy and paste).
@@ -257,7 +252,7 @@ Here, the container ID is retrieved from the first column from the previous step
 Finally, once you have finished with a container, you can remove the container that was saved by:&#x20;
 
 ```
-docker rm container_id
+sudo docker rm container_id
 ```
 
 Remember that anything you have done in the container will be lost when you remove the container.&#x20;
@@ -265,13 +260,13 @@ Remember that anything you have done in the container will be lost when you remo
 You can also delete the image downloaded from the Docker Desktop GUI, or from the command line find the image ID (column `IMAGE ID`):
 
 ```
-docker images
+sudo docker images
 ```
 
 Delete the docker image:
 
 ```
-docker rmi image_id
+sudo docker rmi image_id
 ```
 
 We will be using containers in the various labs and so you will learn more about using Docker and how containers work generally as we proceed.
