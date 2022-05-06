@@ -16,6 +16,8 @@ Your task is to find flags for the provided 16 questions to obtain as many point
 
 In addition, you will submit a write-up report summarising how you found the flag for each attempted question. Based on the level of understanding and correctness of your report, you may retain or lose marks you have achieved on the CTF flag submission site (i.e., you can lose marks if your write-up report is deemed insufficient to demonstrate the skills and knowledge).
 
+You may also be requested for an interview for us to clarify any misunderstandings found in your report. If you fail to organise a time to have an interview, you may lose marks for the questions we need clarifications. We will make a reasonable attempt to organise an interview session.
+
 Your write-up report is submitted on LMS (a single PDF file, others are ignored/unmarked), you will find a report submission page.
 
 ### Duration
