@@ -18,69 +18,69 @@ There are three different ways to setup your lab environment:
 
 ![](../.gitbook/assets/1003\_vm\_route.png)
 
-
-
 #### See below if you are planning to use Host.
 
 ![](../.gitbook/assets/1003\_host\_route.png)
 
+
+
 If you are planning to use the cloud, see [section 2.2.](setting-up-your-laptop.md#2.2.-running-windows-10-on-azure)
 
-## 1. Setting up Virtual Machine (VM) to do labs
+## 1. Setting up a Virtual Machine (VM) to do labs
 
 It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
 
 ### 1.1. Windows/MacOS (non-M1)/Linux
 
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
 
 {% hint style="info" %}
-FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.
+FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.&#x20;
+
+For the Ubuntu image, 2CPU and 4GB RAM is recommended.
 {% endhint %}
 
-For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this). However, the base settings would be sufficient for most (possibly increase the RAM to 2GB).
+For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).&#x20;
 
 You might want to look up an installation guide online, such as this for Ubuntu: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 
 {% hint style="info" %}
-When installing, always choose the light version/options available.
-{% endhint %}
+Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times. Some common solutions include:
 
-{% hint style="info" %}
-Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times.&#x20;
+* changing the graphics controller (trial and error)
+* adding more RAM (don't need more than 2 CPU)
+* adding more storage (20GB -> 30GB)
 {% endhint %}
 
 Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
 
-Now, go to [`Section 3.1. Installing Docker on VM`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)``
+Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
 ### 1.2. M1 MacBook Users
 
-Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, VMWare has released a free version, please check here:
+Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, There are a few options for you to choose from.
+
+#### 1. VMWare has released a free version, please check here:
 
 [https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html](https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html)
 
-Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the VMWare option isn't working for you.&#x20;
+#### 2. UTM is also a possible VM solution:
+
+[https://mac.getutm.app/](https://mac.getutm.app)
+
+Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the above options are not working for you.&#x20;
 
 You are also recommended to install **Kali Linux**, as Ubuntu seems to be having issues that are not easily solvable currently.
 
-Now, go to [`Section 3.1. Installing Docker on VM`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)``
+Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
 ## 2. Doing labs on your host machine
 
 You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
 
-### 2.1. Windows users only: Installing Windows Subsystem for Linux (WSL)
+### 2.1. Windows
 
-This is a necessary step for the unit and also for running the Docker Desktop. The official document can be found here, and you are encouraged to read the documentation.&#x20;
-
-[https://docs.microsoft.com/en-us/windows/wsl/install](https://docs.microsoft.com/en-us/windows/wsl/install)
-
-{% hint style="info" %}
-You must be running Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11. If running an older version, go to the link above and follow the instructions.
-{% endhint %}
-
-Open **administrator** PowerShell or Windows Command Prompt and type in:
+The first step is to install WSL2 on Windows. Open **administrator** PowerShell or Windows Command Prompt and type in:
 
 ```
 wsl --install
@@ -90,27 +90,9 @@ Once complete, restart your machine.&#x20;
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-{% hint style="info" %}
-There are a number of things that can go wrong doing this installation. Some common problems and their solutions are listed below.
+Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
-Problem 1: You can't find cmd.exe or PowerShell:
-
-1. PowerShell can be installed from the Microsoft Store.
-2. You may be running in Windows S mode that will prevent you from running and installing apps - to deactivate this feature: To **turn off Windows** 10 **S Mode**, click the Start button then go to Settings > Update & Security > Activation. Select Go to the Store and click **Get** under the Switch **out of S Mode**
-
-Problem 2: You encounter problems installing and running WSL 2
-
-1. Follow the instructions here [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the kernel update is the key thing
-2. Please note, WSL 2 requires at least **Windows 10 build 19041**.
-
-Problem 3: If Docker Desktop fails to start
-
-1. Clean up data and try again
-{% endhint %}
-
-Now you can go to [`Section 3.2. Installing Docker on Host`](setting-up-your-laptop.md#3.2.-installing-docker-on-your-host-machine)``
-
-### 2.2. Running Windows 10 on Azure
+### 2.2. Cloud desktop
 
 If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are going to use a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
 
@@ -122,11 +104,11 @@ You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 mach
 
 Once created, you can connect to the machine via remote desktop and then configure the machine as above.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this Windows 10 on Azure (or other VM) as your host. If you selected a Windows VM, then go to [Section 2.1. Installing WSL](setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.2. Installing Docker on Host`](setting-up-your-laptop.md#3.2.-installing-docker-on-your-host-machine)``
+Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
 ### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
@@ -139,9 +121,7 @@ Once this is done, you can proceed with installing and running Docker Desktop (b
 
 Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-Now, go to [`Section 3.1. Installing Docker on VM`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)``
-
-Installing Docker on VM works the same for installing Docker on Mac host.
+Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
 ## 3. Installing and running Docker Desktop
 
@@ -149,13 +129,19 @@ We will be using a technology called _Docker Desktop_ to run different environme
 
 You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
-### 3.1. Installing Docker on VM (e.g., Ubuntu)
+### 3.1. Installing Docker Desktop (Windows/Mac/Linux)
 
 {% hint style="warning" %}
-Please note, the commands you are asked to type to install docker should be done inside the VM (i.e., terminal on Ubuntu), not on your host machine.
+If you have installed a VM, install Docker Desktop inside your VM.
 {% endhint %}
 
-Run the following two lines (line by line) of code in your VM's terminal and wait for it to install:
+The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have (from the drop-down menu, select the appropriate OS):
+
+{% embed url="https://www.docker.com/get-started" %}
+
+#### 3.1.1. Another method for Ubuntu
+
+You can also install docker on Ubuntu without the Docker Desktop. Run the following two lines (line by line) of code in your terminal and wait for it to install:
 
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -164,19 +150,9 @@ sudo sh get-docker.sh
 
 The full instruction can be found here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
-Now go to [`Section 3.3. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)``
+Now go to [`Section 3.2. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)``
 
-### 3.2. Installing Docker on your Host machine
-
-You can skip this step if using the VM for labs.
-
-The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have:
-
-{% embed url="https://www.docker.com/get-started" %}
-
-Now go to [`Section 3.3. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)``
-
-### 3.3 Testing Docker
+### 3.2. Testing Docker
 
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
