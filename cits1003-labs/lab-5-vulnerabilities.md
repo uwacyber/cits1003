@@ -81,7 +81,7 @@ This message will be removed if the ARM64 image is successfully built.
 You must run the provided juice-shop image, as it has been custom-built for this lab (the default image from OWASP will not contain the correct flags you need).
 {% endhint %}
 
-This will start the website on port 3000. You can access it using the URL `http://127.0.0.1:3000` and should see the home page:
+This will start the website on port 3000. You can access it using the URL `http://172.17.0.1:3000` (or on host `http://127.0.0.1:3000`) and should see the home page:
 
 ![OWASP Juice Shop Home Page](../.gitbook/assets/screen-shot-2021-07-02-at-11.19.55-am.png)
 
@@ -97,7 +97,7 @@ You can run OWASP ZAP as a Docker container by using the command:
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
-Remember that since it is running in a container when you need to access the Juice Shop container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
+On VM, it would be the VM's address (e.g., `172.17.0.1`). If on host, since it is inside the container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
 
 If you receive a message to restart your ZAP session, it will be better for you to run the ZAP application instead.
 {% endtab %}
@@ -125,7 +125,7 @@ Now, follow the steps below to install and start ZAP application:
 
 7\) start the ZAP application
 
-Your attack address will be `http://172.17.0.1/3000` in Ubuntu VM.
+Your attack address will be `http://172.17.0.1:3000` in Ubuntu VM.
 {% endtab %}
 
 {% tab title="Apple Silicon (M1)" %}
