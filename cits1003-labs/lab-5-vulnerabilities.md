@@ -97,7 +97,7 @@ You can run OWASP ZAP as a Docker container by using the command:
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
-On VM, it would be the VM's address (e.g., `172.17.0.1`). If on host, since it is inside the container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
+Since this is running within a container, you need to use the host address `host.docker.internal` instead of `127.0.0.1`
 
 If you receive a message to restart your ZAP session, it will be better for you to run the ZAP application instead.
 {% endtab %}
