@@ -2,6 +2,8 @@
 
 Walkthrough video:
 
+Please NOTE, the walkthrough videos are for the guidance only, remember to use the lab materials provided in this labsheet, not from the walkthrough video!
+
 **Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
 
 ## Getting started
@@ -22,25 +24,23 @@ There are three different ways to setup your lab environment:
 
 ![](../.gitbook/assets/1003\_host\_route.png)
 
-
-
 If you are planning to use the cloud, see [section 2.2.](setting-up-your-laptop.md#2.2.-running-windows-10-on-azure)
 
 ## 1. Setting up a Virtual Machine (VM) to do labs
 
-It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.&#x20;
+It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
 
 ### 1.1. Windows/MacOS (non-M1)/Linux
 
 There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Ubuntu ](https://ubuntu.com/download#download)or [Kali Linux](https://www.kali.org) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 20GB disk space. It won't fully occupy 20GB on your machine, as the size will dynamically adjust as you use it.
 
 {% hint style="info" %}
-FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.&#x20;
+FYI, I am using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have tested and ran all labs.
 
 For the Ubuntu image, 2CPU and 4GB RAM is recommended.
 {% endhint %}
 
-For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).&#x20;
+For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).
 
 You might want to look up an installation guide online, such as this for Ubuntu: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 
@@ -68,7 +68,7 @@ Unfortunately, there are currently a limited number of options running VMs on M1
 
 [https://mac.getutm.app/](https://mac.getutm.app)
 
-Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the above options are not working for you.&#x20;
+Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the above options are not working for you.
 
 You are also recommended to install **Kali Linux**, as Ubuntu seems to be having issues that are not easily solvable currently.
 
@@ -86,7 +86,7 @@ The first step is to install WSL2 on Windows. Open **administrator** PowerShell 
 wsl --install
 ```
 
-Once complete, restart your machine.&#x20;
+Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
@@ -150,7 +150,7 @@ sudo sh get-docker.sh
 
 The full instruction can be found here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
-Now go to [`Section 3.2. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)``
+Now go to [`Section 3.2. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)\`\`
 
 ### 3.2. Testing Docker
 
@@ -225,13 +225,13 @@ sudo docker start -ai container_id
 
 Here, the container ID is retrieved from the first column from the previous step (copy and paste).
 
-Finally, once you have finished with a container, you can remove the container that was saved by:&#x20;
+Finally, once you have finished with a container, you can remove the container that was saved by:
 
 ```
 sudo docker rm container_id
 ```
 
-Remember that anything you have done in the container will be lost when you remove the container.&#x20;
+Remember that anything you have done in the container will be lost when you remove the container.
 
 You can also delete the image downloaded from the Docker Desktop GUI, or from the command line find the image ID (column `IMAGE ID`):
 
@@ -285,12 +285,12 @@ Read through the following article and answer the questions below: [https://www.
 
 ### Question 2. CIA
 
-The ​​2007 wave of cyber attacks against Estonian government agencies, banks and media websites were in the form of Distributed Denial of Service (DDoS) attacks. These resulted in disruptions to the display of Estonian internet sites. This is primarily a violation of which aspect of cybersecurity?&#x20;
+The ​​2007 wave of cyber attacks against Estonian government agencies, banks and media websites were in the form of Distributed Denial of Service (DDoS) attacks. These resulted in disruptions to the display of Estonian internet sites. This is primarily a violation of which aspect of cybersecurity?
 
-* Confidentiality&#x20;
-* Integrity&#x20;
-* Availability&#x20;
-* Authentication&#x20;
+* Confidentiality
+* Integrity
+* Availability
+* Authentication
 * Accountability
 
 {% hint style="info" %}
@@ -301,11 +301,11 @@ Submit your flag with the correct answer (e.g., `CITS1003{Confidentiality}` if o
 
 In Estonia, every citizen receives an electronic-ID in the form of an 11 digit personal identification number from the government. The ID is additionally issued with PIN codes enabling the person to use e-ID functionalities such as accessing state and private sector e-services. Primary electronic identification comes with a physical ID card, which is a mandatory identification document in Estonia. This form of identification can also be carried oute digitally, such as via mobile-ID. Additionally, during the application for obtaining this card, the applicant must be physically identified by Police and Border Guard officials at least once during the application process. Based on solely the above information, which type of authentication does this electronic-ID provide?
 
-Note, the types are referred in the lecture slides.&#x20;
+Note, the types are referred in the lecture slides.
 
-* Type 1&#x20;
-* Type 2&#x20;
-* Type 3&#x20;
+* Type 1
+* Type 2
+* Type 3
 * Type 4
 
 {% hint style="info" %}
@@ -314,10 +314,10 @@ Submit your flag with the correct answer, replacing spaces with underscores (e.g
 
 ### Question 4. CIA returns
 
-The article describes data centers in Estonia and Luxembourg and the associated challenges in keeping data in sync across them. One possible method could be providing object metadata by default for every object stored in the data center. This may include the entry date, content length, the last modified date and a hash of the content. Dissimilarities in metadata between data centers for the same object could help detect discrepancies. This measure would help maintain which aspect of cybersecurity?&#x20;
+The article describes data centers in Estonia and Luxembourg and the associated challenges in keeping data in sync across them. One possible method could be providing object metadata by default for every object stored in the data center. This may include the entry date, content length, the last modified date and a hash of the content. Dissimilarities in metadata between data centers for the same object could help detect discrepancies. This measure would help maintain which aspect of cybersecurity?
 
-* Confidentiality&#x20;
-* Integrity&#x20;
-* Availability&#x20;
-* Authorisation&#x20;
+* Confidentiality
+* Integrity
+* Availability
+* Authorisation
 * Non-repudiation
