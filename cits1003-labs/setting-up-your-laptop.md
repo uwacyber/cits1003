@@ -58,25 +58,29 @@ Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#
 
 ### 1.2. M1 MacBook Users
 
-Unfortunately, there are currently a limited number of options running VMs on M1 (Apple Silicon) MacBooks due to technical issues and challenges. Fortunately, There are a few options for you to choose from.
-
-#### 1. VMWare has released a free version, please check here:
-
-[https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html](https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html)
-
-#### 2. UTM is also a possible VM solution:
+#### 1. UTM is a possible VM solution:
 
 [https://mac.getutm.app/](https://mac.getutm.app)
 
+(I have setup a Kali VM on UTM and it runs most items as intended (unless otherwise stated), so this would be a good option).
+
 Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the above options are not working for you.
 
-You are also recommended to install **Kali Linux**, as Ubuntu seems to be having issues that are not easily solvable currently.
+You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu.
+
+#### 2. Virtualbox is also available as beta testing:
+
+[https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+
+Virtualbox has released an M1/M2 version, which is in their beta testing stage (as of Dec 2022). We haven't tested it but it should work as intended.
 
 Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
 ## 2. Doing labs on your host machine
 
 You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
+
+Please note, this is NOT the recommended way of setting it up.
 
 ### 2.1. Windows
 
