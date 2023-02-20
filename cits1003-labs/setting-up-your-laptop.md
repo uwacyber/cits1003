@@ -300,29 +300,31 @@ Which aspect of cybersecurity do the cyber attacks primarily violate?
 * Non-repudiation
 
 {% hint style="info" %}
-Submit your flag with the correct answer (e.g., `CITS1003{Confidentiality}` if option 1 was the correct answer).
+Submit your flag with the correct answer (e.g., `CITS1003{Integrity}` if Integrity was the correct answer).
 {% endhint %}
 
 ### Question 3. How was Optus compromised?
 
 Which is the reason given by third-parties about how Optus was compromised?
 
-* Advanced Persistent Threat (APT) attacks
-* Scams such as spam text messages, phishing emails, etc.
-* Lack of authentication and authorization
-* None of the above
+1. Advanced Persistent Threat (APT) attacks
+2. Scams such as spam text messages, phishing emails, etc.
+3. Lack of authentication and authorization
+4. None of the above
 
 {% hint style="info" %}
-Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{Type_1}` if option 1 was the correct answer).
+Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{1}` if option 1 was the correct answer).
 {% endhint %}
 
 ### Question 4. Mitigation
 
 What should be done to safeguard businesses from data breaches?
 
-* Implement, monitor and update customized IT policies and protocols
-* Enforce mandatory multi-factor authentication
-* Encrypt user data in an end-to-end way
-* All of the above
+1. Implement, monitor and update customized IT policies and protocols
+2. Enforce mandatory multi-factor authentication
+3. Encrypt user data in an end-to-end way
+4. All of the above
 
-
+{% hint style="info" %}
+Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{1}` if option 1 was the correct answer).
+{% endhint %}
