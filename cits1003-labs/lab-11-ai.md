@@ -392,39 +392,44 @@ Don't forget to delete all malware samples and also delete the local volume you 
 
 If you are interested, upload the meterpreter versions you created to VirusTotal and see what they are classified as there.
 
-## Case study: Building Resilience in Autonomous Vehicle Image Recognition
+## Case study: Prompt injection attacks in AI-based text generation
 
-Great strides have been made in recent years in improving autonomous vehicles and their ability to observe the world around them. Nowadays, autonomous vehicles are equipped with state-of-the art sensors that utilize cutting-edge analytics technologies, and are designed to automate, assist or replace many of the functions humans were formerly responsible for. With threats against AI models becoming an issue of increasing importance, the McAfee Advanced Threat Research team (ATR) set out to explore how adversaries could target and evade artificial intelligence, and in doing so, influence awareness, understanding and development of more secure technologies before they are implemented.
+“In recent years, artificial intelligence has taken huge strides in advancing the field of natural language processing. Among the many breakthroughs in this area, one platform has truly taken the world by storm: ChatGPT. With its sophisticated language model and powerful natural language processing capabilities, ChatGPT has revolutionized the way we think about AI-based text generation. It’s underlying neural network structure is capable of generating text with remarkable accuracy and coherence, utilising a training process that involves processing massive amounts of text data to learn patterns and generate high-quality responses. 
+While ChatGPT has certainly made great strides in the field of AI-based text generation, it is not immune to security vulnerabilities. One such vulnerability is prompt injection attacks, which can be used by malicious actors to manipulate the model's behaviour and potentially gain access to sensitive information. Prompt injection attacks are a type of security vulnerability that can occur in natural language processing (NLP) models like ChatGPT. In a prompt injection attack, an attacker crafts a malicious input prompt that can manipulate the model's behaviour in unexpected ways. By injecting specific keywords or phrases into the prompt, the attacker can bias the model's output or even gain access to sensitive data.”
 
-Read through the following article and answer the following questions: [https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/)
+This passage above was generated using ChatGPT! You can try ChatGPT for yourself here! [https://openai.com/blog/chatgpt/](https://openai.com/blog/chatgpt/)
 
-### Question 4. white vs black
 
-What is the difference between a white-box attack and a black-box attack?&#x20;
+Read through the following article and answer the following questions: [https://simonwillison.net/2022/Sep/12/prompt-injection/](https://simonwillison.net/2022/Sep/12/prompt-injection/)
 
-1. In white-box attacks the attacker has access to the model's algorithm, while in black-box attacks, the attacker has no access to the algorithm.
-2. In white-box attacks the attacker has access to the model's loss function, while in black-box attacks, the attacker has no access to the loss function.&#x20;
-3. In white-box attacks the attacker has access to the model's parameters, while in black-box attacks, the attacker has no access to these parameters.&#x20;
-4. In white-box attacks the attacker has access to the model's training data, while in black-box attacks, the attacker has no access to the training data.
+### Question 4. The impact of prompt injection attacks
+
+Which of the following is the least concerning regarding prompt injection attacks?&#x20;
+
+1. A malicious attacker could craft a prompt that includes keywords related to account passwords and trick the model into revealing sensitive information.&#x20;
+2. Companies may want to use the paid API offered by ChatGPT for their business operations. Prompt injection attacks allow malicious attackers to potentially discover the underlying business logic behind their API usage, which is a risk to the business’s intellectual property and ongoing operations.&#x20;
+3. In an attempt to discover sensitive information, attackers may need to craft multiple malicious prompts to see which one successfully reveals the information. This may cause strain on the service by increasing server demand and subsequently costs.&#x20;
+4. Prompt injection attacks can degrade the performance of NLP models, making them less effective in generating accurate and coherent text. Further, if a prompt injection attack results in inaccurate or misleading information being generated, it can damage the reputation of the organization or individuals associated with the model.
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. Did I see that correctly?
+### Question 5. Mitigating prompt injection attacks
 
-ATR’s main focus was improving the resilience of AI models against the misclassification of traffic signs. Which of these is not an experiment designed to cause a traffic sign misclassification?&#x20;
+Which of these is not a potential mitigation technique against prompt injection attacks?&#x20;
 
-1. Adding a black sticker across this center of speed limit signs to achieve a misclassification of the predicted speed limit.&#x20;
-2. Adding colored stickers to stop signs caused a traffic sign classifier to misclassify the stop sign as an added lane sign.&#x20;
-3. Obstructing significant portions of speed limit signs.&#x20;
-4. Testing the model’s resilience to fluctuations in lighting conditions by constantly varying the camera’s color grading.
+1.	Using input sanitization techniques to filter out potentially harmful keywords or phrases.&#x20;
+2.	Training the model on a diverse range of data, including adversarial examples, to improve its ability to detect and filter out malicious inputs.&#x20;
+3.	Adding more computational resources to the model to help it process input prompts more quickly.&#x20;
+4.	Implementing an anomaly detection system to identify and filter out unexpected or suspicious input prompts.&#x20;
+5.	Limit access to detailed information about the AI model.
 
-### Question 6. Protect your AI
+### Question 6. The impact of input-based defence on ChatGPT
 
-Which of these is not a valid defense against attacks on AI systems&#x20;
+In reality, finding methods for distinguishing between “instructional” prompts and “user-input” prompts for ChatGPT has proven to be a challenge, due to the richness of natural language input. One such challenge is in implementing restrictions that prevent exploitation, while allowing enough freedom for the model to effectively perform its tasks. Which of the following potential input-based defence methods would have the most impact on ordinary (non-malicious) use of the ChatGPT service?&#x20;
 
-1. Limit access to detailed information about the AI model.&#x20;
-2. Build models using algorithms that are transformation invariant.&#x20;
-3. Training models with adversarial inputs.&#x20;
-4. Include perturbations in the training data to increase resilience against them.
+1.	Input allow-listing: Depending on the task the model is solving, it could happen that the user input has very specific formatting. For example, if the user input is a phone number, there is no point in allowing characters other than numbers, white spaces and maybe a small subset of symbols.&#x20;
+2.	Input length: The more protections are deployed, the longer a payload would need to be to bypass them. Reducing the maximum length of the user input increases the level of restrictions and decreases the opportunities for an attacker to find a working payload.&#x20;
+3.	Input deny-listing: When allow-listing is not possible, deny-listing can be used to block certain characters or terms that could facilitate exploitation. For example, don’t allow the word “translate” if the instructions are using it as well.&#x20;
+4.	Explicit Separation: Provide the end-user an explicit field for their input that is separated from the instruction prompt.
