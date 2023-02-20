@@ -281,47 +281,48 @@ There will be a file called flag.txt in the directory. We can view the contents 
 
 **Flag: Submit the flag on the CTF server that you just found!**
 
-## Case study: The World’s First Data Embassy
+## Case study: Mainstream cyber attacks: data breach
 
-“Through its e-Estonia initiative, Estonia has built a digital society and developed the most technologically advanced government in the world. Practically every government service is paperless and performed electronically. As a result, Estonia is highly dependent on its information systems and the data stored on them. To protect its data, Estonia developed the concept of data embassies – servers outside the country that are legally under Estonian jurisdiction. The digital copies of key databases they store can be accessed in the event of a major data incident in the country, thereby protecting the digital lifeblood of this small Nordic country. Estonia is on its way to becoming a “country without borders”, and the data embassy is one of several Estonian programmes that blurs the lines of national borders and sovereign identity in a digital world.”
+A data breach is an incident in which sensitive, protected, or confidential information is accessed, disclosed, or stolen without authorization. This can include personal information such as names, addresses, and Social Security numbers, as well as financial information such as credit card numbers and bank account information.
+Data breaches can occur in various ways, such as hacking into a computer system, stealing physical devices containing data, or social engineering techniques like phishing emails or phone calls. The consequences of a data breach can be severe, including financial loss, damage to reputation, and potential legal liability.
 
-Read through the following article and answer the questions below: [https://www.oecd.org/gov/innovative-government/Estonia-case-study-UAE-report-2018.pdf](https://www.oecd.org/gov/innovative-government/Estonia-case-study-UAE-report-2018.pdf)
+
+Read through the following article and answer the questions below: [https://webo.digital/blog/optus-medibank-data-breaches-cyber-security](https://webo.digital/blog/optus-medibank-data-breaches-cyber-security)
 
 ### Question 2. CIA
 
-The ​​2007 wave of cyber attacks against Estonian government agencies, banks and media websites were in the form of Distributed Denial of Service (DDoS) attacks. These resulted in disruptions to the display of Estonian internet sites. This is primarily a violation of which aspect of cybersecurity?
+Which aspect of cybersecurity do the cyber attacks primarily violate?
 
 * Confidentiality
 * Integrity
 * Availability
 * Authentication
-* Accountability
+* Non-repudiation
 
 {% hint style="info" %}
 Submit your flag with the correct answer (e.g., `CITS1003{Confidentiality}` if option 1 was the correct answer).
 {% endhint %}
 
-### Question 3. Authentication types
+### Question 3. How was Optus compromised?
 
-In Estonia, every citizen receives an electronic-ID in the form of an 11 digit personal identification number from the government. The ID is additionally issued with PIN codes enabling the person to use e-ID functionalities such as accessing state and private sector e-services. Primary electronic identification comes with a physical ID card, which is a mandatory identification document in Estonia. This form of identification can also be carried oute digitally, such as via mobile-ID. Additionally, during the application for obtaining this card, the applicant must be physically identified by Police and Border Guard officials at least once during the application process. Based on solely the above information, which type of authentication does this electronic-ID provide?
+Which is the reason given by third-parties about how Optus was compromised?
 
-Note, the types are referred in the lecture slides.
-
-* Type 1
-* Type 2
-* Type 3
-* Type 4
+* Advanced Persistent Threat (APT) attacks
+* Scams such as spam text messages, phishing emails, etc.
+* Lack of authentication and authorization
+* None of the above
 
 {% hint style="info" %}
 Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{Type_1}` if option 1 was the correct answer).
 {% endhint %}
 
-### Question 4. CIA returns
+### Question 4. Mitigation
 
-The article describes data centers in Estonia and Luxembourg and the associated challenges in keeping data in sync across them. One possible method could be providing object metadata by default for every object stored in the data center. This may include the entry date, content length, the last modified date and a hash of the content. Dissimilarities in metadata between data centers for the same object could help detect discrepancies. This measure would help maintain which aspect of cybersecurity?
+What should be done to safeguard businesses from data breaches?
 
-* Confidentiality
-* Integrity
-* Availability
-* Authorisation
-* Non-repudiation
+* Implement, monitor and update customized IT policies and protocols
+* Enforce mandatory multi-factor authentication
+* Encrypt user data in an end-to-end way
+* All of the above
+
+
