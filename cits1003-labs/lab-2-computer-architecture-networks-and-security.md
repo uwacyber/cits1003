@@ -464,40 +464,46 @@ Change directory into `/opt/lab3` and run the program `showflag` to get the flag
 If you get an error running showflag on M1 Macs, please ask the facilitator for help.
 {% endhint %}
 
-## **Case study: Dirty COW**
+## **Case study: Dirty Pipe**
 
-Dirty COW (Dirty copy-on-write) is a computer security vulnerability for the Linux kernel that affected all Linux-based operating systems, including Android devices, that used older versions of the Linux kernel created before 2018. It is a local privilege escalation bug that exploits a race condition in the implementation of the copy-on-write mechanism in the kernel's memory-management subsystem. Computers and devices that still use the older kernels remain vulnerable.
+Dirty Pipe (CVE-2022-0847) proved that there is a new way to exploit Linux syscalls to write to files with a read-only privileges. The fact that someone can write to a file regardless of its permissions is a big security threat. An application of this vulnerability would be to write on the host from an unprivileged container. Keep in mind that this vulnerability is a kernel vulnerability which makes it hard, or even impossible, for user-mode runtime monitoring programs to detect this sort of file modification. 
 
-Watch the following Computerphile Youtube video and answer the questions below: [https://www.youtube.com/watch?v=CQcgz43MEZg](https://www.youtube.com/watch?v=CQcgz43MEZg)
+Read through the following article and answer the questions below:[https://blog.aquasec.com/deep-analysis-of-the-dirty-pipe-vulnerability
+]https://blog.aquasec.com/deep-analysis-of-the-dirty-pipe-vulnerability
 
-### **Question 3. Kernel's role**
 
-Which of the following is not true?&#x20;
+### **Question 3. What is Dirty Pipe**
 
-1. The kernel is provided with a protected Kernel Space which is a separate area of memory. This area is shared with other application programs that require privileged access to resources.&#x20;
-2. The kernel is the program that constitutes the central core of an operating system.&#x20;
-3. The kernel is the first part of the operating system to be loaded into memory during the booting process.&#x20;
-4. The kernel is responsible for managing resources, allowing multiple processes to use the resources and provide services to various processes.
+Which of the following is true about Dirty Pipe (CVE-2022-0847)?&#x20;
+
+1. A Linux syscall to write to files with a read-only privilege.&#x20;
+2. A kernel vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
+3. An application vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
+4. A Linux kernel version released in 2022.&#x20;
+5. A way to copy files in Linux.
+
+
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 4. Kernel's tasks
+### Question 4. sendfile syscall
 
-Which of the options below matches the access level to its protection ring label?&#x20;
+What is the sendfile syscall used for?&#x20;
 
-1. Kernel: 0, Device Drivers: 1, Applications: 2&3&#x20;
-2. Kernel: 0, Device Drivers: 1 & 2, Applications: 3&#x20;
-3. Kernel: 0, Device Drivers: 2 & 3, Applications: 1&#x20;
-4. Kernel: 3, Device Drivers: 2 & 1, Applications: 0
+1. To copy a file with a naive writing method.&#x20;
+2. To copy data between two files when at least one of them is a pipe.&#x20;
+3. To copy from one file to another without moving through the user-mode.&#x20;
+4. To issue data copy only when one modifies a copied data.
 
-### Question 5. Privilege escalation
 
-The Dirty COW exploit allows an attacker to obtain root permissions on a Linux device. The process of elevating a user account’s permissions is known as privilege escalation. Which is not a description of malicious activities that can be performed due to this?&#x20;
+### Question 5. Pipe in Linux
 
-1. Certain binaries and files can not be and can only be modified or written to by a user of higher permissions, such as the root. If these can now be modified, an attack could change a file so that it performs additional, unexpected functions, such as keylogging.&#x20;
-2. A root shell can be accessed to perform arbitrary Linux commands, such as changing the root password.&#x20;
-3. An attack could infect privileged files with malicious code, such as a virus. When a user starts a program which has been infected they will inadvertently allow this virus to run. If this program is now run with root privileges, the virus will have those same privileges and cause damage to usually restricted files and systems.&#x20;
-4. A backdoor could be written into a binary file which would give an attacker root access at any time without knowing the actual root password.&#x20;
-5. None of the above
+what is a pipe in Linux?&#x20;
+
+1. A ring buffer used for data transfer between two processes or threads.&#x20;
+2. A new vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
+3. A system object which allows data transfer to and/or from them.&#x20;
+4. A new way to copy files in Linux.
+
