@@ -34,7 +34,7 @@ sudo docker run -it --rm uwacyber/cits1003-labs:ai-image
 
 {% tab title="Apple Silicon" %}
 ```bash
-docker run -it --rm uwacyber/cits1003-labs:ai-image-arm 
+sudo docker run -it --rm uwacyber/cits1003-labs:ai-image-arm 
 ```
 {% endtab %}
 {% endtabs %}
