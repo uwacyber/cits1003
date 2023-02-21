@@ -156,7 +156,7 @@ To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the t
 Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
 
 {% hint style="info" %}
-Currently, the emulator is running at [http://34.66.53.228](http://34.66.53.228) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
+Currently, the emulator is running at [http://35.226.1.51](http://35.226.1.51) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
 
 If the address doesn't work, please let the Unit Coordinator know.
 {% endhint %}
