@@ -68,6 +68,10 @@ Virtualisation techniques are getting better as vendors are trying to address th
 
 You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu.
 
+If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
+
+If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
+
 #### 2. Virtualbox is also available as beta testing:
 
 [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
