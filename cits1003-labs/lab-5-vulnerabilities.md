@@ -302,41 +302,42 @@ Now go and login with the username and password admin/admin and voila!
 
 **FLAG: Go into the Support Chat and tell Juicy Bot your name, then interact with the bot. With the right keyword(s), the bot should give you the flag! (hint: the bot is known to be a party animal!)**
 
-## **Case study: Log4Shell**
+## **Case study: Meltdown and Spectre**
 
-Log4Shell (CVE-2021-44228) was a zero-day vulnerability in Log4j, a popular Java logging framework, involving arbitrary code execution. The vulnerability has existed unnoticed since 2013 and was privately disclosed to the Apache Software Foundation, of which Log4j is a project, by Chen Zhaojun of Alibaba Cloud's security team on 24 November 2021, and was publicly disclosed on 9 December 2021. Apache gave Log4Shell a CVSS severity rating of 10, the highest available score. The exploit is simple to execute and is estimated to affect hundreds of millions of devices.
+Meltdown and Spectre are two of the world’s most widespread modern processor vulnerabilities. Meltdown (CVE-2017-5754), is rogue data cache load. It allows an unprivileged process to access the memory of other programs and the operating system. Spectre (CVE-2017-5753 and CVE-2017-5715), corresponds to bounds check bypass and branch target injection, respectively. Spectre breaks the isolation between different applications. It allows an unprivileged attacker to trick error-free programs into leaking their secrets. Both vulnerabilities affect almost all electronic devices such as computers, phones, tablets, wearables and cloud servers. 
 
-Read through the following article and answer the questions below: [https://theconversation.com/what-is-log4j-a-cybersecurity-expert-explains-the-latest-internet-vulnerability-how-bad-it-is-and-whats-at-stake-173896](https://theconversation.com/what-is-log4j-a-cybersecurity-expert-explains-the-latest-internet-vulnerability-how-bad-it-is-and-whats-at-stake-173896)
+Read through the following article and answer the questions below: [https://www.cloudflare.com/learning/security/threats/meltdown-spectre/](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/)
 
-### **Question 4. what is zero-day?**
+### **Question 4. What Meltdown and Spectre can do?**
 
-Which best describes a zero-day vulnerability?&#x20;
+Which of the following is the impact of Meltdown and Spectre on modern computers?&#x20;
 
-1. A vulnerability that has existed since the initial launch of the product.&#x20;
-2. A vulnerability that is unknown or unfixed by the manufacturer of the product when it is exploited.&#x20;
-3. A vulnerability that is found within the first day of the product’s launch.&#x20;
-4. A vulnerability that takes a very short amount of time to exploit.
+1.	Leak sensitive information such as personal data.&#x20;
+2.	Corrupt system data.&#x20;
+3.	Cause damage to computer hardware.&#x20;
+4.	Make computers unable to work.
+
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. danger danger
+### Question 5. Root cause
 
-Why is the Log4Shell vulnerability considered such a dangerous threat?&#x20;
+Which of the following is the root cause of Meltdown and Spectre?&#x20;
 
-1. Attackers can remotely take over any internet-connected service that uses certain versions of the Log4j library anywhere in the software stack and execute arbitrary code.&#x20;
-2. Log4j is used by a vast range of web-based services; the ubiquity of its use gives attackers a wide array of attack avenues.&#x20;
-3. The exploit takes advantage of improper input validation in the Log4j software, which is easy to perform and requires low technical skill.&#x20;
-4. All of the above.
+1.	Weak user password &#x20;
+2.	Speculative execution &#x20;
+3.	Flawed antivirus software &#x20;
+4.	Lack of multi-factor authentication
 
-### Question 6. update in progress...
 
-Log4Shell has since been discovered and measures are being taken by Apache to manage the vulnerability. The details can be found here [https://logging.apache.org/log4j/2.x/security.html](https://logging.apache.org/log4j/2.x/security.html) under CVE-2021-44228.&#x20;
+### Question 6. Speculative execution
 
-One of the mitigation strategies for addressing the Log4Shell vulnerability is to update the software to a specified version, however this may be a difficult task under certain circumstances. You are the admin of an IT system in a large SaaS company. Which of the following circumstances would not make it difficult for your company to update the Log4j software.&#x20;
+Which of the following statements is correct about speculative execution?&#x20;
 
-1. It can be difficult to upgrade the software stack of complex legacy systems present in long-standing companies. As such, engineers might opt to not update their Log4j versions at all, retaining the vulnerability.&#x20;
-2. Updates need to be specified for various different systems and infrastructures and there may not be a one-size-fits-all solution to patching the vulnerability. Various patches may need to be developed using different approaches for all affected environments, so it may take a long time before one is available for your environment.&#x20;
-3. Updating software may require administrative permissions, which may not be readily available to users in certain environments.&#x20;
-4. Updating software may cause disruptions to the delivery of an application or platform’s service. Managers may be hesitant to update software if it means significant downtime for the service.
+1.	Allow multiple instructions to perform in parallel.&#x20;
+2.	Prevent unauthorized access to system resources.&#x20;
+3.	Allow a modern processor to guess code that is likely to be executed and execute it.&#x20;
+4.	Ensure the integrity of data stored in memory.&#x20;
+
