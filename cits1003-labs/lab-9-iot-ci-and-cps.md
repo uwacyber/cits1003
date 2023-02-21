@@ -372,14 +372,13 @@ Now you should be working as root. Next, we install _Firmware Analysis Toolkit (
 ```
 git clone https://github.com/attify/firmware-analysis-toolkit
 cd firmware-analysis-toolkit
+apt-get install -y libjpeg-dev zlib1g-dev nginx
 ./setup.sh
-apt-get install -y libjpeg-dev zlib1g-dev
 ```
 
 Next, we have to enable the web service for us to access it via the browser. Do this by installing nginx and running it.
 
 ```
-apt-get install -y nginx
 ufw enable
 ufw allow http
 ```
