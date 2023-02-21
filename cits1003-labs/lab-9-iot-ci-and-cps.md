@@ -430,7 +430,7 @@ Warning: Journal has been rotated since unit was started. Log output is incomple
 We are now ready to emulate!
 
 1. load the firmware into the VM (e.g., `wget http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip)`
-2. unzip, and extract the tar file (e.g., `tar -xvf your_tar_file.tar`.
+2. unzip, and extract the tar file (e.g., `tar -xvf your_tar_file.tar`).
 3. copy the `rootfs.squashfs` into the `firmware analysis toolkit` folder.
 4. start emulation e.g., `./fat.py rootfs.squashfs`
 
