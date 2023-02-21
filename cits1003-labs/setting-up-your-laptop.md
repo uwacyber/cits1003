@@ -73,6 +73,7 @@ You are also recommended to install **Kali Linux**, but you can use other generi
 [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 
 Virtualbox has released an M1/M2 version, which is in their beta testing stage (as of Dec 2022). We haven't tested it but it should work as intended.
+Once you have VirtualBox installed, download and install **Kali Linux** or **Ubuntu**.
 
 Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
