@@ -56,21 +56,23 @@ Once you have successfully installed and launched Ubuntu, it should bring up a G
 
 Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
 
-### 1.2. M1 MacBook Users
+### 1.2. M1/M2 etc. MacBook Users
 
-#### 1. UTM is a possible VM solution:
+#### 1. UTM:
 
 [https://mac.getutm.app/](https://mac.getutm.app)
 
-(I have setup a Kali VM on UTM and it runs most items as intended (unless otherwise stated), so this would be a good option).
+Kali VM on UTM has been setup and it runs all labs as intended, so this should work for you for this unit.
 
-Virtualisation techniques are getting better as vendors are trying to address those issues, but it may still not work for the purpose of our labs. You will be safe to do most labs, but we highly recommend doing labs 7 and 10 with your friend or using a different laptop with VMs available if the above options are not working for you.
+The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
 You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu.
 
+{% hint style="info" %}
 If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
 
 If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
+{% endhint %}
 
 #### 2. Virtualbox is also available as beta testing:
 
@@ -84,7 +86,7 @@ Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#
 
 You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
 
-Please note, this is NOT the recommended way of setting it up.
+Please note, this is NOT the recommended way of setting it up, but it might be useful if your laptop is not sufficiently powered to run VMs.
 
 ### 2.1. Windows
 
@@ -133,9 +135,9 @@ Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#
 
 ## 3. Installing and running Docker Desktop
 
-We will be using a technology called _Docker Desktop_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so we will try and provide an alternative for people who want to use the lab machines. You will learn more about this in CITS2003, but for the sake of this unit, you do not need to understand how and why this works.
+We will be using a technology called _Docker Desktop_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. You will learn more about this in CITS2003, but for the sake of this unit, you do not need to understand how and why this works.
 
-You can get a more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
+You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
 ### 3.1. Installing Docker Desktop (Windows/Mac/Linux)
 
@@ -147,11 +149,18 @@ The process for installing Docker Desktop is straightforward and involves using 
 
 {% embed url="https://www.docker.com/get-started" %}
 
-#### 3.1.1. Another method for Ubuntu
+{% hint style="warning" %}
+If you are on Kali VM on M1 Macbook, you can type this in the terminal:
+```bash
+sudo apt-get update && sudo apt-get install -y docker.io
+```
+{% endhint %}
+
+#### 3.1.1. Another method for Ubuntu (should also work for Kali)
 
 You can also install docker on Ubuntu without the Docker Desktop. Run the following two lines (line by line) of code in your terminal and wait for it to install:
 
-```
+```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
@@ -170,11 +179,11 @@ To start with, make sure that your Docker Desktop application is running. Once i
 All commands are treated as running from the VM. If running from the host, remove `sudo` at the beginning if it complains it cannot find `sudo`.
 {% endhint %}
 
-```
+```bash
 sudo docker pull uwacyber/cits1003-labs:bash
 ```
 
-```
+```bash
 bash: Pulling from uwacyber/cits1003-labs
 a31c7b29f4ad: Pull complete
 56dc59d71033: Pull complete
@@ -188,13 +197,13 @@ Status: Downloaded newer image for uwacyber/cits1003-labs:bash
 docker.io/uwacyber/cits1003-labs:bash
 ```
 
-```
+```bash
 sudo docker run -it uwacyber/cits1003-labs:bash
 ```
 
 Once the container is running, you can try the below command (first line only, second line is the output) in the terminal:
 
-```
+```bash
 root@9215e663eb9d:/# whoami
 root
 ```
@@ -213,7 +222,7 @@ CONTAINER ID   IMAGE                         COMMAND       CREATED         STATU
 
 By simply quitting with command `exit`, it saves the container. If you wish to remove the container automatically when you finish the session, add the `--rm` flag (this will be added in the examples by default):
 
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:bash
 ```
 
@@ -221,13 +230,13 @@ This will automatically remove the container so you don't have to go to GUI to d
 
 If you saved the container (i.e., not using the `--rm` flag) and wants to restart that container that has stopped, first find the container ID you want to restart:
 
-```
+```bash
 sudo docker ps -a
 ```
 
 Next, restart the container:
 
-```
+```bash
 sudo docker start -ai container_id
 ```
 
@@ -235,7 +244,7 @@ Here, the container ID is retrieved from the first column from the previous step
 
 Finally, once you have finished with a container, you can remove the container that was saved by:
 
-```
+```bash
 sudo docker rm container_id
 ```
 
@@ -243,13 +252,13 @@ Remember that anything you have done in the container will be lost when you remo
 
 You can also delete the image downloaded from the Docker Desktop GUI, or from the command line find the image ID (column `IMAGE ID`):
 
-```
-sudo docker images
+```bash
+sudo docker image ls
 ```
 
 Delete the docker image:
 
-```
+```bash
 sudo docker rmi image_id
 ```
 
