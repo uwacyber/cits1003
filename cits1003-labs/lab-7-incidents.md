@@ -39,7 +39,7 @@ Yara tries to match text and binary from the malware it analyses. Before we star
 
 To start, run the docker container:
 
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:incident
 ```
 
@@ -98,7 +98,7 @@ WARNING: The malware you are analysing is real and so \*do not\* try and remove 
 
 Change directory into `/opt/malware/malware_sample1`. You need to first unzip the malware file `malware1.zip`.&#x20;
 
-```
+```bash
 unzip malware1.zip
 ```
 
