@@ -30,15 +30,16 @@ To communicate with a TCP/IP network, a computer uses a network interface. This 
 * **Default Gateway**: Usually the address of your router e.g. 192.168.0.1
 * **DNS Server**: Usually again, the address of your router or ISP DNS server
 
-We can get these details using the command `ipconfig` on Windows and `ip addr` on Linux and Mac\*
+We can get these details using the command `ip addr` on Linux (or if you are on host, `ip addr` on Mac\* and `ipconfig` on Windows).
 
+
+{% hint style="warning" %}
 \*you have to first install `iproute2mac` package as below.
 
-```
+```bash
 brew install iproute2mac
 ```
 
-{% hint style="warning" %}
 If `brew` isn't installed on your machine, install it by running:
 
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
@@ -55,24 +56,6 @@ If you get a warning like "warning: /opt/homebrew/bin is not in your PATH", run 
 Then you should be able to see something like below (Mac will look similar to Linux).
 
 {% tabs %}
-{% tab title="Windows" %}
-```bash
-PS C:\> ipconfig
-
-Windows IP Configuration
-
-
-Ethernet adapter Ethernet0:
-
-   Connection-specific DNS Suffix  . : uniwa.uwa.edu.au
-   Link-local IPv6 Address . . . . . : fe80::3cfc:f569:4be1:6260%15
-   IPv4 Address. . . . . . . . . . . : 192.168.114.3
-   Subnet Mask . . . . . . . . . . . : 255.255.255.0
-   Default Gateway . . . . . . . . . : 192.168.114.1
-   
-```
-{% endtab %}
-
 {% tab title="Linux/Mac" %}
 ```bash
 root@d99d71e2318a:/# ip addr
@@ -90,13 +73,31 @@ root@d99d71e2318a:/# ip addr
        valid_lft forever preferred_lft forever
 ```
 {% endtab %}
+
+{% tab title="Windows" %}
+```bash
+PS C:\> ipconfig
+
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet0:
+
+   Connection-specific DNS Suffix  . : uniwa.uwa.edu.au
+   Link-local IPv6 Address . . . . . : fe80::3cfc:f569:4be1:6260%15
+   IPv4 Address. . . . . . . . . . . : 192.168.114.3
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.114.1
+   
+```
+{% endtab %}
 {% endtabs %}
 
 For both Mac and Windows, the Graphical User Interface versions of network configuration are more convenient ways of getting this information however (but is not covered in this unit nor needed).
 
 Start the docker container and run `ip addr`
 
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:network 
 ```
 
@@ -132,7 +133,7 @@ We can see that the gateway address is `172.17.0.1`.
 
 Let us start another container and do an `ip addr`. You can do this by opening another terminal and using the same `docker run` command as above. &#x20;
 
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:network
 ```
 
@@ -160,7 +161,7 @@ So our network looks like this:
 
 We can actually communicate between containers. To test this, use the ping command (example below is from the terminal with the address `172.17.0.2`):
 
-```
+```bash
 ping -c 1 172.17.0.3
 ```
 
@@ -175,25 +176,28 @@ rtt min/avg/max/mdev = 0.715/0.715/0.715/0.000 ms
 
 We will use ping below to scan the network but the way it works is to send a packet of a particular kind to the address and when received, the other host replies. Other than showing that there is a host responding at that address, you can also work out how far away it is because you get the round trip time (`rtt` at line 7) which in this case is 0.715 ms.
 
-The networking picture looks simple enough, but what happens when we want to communicate with the machine that Docker is running on? Well, Docker has a special address for that which is `host.docker.internal.` Let us ping that:
+Now we are going to ping our host, which is at `172.17.0.1`.
 
 {% hint style="info" %}
-In Ubuntu VM, you should use `172.17.0.1` instead of `host.docker.internal`.
+If you are running on a host, then the Docker has a special address for that which is `host.docker.internal`.
 {% endhint %}
 
-```bash
-root@d99d71e2318a:/# ping -c 1 host.docker.internal
-PING host.docker.internal (192.168.65.2) 56(84) bytes of data.
-64 bytes from 192.168.65.2: icmp_seq=1 ttl=37 time=1.50 ms
+Let us ping that:
 
---- host.docker.internal ping statistics ---
+
+```bash
+root@d99d71e2318a:/# ping -c 1 172.17.0.1
+PING 172.17.0.1 (172.17.0.1) 56(84) bytes of data.
+64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=1.03 ms
+
+--- 172.17.0.1 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 1.496/1.496/1.496/0.000 ms
 ```
 
-So this is on a different network (still a private one, however). Docker also has a `hostname` for the gateway on this network which is `gateway.docker.internal`**.**
+If you are running from the Host, you will observe that it also shows an IP address, which starts with 192.... So this is on a different network (still a private one, however). Docker also has a `hostname` for the gateway on this network which is `gateway.docker.internal`**.**
 
-So now our network looks like this:
+So our network technically looks like this:
 
 ![](../.gitbook/assets/network2.jpg)
 
@@ -221,44 +225,36 @@ Using the ping command to send 1 ping (`-c 1`), we get a reply which took 1.563 
 
 `nmap` uses different ways of doing the same thing as a ping to determine if a computer is on the network. It isn't always reliable because sometimes computers are configured not to reply to pings, or a firewall will block them.
 
-If mobile devices such as an iPhone is connected to a network, it will stop responding to pings when it is not unlocked. Android phones (currently) do respond however (last checked Dec 2021).
-
-Let us go back to our docker container and scan the network `192.168.65.0/24`\*. Just as a reminder, this notation means that we are going to check the computers with IP addresses that range from `192.168.65.0` - `192.168.65.255` (the `/24` means that the network part is `192.168.65` and so is fixed).
+Let us go back to our docker container and scan the network `172.17.0.0/24`. Just as a reminder, this notation means that we are going to check the computers with IP addresses that range from `172.17.0.0` - `172.17.0.255` (the `/24` means that the network part is `172.17.0` and so is fixed).
 
 {% hint style="info" %}
-Ubuntu VM users, scan `172.17.0.1` - `172.17.0.255`&#x20;
+Host users, scan `192.168.65.0/24` &#x20;
+Ensure that you replace the address above with the address you have found when pinging `host.docker.internal`.
 {% endhint %}
-
-\*here, you should replace this address with the address you have found when pinging `host.docker.internal`.
 
 To use `nmap` to perform a ping scan we use the following (note, this takes some time):
 
 ```
-nmap -sn 192.168.65.0/24
+nmap -sn 172.17.0.0/24
 ```
 
 ```bash
-Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-02 02:55 UTC
-Nmap scan report for 192.168.65.1
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-02-02 02:55 UTC
+Nmap scan report for 172.17.0.1
 Host is up (0.0081s latency).
-Nmap scan report for 192.168.65.2
+Nmap scan report for 172.17.0.3
 Host is up (0.0036s latency).
-Nmap scan report for 192.168.65.3
-Host is up (0.000080s latency).
-Nmap scan report for 192.168.65.4
-Host is up (0.000087s latency).
-Nmap scan report for 192.168.65.5
-Host is up (0.00047s latency).
-Nmap done: 256 IP addresses (5 hosts up) scanned in 45.40 seconds
+Nmap scan report for 1979a01db783 (172.17.0.2)
+Host is up.
+Nmap done: 256 IP addresses (3 hosts up) scanned in 2.11 seconds
 ```
 
-On this network, we found 5 hosts (your result may vary depending on where you are scanning from):
+On this network, we found 3 hosts (your result may vary depending on where you are scanning from):
 
-* 192.168.65.1
-* 192.168.65.2
-* 192.168.65.3
-* 192.168.65.4
-* 192.168.65.5
+* 172.17.0.1
+* 172.17.0.2
+* 172.17.0.3
+
 
 `nmap` does have the ability to try and work out what operating system is running on a device and of course will discover services that are running as well. Before we look at that, let us try a different approach by using a script to discover hosts:
 
@@ -279,8 +275,8 @@ done
 
 Run the script by doing:
 
-```
-./root/pingsweep.sh 192.168.65
+```bash
+./root/pingsweep.sh 172.17.0
 ```
 
 ```bash
@@ -291,13 +287,17 @@ Run the script by doing:
 192.168.65.5
 ```
 
+Essentially you get the same result as using the nmap above. The whole point of the script is that you are now able to customize the script to do other things!
+
 ## 3. Service discovery with `nmap`
 
 Nmap uses a number of strategies to discover what services are running on a machine once it has discovered that it is actually available. Service discovery is done via a range of scripts that come with the `nmap` program. We can run them as follows (note, this takes a very long time!):
 
+```bash
+nmap -sC -sV 172.17.0.1-3
 ```
-nmap -sC -sV 192.168.65.1-5
-```
+
+The below example is running the same command but with a Windows host (because the output is more interesting).
 
 ```bash
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-02 03:01 UTC
@@ -377,12 +377,12 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 5 IP addresses (5 hosts up) scanned in 250.21 seconds
 ```
 
-We run `nmap` using the `-sC` (all scripts) and `-sV` (determine the versions of software providing the services discovered). We specified the hosts to scan as `192.168.65.1-5` to just look at the hosts we found before (replace the range as appropriate).
+We run `nmap` using the `-sC` (all scripts) and `-sV` (determine the versions of software providing the services discovered). In the example above, we specified the hosts to scan as `192.168.65.1-5` to just look at the hosts we found before (replace the range as appropriate).
 
 So what we have is (for this example):
 
 * 192.168.65.1 running DNS (53) and an HTTP Proxy (3128)
-* 192.168.65.2 this is the address for my PC (your output may vary)
+* 192.168.65.2 this is the address for the PC running the script (your output may vary)
 * 192.168.65.3 RPC Services (111)
 * 192.168.65.4 RPC Services (111)
 * 192.168.65.5 DNS (53)
@@ -401,11 +401,11 @@ The other DNS service is paired with an HTTP proxy. This is a piece of software 
 
 Now that we know the basics of using `nmap`, let us use it on a new host. Keep the network container running from above (or start it if you haven't got it running). In a new terminal, start the docker container:
 
-```
+```bash
 sudo docker run -p 2222:2222 -it --rm uwacyber/cits1003-labs:cowrie
 ```
 
-Back in the `network` container, do a ping scan of the `172.17.0.1-16` network and find what hosts are up. Run `nmap` against the IP of the second container you ran using all scripts and versions.
+Back in the `network` container, do a ping scan of the `172.17.0.1-16` network and find what hosts are up. Run `nmap` against the IP of the new container you ran using all scripts and versions.
 
 What is the service that you have found?
 
