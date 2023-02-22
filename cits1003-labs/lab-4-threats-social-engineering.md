@@ -51,7 +51,7 @@ Normally, an attacker would make the site more convincing by using SSL and havin
 
 To run Gophish, start the Docker container as follows
 
-```
+```bash
 sudo docker run -p 3333:3333 -p 8880:80 -it --rm uwacyber/cits1003-labs:gophish
 ```
 
@@ -87,7 +87,7 @@ We are going to run a mail server as another container and so when asked, the ho
 
 Let us do that now. In another terminal, run the following container:
 
-```
+```bash
 sudo docker run -it --rm -p 1080:1080 -p 1025:1025 uwacyber/cits1003-labs:maildev
 ```
 
@@ -169,13 +169,13 @@ We will run a user simulation program that will automatically read the emails se
 
 {% tabs %}
 {% tab title="on VM" %}
-```
+```bash
 sudo docker run -it --rm --add-host host.docker.internal:172.17.0.1 uwacyber/cits1003-labs:usersim
 ```
 {% endtab %}
 
 {% tab title="on Host" %}
-```
+```bash
 sudo docker run -it --rm uwacyber/cits1003-labs:usersim 
 ```
 {% endtab %}
@@ -191,7 +191,6 @@ Launch another campaign and you should see the `usersim` simulate clicks.
 
 **Flag: After running `usersim`, look at the emails in MailDev. You should see the flag.**
 
-Note: change the square brackets to curly brackets when submitting the flag.
 
 ## Case study: The Phishing Scam That Took Google and Facebook for $100 Million
 
