@@ -24,7 +24,7 @@ The device ships with a default username of `admin` and a password of `password`
 
 Let us start by using the docker container as follows
 
-```
+```bash
 sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot 
 ```
 
@@ -34,7 +34,7 @@ In that directory is a ZIP file which is the firmware for the WNAP320 router (al
 
 Let us unzip the file and see what it contains
 
-```
+```bash
 unzip WNAP320\ Firmware\ Version\ 2.0.3.zip
 ```
 
@@ -46,7 +46,7 @@ inflating: WNAP320_V2.0.3_firmware.tar
 
 The file `WNAPP320V2.0.3_firmware.tar` file is another archive file (colloquially called a tarball). We can extract this using the `tar` utility:
 
-```
+```bash
 tar -xvf WNAP320_V2.0.3_firmware.tar 
 ```
 
@@ -59,7 +59,7 @@ kernel.md5
 
 The `vmlinux.gz.uImage` is the actual kernel of the operating system and contains all of the code that will run that when booted on a device. The `rootfs.sqaushfs` is the file system in `squashfs` format. The files with the md5 extension are the MD5 hashes of the image and `squashfs` files. To look at the contents of the `squashfs` file, we need to extract this file and we can use the `binwalk` tool to do this:
 
-```
+```bash
 binwalk -e rootfs.squashfs
 ```
 
@@ -86,7 +86,7 @@ drwxr-xr-x 3 root root    4096 Feb 15 03:21  _rootfs.squashfs.extracted
 
 This will now extract a directory `_rootfs.squashfs.extracted` that contains `squashfs-root` which is the root of the filesystem for the firmware:
 
-```
+```bash
 ls -al ./_rootfs.squashfs.extracted/squashfs-root/
 ```
 
@@ -163,8 +163,8 @@ If the address doesn't work, please let the Unit Coordinator know.
 
 There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
 
-```
-./exploit.py 34.66.53.228 /etc/passwd
+```bash
+./exploit.py [IP address of the emulator (e.g., 35.226.1.51)] /etc/passwd
 ```
 
 ```bash
@@ -203,7 +203,7 @@ Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk`.
 
-```
+```bash
 cd /opt/samples/DIR300
 binwalk -e DIR-300A1_FW105b09.bin
 ```
@@ -227,7 +227,7 @@ drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
 
 We can now cd into the directory `_DIR-300A1_FW105b09.bin.extracted` and then into the directory `squashfs-root`. Again we have a Linux filesystem
 
-```
+```bash
 cd /opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root
 ls -al
 ```
@@ -253,7 +253,7 @@ drwxrwsr-x 11  528 1000 4096 Nov 26  2010 www
 
 You can explore the file system a bit to see where things are but to shortcut, we are interested in the telnet service which allows remote access to the DLINK box. If we do a search for the word telnet in all of the files we get:
 
-```
+```bash
 grep -ir telnet *
 ```
 
@@ -361,7 +361,7 @@ Now the VM is ready, we need to setup emulator inside the VM. Inside the `VM ins
 
 We need the root privilege to configure networking, so we will work as root. We do this by running:
 
-```
+```bash
 sudo passwd root
 [enter your root password]
 su
@@ -369,7 +369,7 @@ su
 
 Now you should be working as root. Next, we install _Firmware Analysis Toolkit (FAT)_, which automates much of the _Firmadyne_ processes (the firmware emulator). Install by running these commands:
 
-```
+```bash
 git clone https://github.com/attify/firmware-analysis-toolkit
 cd firmware-analysis-toolkit
 apt-get install -y libjpeg-dev zlib1g-dev nginx
@@ -378,7 +378,7 @@ apt-get install -y libjpeg-dev zlib1g-dev nginx
 
 Next, we have to enable the web service for us to access it via the browser. Do this by installing nginx and running it.
 
-```
+```bash
 ufw enable
 ufw allow http
 ```
@@ -403,14 +403,14 @@ location / {
 
 Now, restart nginx and check it is running
 
-```
+```bash
 service nginx restart
 service nginx status
 ```
 
 The output should look like this:
 
-```
+```bash
 /etc/nginx$ service nginx status
 ● nginx.service - A high performance web server and a reverse proxy server
    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
