@@ -455,37 +455,40 @@ When an ssh connection is initiated, the server negotiates the crypto algorithms
 
 **Flag: Enter the crypto algorithms (in order of appearance) used by the honeypot server to exchange data with the ssh connection. The algorithms are separated by a comma, no spaces (e.g., `CITS1003{algorithm1,algorithm2}`).**&#x20;
 
-## **Case study: IP Spoofing in Django REST**
+## **Case study: The Heartbleed Bug**
 
-Recently, an IP spoofing vulnerability has been discovered in Django REST allowing attackers to circumvent the framework’s throttling feature, which is supposed to protect applications against mass requests.
+The Heartbleed Bug was a serious vulnerability within OpenSSL, which is widely used to secure communications on the internet. The bug allows attackers to read unauthorized memory from affected servers. This memory could contain sensitive information that should have been protected by the SSL/TLS encryption used to secure internet communications. It has affected many popular websites and services, potentially exposing sensitive information such as usernames, passwords, and credit card numbers.
 
-Read through the following article and answer the questions below: [https://portswigger.net/daily-swig/ip-spoofing-bug-leaves-django-rest-applications-open-to-ddos-password-cracking-attacks](https://portswigger.net/daily-swig/ip-spoofing-bug-leaves-django-rest-applications-open-to-ddos-password-cracking-attacks)
+Read through the following article and answer the questions below: [https://www.vox.com/2014/6/19/18076318/heartbleed](https://www.vox.com/2014/6/19/18076318/heartbleed)
 
-### Question 4. what is IP spoofing?
+### Question 4. What is Heartbleed in OpenSSL?
 
-1. An attack that fools the target computer and any intervening firewall into believing that messages from the intruder's computer are actually coming from an authorized user inside the organization's network.&#x20;
-2. An attempt to clad or cover the internal processing (IP) lines with insulating material to shield the IP lines from excess heat or radiation. Illegally taping or listening in on telephone conversations.&#x20;
-3. The prevention of denial-of-service attacks by routinely shuffling IP addresses on a subnetwork.&#x20;
-4. Any malicious activity that disrupts a network through means of IP address table manipulation.
+Which of the following statements accurately describes what the Heartbleed vulnerability is?&#x20;
+
+1.	It is a type of cyber attack where attackers send a flood of requests to an OpenSSL-based server, causing it to crash and making it irresponsive.&#x20;
+2.	It is a hardware vulnerability in an OpenSSL-based server that an attacker can exploit to read unauthorized information.&#x20;
+3.	It is a bug in the OpenSSL cryptographic implementation that can be exploited to break the server’s data confidentiality.&#x20;
+4.	It is a type of malware that can infect an OpenSSL-based server and modify/steal sensitive information.&#x20;
+5.	It is a software flaw in the OpenSSL communication library that can be exploited to read much more information than a user requests. 
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. IP address range
+### Question 5. Fixing Heartbleed 
 
-Given the IP address 130.95.0.0/16, what is the IP address range of this specification?&#x20;
+How to fix Heartbleed?&#x20;
 
-1. 130.0.0.0 - 130.255.255.255&#x20;
-2. 130.95.0.0 - 130.95.0.255&#x20;
-3. 130.95.0.0 - 130.95.0.0&#x20;
-4. 130.95.0.0 - 130.95.255.255
+1. An OpenSSL-based server must enforce an advanced access control policy by restricting access to sensitive information to a small number of trusted users. &#x20;
+2. The server applies a more secure SSL encryption standard to implement OpenSSL.&#x20;
+3. The server needs to ensure it sends the exact amount of information that an end-user requests when implementing OpenSSL.&#x20;
+4. The server can set a limit on the number of requests that can be made in a given period of time and deploy more intelligent firewall policies, e.g., blocking network traffic from known malicious sources.
 
-### Question 6. IP Spoofing effect
+### Question 6. General Countermeasures
 
-The IP spoofing vulnerability found in Django is exploited by including a specific header in a web request. You can then submit an endless number of requests with the same client by simply changing the value of this header, bypassing rate limiting measures. Which is not an example of a malicious activity that can be performed due to this exploit?&#x20;
+What can NOT be done to prevent similar bugs like Heartbleed in the future?&#x20;
 
-1. Brute forcing login credentials by sending as many web requests as needed.&#x20;
-2. DDoS attacks by flooding the web server with requests.&#x20;
-3. An attacker could use spoofed addresses to send seemingly legitimate requests to the server and analyze the server’s response to discover sensitive information, such as user credentials or server configurations.&#x20;
-4. An application could have limits set on the number of password attempts a user can make before defense systems block the IP. An attacker can spoof the IP addresses of users behind network address translation (NAT) and flood the application server with requests to get their addresses blocked.
+1.	Never trust the input from an external source and perform input validation when developing a software.&#x20;
+2.	Invest more into the open-source software development life cycle and the maintenance of existing software.&#x20;
+3.	Disable SSL/TLS encryption to prevent potential vulnerabilities.&#x20;
+4.	Conduct a thorough security review of existing software and apply patches regularly. 
