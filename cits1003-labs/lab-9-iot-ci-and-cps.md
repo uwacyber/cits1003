@@ -284,44 +284,46 @@ The dir300 is the model number and the other parts of the password don't change 
 
 Clearly it is not a good thing that the password for the router is available on a remote connection protocol like Telnet that is enabled on this router by default. DLINK has tried to improve its security including encrypting the firmware. However, even here, the key has been reverse engineered and some of the encrypted firmware that DLINK provides can be unencrypted easily.
 
-## Case study: Mirai
+## Case study: Stuxnet
 
-At its peak in September 2016, the Mirai malware botnet temporarily crippled several high-profile services such as OVH, Dyn, and Krebs on Security via massive distributed Denial of service attacks (DDoS). OVH reported that these attacks exceeded 1Tbps—the largest on the public record (as of Dec 2017).
+Stuxnet is a powerful computer worm designed by U.S. and Israeli intelligence that to disable the Iranian nuclear program in an industrial network composed of IoT devices and cyberphysical systems. Particularly, the Siemens-made equipment, which was designed to enrich uranium powering nuclear reactors, malfunctioned catastrophically because of the infection. 
 
-What’s remarkable about these record-breaking attacks is they were carried out via small, innocuous Internet-of-Things (IoT) devices like home routers, air-quality monitors, and personal surveillance cameras. At its peak, Mirai enslaved over 600,000 vulnerable IoT devices.
+Read through the following article and answer the questions below: [https://www.malwarebytes.com/stuxnet](https://www.malwarebytes.com/stuxnet)
 
-Read through the following article and answer the questions below: [https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/](https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/)
+### Question 3. Stuxnet: computer worm
 
-### Question 3. What is a botnet?
+What is a computer worm?&#x20;
 
-What is a botnet?&#x20;
+1. It is a type of malware that spreads by infecting files or programs and then spreading to other files or programs on the same computer or network. It can cause significant damage to computer systems, and can spread through infected email attachments, file downloads, etc.&#x20;
+2. It is a type of malware that is disguised as legitimate software but is actually designed to cause harm or steal information. It can spread through email attachments, file downloads, etc.&#x20;
+3. It is a type of malware that encrypts files on a computer system and then demands payment in exchange for the decryption key. As it results in the loss of important data and sensitive information, it is devastating to businesses and individuals. It can spread through email attachments, file downloads, etc.&#x20;
+4. It is a type of malware that is designed to hide its presence on a computer system by altering system files and processes. It is often used to facilitate other types of cyber attacks.&#x20;
+5. It is a type of malware that spreads from computer to computer over a network, without requiring any user interaction. It can cause significant damage to computer systems and networks by consuming network bandwidth, and stealing sensitive information.
 
-1. A piece of software code that inserts itself into a host or operating system to launch DoS attacks.&#x20;
-2. A coordinated network of computers that can scan and compromise other computers and launch DoS attacks.&#x20;
-3. A piece of code in a worm that spreads rapidly and exploits some known vulnerability.&#x20;
-4. A collection of a few hundred hijacked Internet computers that have been set up to forward traffic, including spam and viruses, to other computers on the Internet.
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 4. Mirai is attracted to IoT?
+### Question 4. Infecting air-gapped nuclear facilities
 
-What made IoT devices most susceptible to infection by Mirai?&#x20;
+How were Iranian air-gapped nuclear facilities infected by Stuxnet?&#x20;
 
-1. IoT devices have specific functions that warrant only limited computational abilities, leaving little room for robust security mechanisms and data protection.&#x20;
-2. The external interfaces that IoT devices use to communicate data are often insecure. They typically lack sufficient device authentication and authorization and use weaker encryption mechanisms.&#x20;
-3. Many IoT devices are left unmonitored and unmanaged. While exploits and attack attempts might be easy to detect, the fact that they are rarely maintained allowed Mirai to proliferate successfully uninhibited.&#x20;
-4. Many IoT devices do not have their default login configurations updated when being deployed. Mirai used a list of common default login credentials to compromise devices.
+1. The computer worm spreads through email attachments: when victim users open these attachments, the worm is installed on their computers.&#x20;
+2. The computer worm is downloaded from untrusted sources: the worm can be downloaded automatically when victim users visit malicious or unverified websites.&#x20;
+3. The computer worm is generated by software vulnerability exploitation: attackers can exploit vulnerabilities in software to compromise computers and generate the computer worm.&#x20;
+4. The computer worm spreads through infected removable media such as USB drives or external hard drives.
 
-### Question 5. Protect your IoT
 
-Since the release of the Mirai source code, many derived IoT-based botnet variants have spawned and proliferated, such as IoTroop and Mozi. Attacks on IoT devices have become an increasingly concerning issue, with 1.5 billion attacks on IoT devices reported In the first half of 2021. What mitigation strategies could be recommended to improve IoT device security?&#x20;
+### Question 5. Infecting PLCs
 
-1. Enforce the change of default credentials before the IoT device can be used.&#x20;
-2. Limit the rate at which an entity can attempt to log in to an IoT device.&#x20;
-3. Make auto-updates mandatory so that IoT devices are always up to date with the latest version.&#x20;
-4. All of the above
+Which of the following did Stuxnet do to Programmable Logic Controllers (PLCs)?&#x20;
+
+1. It shut down PLCs completely, rendering the centrifuges inoperable.&#x20;
+2. It stole sensitive data from PLCs and transmitted it to remote servers.&#x20;
+3. It inserted malicious code into PLCs that allowed attackers to control and manipulate the centrifuges.&#x20;
+4. It reprogrammed PLCs to alter the speed of the centrifuges, causing damage to them.
+
 
 ## \[Optional] Setup Your Emulation on Google Cloud (\~45 mins)
 
