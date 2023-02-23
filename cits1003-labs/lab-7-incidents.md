@@ -169,44 +169,45 @@ The `awk` command will chunk each line based on text separated by spaces (`-F ' 
 The other thing to remember is that the address range `192.168.0.0` to `192.168.255.255` is non-routable across the Internet (i.e. it is a private IP address range meant for internal networks).
 {% endhint %}
 
-## Case study: ACSC Guidelines for Cybersecurity Incidents
+## Case study: Cyber Security Incident Reporting in Australia
 
-The Australian Cyber Security Center (ACSC) provides some guidelines for organizations of all levels (individuals, small business, corporate, government) on how to detect, manage, and report cybersecurity incidents.
+Reporting a cyber security incident helps to contain the spread of the attack and prevent further damage. By reporting the incident, affected systems can be disconnected from the network and steps can be taken to minimize the impact of the attack.
+The Security of Critical Infrastructure Act 2018 provides for mandatory cyber incident reporting for critical infrastructure assets. Critical infrastructure owners and operators are required to report a cyber security incident to the Australian Cyber Security Centre (ACSC). 
 
-Read through the following article and answer the questions below: [https://www.cyber.gov.au/acsc/view-all-content/advice/guidelines-cyber-security-incidents](https://www.cyber.gov.au/acsc/view-all-content/advice/guidelines-cyber-security-incidents)
+Read through the following article and answer the questions below: [https://www.cisc.gov.au/critical-infrastructure-centre-subsite/Files/cyber-security-incident-reporting.pdf](https://www.cisc.gov.au/critical-infrastructure-centre-subsite/Files/cyber-security-incident-reporting.pdf)
 
-### Question 4. Log it
+### Question 4. What is a cyber security incident?
 
-System logs are an effective tool in detecting and investigating cyber security incidents. Which data source best fits the description: Logs that contain records of the requests made by both applications and users on a network.&#x20;
+Which of the following best describes a cyber security incident?&#x20;
 
-1. Domain Name System logs&#x20;
-2. Email server logs&#x20;
-3. Operating system event logs&#x20;
-4. Security product logs&#x20;
-5. Virtual Private Network and remote access logs&#x20;
-6. Web proxy logs
+1. Unauthorized access and malware infections are prevented by installing firewalls and antivirus software.&#x20;
+2. Software fuzzing and software vulnerabilities discovery.&#x20;
+3. Unauthorised modification of the integrity of computer data.&#x20;
+4. Software and network disaster recovery plan development.
+
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. Don't spill your data
+### Question 5. When do I need to report?
 
-A data spill is the accidental or deliberate exposure of data into an uncontrolled or unauthorized environment, or to unauthorized persons. The sequence of actions listed below form a timeline of response actions to a potential data spill. Which is the least sensible course of action given its position in the sequence:&#x20;
+If a security researcher observes that a cyber security incident has occurred, or is occurring, AND the incident has had, or is having, a significant impact on the availability of individual or company asset, the research must notify the ACSC in a short time.&#x20;
 
-1. Identify: Recognise that a data spill has taken place.&#x20;
-2. Contain: Determine the breadth of the data spill.&#x20;
-3. Quantify: Determine the quantifiable loss and/or damages to the organization.&#x20;
-4. Assess: Decide on the most appropriate course of action to address the data spill.&#x20;
-5. Remediate: Remediate the data spill based on the course of action chosen.&#x20;
-6. Prevent: Implement prevention measures to stop similar incidents from occurring in the future.
+Which of the following is true about time length?&#x20;
 
-### Question 6. Not all security recommendations are great...
+1. Verbal notification within 72 hours plus another written record within 48 hours (critical incident)&#x20;
+2. Verbal notification within 12 hours plus another written record within 48 hours (non-critical incident)&#x20;
+3. Verbal notification within 12 hours plus another written record within 84 hours (critical incident)&#x20;
+4. Verbal notification within 48 hours plus another written record within 72 hours (non-critical incident)
 
-The Australian Government Information Security Manual provides recommendations and guidance for a wide range of cyber security matters. Organizations are encouraged to apply the recommended security controls where appropriate within their risk management frameworks. What is not a recommended security control for handling and containing intrusions?&#x20;
 
-1. System owners are consulted before allowing intrusion activity to continue on a system for the purpose of collecting further data or evidence.&#x20;
-2. Intrusion detection and prevention strategy is developed and implemented that includes at least network-based intrusion detection and prevention, procedures and resources for maintaining detection signatures, and procedures and resources for the analysis of event logs and real-time alerts&#x20;
-3. To the extent possible, all intrusion remediation activities are conducted in a coordinated manner during the same planned outage.&#x20;
-4. Legal advice is sought before allowing intrusion activity to continue on a system for the purpose of collecting further data or evidence.&#x20;
-5. Following intrusion remediation activities, full network traffic is captured for at least seven days and analyzed to determine whether the adversary has been successfully removed from the system.
+### Question 6. What doesnot a cyber security incident affect?
+
+In the article’s provided example, which of the following is unlikely to be impacted by a cyber security incident?&#x20;
+
+1. A cyber security incident might impact a bank’s internal network.&#x20;
+2. A cyber security incident might expose a bank’s sensitive information.&#x20;
+3. A cyber security incident might compromise a bank’s electronic devices.&#x20;
+4. A cyber security incident might affect the provision of banking services. 
+
