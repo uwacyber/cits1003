@@ -66,7 +66,7 @@ Kali VM on UTM has been setup and it runs all labs as intended, so this should w
 
 The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
-You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful insttructions here:
+You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful instructions for creating a Kali VM in UTM here:
 
 [https://www.kali.org/docs/virtualization/install-utm-guest-vm/](https://www.kali.org/docs/virtualization/install-utm-guest-vm/)
 
@@ -139,7 +139,7 @@ Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#
 
 We will be using a technology called _Docker Desktop_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. You will learn more about this in CITS2003, but for the sake of this unit, you do not need to understand how and why this works.
 
-You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). Specific instructions for Kali can be found here [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
+You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
 ### 3.1. Installing Docker Desktop (Windows/Mac/Linux)
 
@@ -152,10 +152,12 @@ The process for installing Docker Desktop is straightforward and involves using 
 {% embed url="https://www.docker.com/get-started" %}
 
 {% hint style="warning" %}
+<b>Docker on Kali</b>
 If you are on Kali VM on M1 Macbook, you can type this in the terminal:
 ```bash
 sudo apt-get update && sudo apt-get install -y docker.io
 ```
+In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/)
 {% endhint %}
 
 #### 3.1.1. Another method for Ubuntu (should also work for Kali)
