@@ -152,7 +152,7 @@ The process for installing Docker Desktop is straightforward and involves using 
 {% embed url="https://www.docker.com/get-started" %}
 
 {% hint style="warning" %}
-<b>Docker on Kali</b>
+**Docker on Kali**
 If you are on Kali VM on M1 Macbook, you can type this in the terminal:
 ```bash
 sudo apt-get update && sudo apt-get install -y docker.io
