@@ -158,7 +158,7 @@ If you are on Kali VM on M1 Macbook, you can type this in the terminal:
 ```bash
 sudo apt-get update && sudo apt-get install -y docker.io
 ```
-In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/)
+In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/). Please note that you will not have access to the Docker Desktop application, but you will instead be able to use the Docker CLI (command line interface). 
 {% endhint %}
 
 #### 3.1.1. Another method for Ubuntu (should also work for Kali)
