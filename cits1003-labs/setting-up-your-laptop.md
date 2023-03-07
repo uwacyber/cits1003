@@ -66,7 +66,9 @@ Kali VM on UTM has been setup and it runs all labs as intended, so this should w
 
 The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
-You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu.
+You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful instructions for creating a Kali VM in UTM here:
+
+[https://www.kali.org/docs/virtualization/install-utm-guest-vm/](https://www.kali.org/docs/virtualization/install-utm-guest-vm/)
 
 {% hint style="info" %}
 If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
@@ -150,10 +152,13 @@ The process for installing Docker Desktop is straightforward and involves using 
 {% embed url="https://www.docker.com/get-started" %}
 
 {% hint style="warning" %}
+**Docker on Kali**
+
 If you are on Kali VM on M1 Macbook, you can type this in the terminal:
 ```bash
 sudo apt-get update && sudo apt-get install -y docker.io
 ```
+In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/). Please note that you will not have access to the Docker Desktop application, but you will instead be able to use the Docker CLI (command line interface). 
 {% endhint %}
 
 #### 3.1.1. Another method for Ubuntu (should also work for Kali)
