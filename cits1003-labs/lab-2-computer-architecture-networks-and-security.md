@@ -216,7 +216,7 @@ Linux has a limited set of specific attributes on a file that controls how the f
 
 ### Question 1. Find the file
 
-In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. `cd` into this directory and then use the command `wget` to download the file located at "[https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip](https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip)"
+In the `/root` directory, create a directory called `cits1003`. In that directory, create a subdirectory called `lab3`. Then, use the `cd` command to get into this directory and then use the command `wget` to download the file located at "[https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip](https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip)"
 
 ```
 wget https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip
