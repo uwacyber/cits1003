@@ -26,7 +26,7 @@ There is no walkthrough video for this lab, please talk to one of our facilitato
 
 CyberChef is a website that has been developed by the UK GCHQ, a government cyber and security agency. It allows the simple chaining of a large number of different operations on inputs such as text to create an output. If we want to use the Caesar cipher to encode text for example, we can search for ROT13 in the operations, drag it into the Recipe window and simply type in the input window. The output will be transformed using the recipe automatically. In case you were wondering, ROT13 stands for rotate (Shift) by 13. The original Caesar cipher performed a shift of 3. Let's try this ourselves.
 
-1. Go to CyberChef here [https://gchq.github.io/CyberChef](https://gchq.github.io/CyberChef)
+1. Go to CyberChef here [https://cyberchef.io/](https://cyberchef.io/)
 2. Search for ROT13 and drag the operation to the Recipe window
 3. Type "The quick brown fox" into the input window
 4. Verify that the output is "Gur dhvpx oebja sbk"
