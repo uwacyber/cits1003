@@ -254,3 +254,7 @@ You can report emails you suspect to be phishing emails in Outlook by using the 
 * Options…&#x20;
 * Help
 
+{% hint style="info" %}
+Submit the correct option as your flag with spaces replaced with underscores (e.g., `CITS1003{Junk}` if Junk is the correct answer).
+{% endhint %}
+
