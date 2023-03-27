@@ -396,7 +396,10 @@ Which of these is not a potential mitigation technique against prompt injection 
 
 ### Question 6. The impact of input-based defence on ChatGPT
 
-In reality, finding methods for distinguishing between “instructional” prompts and “user-input” prompts for ChatGPT has proven to be a challenge, due to the richness of natural language input. One such challenge is in implementing restrictions that prevent exploitation, while allowing enough freedom for the model to effectively perform its tasks. Which of the following potential input-based defence methods would have the most impact on ordinary (non-malicious) use of the ChatGPT service?&#x20;
+In reality, finding methods for distinguishing between “instructional” prompts and “user-input” prompts for ChatGPT has proven to be a challenge, due to the richness of natural language input. One such challenge is in implementing restrictions that prevent exploitation, while allowing enough freedom for the model to effectively perform its tasks. 
+Consider a business who has appropriated ChatGPT for a particular business purpose. This may involve requiring and serving only a subset of ChatGPT’s full capabilities. The business hosts an endpoint (or access point) for users to be able to interact with their specified instance of ChatGPT.&#x20;
+
+Which of the following potential input-based defence methods would have the most impact on ordinary (non-malicious) use of the ChatGPT service?&#x20;
 
 1.	Input allow-listing: Depending on the task the model is solving, it could happen that the user input has very specific formatting. For example, if the user input is a phone number, there is no point in allowing characters other than numbers, white spaces and maybe a small subset of symbols.&#x20;
 2.	Input length: The more protections are deployed, the longer a payload would need to be to bypass them. Reducing the maximum length of the user input increases the level of restrictions and decreases the opportunities for an attacker to find a working payload.&#x20;
