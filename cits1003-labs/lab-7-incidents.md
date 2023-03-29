@@ -121,8 +121,14 @@ Once finished with the malware sample, delete it:
 **FLAG: Get the MD5 hash of the file malware 1 and enter that in as a hash.**
 
 {% hint style="info" %}
+Submit your flag with the correct answer (e.g., `CITS1003{FLAG}` if FLAG was the correct one you have found).
+{% endhint %}
+
+{% hint style="info" %}
 Actually, you could have just taken the hash of the file and done a Google search to find the name of the malware as it is in itself an IOC - but that doesn't work in the real world because the hash will change if a single byte is changed in the file and so it is very fragile.
 {% endhint %}
+
+
 
 ### Malware Sample 2
 
