@@ -22,7 +22,7 @@ Your write-up report is submitted on LMS (a single PDF file, others are ignored/
 
 ### Duration
 
-The project starts from (week 7) 14 April 2022 and will close on (week 10) Friday 13 May 2022 5pm (3 weeks + study break week). The last necessary topic is Forensics, which is covered in the week 8 lab, so there should be plenty of time to complete the project.
+The project starts from (week 7) 17 April 2022 and will close on (week 12) Friday 26 May 2022 5pm (6 weeks). There should be plenty of time to complete the project.
 
 ### Getting help
 
