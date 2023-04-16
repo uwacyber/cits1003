@@ -8,7 +8,7 @@ The project questions are now available on the CTF flag submission site: [https:
 
 The project consists of four topics: (1) Computer Architecture and Networking, (2) Cryptography (3) Forensics, and (4) Vulnerabilities. Each topic consists of four questions (total 16 questions) with varying difficulties (easy, medium and hard). Easy questions are 10 points, Medium questions are 20 points and Hard questions are 25 points. The points will add up to 250 points for 25% of your unit grade.
 
-We may add additional questions for interested students to solve, but will not yield any points (optional).&#x20;
+
 
 ### Your tasks and how the project is graded
 
@@ -22,7 +22,7 @@ Your write-up report is submitted on LMS (a single PDF file, others are ignored/
 
 ### Duration
 
-The project starts from (week 7) 17 April 2022 and will close on (week 12) Friday 26 May 2022 5pm (6 weeks). There should be plenty of time to complete the project.
+The project starts from (week 7) 17 April 2023 and will close on (week 12) Friday 26 May 2023 5pm (6 weeks). There should be plenty of time to complete the project.
 
 ### Getting help
 
