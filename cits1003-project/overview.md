@@ -12,7 +12,7 @@ The project consists of four topics: (1) Computer Architecture and Networking, (
 
 ### Your tasks and how the project is graded
 
-Your task is to find flags for the provided 16 questions to obtain as many points as possible. Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.
+Your task is to find flags for the provided 16 questions to obtain as many points as possible (the format for the flags is: UWA{xxx} where xxx is the flag you have found). Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.
 
 In addition, you will submit a write-up report summarising how you found the flag for each attempted question. Based on the level of understanding and correctness of your report, you may retain or lose marks you have achieved on the CTF flag submission site (i.e., you can lose marks if your write-up report is deemed insufficient to demonstrate the skills and knowledge).
 
