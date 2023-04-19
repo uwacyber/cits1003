@@ -210,10 +210,10 @@ Which of the following is true about time length?&#x20;
 
 ### Question 6. What doesnot a cyber security incident affect?
 
-In the article’s provided example, which of the following is unlikely to be impacted by a cyber security incident?&#x20;
+In the article’s provided example of Reporting other Cyber Security Incidents, which of the following is unlikely to be impacted by the cyber security incident?&#x20;
 
-1. A cyber security incident might impact a bank’s internal network.&#x20;
-2. A cyber security incident might expose a bank’s sensitive information.&#x20;
-3. A cyber security incident might compromise a bank’s electronic devices.&#x20;
-4. A cyber security incident might affect the provision of banking services. 
+1. The cyber security incident might impact a bank’s internal network.&#x20;
+2. The cyber security incident might expose a bank’s sensitive information.&#x20;
+3. The cyber security incident might compromise a bank’s electronic devices.&#x20;
+4. The cyber security incident might affect the provision of banking services. 
 
