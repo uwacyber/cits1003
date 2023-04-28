@@ -402,7 +402,7 @@ The output is written to `2424.dmp`, we need to rename it to `2424.data` to be a
 {% hint style="info" %}
 For Linux (including Kali) users, Gimp is easiest installed via:
 ```
-sudo apt-get gimp
+sudo apt-get install gimp
 ```
 {% endhint %}
 
