@@ -399,6 +399,13 @@ volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /op
 
 The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it in Gimp (if you don't have Gimp, you should download and install it on your machine/VM. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
 
+{% hint style="info" %}
+For Linux (including Kali) users, Gimp is easiest installed via:
+```
+sudo apt-get install gimp
+```
+{% endhint %}
+
 The output is still inside the container which you cannot access from your VM/host. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
 
 
