@@ -8,7 +8,7 @@ Please NOTE, the walkthrough videos are for the guidance only, remember to use t
 
 ## Getting started
 
-We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
+We will set up various software that will be used in the labs, with the main one being _**Docker**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
 There are three different ways to setup your lab environment:
 
@@ -24,17 +24,27 @@ There are three different ways to setup your lab environment:
 
 ![](../.gitbook/assets/1003\_host\_route.png)
 
-If you are planning to use the cloud, see [section 2.2.](setting-up-your-laptop.md#2.2.-running-windows-10-on-azure)
+If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#2.2.-cloud-desktop).
 
 ## 1. Setting up a Virtual Machine (VM) to do labs
 
-It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
+A VM is a piece of software that allows you to emulate or virtualise an operating system such as Windows or a distribution of GNU/Linux. It is recommended to run the labs inside a VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
+
+For the labs, you will work in an Linux based operating system inside of a VM. Operating systems are often distributed as installer images (`iso` file format) which will need manual installation on the VM, or pre-installed VM images.
+
+Please refer to section 1.1 or 1.2 for specific set up instructions for your system.
 
 ### 1.1. Windows/MacOS (non-M1)/Linux
 
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) (preferred) or [Ubuntu](https://ubuntu.com/download#download) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 30GB disk space. It won't fully occupy 30GB on your machine, as the size will dynamically adjust as you use it.
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html).
+
+Once you have installed the VirtualBox (or something equivalent), we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) (preferred) or [Ubuntu](https://ubuntu.com/download#download) are both good choices. You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer.
+
+For Kali Linux, you can directly download the VM image for virtual box [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-virtualbox-amd64.7z) or VM Ware [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-vmware-amd64.7z). A `.7z` file will start downloading. This type of file (short for `7zip`) is an file archive format which allows many files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the `7zip` archive we are downloading. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to extract the VM image from the `7zip` archive file once it's downloaded.
 
 {% hint style="info" %}
+When specifying the disk size, assign 30GB disk space. It won't fully occupy 30GB on your machine, as the size will dynamically adjust as you use it.
+
 FYI, I tested using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have successfully ran all labs.
 
 For the Kali or Ubuntu image, 2CPU and 4GB RAM is recommended.
@@ -54,7 +64,7 @@ Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it 
 
 Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#3.1.-installing-docker-on-your-vm)
 
 ### 1.2. M1/M2 etc. MacBook Users
 
@@ -82,7 +92,7 @@ If you have a blue screen after installing Kali, please go to settings -> Displa
 
 Virtualbox has released an M1/M2 version, which is in their beta testing stage (as of Feb 2023). We tried to install Kali on VirtualBox, but it failed (it did not recognised the iso file provided for installation). There are some guides for Ubuntu, so you may want to try if you really want to use VirtualBox.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#3.1.-installing-docker-on-on-your-vm)
 
 ## 2. Doing labs on your host machine
 
@@ -102,7 +112,7 @@ Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#3.1.-installing-docker-on-your-vm)
 
 ### 2.2. Cloud desktop
 
@@ -120,7 +130,7 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](lab-1-setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#3.1.-installing-docker-on-your-vm)
 
 ### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
@@ -133,7 +143,7 @@ Once this is done, you can proceed with installing and running Docker Desktop (b
 
 Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#3.1.-installing-docker-on-your-vm)
 
 ## 3. Installing and running Docker Desktop
 
@@ -141,13 +151,13 @@ We will be using a technology called _Docker Desktop_ to run different environme
 
 You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
-### 3.1. Installing Docker Desktop (Windows/Mac/Linux)
+### 3.1. Installing Docker (Windows/Mac/Linux)
 
 {% hint style="warning" %}
 If you have installed a VM, install Docker Desktop inside your VM.
 {% endhint %}
 
-The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have (from the drop-down menu, select the appropriate OS):
+The process for installing Docker is straightforward and involves using the installer for the particular operating system you have (from the drop-down menu, select the appropriate OS):
 
 {% embed url="https://www.docker.com/get-started" %}
 
@@ -172,7 +182,7 @@ sudo sh get-docker.sh
 
 The full instruction can be found here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
-Now go to [`Section 3.2. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)\`\`
+Now go to [`Section 3.2. Testing Docker`](lab-1-setting-up-your-laptop.md#3.3-testing-docker)\`\`
 
 ### 3.2. Testing Docker
 
