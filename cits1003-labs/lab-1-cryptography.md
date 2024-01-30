@@ -481,7 +481,7 @@ Read through the following article and answer the questions below:&#x20;
 
 ### Question 6. Encryption
 
-Which of the following accurately describes the primary purpose of encryption, based on the article? &#x20;
+Which of the following accurately describes the primary purpose of encryption? &#x20;
 
 1.  Encryption aims to protect data at rest. &#x20;
 2.  Encryption ensures the authenticity of data. &#x20;
@@ -494,7 +494,7 @@ Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the cor
 
 ### Question 7. Salting
   
-Based on the article's discussion on salting in hashing, which statement about salting is accurate? &#x20;
+Regarding salting, which of the following is accurate? &#x20;
 
 1.  Salting involves replacing characters in the original data with random numbers. &#x20;
 2.  Salting is only effective when the same salt string is used for all data points. &#x20;
