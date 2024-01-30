@@ -311,14 +311,14 @@ Read through the following article and answer the questions below: [https://webo
 
 Which aspect of cybersecurity do the cyber attacks primarily violate?
 
-* Confidentiality
-* Integrity
-* Availability
-* Authentication
-* Non-repudiation
+1. Confidentiality
+2. Integrity
+3. Availability
+4. Authentication
+5. Non-repudiation
 
 {% hint style="info" %}
-Submit your flag with the correct answer (e.g., `CITS1003{Integrity}` if Integrity was the correct answer).
+Submit your flag with the correct answer (e.g., CITS1003{2} if option 2 is the correct answer).
 {% endhint %}
 
 ### Question 3. How was Optus compromised?
@@ -331,7 +331,7 @@ Which is the reason given by third-parties about how Optus was compromised?
 4. None of the above
 
 {% hint style="info" %}
-Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{1}` if option 1 was the correct answer).
+Submit your flag with the correct answer (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
 ### Question 4. Mitigation
@@ -344,5 +344,5 @@ What should be done to safeguard businesses from data breaches?
 4. All of the above
 
 {% hint style="info" %}
-Submit your flag with the correct answer, replacing spaces with underscores (e.g., `CITS1003{1}` if option 1 was the correct answer).
+Submit your flag with the correct answer (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
