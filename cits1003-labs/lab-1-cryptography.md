@@ -498,7 +498,7 @@ Regarding salting, which of the following is accurate? &#x20;
 
 1.  Salting involves replacing characters in the original data with random numbers. &#x20;
 2.  Salting is only effective when the same salt string is used for all data points. &#x20;
-3.  Hashing with salting ensures that the original data can be easily reconstructed. &#x20;
+3.  Hashing with salting ensures that the original data can be easily recovered. &#x20;
 4.  Salting is recommended to be different for each data point for enhanced protection.&#x20;
 
 
