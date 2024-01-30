@@ -244,7 +244,7 @@ Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the cor
 
 The University receives more than two million emails every day. More than 95 percent of these are malicious and do not get delivered as they can cause harm.
 
-Read through the following article and answer the question below: 
+Read through the following article and answer the questions below: 
 [Cyber security 101 for students](https://www.uwa.edu.au/students/support-services/cyber-security-101-for-students#:~:text=If%20you%20receive%20phishing%20or,others%20from%20the%20same%20scam.)
 
 ### Question 5. University IT's Tips
