@@ -464,46 +464,53 @@ Change directory into `/opt/lab3` and run the program `showflag` to get the flag
 If you get an error running showflag on M1 Macs, please ask the facilitator for help.
 {% endhint %}
 
-## **Case study: Dirty Pipe**
+## **Case study: What is Linux and is it really secure?**
 
-Dirty Pipe (CVE-2022-0847) proved that there is a new way to exploit Linux syscalls to write to files with a read-only privileges. The fact that someone can write to a file regardless of its permissions is a big security threat. An application of this vulnerability would be to write on the host from an unprivileged container. Keep in mind that this vulnerability is a kernel vulnerability which makes it hard, or even impossible, for user-mode runtime monitoring programs to detect this sort of file modification. 
+First developed in the 1990s, Linux is a group of operating systems much like Microsoft's Windows or Apple's MacOS. However, Linux's particular attributes, simplicity, and functionality have made it extremely popular among tech professionals. Because Linux is secure, compared to other systems, it is also a good choice for those who prioritize computer security. 
 
-Read through the following article and answer the questions below:[https://blog.aquasec.com/deep-analysis-of-the-dirty-pipe-vulnerability
-]https://blog.aquasec.com/deep-analysis-of-the-dirty-pipe-vulnerability
+Read through the following article and answer the questions below:&#x20;
+
+****[**https://usa.kaspersky.com/resource-center/definitions/linux**](https://usa.kaspersky.com/resource-center/definitions/linux)****
 
 
-### **Question 3. What is Dirty Pipe**
+### **Question 3. Linux Distributions**
 
-Which of the following is true about Dirty Pipe (CVE-2022-0847)?&#x20;
+Which of the following accurately describes Linux distributions? &#x20;
 
-1. A Linux syscall to write to files with a read-only privilege.&#x20;
-2. A kernel vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
-3. An application vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
-4. A Linux kernel version released in 2022.&#x20;
-5. A way to copy files in Linux.
-
+1. Linux has a single distribution suitable for all users. &#x20;
+2. Ubuntu is the only distribution available for servers. &#x20;
+3. Linux Mint is designed as a server OS. &#x20;
+4. Linux has numerous distributions tailored for different user needs.
 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 4. sendfile syscall
+### Question 4. User Privileges in Linux
 
-What is the sendfile syscall used for?&#x20;
+How does Linux manage user privileges?&#x20;
 
-1. To copy a file with a naive writing method.&#x20;
-2. To copy data between two files when at least one of them is a pipe.&#x20;
-3. To copy from one file to another without moving through the user-mode.&#x20;
-4. To issue data copy only when one modifies a copied data.
+1. Linux automatically assigns all users root-level access. &#x20;
+2. Users are not required to have individual IDs and passwords. &#x20;
+3. Users are automatically assigned lower access rights with limited access to computer files. &#x20;
+4. Linux grants users’ administrative privileges by default.
 
 
-### Question 5. Pipe in Linux
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
-what is a pipe in Linux?&#x20;
+### Question 5. Linux Security vs. Windows Security 
 
-1. A ring buffer used for data transfer between two processes or threads.&#x20;
-2. A new vulnerability that allows writing to files with read-only privileges in Linux.&#x20;
-3. A system object which allows data transfer to and/or from them.&#x20;
-4. A new way to copy files in Linux.
+Which of the following makes Linux safer than Windows? (Select the best option) &#x20;
+
+1. Linux automatically assigns low-level user permissions that do not allow system-level operations; &#x20;
+2. Linux manages software installation through package managers, which only allow users to download programs from repositories, trusted, community-driven sources that vet and verify program. &#x20;
+3. Linux is open-source, making developers and researchers across the globe continually look for its potential vulnerabilities and security risks. Windows is a proprietary software and Microsoft developers must find and fix security issues, which often takes longer to identify and patch. &#x20;
+4. All of the above.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
