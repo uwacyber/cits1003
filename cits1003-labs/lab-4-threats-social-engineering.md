@@ -253,7 +253,7 @@ Which of the following is NOT the tip the University IT provides in mitigating c
 
 1. Never respond to requests for personal information via email.&#x20;
 2. Type the known website address directly into the address bar in the internet browser. &#x20;
-3. Enable Multi-Factor Authentication and Do not share passwords. &#x20;
+3. Enable Multi-Factor Authentication and do not share passwords. &#x20;
 4. Check the list of recipients of the email, as phishing attempts often will try and target a large number of people.
 
 {% hint style="info" %}
@@ -264,9 +264,9 @@ Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the cor
 
 You can report emails you suspect to be phishing emails in Outlook by using the Report Message add-in and selecting the \_\_\_\_\_\_\_\_ option:&#x20;
 
-1. Report junk& #x20;
+1. Report junk &#x20;
 2. Report phishing &#x20;
-3. Not junk&#x20;
+3. Not junk &#x20;
 4. Options &#x20;
 5. Help
 
