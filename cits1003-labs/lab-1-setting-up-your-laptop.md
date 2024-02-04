@@ -18,11 +18,11 @@ There are three different ways to setup your lab environment:
 
 #### See below if you are planning to use VM.
 
-![](../.gitbook/assets/1003\_vm\_route.png)
+![](../.gitbook/assets/1003_vm_route.png)
 
 #### See below if you are planning to use Host.
 
-![](../.gitbook/assets/1003\_host\_route.png)
+![](../.gitbook/assets/1003_host_route.png)
 
 If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#id-2.2.-cloud-desktop).
 
@@ -59,10 +59,10 @@ For some labs, you would want to provide more RAM and CPU provided your computer
 {% hint style="info" %}
 Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times. Some common solutions include:
 
-* changing the graphics controller (trial and error)
-* adding more RAM (don't need more than 2 CPU)
-* adding more storage (20GB -> 30GB)
-{% endhint %}
+- changing the graphics controller (trial and error)
+- adding more RAM (don't need more than 2 CPU)
+- adding more storage (20GB -> 30GB)
+  {% endhint %}
 
 Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
 
@@ -116,7 +116,7 @@ If you are unable to get your laptop/PC working, another option is to run Window
 Alternate cloud providers include Google Cloud, Amazon AWS etc.
 {% endhint %}
 
-You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
+You can create a VM using Windows 10 Pro 21 H1 and pick a Standard_D2s_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
 
 Once created, you can connect to the machine via remote desktop and then configure the machine as above.
 
@@ -284,15 +284,15 @@ Once there, we can list the contents of that directory by using the **ls** comma
 There will be a file called flag.txt in the directory. We can view the contents of the file by using the **cat** command:
 
 > cat flag.txt
-{% endhint %}
-{% endtab %}
-{% endtabs %}
+> {% endhint %} > {% endtab %} > {% endtabs %}
 
 **Flag: Submit the flag on the CTF server that you just found!**
 
 ## Case study: Mainstream cyber attacks: data breach
 
-A data breach is an incident in which sensitive, protected, or confidential information is accessed, disclosed, or stolen without authorization. This can include personal information such as names, addresses, and Social Security numbers, as well as financial information such as credit card numbers and bank account information. Data breaches can occur in various ways, such as hacking into a computer system, stealing physical devices containing data, or social engineering techniques like phishing emails or phone calls. The consequences of a data breach can be severe, including financial loss, damage to reputation, and potential legal liability.
+A data breach is an incident in which sensitive, protected, or confidential information is accessed, disclosed, or stolen without authorization. This can include personal information such as names, addresses, and Social Security numbers, as well as financial information such as credit card numbers and bank account information.
+
+Data breaches can occur in various ways, such as hacking into a computer system, stealing physical devices containing data, or social engineering techniques like phishing emails or phone calls. The consequences of a data breach can be severe, including financial loss, damage to reputation, and potential legal liability.
 
 Read through the following article and answer the questions below: [https://webo.digital/blog/optus-medibank-data-breaches-cyber-security](https://webo.digital/blog/optus-medibank-data-breaches-cyber-security)
 
