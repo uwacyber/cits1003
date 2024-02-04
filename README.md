@@ -14,10 +14,10 @@ Students are able to (1) describe the concepts of cybersecurity and information 
 
 ### >> Assessment
 
-There are 10 practical lab assignments (see the LABS tab) that is worth a total of 25% of unit marks. There will be a project worth 25% of unit marks that will be released on week 6 (tbc). There will be a final exam worth 50% of unit marks. Please note that assessment items and schedules may change, and you will be notified if it does change.
+There are 10 practical lab assignments (see the LABS tab) that is worth a total of 25% of unit marks. There will be a project worth 25% of unit marks that will be released on week 6 (TBC). There will be a final exam worth 50% of unit marks. Please note that assessment items and schedules may change, and you will be notified if it does change.
 
 ### >> License Terms
 
 Copyright © David Glance 2021. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).
 
-Contents on this page are further developed by Jin Hong (2022\~).
+Contents on this page are further developed by Jin Hong (2022\~) and Zhi Zhang (2023\~).

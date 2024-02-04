@@ -471,33 +471,37 @@ ZTIgYTAgYTggZTIgYTAgYTggZTIgYTAgYTggZTIgYTAgYTggZTIgYTAgYTggZTIgYTAgODAgZTIgYTAg
 
 **Flag: Enter the plaintext**
 
-## **Case study: Asymmetric crypto algorithms**
+## **Case study: Hashing vs. Encryption**
 
-Besides RSA and Diffie-Hellman, one of the most widely adopted asymmetric crypto algorithms in the PKI world is DSA (Digital Signature Algorithm) and its variants, e.g., ECDSA (Elliptical curve Digital Signature Algorithm) and EdDSA (Edwards-curve Digital Signature Algorithm). ECDSA (Elliptical curve Digital Signature Algorithm) is an Elliptic Curve implementation of DSA (Digital Signature Algorithm). 
+Encryption techniques protect data in motion. Hashing protects data at rest. Combining these strategies could, in theory, put a strong security boundary around critical assets. But both come with risks and benefits you should know about.
 
 Read through the following article and answer the questions below:&#x20;
 
-****[**https://goteleport.com/blog/comparing-ssh-keys/**](https://goteleport.com/blog/comparing-ssh-keys/)****
+****[**https://www.okta.com/au/identity-101/hashing-vs-encryption/**](https://www.okta.com/au/identity-101/hashing-vs-encryption/)****
 
-### Question 6. Differences among popular PKI algorithms
+### Question 6. Encryption
 
-Which of the following description is NOT true?&#x20;
+Which of the following accurately describes the primary purpose of encryption? &#x20;
 
-1.	DSA is used for digital signatures and its security relies on a discrete logarithmic problem.&#x20;
-2.	ECDSA is an Elliptic Curve implementation of DSA. It can provide the relatively the same level of security level as RSA with a smaller key.&#x20;
-3.	EdDSA is a digital signature scheme that relies on twisted Edwards curves. Its security is insensitive to random number generator.&#x20;
-4.	RSA is supported in all major programming languages such as Python and C. Its security relies on integer factorization. RSA can only be used for digital signing. 
+1.  Encryption aims to protect data at rest. &#x20;
+2.  Encryption ensures the authenticity of data. &#x20;
+3.  The main goal of encryption is to secure data during transport. &#x20;
+4.  Encryption primarily involves the use of hashing algorithms. 
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+### Question 7. Salting
+  
+Regarding salting, which of the following is accurate? &#x20;
+
+1.  Salting involves replacing characters in the original data with random numbers. &#x20;
+2.  Salting is only effective when the same salt string is used for all data points. &#x20;
+3.  Hashing with salting ensures that the original data can be easily recovered. &#x20;
+4.  Salting is recommended to be different for each data point for enhanced protection.&#x20;
 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
-
-### Question 7. SSH authentication
-
-Why was Ed25519 supported by SSH?&#x20;
-
-1.	Because it is more secure than RSA 2048/4096.&#x20;
-2.	Because it is faster than DSA/ECDSA.&#x20;
-3.	Because it allows compatibility with legacy encryption protocols.&#x20;
-4.	Because it withstands the state-of-the-art attacks with smaller key lengths. 

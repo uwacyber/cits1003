@@ -472,7 +472,7 @@ Which of the following statements accurately describes what the Heartbleed vulne
 5.	It is a software flaw in the OpenSSL communication library that can be exploited to read much more information than a user requests. 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{1}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
 ### Question 5. Fixing Heartbleed 
@@ -484,6 +484,11 @@ How to fix Heartbleed?&#x20;
 3. The server needs to ensure it sends the exact amount of information that an end-user requests when implementing OpenSSL.&#x20;
 4. The server can set a limit on the number of requests that can be made in a given period of time and deploy more intelligent firewall policies, e.g., blocking network traffic from known malicious sources.
 
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+
 ### Question 6. General Countermeasures
 
 What can NOT be done to prevent similar bugs like Heartbleed in the future?&#x20;
@@ -492,3 +497,8 @@ What can NOT be done to prevent similar bugs like Heartbleed in the future?&#x20
 2.	Invest more into the open-source software development life cycle and the maintenance of existing software.&#x20;
 3.	Disable SSL/TLS encryption to prevent potential vulnerabilities.&#x20;
 4.	Conduct a thorough security review of existing software and apply patches regularly. 
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
