@@ -192,69 +192,85 @@ Launch another campaign and you should see the `usersim` simulate clicks.
 **Flag: After running `usersim`, look at the emails in MailDev. You should see the flag.**
 
 
-## Case study: The Phishing Scam That Took Google and Facebook for $100 Million
+## Case study: 15 Examples of Real Social Engineering Attacks
 
-“While what he did was at least equal parts forgery and phishing scam, Evaldas Rimasauskas’ social engineering abilities and apparent deep knowledge of corporate invoicing processes allowed him to take two of the world’s biggest tech companies for $100 million using little more than an email account.”
+Social engineering attacks are one of the main ways bad actors can scam companies.
 
-Read through the following article and answer the questions below:[https://www.cpomagazine.com/cyber-security/the-phishing-scam-that-took-google-and-facebook-for-100-million/](https://www.cpomagazine.com/cyber-security/the-phishing-scam-that-took-google-and-facebook-for-100-million/)
+Read through the following article and answer the questions below:
+[https://www.tessian.com/blog/examples-of-social-engineering-attacks/](https://www.tessian.com/blog/examples-of-social-engineering-attacks/)
 
 ### Question 2. Phishing type
 
-According to the article, what type of phishing best describes this attack?&#x20;
+According to the article, what type of phishing was used by the scammers against Google and Facebook? &#x20;
 
 1. Whale phishing &#x20;
 2. Vishing &#x20;
 3. Spear phishing &#x20;
-4. Email phishing &#x20;
+4. Smishing &#x20;
 
 {% hint style="info" %}
-Submit the correct option as your flag with spaces replaced with underscores (e.g., `CITS1003{1}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 3. Social engineering
+### Question 3. Business Email Compromise
 
-What is the best way to protect against social engineering attacks?&#x20;
+In Example 9, how did the Business Email Compromise scam evade rule-based email security?&#x20;
 
-1. Use strong passwords &#x20;
-2. Keep software up-to-date &#x20;
-3. Educate yourself and in-person verification &#x20;
-4. Use antivirus software
+1. By using image files of the Microsoft Windows logo. &#x20;
+2. By creating borderless tables and splitting certain words. &#x20;
+3. By crafting a table of a four-square grid with colors that look like the Windows logo. &#x20;
+4. By including an attachment that looks like an Excel spreadsheet file (.xlsx).
 
-### Question 4. Forgery 
 
-what type of forgery was involved in this phishing scheme?
-1. Forged checks
-2. Forged bank statements
-3. Forged invoices, contracts, and letters
-4. Forged credit card statements
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+### Question 4. Smishing Scam
+
+In Example 15, what was the specific tactic used by the scammers?
+
+1. The attackers claimed to be financial institutions and requested account details. &#x20;
+2. The attack involved impersonating government agencies, urging recipients to click links for urgent updates. &#x20;
+3. The attackers used email phishing techniques, pretending to be colleagues and requesting sensitive work-related information. &#x20;
+4. Cybercriminals posed as delivery companies, prompting recipients to click a link for an undelivered package.
+
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
 ## Case study 2: Scams and Phishing at UWA
 
-The University receives more than two million emails every day. More than 95 per cent of these are malicious and do not get delivered as they can cause harm.
+The University receives more than two million emails every day. More than 95 percent of these are malicious and do not get delivered as they can cause harm.
 
-Read through the following article and answer the question below: [https://cybersecurity.it.uwa.edu.au/stay-secure/email-scams-phishing](https://cybersecurity.it.uwa.edu.au/stay-secure/email-scams-phishing)
+Read through the following article and answer the questions below: 
+[Cyber security 101 for students](https://www.uwa.edu.au/students/support-services/cyber-security-101-for-students#:~:text=If%20you%20receive%20phishing%20or,others%20from%20the%20same%20scam.)
 
-### Question 5. University IT's tips
+### Question 5. University IT's Tips
 
-What is not one of the four tips the University IT provides in helping recognise phishing scams?&#x20;
+Which of the following is NOT the tip the University IT provides in mitigating cyber scams?&#x20;
 
-1. Check if the sender has supplied valid contact details in the email.&#x20;
-2. Identify misspellings in otherwise legitimate domain names, e.g. @rnicrosoft.com&#x20;
-3. Validating the sender email suffix; check that the address ends in @uwa.edu.au&#x20;
-4. If the email is asking you to send through personal details, it is likely a phishing attempt.&#x20;
-5. Check the list of recipients on the email, as phishing attempts often will try and target a large number of people.
-
-### Question 6. Report them phishes
-
-You can report emails you suspect to be phishing emails in Outlook by using the Report Message dropdown and selecting the \_\_\_\_\_\_\_\_ option:&#x20;
-
-* Junk&#x20;
-* Phishing&#x20;
-* Not Junk&#x20;
-* Options…&#x20;
-* Help
+1. Never respond to requests for personal information via email.&#x20;
+2. Type the known website address directly into the address bar in the internet browser. &#x20;
+3. Enable Multi-Factor Authentication and do not share passwords. &#x20;
+4. Check the list of recipients of the email, as phishing attempts often will try and target a large number of people.
 
 {% hint style="info" %}
-Submit the correct option as your flag with spaces replaced with underscores (e.g., `CITS1003{Junk}` if Junk is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+### Question 6. What To Do When Scammed
+
+You can report emails you suspect to be phishing emails in Outlook by using the Report Message add-in and selecting the \_\_\_\_\_\_\_\_ option:&#x20;
+
+1. Report junk &#x20;
+2. Report phishing &#x20;
+3. Not junk &#x20;
+4. Options &#x20;
+5. Help
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
