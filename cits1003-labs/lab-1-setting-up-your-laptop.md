@@ -18,11 +18,11 @@ There are three different ways to setup your lab environment:
 
 #### See below if you are planning to use VM.
 
-![](../.gitbook/assets/1003_vm_route.png)
+![](../.gitbook/assets/1003\_vm\_route.png)
 
 #### See below if you are planning to use Host.
 
-![](../.gitbook/assets/1003_host_route.png)
+![](../.gitbook/assets/1003\_host\_route.png)
 
 If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#id-2.2.-cloud-desktop).
 
@@ -42,7 +42,7 @@ Once you have installed the VirtualBox (or something equivalent), we need to dow
 
 For Kali Linux, you can directly download the VM image for VirtualBox [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-virtualbox-amd64.7z) or VMWare [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-vmware-amd64.7z). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
 
-Now, you will need to import the VM image into your VM.&#x20;
+Now, you will need to import the VM image into your VM.
 
 **The username and password for the pre-built Kali VM image is both `kali`.**
 
@@ -59,10 +59,10 @@ For some labs, you would want to provide more RAM and CPU provided your computer
 {% hint style="info" %}
 Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times. Some common solutions include:
 
-- changing the graphics controller (trial and error)
-- adding more RAM (don't need more than 2 CPU)
-- adding more storage (20GB -> 30GB)
-  {% endhint %}
+* changing the graphics controller (trial and error)
+* adding more RAM (don't need more than 2 CPU)
+* adding more storage (20GB -> 30GB)
+{% endhint %}
 
 Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
 
@@ -116,7 +116,7 @@ If you are unable to get your laptop/PC working, another option is to run Window
 Alternate cloud providers include Google Cloud, Amazon AWS etc.
 {% endhint %}
 
-You can create a VM using Windows 10 Pro 21 H1 and pick a Standard_D2s_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
+You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
 
 Once created, you can connect to the machine via remote desktop and then configure the machine as above.
 
@@ -284,7 +284,9 @@ Once there, we can list the contents of that directory by using the **ls** comma
 There will be a file called flag.txt in the directory. We can view the contents of the file by using the **cat** command:
 
 > cat flag.txt
-> {% endhint %} > {% endtab %} > {% endtabs %}
+{% endhint %}
+{% endtab %}
+{% endtabs %}
 
 **Flag: Submit the flag on the CTF server that you just found!**
 
