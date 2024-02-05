@@ -8,7 +8,7 @@ Please NOTE, the walkthrough videos are for the guidance only, remember to use t
 
 ## Getting started
 
-We will set up various software that will be used in the labs, with the main one being _**Docker Desktop**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
+We will set up various software that will be used in the labs, with the main one being _**Docker**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
 There are three different ways to setup your lab environment:
 
@@ -24,25 +24,37 @@ There are three different ways to setup your lab environment:
 
 ![](../.gitbook/assets/1003\_host\_route.png)
 
-If you are planning to use the cloud, see [section 2.2.](setting-up-your-laptop.md#2.2.-running-windows-10-on-azure)
+If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#id-2.2.-cloud-desktop).
 
 ## 1. Setting up a Virtual Machine (VM) to do labs
 
-It is recommended to run the labs inside the VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
+A VM is a piece of software that allows you to emulate or virtualise an operating system such as Windows or a distribution of GNU/Linux. It is recommended to run the labs inside a VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
+
+For the labs, you will work in an Linux based operating system inside of a VM. Operating systems are often distributed as installer images (`iso` file format) which will need to be manually installed, or pre-built VM images which can be directly imported into a VM without installation. Since VM images do not require installation, we will use this where possible.
+
+Please refer to [section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows-macos-non-m1-linux) or [1.2](lab-1-setting-up-your-laptop.md#id-1.2.-m1-m2-etc.-macbook-users) for specific set up instructions for your system.
 
 ### 1.1. Windows/MacOS (non-M1)/Linux
 
-There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html). Once you have installed the VirtualBox (or something equivalent), next we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) (preferred) or [Ubuntu](https://ubuntu.com/download#download) are both good choices (download `iso` file or you will find a dedicated link that they provide for VM software). You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer. When specifying the disk size, assign 30GB disk space. It won't fully occupy 30GB on your machine, as the size will dynamically adjust as you use it.
+There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html).
+
+Once you have installed the VirtualBox (or something equivalent), we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) (preferred) or [Ubuntu](https://ubuntu.com/download#download) are both good choices. You can choose other lightweight versions like [Lubuntu](https://cdimage.ubuntu.com/lubuntu/releases/20.04/release/) if you prefer.
+
+For Kali Linux, you can directly download the VM image for VirtualBox [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-virtualbox-amd64.7z) or VMWare [here](https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-vmware-amd64.7z). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
+
+Now, you will need to import the VM image into your VM.
+
+**The username and password for the pre-built Kali VM image is both `kali`.**
 
 {% hint style="info" %}
+When specifying the disk size, assign 30GB disk space. It won't fully occupy 30GB on your machine, as the size will dynamically adjust as you use it.
+
 FYI, I tested using Lubuntu - 1CPU and 2GB RAM and albeit a bit slow, I have successfully ran all labs.
 
 For the Kali or Ubuntu image, 2CPU and 4GB RAM is recommended.
 {% endhint %}
 
 For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).
-
-You might want to look up an installation guide online, such as this for Ubuntu: [https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 
 {% hint style="info" %}
 Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times. Some common solutions include:
@@ -52,23 +64,21 @@ Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it 
 * adding more storage (20GB -> 30GB)
 {% endhint %}
 
-Once you have successfully installed and launched Ubuntu, it should bring up a GUI! It may ask you to update, which you should (improves user experience on VM). Once this is done, you can carry on with the labs as instructed.
+Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
 ### 1.2. M1/M2 etc. MacBook Users
 
-#### 1. UTM:
+For M1/B2 Macs, you will need to use the VM UTM. You can download it here: [https://mac.getutm.app/](https://mac.getutm.app)
 
-[https://mac.getutm.app/](https://mac.getutm.app)
-
-Kali VM on UTM has been setup and it runs all labs as intended, so this should work for you for this unit.
+The Kali VM on UTM runs all labs as intended, so this should work for you for this unit.
 
 The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
 You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful instructions for creating a Kali VM in UTM here:
 
-[https://www.kali.org/docs/virtualization/install-utm-guest-vm/](https://www.kali.org/docs/virtualization/install-utm-guest-vm/)
+[https://mac.getutm.app/gallery/kali-2023](https://mac.getutm.app/gallery/kali-2023)
 
 {% hint style="info" %}
 If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
@@ -76,13 +86,7 @@ If you have a black screen when installing Kali, please go to settings and "+ Ne
 If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
 {% endhint %}
 
-#### 2. Virtualbox is also available as beta testing:
-
-[https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
-
-Virtualbox has released an M1/M2 version, which is in their beta testing stage (as of Feb 2023). We tried to install Kali on VirtualBox, but it failed (it did not recognised the iso file provided for installation). There are some guides for Ubuntu, so you may want to try if you really want to use VirtualBox.
-
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
 ## 2. Doing labs on your host machine
 
@@ -102,7 +106,7 @@ Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
 ### 2.2. Cloud desktop
 
@@ -120,7 +124,7 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](setting-up-your-laptop.md#2.1.-windows-users-only-installing-windows-subsystem-for-linux-wsl), otherwise go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](lab-1-setting-up-your-laptop.md#id-2.1.-windows), otherwise go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
 ### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
@@ -129,50 +133,37 @@ Apple's computers are increasingly using the new M1 chip (ARM architecture) that
 1. Open a Terminal window
 2. Type (paste) the command `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
 
-Once this is done, you can proceed with installing and running Docker Desktop (below).
+Once this is done, you can proceed with installing and running Docker (below).
 
 Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-Now, go to [`Section 3.1. Installing Docker Desktop`](setting-up-your-laptop.md#3.1.-installing-docker-on-ubuntu-on-your-vm)
+Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
-## 3. Installing and running Docker Desktop
+## 3. Installing and running Docker
 
-We will be using a technology called _Docker Desktop_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. You will learn more about this in CITS2003, but for the sake of this unit, you do not need to understand how and why this works.
+We will be using a technology called _Docker_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. For the sake of this unit, you do not need to understand how and why this works.
 
 You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
-### 3.1. Installing Docker Desktop (Windows/Mac/Linux)
+### 3.1. Installing Docker (Windows/Mac/Linux)
 
 {% hint style="warning" %}
-If you have installed a VM, install Docker Desktop inside your VM.
+If you have installed a VM, install Docker inside your VM.
 {% endhint %}
 
-The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have (from the drop-down menu, select the appropriate OS):
+Docker on Kali and Ubuntu linux can be installed by running the following commands:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y docker.io
+sudo systemctl enable docker --now
+```
+
+An official guide for getting started with Docker can be found below:
 
 {% embed url="https://www.docker.com/get-started" %}
 
-{% hint style="warning" %}
-**Docker on Kali**
-
-If you are on Kali VM on M1 Macbook, you can type this in the terminal:
-```bash
-sudo apt-get update && sudo apt-get install -y docker.io
-```
-In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/). Please note that you will not have access to the Docker Desktop application, but you will instead be able to use the Docker CLI (command line interface). 
-{% endhint %}
-
-#### 3.1.1. Another method for Ubuntu (should also work for Kali)
-
-You can also install docker on Ubuntu without the Docker Desktop. Run the following two lines (line by line) of code in your terminal and wait for it to install:
-
-```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-```
-
-The full instruction can be found here: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
-
-Now go to [`Section 3.2. Testing Docker`](setting-up-your-laptop.md#3.3-testing-docker)\`\`
+Now go to [`Section 3.2. Testing Docker`](lab-1-setting-up-your-laptop.md#id-3.2.-testing-docker)
 
 ### 3.2. Testing Docker
 
@@ -206,7 +197,7 @@ docker.io/uwacyber/cits1003-labs:bash
 sudo docker run -it uwacyber/cits1003-labs:bash
 ```
 
-Once the container is running, you can try the below command (first line only, second line is the output) in the terminal:
+Once the container is running, you can try the below command (first line only after the `#`, second line is the expected output) in the terminal:
 
 ```bash
 root@9215e663eb9d:/# whoami
@@ -302,8 +293,8 @@ There will be a file called flag.txt in the directory. We can view the contents 
 ## Case study: Mainstream cyber attacks: data breach
 
 A data breach is an incident in which sensitive, protected, or confidential information is accessed, disclosed, or stolen without authorization. This can include personal information such as names, addresses, and Social Security numbers, as well as financial information such as credit card numbers and bank account information.
-Data breaches can occur in various ways, such as hacking into a computer system, stealing physical devices containing data, or social engineering techniques like phishing emails or phone calls. The consequences of a data breach can be severe, including financial loss, damage to reputation, and potential legal liability.
 
+Data breaches can occur in various ways, such as hacking into a computer system, stealing physical devices containing data, or social engineering techniques like phishing emails or phone calls. The consequences of a data breach can be severe, including financial loss, damage to reputation, and potential legal liability.
 
 Read through the following article and answer the questions below: [https://webo.digital/blog/optus-medibank-data-breaches-cyber-security](https://webo.digital/blog/optus-medibank-data-breaches-cyber-security)
 
