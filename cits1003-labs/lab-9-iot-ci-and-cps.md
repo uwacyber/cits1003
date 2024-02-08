@@ -197,8 +197,6 @@ If you would like to setup the emulation yourself and test it, I have included t
 
 ### Question 1. Exploit to find the flag 
 
-Flag: CITS1003{4ll_y0ur_r0u73r_b3l0n6_70_u5!}
-
 Flag: Run `exploit.py` and pass the argument `flag.txt` 
 
 ## 2. Searching for Hard Coded Credentials
