@@ -298,7 +298,7 @@ Which of the following is the impact of Meltdown and Spectre on modern computers
 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
 ### Question 5. Root cause
