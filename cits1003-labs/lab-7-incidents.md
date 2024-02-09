@@ -175,45 +175,49 @@ The `awk` command will chunk each line based on text separated by spaces (`-F ' 
 The other thing to remember is that the address range `192.168.0.0` to `192.168.255.255` is non-routable across the Internet (i.e. it is a private IP address range meant for internal networks).
 {% endhint %}
 
-## Case study: Cyber Security Incident Reporting in Australia
+## Case study: Cyber Incident Reporting
 
-Reporting a cyber security incident helps to contain the spread of the attack and prevent further damage. By reporting the incident, affected systems can be disconnected from the network and steps can be taken to minimize the impact of the attack.
-The Security of Critical Infrastructure Act 2018 provides for mandatory cyber incident reporting for critical infrastructure assets. Critical infrastructure owners and operators are required to report a cyber security incident to the Australian Cyber Security Centre (ACSC). 
+Cyber Incident Reporting is the process of documenting and notifying appropriate parties about cybersecurity incidents that occur within an organization. These incidents can range from data breaches and malware infections to unauthorized access attempts and system disruptions.
 
-Read through the following article and answer the questions below: [https://www.cisc.gov.au/critical-infrastructure-centre-subsite/Files/cyber-security-incident-reporting.pdf](https://www.cisc.gov.au/critical-infrastructure-centre-subsite/Files/cyber-security-incident-reporting.pdf)
+Read through the following article and answer the questions below: [https://www.upguard.com/blog/cyber-incident-reporting](https://www.upguard.com/blog/cyber-incident-reporting)
 
-### Question 4. What is a cyber security incident?
 
-Which of the following best describes a cyber security incident?&#x20;
+### Question 4. Regulatory Compliance
 
-1. Unauthorized access and malware infections are prevented by installing firewalls and antivirus software.&#x20;
-2. Software fuzzing and software vulnerabilities discovery.&#x20;
-3. Unauthorised modification of the integrity of computer data.&#x20;
-4. Software and network disaster recovery plan development.
+Which of the following statements is correct regarding regulatory compliance in cybersecurity management?&#x20;
+
+1. Regulatory compliance primarily aims to punish businesses for failure to secure their systems.&#x20;
+2. Highly-regulated sectors are exempt from mandatory cyber incident reporting. &#x20;
+3. Federal laws, such as CIRCIA and GDPR, mandate incident reporting within 48 hours after the incident. &#x20;
+4. Regulatory compliance requires organizations to implement monitoring systems, reporting processes, incident response plans, etc.
 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. When do I need to report?
+### Question 5. Prompt Remediation 
 
-If a security researcher observes that a cyber security incident has occurred, or is occurring, AND the incident has had, or is having, a significant impact on the availability of individual or company asset, the research must notify the ACSC in a short time.&#x20;
+Which of the following accurately reflects the importance of prompt remediation in response to cybersecurity incidents?&#x20;
 
-Which of the following is true about time length?&#x20;
+1. Organizations can delay incident response actions until they have thoroughly investigated the incident internally. &#x20;
+2. Federal agencies, such as the Information Commissioner's Office or the Office for Civil Rights, are not involved in assisting organizations with incident response efforts. &#x20;
+3. Swift and thorough diagnosis of the incident is only required if the data breach has caused significant financial loss to the organization. &#x20;
+4. Incident response plans should be triggered immediately upon detection of the incident.
 
-1. Verbal notification within 72 hours plus another written record within 48 hours (critical incident)&#x20;
-2. Verbal notification within 12 hours plus another written record within 48 hours (non-critical incident)&#x20;
-3. Verbal notification within 12 hours plus another written record within 84 hours (critical incident)&#x20;
-4. Verbal notification within 48 hours plus another written record within 72 hours (non-critical incident)
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
+### Question 6. Cyber Incident Report
 
-### Question 6. What doesnot a cyber security incident affect?
+Which of the following details should be included in a cyber incident report to aid in understanding the impact and scope of the incident?&#x20;
 
-In the article’s provided example of Reporting other Cyber Security Incidents, which of the following is unlikely to be impacted by the cyber security incident?&#x20;
+1. The name and contact details of all employees in the organization. &#x20;
+2. Operational constraints or business disruptions caused by the incident. &#x20;
+3. The organization's marketing strategy for the upcoming quarter. &#x20;
+4. The culture of the organization
 
-1. The cyber security incident might impact a bank’s internal network.&#x20;
-2. The cyber security incident might expose a bank’s sensitive information.&#x20;
-3. The cyber security incident might compromise a bank’s electronic devices.&#x20;
-4. The cyber security incident might affect the provision of banking services. 
-
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
