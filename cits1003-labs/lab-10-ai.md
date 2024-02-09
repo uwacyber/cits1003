@@ -369,39 +369,43 @@ While ChatGPT has certainly made great strides in the field of AI-based text gen
 This passage above was generated using ChatGPT! You can try ChatGPT for yourself here! [https://openai.com/blog/chatgpt/](https://openai.com/blog/chatgpt/)
 
 
-Read through the following article and answer the following questions: [https://simonwillison.net/2022/Sep/12/prompt-injection/](https://simonwillison.net/2022/Sep/12/prompt-injection/)
+Read through the following article and answer the following questions: [https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2/](https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2/)
 
-### Question 4. The impact of prompt injection attacks
+### Question 4. The Use of Markdown Image
 
-Which of the following is the least concerning regarding prompt injection attacks?&#x20;
+What is the purpose of the invisible single-pixel markdown image in the prompt injection attack?&#x20;
 
-1. A malicious attacker could craft a prompt that includes keywords related to account passwords and trick the model into revealing sensitive information.&#x20;
-2. Companies may want to use the paid API offered by ChatGPT for their business operations. Prompt injection attacks allow malicious attackers to potentially discover the underlying business logic behind their API usage, which is a risk to the business’s intellectual property and ongoing operations.&#x20;
-3. In an attempt to discover sensitive information, attackers may need to craft multiple malicious prompts to see which one successfully reveals the information. This may cause strain on the service by increasing server demand and subsequently costs.&#x20;
-4. Prompt injection attacks can degrade the performance of NLP models, making them less effective in generating accurate and coherent text. Further, if a prompt injection attack results in inaccurate or misleading information being generated, it can damage the reputation of the organization or individuals associated with the model.
+1. To improve the formatting of ChatGPT responses. &#x20;
+2. To track user interactions with the injected prompt. &#x20;
+3. To prevent the user from copying the poisoned text. &#x20;
+4. To transmit sensitive chat data to the malicious server.
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. Mitigating prompt injection attacks
+### Question 5. The Use of Webhook URL
 
-Which of these is not a potential mitigation technique against prompt injection attacks?&#x20;
+What is the primary function of the webhook URL in the described attack scenario?&#x20;
 
-1.	Using input sanitization techniques to filter out potentially harmful keywords or phrases.&#x20;
-2.	Training the model on a diverse range of data, including adversarial examples, to improve its ability to detect and filter out malicious inputs.&#x20;
-3.	Adding more computational resources to the model to help it process input prompts more quickly.&#x20;
-4.	Implementing an anomaly detection system to identify and filter out unexpected or suspicious input prompts.&#x20;
-5.	Limit access to detailed information about the AI model.
+1. To serve as a decoy to distract users from the malicious prompt injection. &#x20;
+2. To directly inject malicious code into ChatGPT's responses. &#x20;
+3. To record and intercept incoming requests, facilitating the transmission of sensitive data to the attacker's server. &#x20;
+4. To authenticate users accessing ChatGPT's services. &#x20;
 
-### Question 6. The impact of input-based defence on ChatGPT
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
-In reality, finding methods for distinguishing between “instructional” prompts and “user-input” prompts for ChatGPT has proven to be a challenge, due to the richness of natural language input. One such challenge is in implementing restrictions that prevent exploitation, while allowing enough freedom for the model to effectively perform its tasks. 
-Consider a business who has appropriated ChatGPT for a particular business purpose. This may involve requiring and serving only a subset of ChatGPT’s full capabilities. The business hosts an endpoint (or access point) for users to be able to interact with their specified instance of ChatGPT.&#x20;
+### Question 6. The Limitations of The Attack
 
-Which of the following potential input-based defence methods would have the most impact on ordinary (non-malicious) use of the ChatGPT service?&#x20;
+Which of the following contributes to the limitations of prompt injection attacks against ChatGPT? &#x20;
 
-1.	Input allow-listing: Depending on the task the model is solving, it could happen that the user input has very specific formatting. For example, if the user input is a phone number, there is no point in allowing characters other than numbers, white spaces and maybe a small subset of symbols.&#x20;
-2.	Input length: The more protections are deployed, the longer a payload would need to be to bypass them. Reducing the maximum length of the user input increases the level of restrictions and decreases the opportunities for an attacker to find a working payload.&#x20;
-3.	Input deny-listing: When allow-listing is not possible, deny-listing can be used to block certain characters or terms that could facilitate exploitation. For example, don’t allow the word “translate” if the instructions are using it as well.&#x20;
-4.	Explicit Separation: Provide the end-user an explicit field for their input that is separated from the instruction prompt.
+1. ChatGPT's vulnerability to common web attacks.&#x20;
+2. The default temperature parameter of ChatGPT affects the randomness and consistency of its output.&#x20;
+3. The lack of user engagement with the injected prompts. &#x20;
+4. The dependence on the user's browser.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
