@@ -424,42 +424,54 @@ Once you open, you would still want to flip and then rotate 180 degrees to read 
 
 Do you see what I see? Enter the flag you found in the image.
 
-## Case study: Understanding digital forensics
+## Case study: Understanding Cloud Forensics 
 
-Digital forensics is the process of investigating and analyzing digital devices and data in order to uncover evidence that can be used in legal proceedings or other investigations. The ultimate goal of digital forensics is to uncover relevant evidence that can be used to support legal cases, enforce regulations, and resolve disputes. 
+As more and more organizations adopt cloud computing services for storing data, hosting applications, and running workloads, the need for conducting forensic investigations on the cloud has increased, the so-called cloud forensics.
 
-Read through the following article and answer the questions below: [https://www.bluevoyant.com/knowledge-center/understanding-digital-forensics-process-techniques-and-tools](https://www.bluevoyant.com/knowledge-center/understanding-digital-forensics-process-techniques-and-tools)
+Read through the following article and answer the questions below:
+[https://www.carneyforensics.com/digital-forensics-services/cloud-forensics/](https://www.carneyforensics.com/digital-forensics-services/cloud-forensics/)
 
-### Question 4. Reverse Steganography
 
-Which of the following is the goal of reverse steganography?&#x20;
+### Question 4. Mobile Evidence Moves to the Cloud
 
-1. Decrypt the original message using a private key.&#x20;
-2. Apply a steganalysis algorithm to extract the hidden information.&#x20;
-3. Modify the metadata of a file to embed hidden information.&#x20;
-4. Know the type of steganography used in the original message.
+Which of the following best describes the role of cloud evidence in modern litigation and investigations?&#x20;
+
+1. Cloud evidence plays an important role in civil and criminal cases equal to data recovered from digital devices. &#x20;
+2. Cloud evidence is considered credible and admissible in federal and state courts. &#x20;
+3. Cloud evidence is helpful in cases involving financial transactions, such as credit card fraud. &#x20;
+4. All of the above.
 
 
 {% hint style="info" %}
-Submit the correct option as your flag (e.g., `CITS1003{`1`}` if option 1 is the correct answer).
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. Deleted file recovery
+### Question 5. Collecting Social Media and Blogs
 
-Deleted file recovery, also known as data carving or file carving, is a technique that helps recover deleted files. Which of the following is the main technique of deleted file recovery?&#x20;
+Which of the following statements accurately reflects the legal authority required to collect publicly accessible digital evidence from social media and blogs for investigative purposes? &#x20;
 
-1.	Search the recycle bin for the deleted file.&#x20;
-2.	Search for fragments of the deleted file that leave traces in the system.&#x20;
-3.	Restore the deleted file from a backup.&#x20;
-4.	None of the above
+1. A subpoena or court order is always required to collect such evidence. &#x20;
+2. Consent from the individual whose data is being collected is necessary before collecting such evidence. &#x20;
+3. Only law enforcement agencies have the legal authority to collect digital evidence from social media and blogs. &#x20;
+4. Legal authority is not needed to collect publicly available digital evidence. 
 
-### Question 6. Digital forensics tools
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
-Which of the following tools is NOT the type of digital forensics tools?&#x20;
 
-1.	Disk/data capture tools &#x20;
-2.	Encryption/decryption tools &#x20;
-3.	File viewing tools &#x20;
-4.	Network forensics tools &#x20;
-5.	Database forensics tools 
+### Question 6. Cloud Forensics for Google Workspace and Microsoft Office 365
+
+Which of the following statements best describes the role of audit logs in cloud-based forensic investigations? &#x20;
+
+1. Audit logs primarily verify the authenticity of user credentials. &#x20;
+2. Audit logs are used to recover deleted files from cloud storage providers. &#x20;
+3. Audit logs verify when and by whom documents were created, modified, and downloaded. &#x20;
+4. Audit logs are only accessible to system administrators and cannot be used as evidence in legal proceedings.
+
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+
 
