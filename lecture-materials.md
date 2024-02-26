@@ -4,8 +4,6 @@ Below are links to the preparation lecture videos, which you are expected to wat
 
 ## >> Live Lectures
 
-Live lectures are streamed on MS Teams (login using your student email) in the "Online Lecture" channel during the scheduled lecture hour. If you are attending face-to-face (when available), you don't have to watch via MS Teams.
-
 Recordings of live lectures are also available (give up to 48 hours for it to be available), which are on LMS -> Lecture Recordings. These won't be uploaded on Youtube as discussions, demo and interactions will vary depending on the class.
 
 Below, you will find prerecorded lecture videos below, which you should watch before attending the live lectures for that week.
