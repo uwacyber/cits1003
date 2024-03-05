@@ -461,42 +461,41 @@ The Heartbleed Bug was a serious vulnerability within OpenSSL, which is widely u
 
 Read through the following article and answer the questions below: [https://www.vox.com/2014/6/19/18076318/heartbleed](https://www.vox.com/2014/6/19/18076318/heartbleed)
 
-### Question 4. What is Heartbleed in OpenSSL?
+### Question 4. Heartbleed
 
-Which of the following statements accurately describes what the Heartbleed vulnerability is?&#x20;
+Which of the following accurately describes the Heartbleed vulnerability? &#x20;
 
-1.	It is a type of cyber attack where attackers send a flood of requests to an OpenSSL-based server, causing it to crash and making it irresponsive.&#x20;
-2.	It is a hardware vulnerability in an OpenSSL-based server that an attacker can exploit to read unauthorized information.&#x20;
-3.	It is a bug in the OpenSSL cryptographic implementation that can be exploited to break the server’s data confidentiality.&#x20;
-4.	It is a type of malware that can infect an OpenSSL-based server and modify/steal sensitive information.&#x20;
-5.	It is a software flaw in the OpenSSL communication library that can be exploited to read much more information than a user requests. 
-
-{% hint style="info" %}
-Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
-{% endhint %}
-
-### Question 5. Fixing Heartbleed 
-
-How to fix Heartbleed?&#x20;
-
-1. An OpenSSL-based server must enforce an advanced access control policy by restricting access to sensitive information to a small number of trusted users. &#x20;
-2. The server applies a more secure SSL encryption standard to implement OpenSSL.&#x20;
-3. The server needs to ensure it sends the exact amount of information that an end-user requests when implementing OpenSSL.&#x20;
-4. The server can set a limit on the number of requests that can be made in a given period of time and deploy more intelligent firewall policies, e.g., blocking network traffic from known malicious sources.
+1. A cyber attack involving flooding requests to an OpenSSL-based server, causing it to crash.&#x20;
+2. A hardware vulnerability in an OpenSSL-based server allowing unauthorized information access.&#x20;
+3. Malware infecting an OpenSSL-based server for sensitive information theft/modification.&#x20;
+4. A software flaw allowing reading excessive information beyond user requests.
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
+### Question 5. OpenSSL
 
-### Question 6. General Countermeasures
+Which of the following best describes the role of OpenSSL in internet security? &#x20;
 
-What can NOT be done to prevent similar bugs like Heartbleed in the future?&#x20;
+1. OpenSSL is a web browser used to access secure websites.&#x20;
+2. OpenSSL is a programming language used to create encrypted websites.&#x20;
+3. OpenSSL is a software that enables computers to communicate via encryption.&#x20;
+4. OpenSSL is a hardware device used to protect network connections.
 
-1.	Never trust the input from an external source and perform input validation when developing a software.&#x20;
-2.	Invest more into the open-source software development life cycle and the maintenance of existing software.&#x20;
-3.	Disable SSL/TLS encryption to prevent potential vulnerabilities.&#x20;
-4.	Conduct a thorough security review of existing software and apply patches regularly. 
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
+
+
+### Question 6. Countermeasure
+
+What mitigation was implemented to address the Heartbleed vulnerability?&#x20;
+
+1. Encrypting all data transmitted over SSL connections.&#x20;
+2. Restricting the use of heartbeat messages in SSL communication.&#x20;
+3. Implementing stricter data check to prevent excessive information disclosure.&#x20;
+4. Disabling SSL encryption on affected servers.
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
