@@ -287,36 +287,42 @@ Meltdown and Spectre are two of the world’s most widespread modern processor v
 
 Read through the following article and answer the questions below: [https://www.cloudflare.com/learning/security/threats/meltdown-spectre/](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/)
 
-### **Question 4. What Meltdown and Spectre can do?**
+### Question 4. Root Cause
 
-Which of the following is the impact of Meltdown and Spectre on modern computers?&#x20;
+What is the primary reason for the Meltdown and Spectre vulnerabilities?&#x20;
 
-1.	Leak sensitive information such as personal data.&#x20;
-2.	Corrupt system data.&#x20;
-3.	Cause damage to computer hardware.&#x20;
-4.	Make computers unable to work.
+1. Software bugs in operating systems &#x20;
+2. A flaw in the design of affected processor chips &#x20;
+3. Exploitation of internet browsers &#x20;
+4. Lack of antivirus protection
 
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
-### Question 5. Root cause
+### Question 5. Speculative Execution
 
-Which of the following is the root cause of Meltdown and Spectre?&#x20;
+How does speculative execution relate to the Meltdown and Spectre vulnerabilities? &#x20;
 
-1.	Weak user password &#x20;
-2.	Speculative execution &#x20;
-3.	Flawed antivirus software &#x20;
-4.	Lack of multi-factor authentication
+1. It allows attackers to execute arbitrary code on a system. &#x20;
+2. It allows unauthorized access to sensitive data. &#x20;
+3. It prevents the exploitation of processor chips. &#x20;
+4. It is a security measure implemented by Google's Project Zero team.
 
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}
 
-### Question 6. Speculative execution
+### Question 6. Meltdown Patch
 
-Which of the following statements is correct about speculative execution?&#x20;
+How does Kernel Page Table Isolation implemented in the Meltdown patch contribute to the slowdown in system performance?&#x20;
 
-1.	Allow multiple instructions to perform in parallel.&#x20;
-2.	Prevent unauthorized access to system resources.&#x20;
-3.	Allow a modern processor to guess code that is likely to be executed and execute it.&#x20;
-4.	Ensure the integrity of data stored in memory.&#x20;
+1. By reducing the need for kernel mode operations &#x20;
+2. By increasing the efficiency of speculative execution &#x20;
+3. By separating kernel mode operations into a separate address space &#x20;
+4. By optimizing memory allocation for user processes
 
+{% hint style="info" %}
+Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
+{% endhint %}

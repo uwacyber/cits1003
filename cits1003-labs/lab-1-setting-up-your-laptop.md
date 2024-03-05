@@ -309,7 +309,7 @@ Which aspect of cybersecurity do the cyber attacks primarily violate?
 5. Non-repudiation
 
 {% hint style="info" %}
-Submit your flag with the correct answer (e.g., CITS1003{2} if option 2 is the correct answer).
+Submit your flag with the correct answer (e.g., CITS1003{1} if option 1 is the correct answer).
 {% endhint %}
 
 ### Question 3. How was Optus compromised?
