@@ -48,9 +48,9 @@ Change directory to `/opt/malware/test`. This directory has a subdirectory `./fi
 We are going to create a Yara rules file which you can edit on the machine using the editor `vi`. If you haven't used `vi` before, don't worry, the steps are provided for you to use it.
 
 {% hint style="info" %}
-if `vi` is missing, install it:&#x20;
+if `vi` is missing, install it inside the Docker container:&#x20;
 
-`sudo apt-get update; sudo apt-get install -y vim`
+`apt-get update; apt-get install -y vim`
 {% endhint %}
 
 Start editing the file by typing
