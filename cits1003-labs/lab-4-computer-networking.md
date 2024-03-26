@@ -34,7 +34,7 @@ We can get these details using the command `ip addr` on Linux (or if you are on 
 
 
 {% hint style="warning" %}
-\*FOR MAC HOSTS ONLY: you have to first install `iproute2mac` package as below.
+\***FOR MAC HOSTS ONLY**: you have to first install `iproute2mac` package as below.
 
 ```bash
 brew install iproute2mac
