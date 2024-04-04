@@ -34,7 +34,7 @@ We can get these details using the command `ip addr` on Linux (or if you are on 
 
 
 {% hint style="warning" %}
-\*you have to first install `iproute2mac` package as below.
+\***FOR MAC HOSTS ONLY**: you have to first install `iproute2mac` package as below.
 
 ```bash
 brew install iproute2mac
@@ -43,9 +43,7 @@ brew install iproute2mac
 If `brew` isn't installed on your machine, install it by running:
 
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-{% endhint %}
 
-{% hint style="danger" %}
 If you get a warning like "warning: /opt/homebrew/bin is not in your PATH", run the following commands in the terminal:
 
 `echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile`
