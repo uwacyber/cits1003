@@ -2,7 +2,7 @@
 
 ### Availability
 
-The project questions/challenges is available on the CTF flag submission site: [https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org) on week 6.
+The project questions/challenges are available on the CTF flag submission site: [https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org) on week 6.
 
 ### Questions
 
