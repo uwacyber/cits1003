@@ -6,12 +6,12 @@ The project questions/challenges are available on the CTF flag submission site: 
 
 ### Questions
 
-The project consists of four topics: (1) Linux and Networking, (2) Cryptography (3) Forensics, and (4) Vulnerabilities. Each topic consists of four questions (total 16 questions) with varying difficulties (easy, medium and hard). Easy questions are 10 points, Medium questions are 20 points and Hard questions are 25 points. The points will add up to 250 points for 25% of your unit grade.
+The project consists of four topics: (1) Linux and Networking, (2) Cryptography (3) Forensics, and (4) Vulnerabilities. Each topic consists of four questions (total 16 questions) with varying difficulties (Easy, Medium and Hard). An Easy question has 10 points. A Medium question has 20 points, and a Hard question has 25 points. There are 250 points in total, worth 25% of the unit grade.
 
 
 ### Your tasks and how the project is graded
 
-Your task is to find flags for the provided 16 questions to obtain as many points as possible (the format for the flags is: UWA{xxx} where xxx is the flag you have found). Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.
+Your task is to find flags for the provided 16 questions to obtain as many points as possible (the format for a flags is: UWA{xxx} where xxx is the flag you have found). Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.
 
 In addition, you will submit a write-up report explaining step-by-step in detail how a flag is obtained. Marking rubrics can be found [here](https://docs.google.com/document/d/1wlSfCf2KAC-q_y_hm7Ss0brH23rOGXOoydB7ewdm8sU/edit?usp=sharing). 
 
