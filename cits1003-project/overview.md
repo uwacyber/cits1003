@@ -15,8 +15,6 @@ Your task is to find flags for the provided 16 questions to obtain as many point
 
 In addition, you will submit a write-up report explaining step-by-step in detail how a flag is obtained. Marking rubrics can be found [here](https://docs.google.com/document/d/1wlSfCf2KAC-q_y_hm7Ss0brH23rOGXOoydB7ewdm8sU/edit?usp=sharing). 
 
-You may be requested for an interview for us to clarify any misunderstandings found in your report. If you fail to organise a time to have an interview, you may lose marks for the questions we need clarifications. We will make a reasonable attempt to organise an interview session.
-
 Your write-up report (a single PDF file) is submitted on LMS, where you will find a report submission page. From LMS, you can submit multiple times until due date and only the latest submission will be graded. If your submission has a high similarity with that of others, we will perform a manual check and decide whether it is an academic miscondut.  
 
 ### Duration
