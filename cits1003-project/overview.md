@@ -28,9 +28,13 @@ Yes, you can ask for help during the lab sessions but the lab facilitators won't
 ### Academic conduct
 
 Do not seek to get the flags from anyone else. &#x20;
+
 Do not share the flags you have found. &#x20;
+
 Do not copy the report. &#x20;
+
 Do not share the report. &#x20;
+
 If you are unsure whether what you planning to do would be academic misconduct or not, check with the lab facilitators or the unit coordinator.&#x20;
 
 ### Final reminder
