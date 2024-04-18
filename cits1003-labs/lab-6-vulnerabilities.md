@@ -98,7 +98,7 @@ Now you can begin your attack e.g., your attack address will be `http://172.17.0
 {% tab title="Run ZAP docker (for all)" %}
 You can run OWASP ZAP as a Docker container by using the command:
 
-`$ sudo docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm owasp/zap2docker-stable zap-webswing.sh`
+`$ sudo docker run -u zap -p 8080:8080 -p 8090:8090 -i --rm ghcr.io/zaproxy/zaproxy:stable zap-webswing.sh`
 
 You then access it through your browser using the URL `http://localhost:8080/zap`
 
