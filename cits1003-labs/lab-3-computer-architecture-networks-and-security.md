@@ -210,7 +210,7 @@ root@2577070501db:/#
 
 For the above example, the `.dockerenv` is the hidden file.
 
-Linux has a limited set of specific attributes on a file that controls how the file is accessed. One attribute for example is the _Append Only_ attribute that only allows the write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using _`lsattr`_` ``` and _`chattr`_` ``` programs
+Linux has a limited set of specific attributes on a file that controls how the file is accessed. One attribute for example is the _Append Only_ attribute that only allows the write operations on the file to append to it and not overwrite any existing content. Another attribute is Immutable which does not allow the file contents or metadata to change at all. You can list and change attributes on Linux using _`lsattr`_ and _`chattr`_ programs
 
 ### 1.3. Downloading Files
 
