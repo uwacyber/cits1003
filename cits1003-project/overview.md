@@ -11,11 +11,7 @@ The project consists of four topics: (1) Linux and Networking, (2) Cryptography 
 
 ### Your tasks and how the project is graded
 
-Your task is to find flags for the provided 16 questions to obtain as many points as possible (the format for a flags is: UWA{xxx} where xxx is the flag you have found). Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.
-
-In addition, you will submit a write-up report explaining step-by-step in detail how a flag is obtained. Marking rubrics can be found [here](https://docs.google.com/document/d/1wlSfCf2KAC-q_y_hm7Ss0brH23rOGXOoydB7ewdm8sU/edit?usp=sharing). 
-
-Your write-up report (a single PDF file) is submitted on LMS, where you will find a report submission page. From LMS, you can submit multiple times until due date and only the latest submission will be graded. If your submission has a high similarity with that of others, we will perform a manual check and decide whether it is an academic miscondut.  
+Your task is to find flags for the provided 16 questions to obtain as many points as possible (the format for a flags is: UWA{xxx} where xxx is the flag you have found). Please note that, questions in the projects normally extend the questions you have seen in the labs, which means you are expected to carry out your own research on top of the knowledge you have gained from lectures and labs to find the flags.  
 
 ### Duration
 
@@ -30,10 +26,6 @@ Yes, you can ask for help during the lab sessions but the lab facilitators won't
 Do not seek to get the flags from anyone else. &#x20;
 
 Do not share the flags you have found. &#x20;
-
-Do not copy the report. &#x20;
-
-Do not share the report. &#x20;
 
 If you are unsure whether what you planning to do would be academic misconduct or not, check with the lab facilitators or the unit coordinator.&#x20;
 
