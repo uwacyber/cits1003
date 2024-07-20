@@ -1,6 +1,18 @@
 # Lab 1: Setting up your laptop
 
-Walkthrough video:
+## The Easy Path
+
+What follows below is if you want to install VMWare and Kali basically from scratch. I have provided ready-made images however of ParrotOS and made download of VMWare for Mac and Windows available. So to install on Windows, just download VMWare Workstation and then the Intel version of the ParrotOS VM. For Mac, install VMWare Fusion Pro and if you have a new mac install the "arm" version of ParrotOS. If you have an old Intel-based Mac, then the Intel version - same as windows.
+
+VMWare for Mac https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg
+VMWare for Windows: https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe
+
+VM for Mac with Apple Silicon: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip
+VM for Windows and Intel Mac: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip
+
+If you don't want to do this - then read all that follows:
+
+**Walkthrough video**:
 
 Please NOTE, the walkthrough videos are for the guidance only, remember to use the lab materials provided in this labsheet, not from the walkthrough video!
 
