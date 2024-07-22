@@ -15,7 +15,7 @@ Your task is to find flags for the provided 16 questions to obtain as many point
 
 ### Duration
 
-The project starts from 26th September (Week 6) and will close on 23:59  13th May (End of Week 11). However, if it is available earlier, we will announce that and you may start at any time after that. There should be plenty of time to complete the project.
+The project starts from 26th September (Week 6) and will close at 23:59 on the 13th May (End of Week 11). However, if it is available earlier, we will announce that and you may start at any time after that. There should be plenty of time to complete the project.
 
 ### Getting help
 
