@@ -10,6 +10,13 @@ VMWare for Windows: https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMwa
 VM for Mac with Apple Silicon: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip
 VM for Windows and Intel Mac: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip
 
+The username and password for the VMs is:
+
+
+username: wsuser
+password: ws1003admin
+
+
 If you don't want to do this - then read all that follows:
 
 **Walkthrough video**:
