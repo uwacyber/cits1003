@@ -11,7 +11,7 @@ Below, you will find prerecorded lecture videos below, which you should watch be
 
 ## Lab Videos
 
-Lab Docker: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)  \ 
+Lab Docker: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)  
 Lab Computer Architecture: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)  \
 Lab Networks: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)  \
 Lab Social Engineering: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg) \
