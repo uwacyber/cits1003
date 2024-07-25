@@ -1,4 +1,4 @@
-# Lecture Materials
+# Lecture and Lab Materials
 
 Below are links to the preparation lecture videos, which you are expected to watch before coming to the scheduled lectures. Lecture slides can be downloaded from  (lecture slides may be updated, do check their updated date!) [https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-lecture\_slides](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-lecture\_slides)
 
@@ -7,6 +7,20 @@ Below are links to the preparation lecture videos, which you are expected to wat
 Recordings of live lectures are also available (give up to 48 hours for it to be available), which are on LMS -> Lecture Recordings. These won't be uploaded on Youtube as discussions, demo and interactions will vary depending on the class.
 
 Below, you will find prerecorded lecture videos below, which you should watch before attending the live lectures for that week.
+
+
+## Lab Videos
+
+Lab Docker: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)
+Lab Computer Architecture: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)
+Lab Networks: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)
+Lab Social Engineering: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)
+Lab Vulnerabilities: [https://youtu.be/UgY3n4xplR4](https://youtu.be/UgY3n4xplR4)
+Lab Incidents: [https://youtu.be/SiGKMrr-qdY](https://youtu.be/SiGKMrr-qdY)
+Lab Forensics: [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)
+Lab IoT and CPS: [https://youtu.be/nTjmkLGOJZ0](https://youtu.be/nTjmkLGOJZ0)
+Lab AI: [https://youtu.be/6LhD8jUO1aY](https://youtu.be/6LhD8jUO1aY)
+
 
 ## >> Videos
 
