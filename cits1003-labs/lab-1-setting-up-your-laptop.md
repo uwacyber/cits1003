@@ -1,6 +1,6 @@
 # Lab 1: Setting up your laptop
 
-## The Easy Path
+## 1. The easiest way to set up VMs for labs START HERE FIRST!
 
 What follows below is if you want to install VMWare and Kali basically from scratch. I have provided ready-made images however of ParrotOS and made download of VMWare for Mac and Windows available. So to install on Windows, just download VMWare Workstation and then the Intel version of the ParrotOS VM. For Mac, install VMWare Fusion Pro and if you have a new mac install the "arm" version of ParrotOS. If you have an old Intel-based Mac, then the Intel version - same as windows.
 
