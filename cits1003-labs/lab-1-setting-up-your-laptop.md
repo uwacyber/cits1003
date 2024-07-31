@@ -4,18 +4,26 @@
 
 What follows below is if you want to install VMWare and Kali basically from scratch. I have provided ready-made images however of ParrotOS and made download of VMWare for Mac and Windows available. So to install on Windows, just download VMWare Workstation and then the Intel version of the ParrotOS VM. For Mac, install VMWare Fusion Pro and if you have a new mac install the "arm" version of ParrotOS. If you have an old Intel-based Mac, then the Intel version - same as windows.
 
+### Step 1: Install VMWare
+
+VMWare is the software that you will use to run the ParrotOS virtual machine we will download in Step 2.
+
 **VMWare for Mac:** [https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg](https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg)  \
 **VMWare for Windows:** [https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe](https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe)
 
+### Step 2: Download ParrotOS Virtual Machine
 
 **VM for Mac with Apple Silicon:** [https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip](https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip)  \
 **VM for Windows and Intel Mac:** [https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip](https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip)
+
+### Step 3: Open the Virtual Machine in VMWare
 
 The username and password for the VMs is:
 
 **username:** wsuser  \
 **password:** ws1003admin
 
+** Then go to the questions at the end of this page **
 
 If you don't want to do this - then read all that follows:
 
@@ -85,9 +93,9 @@ Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it 
 
 Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
-### 2.2. M1/M2 etc. MacBook Users
+### 2.2. M1/M2/M3 etc. MacBook Users
 
 For M1/B2 Macs, you will need to use the VM UTM. You can download it here: [https://mac.getutm.app/](https://mac.getutm.app)
 
@@ -105,7 +113,7 @@ If you have a black screen when installing Kali, please go to settings and "+ Ne
 If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
 {% endhint %}
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
 ## 3. Doing labs on your host machine
 
@@ -125,7 +133,7 @@ Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
 ### 3.2. Cloud desktop
 
@@ -143,7 +151,7 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](lab-1-setting-up-your-laptop.md#id-2.1.-windows), otherwise go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 3.1. Windows`](lab-1-setting-up-your-laptop.md#id-3.1.-windows), otherwise go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
 ### 3.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
@@ -156,7 +164,7 @@ Once this is done, you can proceed with installing and running Docker (below).
 
 Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+
 
 ## 4. Installing and running Docker
 
@@ -182,7 +190,7 @@ An official guide for getting started with Docker can be found below:
 
 {% embed url="https://www.docker.com/get-started" %}
 
-Now go to [`Section 3.2. Testing Docker`](lab-1-setting-up-your-laptop.md#id-3.2.-testing-docker)
+
 
 ### 4.2. Testing Docker
 
