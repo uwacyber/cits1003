@@ -1,21 +1,29 @@
 # Lab 1: Setting up your laptop
 
-## The Easy Path
+## 1. The easiest way to set up VMs for labs START HERE FIRST!
 
 What follows below is if you want to install VMWare and Kali basically from scratch. I have provided ready-made images however of ParrotOS and made download of VMWare for Mac and Windows available. So to install on Windows, just download VMWare Workstation and then the Intel version of the ParrotOS VM. For Mac, install VMWare Fusion Pro and if you have a new mac install the "arm" version of ParrotOS. If you have an old Intel-based Mac, then the Intel version - same as windows.
 
-VMWare for Mac https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg
-VMWare for Windows: https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe
+### Step 1: Install VMWare
 
-VM for Mac with Apple Silicon: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip
-VM for Windows and Intel Mac: https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip
+VMWare is the software that you will use to run the ParrotOS virtual machine we will download in Step 2.
+
+**VMWare for Mac:** [https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg](https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-Fusion-13.5.2-23775688_universal.dmg)  \
+**VMWare for Windows:** [https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe](https://cits1003-vmware.s3.ap-southeast-2.amazonaws.com/VMware-workstation-full-17.5.2-23775571.exe)
+
+### Step 2: Download ParrotOS Virtual Machine
+
+**VM for Mac with Apple Silicon:** [https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip](https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/arm64/ParrotOS.vmwarevm.zip)  \
+**VM for Windows and Intel Mac:** [https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip](https://cits1003-vms.s3.ap-southeast-2.amazonaws.com/intel/ParrotOS.vmwarevm.zip)
+
+### Step 3: Open the Virtual Machine in VMWare
 
 The username and password for the VMs is:
 
+**username:** wsuser  \
+**password:** ws1003admin
 
-username: wsuser
-password: ws1003admin
-
+** Then go to the questions at the end of this page **
 
 If you don't want to do this - then read all that follows:
 
@@ -25,7 +33,7 @@ Please NOTE, the walkthrough videos are for the guidance only, remember to use t
 
 **Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
 
-## Getting started
+## Different ways to set up VMs
 
 We will set up various software that will be used in the labs, with the main one being _**Docker**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
 
@@ -45,7 +53,7 @@ There are three different ways to setup your lab environment:
 
 If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#id-2.2.-cloud-desktop).
 
-## 1. Setting up a Virtual Machine (VM) to do labs
+## 2. Alternate ways of setting up a Virtual Machine (VM) to do labs
 
 A VM is a piece of software that allows you to emulate or virtualise an operating system such as Windows or a distribution of GNU/Linux. It is recommended to run the labs inside a VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
 
@@ -53,7 +61,7 @@ For the labs, you will work in an Linux based operating system inside of a VM. O
 
 Please refer to [section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows-macos-non-m1-linux) or [1.2](lab-1-setting-up-your-laptop.md#id-1.2.-m1-m2-etc.-macbook-users) for specific set up instructions for your system.
 
-### 1.1. Windows/MacOS (non-M1)/Linux
+### 2.1. Windows/MacOS (non-M1)/Linux
 
 There are many VM software you can use, such as VirtualBox, VMWare, etc. You can use any of those, but if you don't know where to start, you can start with [VirtualBox](https://www.virtualbox.org). If this isn't working for you, you could try [VMWare Workstation Player](https://www.vmware.com/au/products/workstation-player.html).
 
@@ -85,9 +93,9 @@ Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it 
 
 Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
-### 1.2. M1/M2 etc. MacBook Users
+### 2.2. M1/M2/M3 etc. MacBook Users
 
 For M1/B2 Macs, you will need to use the VM UTM. You can download it here: [https://mac.getutm.app/](https://mac.getutm.app)
 
@@ -105,15 +113,15 @@ If you have a black screen when installing Kali, please go to settings and "+ Ne
 If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
 {% endhint %}
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
-## 2. Doing labs on your host machine
+## 3. Doing labs on your host machine
 
 You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
 
 Please note, this is NOT the recommended way of setting it up, but it might be useful if your laptop is not sufficiently powered to run VMs.
 
-### 2.1. Windows
+### 3.1. Windows
 
 The first step is to install WSL2 on Windows. Open **administrator** PowerShell or Windows Command Prompt and type in:
 
@@ -125,9 +133,9 @@ Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now, go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
-### 2.2. Cloud desktop
+### 3.2. Cloud desktop
 
 If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are going to use a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
 
@@ -143,9 +151,9 @@ Once created, you can connect to the machine via remote desktop and then configu
 Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
 {% endhint %}
 
-Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](lab-1-setting-up-your-laptop.md#id-2.1.-windows), otherwise go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
+Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 3.1. Windows`](lab-1-setting-up-your-laptop.md#id-3.1.-windows), otherwise go to [`Section 4.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-4.1.-installing-docker-windows-mac-linux)
 
-### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
+### 3.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
 
 Apple's computers are increasingly using the new M1 chip (ARM architecture) that uses a different instruction set than the Intel-based Macs (AMD architecture). Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
 
@@ -156,15 +164,15 @@ Once this is done, you can proceed with installing and running Docker (below).
 
 Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
 
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
-## 3. Installing and running Docker
+
+## 4. Installing and running Docker
 
 We will be using a technology called _Docker_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. For the sake of this unit, you do not need to understand how and why this works.
 
 You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
 
-### 3.1. Installing Docker (Windows/Mac/Linux)
+### 4.1. Installing Docker (Windows/Mac/Linux)
 
 {% hint style="warning" %}
 If you have installed a VM, install Docker inside your VM.
@@ -182,9 +190,9 @@ An official guide for getting started with Docker can be found below:
 
 {% embed url="https://www.docker.com/get-started" %}
 
-Now go to [`Section 3.2. Testing Docker`](lab-1-setting-up-your-laptop.md#id-3.2.-testing-docker)
 
-### 3.2. Testing Docker
+
+### 4.2. Testing Docker
 
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
