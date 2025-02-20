@@ -46,12 +46,12 @@ Once you have installed the VirtualBox, we need to download the VM image we want
 For Kali Linux, you can directly download its VM image for VirtualBox [here](https://cdimage.kali.org/kali-2024.4/kali-linux-2024.4-virtualbox-amd64.7z). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
 Now, you will need to import the VM image into your VM.
 
-**The username and password for the pre-built Kali VM image is both `kali`.**
+**The username and password for the pre-built Kali VM image are both `kali`.**
 
 {% hint style="info" %}
 When specifying the disk size, assign 64GB disk space. It won't fully occupy 64GB on your machine, as the size will dynamically adjust as you use it.
 
-For the Kali image, 4CPUs and 8GB RAM are recommended.
+For the Kali image, 2CPUs and 4GB RAM are recommended.
 {% endhint %}
 
 For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).
@@ -70,13 +70,15 @@ Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id
 
 ### 1.2. M1/M2 etc. MacBook Users
 
-For M1/B2 Macs, you also use VirtualBox on your machine. Download VirtualBox for MacOS (M-series chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-macOSArm64.dmg).
+For M-series MacOs, you are recommended to use the VM UTM. You can download it here: [https://mac.getutm.app/](https://mac.getutm.app)
 
-The Kali VM on VirtualBox runs all labs as intended, so this should work for you for this unit. You can download the pre-build Kali for VirtualBox [here](https://cdimage.kali.org/kali-2024.4/kali-linux-2024.4-virtualbox-amd64.7z).
+The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
-The Apple Silicon (M-series chips) laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
+You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful instructions for importing a Kali VM in UTM here:
 
-You are also recommended to install **Kali Linux** as the VM.
+[https://mac.getutm.app/gallery/kali-2023](https://mac.getutm.app/gallery/kali-2023)
+
+**The username and password for the pre-built Kali VM image are both `kali`.**
 
 {% hint style="info" %}
 If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
