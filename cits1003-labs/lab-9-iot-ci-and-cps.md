@@ -153,7 +153,7 @@ To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the t
 
 ### Testing the Vulnerability
 
-**NOTE**: As the emulator for this part is broken, and the flag for Question 1 is provided here: `CITS1003{R0u73r5_5h4ll_B0w_70_7h3_H4ck3r5!}`. Please proceed directly to **2. Searching for Hard-Coded Credentials**.
+**NOTE**: As the emulator for this part is broken, the flag for Question 1 is provided here: `CITS1003{R0u73r5_5h4ll_B0w_70_7h3_H4ck3r5!}`. Please proceed to **2. Searching for Hard-Coded Credentials**.
 
 Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
 
