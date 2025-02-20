@@ -76,7 +76,7 @@ The Kali VM on VirtualBox runs all labs as intended, so this should work for you
 
 The Apple Silicon (M-series chips) laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
-You are also recommended to install **Kali Linux**. 
+You are also recommended to install **Kali Linux** as the VM.
 
 {% hint style="info" %}
 If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
