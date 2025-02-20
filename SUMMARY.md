@@ -23,7 +23,3 @@
 ## CITS1003 Project
 
 * [Overview](cits1003-project/overview.md)
-
-## Past Exam
-
-* [Past Exams](past-exam/past-exams.md)
