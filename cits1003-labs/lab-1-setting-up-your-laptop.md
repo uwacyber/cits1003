@@ -34,12 +34,12 @@ For the labs, you will work in an Linux based operating system inside of a VM. O
 
 Please refer to [section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows-macos-non-m1-linux) or [1.2](lab-1-setting-up-your-laptop.md#id-1.2.-m1-m2-etc.-macbook-users) for specific set up instructions for your system.
 
-### 1.1. Windows/MacOS (non M-series chips)/Linux
+### 1.1. Windows/MacOS (Intel/AMD chips)/Linux
 
 There are many VM software you can use, such as VirtualBox, VMWare, etc. VirtualBox is recommended.
 
 - Download VirtualBox for Windows [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe).
-- Download VirtualBox for MacOS (non M-series chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg).
+- Download VirtualBox for MacOS (Intel chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg).
 
 Once you have installed the VirtualBox, we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) is recommended.
 
