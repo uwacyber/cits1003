@@ -74,9 +74,9 @@ For M-series MacOs, you are recommended to use the VM UTM. You can download it h
 
 The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
 
-You are also recommended to install **Kali Linux**, but you can use other generic OSes such as Ubuntu. You can find useful instructions for importing a Kali VM in UTM here:
+After installing UTM, you are also recommended to install **Kali Linux** as its VM, but you can use other generic OSes such as Ubuntu. Specifically, you download a Kali VM for UTM here [https://mac.getutm.app/gallery/kali-2023 (https://mac.getutm.app/gallery/kali-2023). 
 
-[https://mac.getutm.app/gallery/kali-2023](https://mac.getutm.app/gallery/kali-2023)
+A `.zip` file will start downloading. The Kali Linux VM image will be inside the zip file we are downloading. Once the zip file is downloaded, you double-click the zip file to extract a `.utm` VM image. We then double click the image and it will be automatically opened by UTM. 
 
 **The username and password for the pre-built Kali VM image are both `kali`.**
 
