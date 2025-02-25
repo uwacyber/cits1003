@@ -106,7 +106,7 @@ Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
 
-If you are using Windows with ARM chips, a feasible solution is provider [here](https://learn.arm.com/learning-paths/laptops-and-desktops/wsl2/).
+If you are using Windows with ARM chips, a feasible solution is provided [here](https://learn.arm.com/learning-paths/laptops-and-desktops/wsl2/).
 
 Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
