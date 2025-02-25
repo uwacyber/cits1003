@@ -34,11 +34,11 @@ For the labs, you will work in an Linux based operating system inside of a VM. O
 
 Please refer to [section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows-macos-non-m1-linux) or [1.2](lab-1-setting-up-your-laptop.md#id-1.2.-m1-m2-etc.-macbook-users) for specific set up instructions for your system.
 
-### 1.1. Windows/MacOS (Intel/AMD chips)/Linux
+### 1.1. Windows/MacOS (Intel/AMD chips) Users
 
 There are many VM software you can use, such as VirtualBox, VMWare, etc. VirtualBox is recommended.
 
-- Download VirtualBox for Windows [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe).
+- Download VirtualBox for Windows （Intel/AMD chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe). 
 - Download VirtualBox for MacOS (Intel chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg).
 
 Once you have installed the VirtualBox, we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) is recommended.
@@ -96,7 +96,7 @@ Please note, this is NOT the recommended way of setting it up, but it might be u
 
 ### 2.1. Windows
 
-The first step is to install WSL2 on Windows. Open **administrator** PowerShell or Windows Command Prompt and type in:
+The first step is to install WSL2 on Windows with Intel/AMD chips. Open **administrator** PowerShell or Windows Command Prompt and type in:
 
 ```
 wsl --install
@@ -105,6 +105,8 @@ wsl --install
 Once complete, restart your machine.
 
 To test this out, type `wsl` in the search bar and run the command prompt.
+
+If you are using Windows with ARM chips, a feasible solution is provider [here](https://learn.arm.com/learning-paths/laptops-and-desktops/wsl2/).
 
 Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
 
