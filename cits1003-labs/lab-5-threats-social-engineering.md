@@ -196,8 +196,7 @@ Launch another campaign and you should see the `usersim` simulate clicks.
 
 Social engineering attacks are one of the main ways bad actors can scam companies.
 
-Read through the following article and answer the questions below:
-[https://www.tessian.com/blog/examples-of-social-engineering-attacks/](https://www.tessian.com/blog/examples-of-social-engineering-attacks/)
+Read through the article [here](https://web.archive.org/web/20240913212036/https://www.tessian.com/blog/examples-of-social-engineering-attacks/)and answer the questions below:
 
 ### Question 2. Phishing type
 
