@@ -82,12 +82,12 @@ Before we look at the site, we are going to install a program called OWASP ZAP t
 This is least resource intensive, especially running on a VM (the docker method will be quite slow).
 
 Install OWASP ZAP for your platform from [https://www.zaproxy.org/download/](https://www.zaproxy.org/download/)
-If you are on Kali, you can download the Linux version (this works for Apple Silicon too).
+If you are on Kali, you should download the Linux version (this works for Apple Silicon too).
 
-To install, you must be root, i.e.,:
+To install, you must be acting as a root user and then run the following command:
 
 ```bash 
-sh ZAP_11_1_unix.sh
+sh ZAP_2_16_0_unix.sh
 ```
 
 Once the installation finished following the GUI prompt (default settings should be fine), the ZAP application should now be available.
