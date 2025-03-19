@@ -472,6 +472,7 @@ Read through the following article and answer the questions below:&#x20;
 
 ****[**https://usa.kaspersky.com/resource-center/definitions/linux**](https://usa.kaspersky.com/resource-center/definitions/linux)****
 
+Note that the link above may be inaccessible when clicked on MacOS. It is recommended to use Windows or Linux.
 
 ### **Question 3. Linux Distributions**
 
