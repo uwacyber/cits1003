@@ -32,7 +32,7 @@ Change directory to `/opt/samples/WNAP320`
 
 In that directory is a ZIP file which is the firmware for the WNAP320 router (alternatively, you can still download the firmware from Netgear [http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip](http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip))
 
-Let us unzip the file and see what it contains
+Use the `docker cp` command to copy the zip file from the docker container into your Linux VM, unzip the file and see what it contains
 
 ```bash
 unzip WNAP320\ Firmware\ Version\ 2.0.3.zip
@@ -205,7 +205,7 @@ Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 ## 2. Searching for Hard Coded Credentials
 
-In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk`.
+In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk` (Before the extraction, remember to use the `docker cp` command to copy the firmware file from the docker container into your Linux VM).
 
 ```bash
 cd /opt/samples/DIR300
@@ -229,7 +229,7 @@ drwxr-xr-x 1 root root    4096 Jul 10 02:14 ..
 drwxr-xr-x 3 root root    4096 Jul 10 02:14 _DIR-300A1_FW105b09.bin.extracted
 ```
 
-We can now cd into the directory `_DIR-300A1_FW105b09.bin.extracted` and then into the directory `squashfs-root`. Again we have a Linux filesystem
+We can now `cd` into the directory `_DIR-300A1_FW105b09.bin.extracted` and then into the directory `squashfs-root`. Again we have a Linux filesystem
 
 ```bash
 cd /opt/samples/DIR300/_DIR-300A1_FW105b09.bin.extracted/squashfs-root
