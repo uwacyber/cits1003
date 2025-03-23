@@ -397,7 +397,7 @@ So let’s use `memdump` plugin to extract some data.
 volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /opt/memory
 ```
 
-The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it using Gimp 2.10.38 (if you don't have Gimp, you should download from [here](https://www.gimp.org/downloads/) and install it on your machine/VM. Gimp is multi-platform software so you can do this on whichever machine you have GUI on).
+The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it using Gimp 2.10.38 (if you don't have Gimp, you should download from [here](https://www.gimp.org/downloads/) and install it on your machine/VM. Gimp is multi-platform software so you can do this on whichever machine you have GUI on. Other Gimp versions starting with 2.xx.xx might work as well, but those starting with 3.xx.xx will not work. Pay attention to the version of the Gimp version).
 
 The output is still inside the container which you cannot access from your VM/host. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
 
