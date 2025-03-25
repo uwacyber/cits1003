@@ -255,6 +255,12 @@ drwxrwsr-x  2  528 1000 4096 Nov 26  2010 var
 drwxrwsr-x 11  528 1000 4096 Nov 26  2010 www
 ```
 
+If you cannot see all the files, you should use the below command to install `binwalk` and `sasquatch` and rerun the `binwalk` command.
+
+```bash
+sudo apt-get install -y binwalk sasquatch
+```
+
 You can explore the file system a bit to see where things are but to shortcut, we are interested in the telnet service which allows remote access to the DLINK box. If we do a search for the word telnet in all of the files we get:
 
 ```bash
