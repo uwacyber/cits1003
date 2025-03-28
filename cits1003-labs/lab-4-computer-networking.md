@@ -277,15 +277,7 @@ Run the script by doing:
 ./root/pingsweep.sh 172.17.0
 ```
 
-```bash
-192.168.65.1
-192.168.65.2
-192.168.65.3
-192.168.65.4
-192.168.65.5
-```
-
-Essentially you get the same result as using the nmap above. The whole point of the script is that you are now able to customize the script to do other things!
+Essentially you should get the same result as using the nmap above. The whole point of the script is that you are now able to customize the script to do other things!
 
 ## 3. Service discovery with `nmap`
 
