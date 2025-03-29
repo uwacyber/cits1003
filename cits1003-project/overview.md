@@ -30,7 +30,7 @@ You can submit your report multiple times before the deadline, with only the lat
 
 Similarity checking is enabled, allowing you to receive feedback on your report's similarity each time you submit before the deadline. If your similarity score is high (i.e., 50% or above), review your similarity report on LMS, revise your report accordingly, and resubmit before the deadline. If we receive a report with a high similarity, we will start a manual check and decide whether it constitutes an academic misconduct. &#x20;
 
-If you submit only once before the deadline, you cannot resubmit afterward. If you submit for the first time after the deadline, you cannot resubmit: this rule also applies to approved extensions—only one submission is allowed after the extended deadline. &#x20;
+If you submit only once before the deadline, you cannot resubmit afterward. If you submit for the first time after the deadline, you cannot resubmit: this rule also applies to approved extensions—only one submission is allowed after the original deadline. &#x20;
 
 ## Getting help
 
