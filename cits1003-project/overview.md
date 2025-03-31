@@ -6,7 +6,7 @@ The project questions/challenges are available on the CTF flag submission site: 
 
 ## Questions
 
-The project consists of four topics: (1) Linux and Networking, (2) Cryptography (3) Forensics, and (4) Vulnerabilities. Each topic consists of four questions (total 16 questions) with varying difficulties (Easy, Medium and Hard). An Easy question has 10 points. A Medium question has 15 points, and a Hard question has 30 points. There are 250 points in total, worth 25% of the unit grade.
+The project consists of four topics: (1) Cryptography, (2) Forensics, (3) Linux and Networking, and (4) Vulnerabilities. Each topic consists of four questions (total 16 questions) with varying difficulties (Easy, Medium and Hard). An Easy question has 10 points. A Medium question has 15 points, and a Hard question has 30 points. There are 250 points in total, worth 25% of the unit grade.
 
 ## Duration
 
