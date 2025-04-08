@@ -397,6 +397,46 @@ So let’s use `memdump` plugin to extract some data.
 volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /opt/memory
 ```
 
+The output is written to `2424.dmp`, which is a raw binary dump, where each value is within the 8-bit range of \[0-255\]. As such, it is possible to process this file and visually inspect it as an image, since image pixel values are also in the range \[0-255\]. A script has been provided below for you to process the `2424.dmp` file:
+
+```python
+from PIL import Image
+
+# Parameters
+filepath = "2424.dmp"
+offset = 5233385
+width = 1640
+height = 350     
+bpp = 3  
+
+with open(filepath, 'rb') as f:
+    file_data = f.read()
+
+bytes_required = width * height * bpp
+chunk = file_data[offset:offset + bytes_required]
+img = Image.frombytes('RGB', (width, height), chunk)
+img = img.transpose(Image.FLIP_LEFT_RIGHT).rotate(180)
+img.save("2424.png")
+```
+You can make a new Python file (`bin_dump_to_image.py`) in the same directory location as `2424.dmp` and fill it with this script, or alternatively download it (again to the same directory as `2424.dmp`) via:
+
+```
+wget https://raw.githubusercontent.com/uwacyber/cits1003/2022s1/cits1003-labs/files/bin_dump_to_image.py
+```
+
+Run the Python script:
+
+```
+python bin_dump_to_image.py
+```
+
+You should see a new file appear in the directory called `2424.png`; an image you can now open.
+
+{% hint style="note" %}
+The script uses parameters `offset = 5233385, width = 1640, height = 350 and bpp = 3`. What do these define? How are they used? Discuss with your peers and lab facilitators.
+{% endhint %}
+
+<!--
 The output is written to `2424.dmp`, we need to rename it to `2424.data` to be able to open it using Gimp 2.10.38 (if you don't have Gimp, you should download from [here](https://www.gimp.org/downloads/) and install it on your machine/VM. Gimp is multi-platform software so you can do this on whichever machine you have GUI on. Other Gimp versions starting with 2.xx.xx might work as well, but those starting with 3.xx.xx will not work. Pay attention to the version of the Gimp version).
 
 The output is still inside the container which you cannot access from your VM/host. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
@@ -411,7 +451,7 @@ Width: 1500 (or 1640)
 Height: 350
 
 Once you open, you would still want to flip and then rotate 180 degrees to read  (although it is still possible to read the flag as is).
-
+-->
 ### Question 3. What was written in the image?
 
 Do you see what I see? Enter the flag you found in the image.
