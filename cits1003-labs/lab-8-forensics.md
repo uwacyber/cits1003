@@ -431,7 +431,7 @@ Run the Python script:
 python bin_dump_to_image.py
 ```
 
-You should see a new file appear in the directory called `2424.png`; a new image file. However, this image is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the file to look at it). One way to resolve this is to move the file out of the container to your VM/host, where you do have a graphical interface to look at the file. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
+You should see a new image file appear in the directory called `2424.png`. However, this image is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the image file to look at it). One way to resolve this is to move the file out of the container to your VM/host, where you do have a graphical interface, allowing you to open and look at the image. To move it to your VM/host, one easy way is to use copy function provided by Docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
 
 Once you have moved the image to your VM/host, you should be able to just open it!
 
