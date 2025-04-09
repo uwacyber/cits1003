@@ -397,9 +397,8 @@ So let’s use `memdump` plugin to extract some data.
 volatility -f Challenge2.raw --profile Win7SP1x64 memdump -p 2424 --dump-dir /opt/memory
 ```
 
-The output is written to `2424.dmp`, which is a raw binary dump, where each value is within the 8-bit range of \[0-255\]. As such, it is possible to process this file and visually inspect it as an image, since image pixel values are also in the range \[0-255\]. However, this output file is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the file to look at it). One way to resolve this is to move the file out of the container to your VM/host, where you do have a graphical interface to look at the file. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
+The output is written to `2424.dmp`, which is a raw binary dump, where each value is within the 8-bit range of \[0-255\]. As such, it is possible to process this file and visually inspect it as an image, since image pixel values are also in the range \[0-255\]. A script has been provided below for you to process the `2424.dmp` file:
 
-Once you have moved `2424.dmp` to your VM/host, you can now start processing the file to an image format. A script has been provided below for you to do so:
 
 ```python
 from PIL import Image
@@ -432,7 +431,9 @@ Run the Python script:
 python bin_dump_to_image.py
 ```
 
-You should see a new file appear in the directory called `2424.png`; an image you can now open.
+You should see a new file appear in the directory called `2424.png`; a new image file. However, this image is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the file to look at it). One way to resolve this is to move the file out of the container to your VM/host, where you do have a graphical interface to look at the file. To move it to your VM/host, one easy way is to use copy function provided by docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
+
+Once you have moved the image to your VM/host, you should be able to just open it!
 
 {% hint style="note" %}
 The script uses parameters `offset = 5233385, width = 1640, height = 350 and bpp = 3`. What do these define? How are they used? Discuss with your peers and lab facilitators.
