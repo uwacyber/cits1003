@@ -419,7 +419,10 @@ img = Image.frombytes('RGB', (width, height), chunk)
 img = img.transpose(Image.FLIP_LEFT_RIGHT).rotate(180)
 img.save("2424.png")
 ```
-You can make a new Python file (`bin_dump_to_image.py`) in the same directory location as `2424.dmp` and fill it with this script, or alternatively download it (again to the same directory as `2424.dmp`) via:
+
+This script requires Python 3 to run, however the container the `2424.dmp` file is currently in is running Python 2. Additionally, the image it would create is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the image file to look at it). One way to resolve these issues is to move the file out of the container to your VM/host, where you both have acecss to Python 3 for executing the script, and a graphical interface, allowing you to open and look at the image. To move it to your VM/host, one easy way is to use copy function provided by Docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
+
+Once you have moved `2424.dmp` to your VM/host, you can make a new Python file (`bin_dump_to_image.py`) in the same directory location as `2424.dmp` and fill it with the above script, or alternatively download it (again to the same directory as `2424.dmp`) via:
 
 ```
 wget https://raw.githubusercontent.com/uwacyber/cits1003/2022s1/cits1003-labs/files/bin_dump_to_image.py
@@ -431,9 +434,7 @@ Run the Python script:
 python bin_dump_to_image.py
 ```
 
-You should see a new image file appear in the directory called `2424.png`. However, this image is still inside the container, which does not provide for you a graphical interface (you can't "click and open" the image file to look at it). One way to resolve this is to move the file out of the container to your VM/host, where you do have a graphical interface, allowing you to open and look at the image. To move it to your VM/host, one easy way is to use copy function provided by Docker (the command runs from your VM/host). For details, see [https://docs.docker.com/engine/reference/commandline/cp/](https://docs.docker.com/engine/reference/commandline/cp/)
-
-Once you have moved the image to your VM/host, you should be able to just open it!
+You should now get a new image file `2424.png` which you can open.
 
 {% hint style="note" %}
 The script uses parameters `offset = 5233385, width = 1640, height = 350 and bpp = 3`. What do these define? How are they used? Discuss with your peers and lab facilitators.
