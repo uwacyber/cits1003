@@ -30,7 +30,7 @@ sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot
 
 Change directory to `/opt/samples/WNAP320`
 
-In that directory is a ZIP file which is the firmware for the WNAP320 router (alternatively, you can still download the firmware from Netgear [http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip](http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip))
+In that directory is a ZIP file which is the firmware for the WNAP320 router (alternatively, you can still download the firmware from Netgear via [http://realroy.ucc.asn.au/firmware.zip](http://realroy.ucc.asn.au/firmware.zip) or [http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip](http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip))
 
 Use the `docker cp` command to copy the zip file from the docker container into your Linux VM, unzip the file and see what it contains
 
@@ -205,7 +205,8 @@ Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 ## 2. Searching for Hard Coded Credentials
 
-In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk` (Before the extraction, remember to use the `docker cp` command to copy the firmware file from the docker container into your Linux VM).
+In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk` (Before the extraction, remember to use the `docker cp` command to copy the firmware file from the docker container into your Linux VM). Alternatively, you can download the firmware directly into your Linux VM via [http://realroy.ucc.asn.au/firmware.zip](http://realroy.ucc.asn.au/firmware.zip) or [http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip](http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip))
+
 
 ```bash
 cd /opt/samples/DIR300
