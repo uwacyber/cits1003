@@ -32,7 +32,7 @@ Change directory to `/opt/samples/WNAP320`
 
 In that directory is a ZIP file which is the firmware for the WNAP320 router (alternatively, you can still download the firmware from Netgear via [http://realroy.ucc.asn.au/firmware.zip](http://realroy.ucc.asn.au/firmware.zip) or [http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip](http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip))
 
-Use the `docker cp` command to copy the zip file from the docker container into your Linux VM, unzip the file and see what it contains
+Use the `docker cp` command to copy the zip file from the docker container into your Linux VM, unzip the file and see what it contains from your VM.
 
 ```bash
 unzip WNAP320\ Firmware\ Version\ 2.0.3.zip
@@ -158,15 +158,15 @@ To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the t
 Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
 
 {% hint style="info" %}
-Currently, the emulator is running at [http://35.226.1.51](http://35.226.1.51) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
+Currently, the emulator is running at [http://3.27.199.149](http://3.27.199.149) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
 
 If the address doesn't work, please let the Unit Coordinator know.
 {% endhint %}
 
-There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the exploit script on it. To run this, you can type:
+There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the `exploit.py` script on it. The script can be found from `/opt/samples/WNAP320` inside the running docker container. To run this, you can type:
 
 ```bash
-./exploit.py [IP address of the emulator (e.g., 35.226.1.51)] /etc/passwd
+./exploit.py [IP address of the emulator (e.g., 3.27.199.149)] /etc/passwd
 ```
 
 ```bash
