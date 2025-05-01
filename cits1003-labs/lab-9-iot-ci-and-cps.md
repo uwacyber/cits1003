@@ -108,6 +108,12 @@ drwxr-xr-x  7 root root 4096 Jun 23  2011 usr
 drwxr-xr-x  2 root root 4096 Nov 11  2008 var
 ```
 
+If you cannot see the files above, try to use the command below to install `sasquatch` and rerun the `binwalk` command.
+
+```bash
+sudo apt-get install -y sasquatch
+```
+
 You probably recognise that this is the layout of a normal linux-based operating system.
 
 When exploring the firmware, we would start by looking at where the source code for the management functionality is stored. In this software, that is in `/home/www` and if you look in that directory, you will find PHP files that represent the code that runs the administration website:
