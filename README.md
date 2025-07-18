@@ -20,4 +20,4 @@ There are 10 practical lab assignments (see the LABS tab) that is worth a total 
 
 Copyright © David Glance 2021. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).
 
-Contents on this page are further developed by Jin Hong (2022\~) and Zhi Zhang (2023\~).
+Contents on this page are further developed by Jin Hong (2022\~), Zhi Zhang (2023\~) and Garrison Gao (2025\~).
