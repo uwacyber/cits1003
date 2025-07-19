@@ -1,6 +1,6 @@
 # Introduction to Labs
 
-Labs 1-10 are intended to provide a practical complement to the CITS1003 Introduction to Cybersecurity unit. To enhance the experience, we are going to run the assessment part as a "Capture The Flag" (CTF) event. This involves creating an account on the CTF server here ([https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org)). When you register, you should use your UWA student email account and provide a registration code of **CITS1003_IS_LIFE**. All other email accounts (e.g., non-UWA accounts and UWA accounts not enrolled in CITS1003) will be rejected.
+Labs 1-10 are intended to provide a practical complement to the CITS1003 Introduction to Cybersecurity unit. To enhance the experience, we are going to run the assessment part as a "Capture The Flag" (CTF) event. This involves creating an account on the CTF server here ([https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org)). When you register, you should use your UWA student email account and provide a registration code of **WELCOME_TO_CITS1003_2025_S2!**. All other email accounts (e.g., non-UWA accounts and UWA accounts not enrolled in CITS1003) will be rejected.
 
 As a result of the exercises you will do, you will be asked to find "flags" which are text and of the form **CITS1003{th13_15_@ FL@G}**. Once you find the flag, you simply enter it in from the CTF server for the appropriate Lab task.
 
