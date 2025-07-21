@@ -43,7 +43,7 @@ There are many VM software you can use, such as VirtualBox, VMWare, etc. Virtual
 
 Once you have installed the VirtualBox, we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) is recommended.
 
-For Kali Linux, you can directly download its VM image for VirtualBox [here](https://cdimage.kali.org/kali-2024.4/kali-linux-2024.4-virtualbox-amd64.7z). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
+For Kali Linux, you can directly download its VM image for VirtualBox [here]([https://cdimage.kali.org/kali-2024.4/kali-linux-2024.4-virtualbox-amd64.7z](https://cdimage.kali.org/current/kali-linux-2025.2-virtualbox-amd64.7z)). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
 Now, you will need to import the VM image into your VM.
 
 **The username and password for the pre-built Kali VM image are both `kali`.**
