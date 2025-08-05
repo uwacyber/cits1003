@@ -449,7 +449,7 @@ When an ssh connection is initiated, the server negotiates the crypto algorithms
 
 The Heartbleed Bug was a serious vulnerability within OpenSSL, which is widely used to secure communications on the internet. The bug allows attackers to read unauthorized memory from affected servers. This memory could contain sensitive information that should have been protected by the SSL/TLS encryption used to secure internet communications. It has affected many popular websites and services, potentially exposing sensitive information such as usernames, passwords, and credit card numbers.
 
-Read through the following article and answer the questions below: [https://www.vox.com/2014/6/19/18076318/heartbleed](https://www.vox.com/2014/6/19/18076318/heartbleed)
+Read through the following article and answer the questions below: [https://www.heartbleed.com/](https://www.heartbleed.com/)
 
 ### Question 4. Heartbleed
 
