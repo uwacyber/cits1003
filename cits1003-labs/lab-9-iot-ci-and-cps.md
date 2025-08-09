@@ -173,7 +173,7 @@ This will start the container in the background. We use `--name firmware-emulato
 
 After that, the emulator should be working at `http://localhost:80`. You may want to access the address with your browser to ensure the emulator is completely up and running before continuing. If you see "bad gateway" error, just wait, it is likely that the emulator is starting.
 
-Then, launch the lab container as described in the [gitbook page](https://uwacyber.gitbook.io/cits1003/cits1003-labs/lab-9-iot-ci-and-cps):
+Then, launch the lab container (if it has already been launched, you do not need to repeat):
 
 ```bash
 sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot
