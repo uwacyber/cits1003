@@ -159,18 +159,41 @@ To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the t
 
 ### Testing the Vulnerability
 
-Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You can go to the address shown in the below infobox.
+Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You need to follow the steps below.
 
-{% hint style="info" %}
-Currently, the emulator is running at [http://3.27.199.149](http://3.27.199.149) (you can also check it out using your browser). If this address changes, you will see an update here.&#x20;
-
-If the address doesn't work, please let the Unit Coordinator know.
-{% endhint %}
-
-There is an open source toolset that allows you to do that called `Firmadyne`. However, it is beyond the scope of this lab to set that up and get it running. Instead, you can access the emulator server I have setup and use the `exploit.py` script on it. The script can be found from `/opt/samples/WNAP320` inside the running docker container. To run this, you can type:
+First, launch the emulator container:
 
 ```bash
-./exploit.py [IP address of the emulator (e.g., 3.27.199.149)] /etc/passwd
+sudo docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name firmware-emulator-container -d --rm -p 80:80 uwacyber/cits1003-labs:wnap320-emulator
+```
+
+This will start the container in the background. We use `--name firmware-emulator-container` to assign a name to this container so it can be easily killed later when no longer required.
+
+`--cap-add=NET_ADMIN --device=/dev/net/tun` gives the container access to `/dev/net/tun`, which is required by QEMU. I could not find a workaround to run the container without the permission.
+
+After that, the emulator should be working at `http://localhost:80`. You may want to access the address with your browser to ensure the emulator is completely up and running before continuing. If you see "bad gateway" error, just wait, it is likely that the emulator is starting.
+
+Then, launch the lab container as described in the [gitbook page](https://uwacyber.gitbook.io/cits1003/cits1003-labs/lab-9-iot-ci-and-cps):
+
+```bash
+sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot
+```
+
+As the emulator is running at `http://localhost:80`, to access the emulator from this lab container, we need to use the same technique as described in [lab 4](https://uwacyber.gitbook.io/cits1003/cits1003-labs/lab-4-computer-networking):
+
+Run this on your computer (not in the lab container):
+
+```bash
+ip addr
+```
+
+Look for something named like `docker0`. Usually, the IP address for the emulator container will be `172.17.0.1`.
+
+Then, do this in your lab container:
+
+```bash
+cd /opt/samples/WNAP320
+python3 ./exploit.py 172.17.0.1 /etc/passwd
 ```
 
 ```bash
@@ -193,17 +216,17 @@ admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
 
 The exploit code also copies the content of the `/etc/passwd` into the `test.html` page - so if you go to the `http://[emulator address]/test.html`, you should be able to see the content of `/etc/passwd` (note that, you couldn't do this via the web interface because it got blocked by the Javascript!).
 
-{% hint style="warning" %}
-Because this emulator will be shared with other students, you may see different content inside `test.html` if the other students loaded a different content inside. However, the chances of this happening should be very low. If any issues, contact the Unit Coordinator.
-{% endhint %}
+After you have done experimenting, remove the firmware emulator container running in the background with:
+
+```bash
+sudo docker kill firmware-emulator-container
+```
 
 If you are interested, you can look at the code in the Python script `exploit.py`. It takes two arguments, the address of the emulation and the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to (but it is outside the scope of this unit).
 
-If you would like to setup the emulation yourself and test it, I have included the instructions in the [Setup Your Emulation on Google Cloud](lab-9-iot-ci-and-cps.md#undefined) section.
+If you would like to set up the emulation yourself and test it, I have included the instructions in the [Setup Your Emulation on Google Cloud](lab-9-iot-ci-and-cps.md#undefined) section.
 
 ### Question 1. Exploit to find the flag 
-
-The flag is `CITS1003{R0u73r5_5h4ll_B0w_70_7h3_H4ck3r5!}`.
 
 Flag: Run `exploit.py` and pass the argument `flag.txt` 
 
