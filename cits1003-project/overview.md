@@ -1,4 +1,4 @@
-# Overview
+<img width="1571" height="59" alt="image" src="https://github.com/user-attachments/assets/d3d10190-ae59-4326-97dd-c3428542a5f6" /># Overview
 
 ## Availability
 
@@ -10,7 +10,7 @@ The project consists of four topics: (1) Cryptography, (2) Forensics, (3) Linux 
 
 ## Duration
 
-The project starts from 31 March (week 6) and will close on 11:59pm 19 May (week 12). There should be plenty of time to complete the project.
+The project starts from 25 August (week 6) and will close on 11:59pm 15 October (week 11). There should be plenty of time to complete the project.
 
 
 ## Your tasks and how the project is graded
@@ -24,7 +24,7 @@ There are four hard questions/challenges, worth a total of 120 points. You are r
 
 Your write-up report (a single PDF file) is submitted to LMS. The PDF must be named as: **studentID_firstname.pdf**. The submission portal will be open on LMS in week 7. &#x20;
 
-The final report is due at 11:59 PM on May 19. To avoid last-minute problems (e.g., internet outages), submit your report several hours before the deadline. Late penalties will apply. If you require an extension, you must apply for special consideration from student office. If you have a UAAP with assessment extensions, please email us. &#x20;
+The final report is due at 11:59 PM on 15 October. To avoid last-minute problems (e.g., internet outages), submit your report several hours before the deadline. Late penalties will apply. If you require an extension, you must apply for special consideration from student office. If you have a UAAP with assessment extensions, please email us. &#x20;
 
 You can submit your report multiple times before the deadline, with only the latest submission being graded. &#x20;
 
