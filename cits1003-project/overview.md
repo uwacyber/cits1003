@@ -10,7 +10,7 @@ The project consists of four topics: (1) Cryptography, (2) Forensics, (3) Linux 
 
 ## Duration
 
-The project starts from 25 August (week 6) and will close on 11:59pm 15 October (week 11). There should be plenty of time to complete the project.
+The project starts from 25 August (week 6) and will close on 11:59pm 15 October (week 12). There should be plenty of time to complete the project.
 
 
 ## Your tasks and how the project is graded
