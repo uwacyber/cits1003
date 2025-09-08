@@ -251,7 +251,7 @@ Read through the following article and answer the questions below:
 Which of the following is NOT the tip the University IT provides in mitigating cyber scams?&#x20;
 
 1. Never respond to requests for personal information via email.&#x20;
-2. Type the known website address directly into the address bar in the internet browser. &#x20;
+2. If you answer a phone call and you’re suspicious, hang up immediately. &#x20;
 3. Enable Multi-Factor Authentication and do not share passwords. &#x20;
 4. Check the list of recipients of the email, as phishing attempts often will try and target a large number of people.
 
