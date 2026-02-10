@@ -76,7 +76,11 @@ AI and Cybersecurity B-2 [https://www.youtube.com/watch?v=04jC0sIiTMY](https://w
 
 ## >> Live Lectures
 
-Recordings of live lectures are also available (give up to 48 hours for it to be available), which are on LMS -> Lecture Recordings. These won't be uploaded on Youtube as discussions, demo and interactions will vary depending on the class. Live lecture slides can be downloaded from  (live lecture slides may be updated, do check their updated date!) [https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-lecture_slides)
+Recordings of live lectures are also available (give up to 48 hours for it to be available), which are on LMS -> Lecture Recordings. These won't be uploaded on Youtube as discussions, demo and interactions will vary depending on the class. 
+
+
+
+Live lecture slides can be downloaded from  (live lecture slides may be updated, do check their updated date!) [https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-lecture_slides)
 
 ## 
 
