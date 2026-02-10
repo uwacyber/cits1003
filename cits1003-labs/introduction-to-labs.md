@@ -4,12 +4,11 @@ There are 10 practical labs, and Labs 1-10 are intended to provide a practical c
 
 As a result of the exercises you will do, you will be asked to find "flags" which are text and of the form **CITS1003{th13_15_@ FL@G}**. Once you find the flag, you simply enter it in from the CTF server for the appropriate Lab task.
 
-For each lab, we provide a walkthrough video shown below and also at the top of each lab sheet. They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are strongly encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), as well as ask our lab facilitators if you are stuck.
+For each lab, we provide a walkthrough video shown below and also at the top of each lab sheet (excluding Lab 2). They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are strongly encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), as well as ask our lab facilitators if you are stuck.
 
 ## Walkthrough Videos
 
 Lab 1: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk) 
-Lab 2: N/A  
 Lab 3: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)    
 Lab 4: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)    
 Lab 5: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)   
