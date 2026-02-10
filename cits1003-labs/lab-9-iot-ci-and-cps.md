@@ -143,25 +143,25 @@ This code file is responsible for showing this page to capture a MAC address for
 
 ![Screen handled by boardDataWW.php](../.gitbook/assets/screen-shot-2021-07-09-at-2.26.16-pm.png)
 
-When the user enters a MAC address and clicks the Submit button, the value entered into the form is passed to a PHP script on the router. This script performs a small number of checks and then passes the input directly to a command line utility called `wr_mfg_data`.
+If we enter a MAC address and click the `Submit` button, the value entered into the form is passed to a PHP script on the router. This script performs a small number of checks and then passes the input directly to a command line utility called `wr_mfg_data`.
 
-For example, if the user enters the MAC address `f8ffc201fae5` and selects region code `1`, the intended command executed on the system is:
+For example, if we enter the MAC address `f8ffc201fae5` and select region code `1`, the intended command executed on the system is:
 
 ```bash
 wr_mfg_data -m f8ffc201fae5 -c 1
 ```
 
-Looking at the PHP code, the validation of the MAC address is very weak. The script checks that the value is not empty and that it contains a sequence of 12 hexadecimal characters. However, it does not ensure that the input contains only those 12 characters. Any extra characters added after a valid MAC address are not removed or blocked.
+Looking at the PHP code above, the validation of the MAC address is very weak. The script checks that the value is not empty and that it contains a sequence of 12 hexadecimal characters. However, it does not ensure that the input contains only those 12 characters. Any extra characters added after a valid MAC address are not removed or blocked.
 
-This means that as long as the input includes a valid 12-character MAC address somewhere, the check will pass, even if additional text is appended. Because the input is placed directly into a shell command, we can take advantage of this by adding a semicolon `;`. In a shell, the semicolon is used to separate commands, so anything after it is executed as a new command.
+This means that as long as the input includes a valid 12-character MAC address somewhere, the check will pass, even if additional text is appended. Because the input is placed directly into a shell command, we can take advantage of this by adding a semicolon `;`. As we know, in a shell, the semicolon is used to separate commands, so anything after it is executed as a new command.
 
-For example, if the user enters the following value into the MAC address field:
+For example, if we enter the following value into the MAC address field:
 
 ```bash
 f8ffc201fae5; cp /etc/shadow test.html;
 ```
 
-The application inserts this value directly into the command string. The actual command executed by the system becomes:
+The actual command executed becomes:
 
 ```bash
 wr_mfg_data -m f8ffc201fae5; cp /etc/shadow test.html; -c 1
@@ -171,26 +171,38 @@ As a result, the second command copies the `/etc/shadow` file into an HTML file 
 
 ### Testing the Vulnerability
 
-Instead of purchasing a physical wireless router for testing, we can run the router firmware inside an emulator. For this lab, an emulated version of the firmware has been prepared so that you can access the router web interface directly from your browser. Follow the steps below carefully.
+Instead of purchasing a physical wireless router for testing, we can run the router firmware inside an emulator. For this lab, an emulated version of the firmware has been prepared so that you can access the router web interface directly from your browser in your Linux VM. Let's follow the steps below.
 
-First, open a new terminal and start the firmware emulator container using the following command:
+First, open a new terminal in your Linux VM and start the firmware emulator container using the following command:
 
+
+{% tabs %}
+{% tab title="Windows/Linux" %}
 ```bash
 sudo docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name wnap320-emulator-container --rm -p 80:80 uwacyber/cits1003-labs:wnap320-emulator
 ```
+{% endtab %}
+
+{% tab title="Apple Silicon" %}
+```bash
+sudo docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name wnap320-emulator-container --rm -p 80:80 uwacyber/cits1003-labs:wnap320-emulator-arm 
+```
+{% endtab %}
+{% endtabs %}
+
 
 You may notice some command options that you have not seen before. The options `--cap-add=NET_ADMIN` and `--device=/dev/net/tun` grant the container additional permissions that are required for network emulation. The `--name wnap320-emulator-container` option assigns a name to the container to make later operations easier.
 
-After waiting a short time, try accessing the emulator by visiting [http://localhost/boardDataWW.php](http://localhost/boardDataWW.php) in your browser. If you see a "bad gateway" error, wait a little longer and then reload the page, as the emulator may still be initializing.
+After waiting a few minutes, access the emulator by visiting [http://localhost/boardDataWW.php](http://localhost/boardDataWW.php) from your browser in your Linux VM. If you see a `bad gateway` error, wait a little longer and then reload the page, as the emulator may still be initializing.
 
-At this point, you might notice that the web interface appears to prevent you from entering the exploit string we discussed eariler. This is because the page includes a JavaScript function named `checkMAC` that validates the input format before it is submitted. However, this is a **client-side check**; it only runs in your browser and does not protect the server-side PHP code. An attacker can bypass this entirely by sending requests directly to the router, skipping the browser and its JavaScript restrictions.
+At this point, you might notice that the web interface appears to prevent you from entering the exploit string we discussed earlier. This is because the page includes a JavaScript function named `checkMAC` that validates the input format before it is submitted. However, this is a **client-side check**: it only runs in your browser and does not protect the server-side PHP code. An attacker can bypass this entirely by sending requests directly to the router, skipping the browser and its JavaScript checks.
 
-To demonstrate this bypass, we will use a Python script to send a crafted request directly to the router firmware. At this point, you should have two Docker containers running in parallel:
+To demonstrate this bypass, we use a Python script to send a crafted request directly to the router firmware. At this point, you should have two Docker containers running at this stage:
 
 - **The Attacker (`uwacyber/cits1003-labs:iot`):** The container you launched at the start of the lab.
 - **The Target (`uwacyber/cits1003-labs:wnap320-emulator`):** The emulator you just launched.
 
-The exploit script is located inside the `uwacyber/cits1003-labs:iot` container. To allow the attacker to communicate with the target, you must first determine the emulator's IP address. Open a new terminal and run:
+The exploit script is located inside the `uwacyber/cits1003-labs:iot` container. To allow the attacker to communicate with the target, you must first determine the emulator's IP address. Open a new terminal in your Linux VM and run:
 
 ```bash
 sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' wnap320-emulator-container
@@ -220,13 +232,12 @@ admin:$1$FEwmvgVS$VOTDB1sHpWGBXklzKrPHd1:10933:0:99999:7:::
 
 The exploit script sends a crafted network request directly to the router firmware. Because the request does not pass through the browser, none of the JavaScript input checks are applied, and the firmware processes the request exactly as described earlier. If you now visit [http://localhost/test.html](http://localhost/test.html) in your browser, you should be able to view the contents of `/etc/shadow`, confirming that the exploit was successful.
 
-If you are interested, you may examine the Python script `exploit.py` to see how the request is constructed and sent. The script takes two arguments: the IP address of the emulated router and the path of the file to read from the system. While the same technique could be used to perform more serious attacks, this is outside the scope of this unit.
-
-Once you have finished experimenting, terminate the firmware emulator by closing its terminal window, as it does not respond to keyboard inputs.
+If you are interested, you may examine the Python script `exploit.py` to see how the request is constructed and sent. The script takes two arguments: the IP address of the emulated router and the path of the file to read from the system.
 
 ### Question 1. Exploit to find the flag
 
-Flag: Run `exploit.py` and pass the argument `flag.txt`
+**Flag: Run the aforementioned `exploit.py` with two arguments**. One is the IP address of the emulated router and the other is  `flag.txt`.
+
 
 ## 2. Searching for Hard Coded Credentials
 
