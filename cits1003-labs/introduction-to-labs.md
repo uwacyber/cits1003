@@ -8,16 +8,16 @@ For each lab, we provide a walkthrough video shown below and also at the top of 
 
 ## Walkthrough Videos
 
-Lab 1: https://youtu.be/4vl4aUxo8Hk
+Lab 1: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk) 
 Lab 2: N/A  
-Lab 3: https://youtu.be/qdEr98Lqak0    
-Lab 4: https://youtu.be/Tq6cKMcNavw    
-Lab 5: https://youtu.be/JJ4teHYInDg   
-Lab 6: https://youtu.be/UgY3n4xplR4   
-Lab 7: https://youtu.be/SiGKMrr-qdY   
-Lab 8: https://youtu.be/XIca2lxn-7w   
-Lab 9: https://youtu.be/nTjmkLGOJZ0   
-Lab 10: https://youtu.be/6LhD8jUO1aY
+Lab 3: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)    
+Lab 4: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)    
+Lab 5: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)   
+Lab 6: [https://youtu.be/UgY3n4xplR4](https://youtu.be/UgY3n4xplR4)   
+Lab 7: [https://youtu.be/SiGKMrr-qdY](https://youtu.be/SiGKMrr-qdY)   
+Lab 8: [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)   
+Lab 9: [https://youtu.be/nTjmkLGOJZ0](https://youtu.be/nTjmkLGOJZ0)   
+Lab 10: [https://youtu.be/6LhD8jUO1aY](https://youtu.be/6LhD8jUO1aY)
 
 
 ## Laptop Requirement
