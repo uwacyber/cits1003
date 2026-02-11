@@ -4,26 +4,25 @@ There are 10 practical labs, and Labs 1-10 are intended to provide a practical c
 
 As a result of the exercises you will do, you will be asked to find "flags" which are text and of the form **CITS1003{th13_15_@ FL@G}**. Once you find the flag, you simply enter it in from the CTF server for the appropriate Lab task.
 
-For each lab, we provide a walkthrough video shown below and also at the top of each lab sheet (excluding Lab 2). They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are strongly encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), as well as ask our lab facilitators if you are stuck.
+For each lab, we provide a walkthrough video shown below and also each lab sheet (excluding Lab 2). They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), and ask our lab facilitators for help. 
+
+## Lab Help
+For lab help, you should use the help server: [https://help.jinhong.org](https://help.jinhong.org), which manages a  first-come, first-served queue. 
+
+Specifically, you log in to the server using your student id: the default password is **helloworld**. You may change it, but it isn't required, as this site is only for queuing and does not store sensitive information. If you can't log in or forget your password, contact a lab facilitator to create or reset your account.
+
+After logging in, complete a very short form to join the queue and wait for a facilitator. If you attend online, the facilitator will contact you via Teams, but troubleshooting is much harder. Thus, attending in person is strongly recommended.
 
 ## Walkthrough Videos
 
 Lab 1: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)	
-
 Lab 3: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)    
-
 Lab 4: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)    
-
 Lab 5: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)   
-
 Lab 6: [https://youtu.be/UgY3n4xplR4](https://youtu.be/UgY3n4xplR4)   
-
 Lab 7: [https://youtu.be/SiGKMrr-qdY](https://youtu.be/SiGKMrr-qdY)   
-
 Lab 8: [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)   
-
 Lab 9: [https://youtu.be/nTjmkLGOJZ0](https://youtu.be/nTjmkLGOJZ0)   
-
 Lab 10: [https://youtu.be/6LhD8jUO1aY](https://youtu.be/6LhD8jUO1aY)
 
 
