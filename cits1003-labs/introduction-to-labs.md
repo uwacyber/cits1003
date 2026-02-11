@@ -4,7 +4,7 @@ There are 10 practical labs, and Labs 1-10 are intended to provide a practical c
 
 As a result of the exercises you will do, you will be asked to find "flags" which are text and of the form **CITS1003{th13_15_@ FL@G}**. Once you find the flag, you simply enter it in from the CTF server for the appropriate Lab task.
 
-For each lab, we provide a walkthrough video shown below and also each lab sheet (excluding Lab 2). They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), and ask our lab facilitators for help. 
+For each lab, we provide a walkthrough video (see below) and include it in each lab sheet (except for Lab 2). They are helpful for you to progress through the lab. This assistant video by no means will do the lab for you, but is provided to give you guidance on how to solve lab questions. You are encouraged to watch the video before you start the lab, and you are always welcome to discuss in the unit forum (e.g., MS Teams), and ask our lab facilitators for help. 
 
 ## Lab Help
 For lab help, you should use the help server: [https://help.jinhong.org](https://help.jinhong.org), which manages a  first-come, first-served queue. 
@@ -15,14 +15,14 @@ After logging in, complete a very short form to join the queue and wait for a fa
 
 ## Walkthrough Videos
 
-Lab 1: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)	
-Lab 3: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)    
-Lab 4: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)    
-Lab 5: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)   
-Lab 6: [https://youtu.be/UgY3n4xplR4](https://youtu.be/UgY3n4xplR4)   
-Lab 7: [https://youtu.be/SiGKMrr-qdY](https://youtu.be/SiGKMrr-qdY)   
-Lab 8: [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)   
-Lab 9: [https://youtu.be/nTjmkLGOJZ0](https://youtu.be/nTjmkLGOJZ0)   
+Lab 1: [https://youtu.be/4vl4aUxo8Hk](https://youtu.be/4vl4aUxo8Hk)<br>
+Lab 3: [https://youtu.be/qdEr98Lqak0](https://youtu.be/qdEr98Lqak0)<br>
+Lab 4: [https://youtu.be/Tq6cKMcNavw](https://youtu.be/Tq6cKMcNavw)<br>
+Lab 5: [https://youtu.be/JJ4teHYInDg](https://youtu.be/JJ4teHYInDg)<br>
+Lab 6: [https://youtu.be/UgY3n4xplR4](https://youtu.be/UgY3n4xplR4)<br>
+Lab 7: [https://youtu.be/SiGKMrr-qdY](https://youtu.be/SiGKMrr-qdY)<br>
+Lab 8: [https://youtu.be/XIca2lxn-7w](https://youtu.be/XIca2lxn-7w)<br>
+Lab 9: [https://youtu.be/nTjmkLGOJZ0](https://youtu.be/nTjmkLGOJZ0)<br>
 Lab 10: [https://youtu.be/6LhD8jUO1aY](https://youtu.be/6LhD8jUO1aY)
 
 
