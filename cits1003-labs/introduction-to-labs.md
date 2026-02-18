@@ -1,6 +1,6 @@
 # Introduction to Labs
 
-There are 10 practical labs, and Labs 1-10 are intended to provide a practical complement to the CITS1003 Introduction to Cybersecurity unit. To enhance the experience, we are going to run the assessment part as a `Capture The Flag` (CTF) event. This involves registering the CTF site here ([https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org)). When you register, you should use your UWA student email address and provide a registration code of **WELCOME_TO_CITS1003_2025_S2!**. Make sure you enter your email address correctly; otherwise, you may not receive marks for your labs and project.
+There are 10 practical labs, and Labs 1-10 are intended to provide a practical complement to the CITS1003 Introduction to Cybersecurity unit. To enhance the experience, we are going to run the assessment part as a `Capture The Flag` (CTF) event. This involves registering the CTF site here ([https://labs.cits1003.jinhong.org/](https://labs.cits1003.jinhong.org)). When you register, you should use your UWA student email address and provide a registration code (will be provided via an announcement soon). Make sure you enter your email address correctly; otherwise, you may not receive marks for your labs and project.
 
 As a result of the exercises you will do, you will be asked to find "flags" which are text and of the form **CITS1003{th13_15_@ FL@G}**. Once you find the flag, you simply enter it in from the CTF server for the appropriate Lab task.
 
