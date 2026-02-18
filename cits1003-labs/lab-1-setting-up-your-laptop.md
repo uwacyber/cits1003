@@ -8,7 +8,7 @@ Throughout this unit, we will use various software and the two most important be
 
 A **Virtual Machine (VM)** is a piece of software that allows you to virtualize an OS different from the one you are currently running. For example, your current OS is Windows 11 and your virtualized one is Kali Linux. 
 
-In Sections 1.1–1.3, we provide step-by-step guidance for setting up a Kali Linux VM. If you are using Windows, see [Section 1.1](lab-1-setting-up-your-laptop.md#id-1.1-windows). If you are using macOS on an M-series chip (e.g., M1/M2/M3), see [Section 1.2](lab-1-setting-up-your-laptop.md#id-1.2-macOS-apple-silicon). If you are using macOS on an Intel/AMD chip, see [Section 1.3](lab-1-setting-up-your-laptop.md#id-1.3-macOS-intel-amd). If you are using Linux, you can skip ahead to [Section 2](lab-1-setting-up-your-laptop.md#id-2-learning-the-kali-linux-bash-terminal). If you encounter any issues, ask a lab facilitator for assistance.
+In Sections 1.1–1.3, we provide step-by-step guidance for setting up a Kali Linux VM. If you are using Windows, see [Section 1.1](lab-1-setting-up-your-laptop.md#id-1.1-windows). If you are using MacOS on an M-series chip (e.g., M1/M2/M3), see [Section 1.2](lab-1-setting-up-your-laptop.md#id-1.2-macos-(apple-silicon)). If you are using macOS on an Intel/AMD chip, see [Section 1.3](lab-1-setting-up-your-laptop.md#id-1.3-macos-(intel/amd)). If you are using Linux, you can skip ahead to [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal). If you encounter any issues, ask a lab facilitator for assistance.
 
 Before you begin, make sure your computer has at least 20 GiB of free disk space and 8 GiB of RAM. Running virtualized environments is resource-intensive. If your computer does not meet these hardware requirements, you may encounter unexpected issues.
 
@@ -83,7 +83,7 @@ A desktop window will appear shortly. You can now use Kali as if it were a nativ
 
 Note that the Kali Desktop running via WSL2 may sometimes be unstable, as this is not a true standalone desktop environment. You may see occasional error pop-ups. In such cases, press `F8`, close the Desktop and relaunch a new one from the terminal.
 
-### 1.2 MacOS-Apple-Silicon
+### 1.2 MacOS (Apple Silicon)
 
 For MacOS with Apple Silicon (e.g., M1/M2/M3 Chips), you should use **UTM** to run Linux. The steps below provide a walkthrough of the setup. 
 
@@ -112,7 +112,7 @@ If you have a blue screen after installing Kali, please go to `settings -> Displ
 {% endhint %}
 
 
-### 1.3 MacOS-Intel-AMD
+### 1.3 MacOS (Intel/AMD)
 
 For older MacOS using Intel or AMD processors, it is recommended that you use **VirtualBox** to run Linux. Download VirtualBox for macOS [here](https://download.virtualbox.org/virtualbox/7.2.6/VirtualBox-7.2.6-172322-OSX.dmg).
 
