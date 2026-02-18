@@ -1,181 +1,168 @@
 # Lab 1: Setting up your laptop
 
-Walkthrough video:
+Throughout this unit, we will use various software and the two most important being **Linux** and **Docker**. In this lab, we need to set up both.
 
-Please NOTE, the walkthrough videos are for the guidance only, remember to use the lab materials provided in this labsheet, not from the walkthrough video!
+## 1. Setting Up a Linux-based Virtual-Machine Environment
+
+**Linux** is an operating system (OS) as Windows and MacOS. Because many modern software tools are built specifically for Linux, it is the preferred environment for professionals. Therefore, we use Linux in this unit. [Kali Linux](https://www.kali.org) is recommended as it is tailored to a cybersecurity context. You may also use other distributions, such as Ubuntu, if you are  comfortable with them. Please note that if you choose a different distribution, you are expected to manage the installation and tool configuration on your own.
+
+A **Virtual Machine (VM)** is a piece of software that allows you to virtualize an OS different from the one you are currently running. For example, your current OS is Windows 11 and your virtualized one is Kali Linux. 
+
+In Sections 1.1–1.3, we provide step-by-step guidance for setting up a Kali Linux VM. If you are using Windows, see [Section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows). If you are using macOS on an M-series chip (e.g., M1/M2/M3), see [Section 1.2](lab-1-setting-up-your-laptop.md#id-1.2.-macOS-apple-silicon). If you are using macOS on an Intel/AMD chip, see [Section 1.3](lab-1-setting-up-your-laptop.md#id-1.3.-macOS-intel-amd). If you are using Linux, you can skip ahead to Section 2. If you encounter any issues, ask a lab facilitator for assistance.
+
+Before you begin, make sure your computer has at least 20 GiB of free disk space and 8 GiB of RAM. Running virtualized environments is resource-intensive. If your computer does not meet these hardware requirements, you may encounter unexpected issues.
+
+### 1.1 Windows
+
+For Windows, it is recommended that you use **WSL2** (Windows Subsystem for Linux) to run Linux. WSL2 allows Linux applications to run alongside Windows applications seamlessly. Your computer should be running Windows 10 (version 1903 or later) or above to support WSL2. The steps below provide a walkthrough of the setup. 
+
+#### Step 1: Install/Enable WSL2
+
+Open the `Start Menu` from your Windows, search for **powershell**, and launch it. Alternatively, press `Win + R`, type `powershell`, and press Enter.
+
+First, run the following command to ensure the system is set to use WSL2 by default:
+
+```powershell
+wsl --set-default-version 2
+```
+
+If the command above fails (or if WSL is not installed/enabled), run the command below to install/enable WSL components. Restart if prompted, then continue.
+
+```powershell
+wsl --install --no-distribution
+```
+
+#### Step 2: Install Kali Linux
+
+You can install it directly via PowerShell:
+
+```powershell
+wsl --install kali-linux
+```
+
+Once installed, open your `Start Menu`, search for Kali Linux if it does not start automatically, and click to open it. It will take a moment to initialize and then ask you to set a username and password.
+
+{% hint style="warning" %}
+The username and password should be set to `kali` shown below and note them down. 
+{% endhint %}
+
+```text
+Installing, this may take a few minutes...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+Enter new UNIX username: kali
+New password:
+Retype new password:
+passwd: password updated successfully
+Installation successful!
+```
+
+When typing passwords, characters will not appear. This is a standard security feature. Once you see a command prompt like `kali@your-computer:~$`, this is your Kali Linux bash terminal, showing your terminal environment is ready. If you want to use the Kali bash terminal again after closing the powershell, again open your `Start Menu`, search for Kali Linux, and click to launch it.
+
+#### Step 3: Install Kali Desktop GUI
+
+A Kali desktop environment can provide a more "native" OS experience (similar to Windows). To enable Kali desktop, run the following commands in your Kali Linux terminal within WSL2. To help you with the GUI installation, watch this video starting at 5:15: [https://www.youtube.com/watch?v=UXyS-xofGNM](https://www.youtube.com/watch?v=UXyS-xofGNM).
+
+```bash
+sudo apt update
+sudo apt install -y kali-win-kex
+```
+
+This involves downloading a large number of Linux packages, thus taking a while. During installation, you may be asked to choose a keyboard layout and press Enter to use the default one.
+
+After the installation is finished, run the following command to start the desktop:
+
+```bash
+kex --win -s
+```
+
+After running the command, you will be prompted to set a password. This is only for the local connection between Windows and Kali Desktop, so you can use a simple password (e.g., `kali`). When asked if you want a view-only password, type `n` and press Enter.
+
+A desktop window will appear shortly. You can now use Kali as if it were a native GUI operating system. To exit, press **F8** and select **Disconnect** from the popup menu. In the future, type `kex --win -s` in your Kali bash terminal to relaunch the GUI.
+
+Note that the Kali Desktop running via WSL2 may sometimes be unstable, as this is not a true standalone desktop environment. You may see occasional error pop-ups. In such cases, press **F8**, close the Desktop and relaunch a new one from the terminal.
+
+### 1.2 MacOS-Apple-Silicon
+
+For MacOS with Apple Silicon (e.g., M1/M2/M3 Chips), you should use **UTM** to run Linux. The steps below provide a walkthrough of the setup. 
+
+#### Step 1: Download/Install UTM
+
+From your MacOS browser, open the UTM website [here](https://mac.getutm.app/) and click the `Download` button. Your browser will start downloading a UTM installer file (usually a `.dmg` file). Once finished, locate the downloaded file in your `Downloads` folder. Double-click the downloaded `.dmg` file to open it. 
+
+After opening the `.dmg`, a `Finder` window will appear showing the UTM app icon, and an `Applications` folder shortcut. Drag the UTM app icon into the `Applications` folder icon. This copies UTM into `/Applications`. Wait a few seconds until the copy finishes and then right-click the installer disk image to eject it.
+
+After the installation, Go to ``/Applications`, find UTM, and double-click it. If MacOS says "UTM can't be opened because it is from an unidentified developer", go to `System Settings` and then `Privacy & Security`, scroll down, click `Open Anyway`, and then confirm. Or if it simply asks for confirmation, click `Open`.
+
+When UTM launches successfully, you should see the UTM main window, which confirms UTM is installed.
+
+#### Step 2: Install Kali Desktop GUI
+
+Once the UTM application is installed, you need to download a Kali Linux image specifically pre-configured for UTM. Specifically, open the [UTM Gallery](https://mac.getutm.app/gallery/kali-2023), and click the `Download` button. You will be redirected to [archive.org](https://archive.org/details/kali-linux-2023-arm64-utm), where the VM file is hosted. On the webpage, you have to create an Internet Archive account in order to download the file. After you complete the registration steps and sign in to [archive.org](https://archive.org/details/kali-linux-2023-arm64-utm) again, you will be able to locate the `DOWNLOAD OPTIONS` on the right-hand side of the page, and see multiple formats such as `TORRENT` and `ZIP`.
+
+You click `ZIP` for downloading. The ZIP file is approximately 4.5 GiB, so the download may take some time depending on your network. After the download completes, double-click the downloaded .zip file. MacOS will automatically extract it into a folder in the same location. After extraction, look for a file ending with `.utm` (e.g., `Kali Linux 2023.utm`). This `.utm` file is the VM bundle. Simply double-click this `.utm` file, and UTM should open it automatically and the Kali VM will appear in the left sidebar of the UTM window.
+
+Finally, click the `Play / Run` button (▶) on the sidebar, and wait for the VM to finish booting. Once boot completes, you should see the Kali Linux desktop environment. When you log into the environment for the first time, note that both **the username and password for the pre-built Kali VM image are `kali`.**
+
+{% hint style="info" %}
+If you have a black screen when installing Kali, please go to `settings` and `"+ New..." in Devices`, and add `Serial`. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
+
+If you have a blue screen after installing Kali, please go to `settings -> Display -> Emulated Display Card`, and select any non-GUI options (e.g., virtio-ramfd).
+{% endhint %}
+
+
+### 1.3 MacOS-Intel-AMD
+
+For older MacOS using Intel or AMD processors, it is recommended that you use **VirtualBox** to run Linux. Download VirtualBox for macOS [here](https://download.virtualbox.org/virtualbox/7.2.6/VirtualBox-7.2.6-172322-OSX.dmg).
+
+Once VirtualBox is installed, you need to download a pre-configured Kali Linux VM image [here](https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-virtualbox-amd64.7z). Alternatively, you can download it from the [official Kali website](https://www.kali.org/get-kali/#kali-virtual-machines).
+
+The download will be a `.7z` file. This is a compressed archive (similar to a `.zip` file), so you must extract this archive first.
+
+After the extraction, open VirtualBox. From the top menu, click `Machine → Open`. In the file picker, navigate to the extracted folder, select the `.vbox` file and click `Open`. After that, you should see a new VM entry (e.g., Kali Linux) in the VirtualBox left panel. Click that VM entry and click `Start` to boot the VM. After booting, you should see the Kali Linux desktop and its login screen.
+
+Still, **the username and password for the pre-built Kali VM image are both `kali`.**
+
+Note that the above installation instructions were written two years ago. Since we currently do not have a MacOS machine with Intel/AMD chips available, we have not tested these steps recently. If you encounter any issues, please contact the lab facilitators for help.
+
+## 2. Learning the Linux Terminal
+
+Since you have set up your Linux environment, you need to know some basic commands via a **terminal**. In Linux, the terminal is a text-based interface for interacting with the system by typing commands. While graphical interfaces are user-friendly, the terminal offers direct control of the system and you will use the terminal throughout this unit. Please watch this video to practice the top 60 Linux commands: [https://www.youtube.com/watch?v=gd7BXuUQ91w](https://www.youtube.com/watch?v=gd7BXuUQ91w)
+
+For a quick reference of frequently used commands such as `ls`, `cd`, and `mkdir`, you can refer to this [Linux Command Line Cheatsheet](https://hep.ph.liv.ac.uk/twiki/pub/Computing/AccountRegistration/linux-command-line.pdf). If you want to know how a specific command works, you can search the [Linux Manual Pages](https://man7.org/linux/man-pages/index.html). Alternatively, you can also access the Linux Manual Pages within the terminal by typing `man` followed by the command (e.g., `man ls`). 
+
+## 3. Installing and Running Docker
+
+Docker is a tool that allows you to run software inside containers. A container is a small, self-contained environment that includes everything a piece of software needs to function, such as libraries, configuration files, and dependencies. This method removes the need to install different programs and dependencies manually while also keeping the container environment separate from your system. For a more comprehensive deep-dive, you can visit the [official Docker documentation](https://docs.docker.com/get-started/overview/).
+
+In this unit, we use Docker to simplify lab setups. All the tools required for future labs are pre-packaged into individual Docker images. To run these images and set up your lab environments, you must have Docker installed within your Linux system.
+
+Before you start, it is recommended that you watch the following walkthrough video for the guidance only:
 
 **Docker and Bash 1-1** [https://www.youtube.com/watch?v=4vl4aUxo8Hk](https://www.youtube.com/watch?v=4vl4aUxo8Hk)
 
-## Getting started
 
-We will set up various software that will be used in the labs, with the main one being _**Docker**_. However, it is a good idea to create a folder specifically for organising the different week's labs.
-
-There are three different ways to setup your lab environment:
-
-1. Using VM (recommended, the best practice in industry).
-2. Using your Host (could be dangerous, only for those of you who know what you are doing).
-3. Using Cloud (e.g., Azure, Google Cloud, AWS etc.).
-
-#### See below if you are planning to use VM.
-
-![](../.gitbook/assets/1003\_vm\_route.png)
-
-#### See below if you are planning to use Host.
-
-![](../.gitbook/assets/1003\_host\_route.png)
-
-If you are planning to use the cloud, see [section 2.2](lab-1-setting-up-your-laptop.md#id-2.2.-cloud-desktop).
-
-## 1. Setting up a Virtual Machine (VM) to do labs
-
-A VM is a piece of software that allows you to emulate or virtualise an operating system such as Windows or a distribution of GNU/Linux. It is recommended to run the labs inside a VM for security (this adds another layer of protection, and as well as in an unlikely event where you break any configurations that could affect your host computer), especially for ones where we are handling live malware samples (e.g., labs 7 and 10). The malware samples are not capable of breaking out of docker containers to affect your host machine, but in general, it is a good idea to handle them inside a VM just in case you accidentally run them - this is also how it is done in the industry.
-
-For the labs, you will work in an Linux based operating system inside of a VM. Operating systems are often distributed as installer images (`iso` file format) which will need to be manually installed, or pre-built VM images which can be directly imported into a VM without installation. Since VM images do not require installation, we will use this where possible.
-
-Please refer to [section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows-macos-non-m1-linux) or [1.2](lab-1-setting-up-your-laptop.md#id-1.2.-m1-m2-etc.-macbook-users) for specific set up instructions for your system.
-
-### 1.1. Windows/MacOS (Intel/AMD chips) Users
-
-There are many VM software you can use, such as VirtualBox, VMWare, etc. VirtualBox is recommended.
-
-- Download VirtualBox for Windows （Intel/AMD chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe). 
-- Download VirtualBox for MacOS (Intel chips) [here](https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg).
-
-Once you have installed the VirtualBox, we need to download the VM image we want to use. [Kali Linux](https://www.kali.org) is recommended.
-
-For Kali Linux, you can directly download its VM image for VirtualBox [here](https://cdimage.kali.org/current/kali-linux-2025.2-virtualbox-amd64.7z) or [here](https://www.kali.org/get-kali/#kali-virtual-machines). A `.7z` file will start downloading. This type of file (short for 7zip) is a file archive format which allows multiple files and directories to be compressed into a single archive file. The Kali Linux VM image will be inside the 7zip archive we are downloading. Once the 7zip archive is downloaded, you will need to extract the VM image. On Windows, you might need to install the [7-zip software](https://www.7-zip.org/download.html) to perform the extraction.
-Now, you will need to import the VM image into your VM.
-
-**The username and password for the pre-built Kali VM image are both `kali`.**
-
-{% hint style="info" %}
-When specifying the disk size, assign 64GB disk space. It won't fully occupy 64GB on your machine, as the size will dynamically adjust as you use it.
-
-For the Kali image, 2CPUs and 4GB RAM are recommended.
-{% endhint %}
-
-For some labs, you would want to provide more RAM and CPU provided your computer has more RAM and CPU to work with. These can be done in the settings (but remember to shut down the VM to do this).
-
-{% hint style="info" %}
-Sometimes the VM will freeze. You might want to reset (Machine -> Reset) and it _usually_ fixes the issue. If not, you can try shutting down and restarting the VM. You may have to repeat this a few times. Some common solutions include:
-
-* changing the graphics controller (trial and error)
-* adding more RAM
-* adding more storage (64GB -> 80GB)
-{% endhint %}
-
-Once you have imported a pre-built Linux VM image or manually installed a Linux distribution onto your VM, you can carry on with the labs as instructed.
-
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
-
-### 1.2. M1/M2 etc. MacBook Users
-
-For M-series MacOs, you are recommended to use the VM UTM. You can download it here: [https://mac.getutm.app/](https://mac.getutm.app)
-
-The Apple Silicon laptops have fundamentally different CPU architecture which causes some issues, but for the purpose of this unit, it will just be fine.
-
-After installing UTM, you are also recommended to install **Kali Linux** as its VM, but you can use other generic OSes such as Ubuntu. Specifically, you download a Kali VM for UTM here [https://mac.getutm.app/gallery/kali-2023](https://mac.getutm.app/gallery/kali-2023). 
-
-A `.zip` file will start downloading. The Kali Linux VM image will be inside the zip file we are downloading. Once the zip file is downloaded, you double-click the zip file to extract a `.utm` VM image. We then double click the image and it will be automatically opened by UTM. 
-
-**The username and password for the pre-built Kali VM image are both `kali`.**
-
-{% hint style="info" %}
-If you have a black screen when installing Kali, please go to settings and "+ New..." in Devices, and add Serial. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
-
-If you have a blue screen after installing Kali, please go to settings -> Display -> Emulated Display Card, and select any non-GUI options (e.g., virtio-ramfd).
-{% endhint %}
-
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
-
-## 2. Doing labs on your host machine
-
-You can skip section 2 entirely if you have setup a VM to do the labs. But later if you decided to do some labs on your host machine, you can come back here and follow the instructions.
-
-Please note, this is NOT the recommended way of setting it up, but it might be useful if your laptop is not sufficiently powered to run VMs.
-
-### 2.1. Windows
-
-The first step is to install WSL2 on Windows with Intel/AMD chips. Open **administrator** PowerShell or Windows Command Prompt and type in:
-
-```
-wsl --install
-```
-
-Once complete, restart your machine.
-
-To test this out, type `wsl` in the search bar and run the command prompt.
-
-If you are using Windows with ARM chips, a feasible solution is provided [here](https://learn.arm.com/learning-paths/laptops-and-desktops/wsl2/).
-
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
-
-### 2.2. Cloud desktop
-
-If you are unable to get your laptop/PC working, another option is to run Windows 10 on a Virtual Machine on Azure. However, if we are going to use a cloud (i.e., Azure), then you can install Ubuntu on it instead of putting on a Windows image and setting up WSL and docker. Nevertheless, to do this, you will need a student account created on https://portal.azure.com/.
-
-{% hint style="info" %}
-Alternate cloud providers include Google Cloud, Amazon AWS etc.
-{% endhint %}
-
-You can create a VM using Windows 10 Pro 21 H1 and pick a Standard\_D2s\_V3 machine. Use all of the default settings but select Australia as the region to run it in (if you are located internationally, pick a region close to you).
-
-Once created, you can connect to the machine via remote desktop and then configure the machine as above.
+### 3.1. Installing Docker
 
 {% hint style="warning" %}
-Although you have credit when creating a student account, be careful with the machine and stop it running by using the console when you are not using it - that way you will not be charged for the time you are not using it.
+You must install Docker specifically inside the Linux OS you set up in the previous section. Do not attempt to use "Docker Desktop" for Windows or macOS, as our lab environments are designed to run strictly within your Linux terminal.
 {% endhint %}
 
-Now you can treat this cloud desktop as your host. If you selected a Windows VM, then go to [`Section 2.1. Windows`](lab-1-setting-up-your-laptop.md#id-2.1.-windows), otherwise go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
-
-### 2.3. Apple Mac M1 (Apple Silicon) Users: Enable Rosetta
-
-Apple's computers are increasingly using the new M1 chip (ARM architecture) that uses a different instruction set than the Intel-based Macs (AMD architecture). Apple allows programs built for the Intel chip to run by using an emulator called Rosetta 2. If you have not already installed it, then:
-
-1. Open a Terminal window
-2. Type (paste) the command `/usr/sbin/softwareupdate --install-rosetta --agree-to-license`
-
-Once this is done, you can proceed with installing and running Docker (below).
-
-Whilst most of the Docker images in the labs can be run on the Apple M1, there may be warnings given about the platform (you may be able to avoid this warning by passing the argument `--platform linux/amd64`). We have created a multi-platform version for some images, which should be auto-selected when those images are used.
-
-Now, go to [`Section 3.1. Installing Docker`](lab-1-setting-up-your-laptop.md#id-3.1.-installing-docker-windows-mac-linux)
-
-## 3. Installing and running Docker
-
-We will be using a technology called _Docker_ to run different environments on your laptop. Unfortunately, this environment will not be available on the lab machines, so you will have to bring your own device. For the sake of this unit, you do not need to understand how and why this works.
-
-You can get more comprehensive overview of what Docker is from here [https://docs.docker.com/get-started/overview/](https://docs.docker.com/get-started/overview/). To summarise though, Docker allows you to "package and run an application in a loosely isolated environment called a container". Containers are a way of virtualizing an environment by using the native operating system's functionality to isolate application environments.
-
-### 3.1. Installing Docker (Windows/Mac/Linux)
-
-{% hint style="warning" %}
-If you have installed a VM, install Docker inside your VM.
-{% endhint %}
-
-Docker on Kali and Ubuntu linux can be installed by running the following commands:
+To install Docker on Kali Linux, open your terminal and run the following commands:
 
 ```bash
-sudo apt-get update
-sudo apt-get install -y docker.io
-sudo systemctl enable docker --now
+sudo apt update
+sudo apt install -y docker.io
 ```
 
 An official guide for getting started with Docker can be found below:
 
 {% embed url="https://www.docker.com/get-started" %}
 
-Now go to [`Section 3.2. Testing Docker`](lab-1-setting-up-your-laptop.md#id-3.2.-testing-docker)
-
 ### 3.2. Testing Docker
 
 To test the environment, we will run a simple container that allows you to access a bash terminal. This allows you to enter commands that get executed within the container. You can only do what the container will let you do as it is a constrained environment.
 
 To start with, make sure that your Docker Desktop application is running. Once it is, open a terminal window, PowerShell or Command prompt and run the following command (please note, the process may take a while on your machine).
-
-{% hint style="warning" %}
-All commands are treated as running from the VM. If running from the host, remove `sudo` at the beginning if it complains it cannot find `sudo`.
-{% endhint %}
 
 ```bash
 sudo docker pull uwacyber/cits1003-labs:bash
