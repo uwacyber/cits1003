@@ -8,7 +8,7 @@ Throughout this unit, we will use various software and the two most important be
 
 A **Virtual Machine (VM)** is a piece of software that allows you to virtualize an OS different from the one you are currently running. For example, your current OS is Windows 11 and your virtualized one is Kali Linux. 
 
-In Sections 1.1–1.3, we provide step-by-step guidance for setting up a Kali Linux VM. If you are using Windows, see [Section 1.1](lab-1-setting-up-your-laptop.md#id-1.1.-windows). If you are using macOS on an M-series chip (e.g., M1/M2/M3), see [Section 1.2](lab-1-setting-up-your-laptop.md#id-1.2.-macOS-apple-silicon). If you are using macOS on an Intel/AMD chip, see [Section 1.3](lab-1-setting-up-your-laptop.md#id-1.3.-macOS-intel-amd). If you are using Linux, you can skip ahead to Section 2. If you encounter any issues, ask a lab facilitator for assistance.
+In Sections 1.1–1.3, we provide step-by-step guidance for setting up a Kali Linux VM. If you are using Windows, see [Section 1.1](lab-1-setting-up-your-laptop.md#id-1.1-windows). If you are using macOS on an M-series chip (e.g., M1/M2/M3), see [Section 1.2](lab-1-setting-up-your-laptop.md#id-1.2-macOS-apple-silicon). If you are using macOS on an Intel/AMD chip, see [Section 1.3](lab-1-setting-up-your-laptop.md#id-1.3-macOS-intel-amd). If you are using Linux, you can skip ahead to [Section 2](lab-1-setting-up-your-laptop.md#id-2-learning-the-kali-linux-bash-terminal). If you encounter any issues, ask a lab facilitator for assistance.
 
 Before you begin, make sure your computer has at least 20 GiB of free disk space and 8 GiB of RAM. Running virtualized environments is resource-intensive. If your computer does not meet these hardware requirements, you may encounter unexpected issues.
 
@@ -18,7 +18,7 @@ For Windows, it is recommended that you use **WSL2** (Windows Subsystem for Linu
 
 #### Step 1: Install/Enable WSL2
 
-Open the `Start Menu` from your Windows, search for **powershell**, and launch it. Alternatively, press `Win + R`, type `powershell`, and press Enter.
+Open the `Start Menu` from your Windows, enter `powershell`, and launch it. Alternatively, press `Win + R`, type `powershell`, and press Enter.
 
 First, run the following command to ensure the system is set to use WSL2 by default:
 
@@ -58,28 +58,30 @@ Installation successful!
 
 When typing passwords, characters will not appear. This is a standard security feature. Once you see a command prompt like `kali@your-computer:~$`, this is your Kali Linux bash terminal, showing your terminal environment is ready. If you want to use the Kali bash terminal again after closing the powershell, again open your `Start Menu`, search for Kali Linux, and click to launch it.
 
+If you are using the bash terminal for the first time, it is recommended that you walk through [Section 2](lab-1-setting-up-your-laptop.md#id-2-learning-the-kali-linux-bash-terminal) before proceeding to the next step.
+
 #### Step 3: Install Kali Desktop GUI
 
-A Kali desktop environment can provide a more "native" OS experience (similar to Windows). To enable Kali desktop, run the following commands in your Kali Linux terminal within WSL2. To help you with the GUI installation, watch this video starting at 5:15: [https://www.youtube.com/watch?v=UXyS-xofGNM](https://www.youtube.com/watch?v=UXyS-xofGNM).
+A Kali desktop environment can provide a more "native" OS experience (similar to Windows). To enable Kali desktop, run the following commands in your Kali Linux bash terminal (to help you with the installation, watch this video starting at 5:15: [https://www.youtube.com/watch?v=UXyS-xofGNM](https://www.youtube.com/watch?v=UXyS-xofGNM).
 
 ```bash
 sudo apt update
 sudo apt install -y kali-win-kex
 ```
 
-This involves downloading a large number of Linux packages, thus taking a while. During installation, you may be asked to choose a keyboard layout and press Enter to use the default one.
+This involves downloading a large number of Linux packages, thus taking a while. During installation, you may be asked to choose a keyboard layout and press `Enter` to use the default one.
 
-After the installation is finished, run the following command to start the desktop:
+After the installation, run the following command to start the desktop:
 
 ```bash
 kex --win -s
 ```
 
-After running the command, you will be prompted to set a password. This is only for the local connection between Windows and Kali Desktop, so you can use a simple password (e.g., `kali`). When asked if you want a view-only password, type `n` and press Enter.
+After running the command, you will be prompted to set a password. This is only for the local connection between Windows and Kali Desktop, so you can use a simple password (e.g., `123`). When asked if you want a view-only password, type `n` and press `Enter`.
 
-A desktop window will appear shortly. You can now use Kali as if it were a native GUI operating system. To exit, press **F8** and select **Disconnect** from the popup menu. In the future, type `kex --win -s` in your Kali bash terminal to relaunch the GUI.
+A desktop window will appear shortly. You can now use Kali as if it were a native GUI operating system. To exit, press `F8` and select `Disconnect` from the popup menu. In the future, type `kex --win -s` in your Kali bash terminal to relaunch the GUI.
 
-Note that the Kali Desktop running via WSL2 may sometimes be unstable, as this is not a true standalone desktop environment. You may see occasional error pop-ups. In such cases, press **F8**, close the Desktop and relaunch a new one from the terminal.
+Note that the Kali Desktop running via WSL2 may sometimes be unstable, as this is not a true standalone desktop environment. You may see occasional error pop-ups. In such cases, press `F8`, close the Desktop and relaunch a new one from the terminal.
 
 ### 1.2 MacOS-Apple-Silicon
 
@@ -91,7 +93,7 @@ From your MacOS browser, open the UTM website [here](https://mac.getutm.app/) an
 
 After opening the `.dmg`, a `Finder` window will appear showing the UTM app icon, and an `Applications` folder shortcut. Drag the UTM app icon into the `Applications` folder icon. This copies UTM into `/Applications`. Wait a few seconds until the copy finishes and then right-click the installer disk image to eject it.
 
-After the installation, Go to ``/Applications`, find UTM, and double-click it. If MacOS says "UTM can't be opened because it is from an unidentified developer", go to `System Settings` and then `Privacy & Security`, scroll down, click `Open Anyway`, and then confirm. Or if it simply asks for confirmation, click `Open`.
+After the installation, Go to `/Applications`, find UTM, and double-click it. If MacOS says "UTM can't be opened because it is from an unidentified developer", go to `System Settings` and then `Privacy & Security`, scroll down, click `Open Anyway`, and then confirm. Or if it simply asks for confirmation, click `Open`.
 
 When UTM launches successfully, you should see the UTM main window, which confirms UTM is installed.
 
@@ -101,7 +103,7 @@ Once the UTM application is installed, you need to download a Kali Linux image s
 
 You click `ZIP` for downloading. The ZIP file is approximately 4.5 GiB, so the download may take some time depending on your network. After the download completes, double-click the downloaded .zip file. MacOS will automatically extract it into a folder in the same location. After extraction, look for a file ending with `.utm` (e.g., `Kali Linux 2023.utm`). This `.utm` file is the VM bundle. Simply double-click this `.utm` file, and UTM should open it automatically and the Kali VM will appear in the left sidebar of the UTM window.
 
-Finally, click the `Play / Run` button (▶) on the sidebar, and wait for the VM to finish booting. Once boot completes, you should see the Kali Linux desktop environment. When you log into the environment for the first time, note that both **the username and password for the pre-built Kali VM image are `kali`.**
+Finally, click the `Play/Run` button (▶) on the sidebar, and wait for the VM to boot. Once boot completes, you should see the Kali Linux desktop environment. When you log into the environment for the first time, note that both **the username and password for the pre-built Kali VM image are `kali`.**
 
 {% hint style="info" %}
 If you have a black screen when installing Kali, please go to `settings` and `"+ New..." in Devices`, and add `Serial`. Then start the VM, you can install using the Serial (terminal). Once the installation is finished, you can remove the Serial device.
@@ -124,9 +126,9 @@ Still, **the username and password for the pre-built Kali VM image are both `kal
 
 Note that the above installation instructions were written two years ago. Since we currently do not have a MacOS machine with Intel/AMD chips available, we have not tested these steps recently. If you encounter any issues, please contact the lab facilitators for help.
 
-## 2. Learning the Linux Terminal
+## 2. Learning the Kali Linux Bash Terminal
 
-Since you have set up your Linux environment, you need to know some basic commands via a **terminal**. In Linux, the terminal is a text-based interface for interacting with the system by typing commands. While graphical interfaces are user-friendly, the terminal offers direct control of the system and you will use the terminal throughout this unit. Please watch this video to practice the top 60 Linux commands: [https://www.youtube.com/watch?v=gd7BXuUQ91w](https://www.youtube.com/watch?v=gd7BXuUQ91w)
+Since you have set up your Linux environment, you need to know some basic commands via a **bash terminal**. In Linux, the terminal is a text-based interface for interacting with the system by typing commands. While graphical interfaces are user-friendly, the terminal offers direct control of the system and you will use the terminal throughout this unit. Please watch this video to practice the top 60 Linux commands: [https://www.youtube.com/watch?v=gd7BXuUQ91w](https://www.youtube.com/watch?v=gd7BXuUQ91w)
 
 For a quick reference of frequently used commands such as `ls`, `cd`, and `mkdir`, you can refer to this [Linux Command Line Cheatsheet](https://hep.ph.liv.ac.uk/twiki/pub/Computing/AccountRegistration/linux-command-line.pdf). If you want to know how a specific command works, you can search the [Linux Manual Pages](https://man7.org/linux/man-pages/index.html). Alternatively, you can also access the Linux Manual Pages within the terminal by typing `man` followed by the command (e.g., `man ls`). 
 
