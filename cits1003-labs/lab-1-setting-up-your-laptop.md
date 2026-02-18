@@ -58,7 +58,7 @@ Installation successful!
 
 When typing passwords, characters will not appear. This is a standard security feature. Once you see a command prompt like `kali@your-computer:~$`, this is your Kali Linux bash terminal, showing your terminal environment is ready. If you want to use the Kali bash terminal again after closing the powershell, again open your `Start Menu`, search for Kali Linux, and click to launch it.
 
-If you are using the bash terminal for the first time, it is recommended that you walk through [Section 2](lab-1-setting-up-your-laptop.md#id-2-learning-the-kali-linux-bash-terminal) before proceeding to the next step.
+If you are using the bash terminal for the first time, it is recommended that you walk through [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal) before proceeding to the next step.
 
 #### Step 3: Install Kali Desktop GUI
 
