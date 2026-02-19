@@ -127,7 +127,7 @@ If you have a blue screen after installing Kali, please go to `settings -> Displ
 
 ## 2. Learning the Kali Linux Bash Terminal
 
-Since you have set up your Linux environment, you need to know some basic commands via a **bash terminal**. In Linux, the terminal is a text-based interface for interacting with the system by typing commands. While graphical interfaces are user-friendly, the terminal offers direct control of the system and you will use the terminal throughout this unit. Please watch this video to practice the top 60 Linux commands: [https://www.youtube.com/watch?v=gd7BXuUQ91w](https://www.youtube.com/watch?v=gd7BXuUQ91w)
+Since you have set up your Linux environment, you need to know some basic commands via a **bash terminal**. In Linux, the terminal is a text-based interface for interacting with the system by typing commands. While graphical interfaces are user-friendly, the terminal offers direct control of the system and you will use the terminal throughout this unit. Please watch this video to practice basic Linux commands: [https://www.youtube.com/watch?v=J2zquYPJbWY](https://www.youtube.com/watch?v=J2zquYPJbWY)
 
 For a quick reference of frequently used commands such as `ls`, `cd`, and `mkdir`, you can refer to this [Linux Command Line Cheatsheet](https://hep.ph.liv.ac.uk/twiki/pub/Computing/AccountRegistration/linux-command-line.pdf). If you want to know how a specific command works, you can search the [Linux Manual Pages](https://man7.org/linux/man-pages/index.html). Alternatively, you can also access the Linux Manual Pages within the terminal by typing `man` followed by the command (e.g., `man ls`). 
 
