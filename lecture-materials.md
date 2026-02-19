@@ -1,6 +1,6 @@
 # Lecture Materials
 
-This unit is a flipped class, i.e., students should start in Week 2 to watch preparation lecture videos below on a weekly basis. Below are links to the preparation lecture videos, which you should watch before coming to the scheduled lectures. Their accompanies slides are here: [https://github.com/uwacyber/cits1003/tree/2022s1/preparation-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/preparation-lecture-slides).
+This unit is a flipped class, i.e., students should start in Week 2 to watch preparation lecture videos below on a weekly basis. Below are links to the preparation lecture videos, which you should watch before coming to the scheduled lectures. Their corresponding slides are here: [https://github.com/uwacyber/cits1003/tree/2022s1/preparation-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/preparation-lecture-slides).
 
 
 
