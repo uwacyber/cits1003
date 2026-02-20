@@ -80,7 +80,7 @@ Recordings of live lectures are also available (give up to 48 hours for it to be
 
 
 
-Live lecture slides will be made available early each lecture week and can be downloaded from  (live lecture slides in 2025 can also be found here) [https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides)
+Live lecture slides will be made available early on Monday in each lecture week and can be downloaded from  (live lecture slides in 2025 can also be found here) [https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides](https://github.com/uwacyber/cits1003/tree/2022s1/live-lecture-slides)
 
 ## 
 
