@@ -9,7 +9,7 @@ For each lab, we provide a walkthrough video (see below) and include it in each 
 ## Lab Help
 For lab help during a lab session, you should use the help server: [https://help.jinhong.org](https://help.jinhong.org). It is available during lab sessions and manages a first-come, first-served queue. 
 
-Specifically, you log in to the server using your student id: the default password is `helloworld`. You may change it, but it isn't required, as this site is only for queuing and does not store sensitive information. If you can't log in or forget your password, contact a lab facilitator to create or reset your account.
+Specifically, you log in to the server using your student id with the default password `helloworld`. You may change it, but it isn't required, as this site is only for queuing and does not store sensitive information. If you canot log in or forget your password, contact a lab facilitator to create or reset your account.
 
 After logging in, complete a very short form to join the queue and wait for a facilitator. If you attend online, the facilitator will contact you via Teams, but troubleshooting is much harder. Thus, attending in person is strongly recommended.
 
