@@ -169,7 +169,9 @@ To start with, make sure that your Docker Desktop application is running. Once i
 sudo docker pull uwacyber/cits1003-labs:bash
 ```
 
-```bash
+Example output (for reference only) is shown below:
+
+```text
 bash: Pulling from uwacyber/cits1003-labs
 a31c7b29f4ad: Pull complete
 56dc59d71033: Pull complete
@@ -191,6 +193,11 @@ Once the container is running, you can try the below command (first line only af
 
 ```bash
 root@9215e663eb9d:/# whoami
+```
+
+Example output (for reference only) is shown below:
+
+```text
 root
 ```
 
