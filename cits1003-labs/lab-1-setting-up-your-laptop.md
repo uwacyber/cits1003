@@ -185,6 +185,8 @@ Status: Downloaded newer image for uwacyber/cits1003-labs:bash
 docker.io/uwacyber/cits1003-labs:bash
 ```
 
+Run the following command:
+
 ```bash
 sudo docker run -it uwacyber/cits1003-labs:bash
 ```
@@ -207,9 +209,22 @@ In the case of the bash container, to stop it, you simply type `exit`. Other con
 
 ```bash
 0x4447734D4250:~$ sudo docker ps -a
+```
+
+Example output (for reference only) is shown below:
+
+```text
 CONTAINER ID   IMAGE                         COMMAND       CREATED         STATUS         PORTS     NAMES
 45fe3a838ef0   uwacyber/cits1003-labs:bash   "/bin/bash"   3 minutes ago   Up 3 minutes             hungry_hodgkin
+```
+
+```bash
 0x4447734D4250:~$ docker stop 45fe3a838ef0
+```
+
+Example output (for reference only) is shown below:
+
+```text
 45fe3a838ef0
 ```
 
