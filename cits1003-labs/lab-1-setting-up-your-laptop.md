@@ -40,11 +40,7 @@ You can install it directly via PowerShell:
 wsl --install kali-linux
 ```
 
-Once installed, open your `Start Menu`, search for Kali Linux if it does not start automatically, and click to open it. It will take a moment to initialize and then ask you to set a username and password.
-
-{% hint style="warning" %}
-The username and password should be set to `kali` shown below and note them down. 
-{% endhint %}
+Once installed, open your `Start Menu`, search for Kali Linux if it does not start automatically, and click to open it. It will take a moment to initialize and then ask you to set a username and password. An example output (for reference only) is shown below:
 
 ```text
 Installing, this may take a few minutes...
@@ -56,7 +52,7 @@ passwd: password updated successfully
 Installation successful!
 ```
 
-When typing passwords, characters will not appear. This is a standard security feature. Once you see a command prompt like `kali@your-computer:~$`, this is your Kali Linux bash terminal, showing your terminal environment is ready. If you want to use the Kali bash terminal again after closing the powershell, again open your `Start Menu`, search for Kali Linux, and click to launch it.
+Please set the username and password to `kali` and note them down. When you type passwords, characters will not appear. This is a standard security feature. Once you see a command prompt like `kali@your-computer:~$`, this is your Kali Linux bash terminal, showing your terminal environment is ready. If you want to use the Kali bash terminal again after closing the powershell, again open your `Start Menu`, search for Kali Linux, and click to launch it.
 
 If you are using the bash terminal for the first time, it is recommended that you walk through [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal) before proceeding to the next step.
 
@@ -191,7 +187,7 @@ Run the following command:
 sudo docker run -it uwacyber/cits1003-labs:bash
 ```
 
-Once the container is running, you can try the below command (first line only after the `#`, second line is the expected output) in the terminal:
+Once the container is running, you can try the below command (right after the `#`) in the terminal:
 
 ```bash
 root@9215e663eb9d:/# whoami
