@@ -14,7 +14,7 @@ Before you begin, make sure your computer has at least 20 GiB of free disk space
 
 ### 1.1 Windows
 
-For Windows, it is recommended that you use **WSL2** (Windows Subsystem for Linux) to run Linux. WSL2 allows Linux applications to run alongside Windows applications seamlessly. Your computer should be running Windows 10 (version 1903 or later) or above to support WSL2. The steps below provide a walkthrough of the setup. 
+For Windows, it is recommended that you use **WSL2** (Windows Subsystem for Linux) to run Linux. WSL2 allows Linux applications to run alongside Windows applications seamlessly. Your computer should be running Windows 10 (version 1903 or later) or above to support WSL2. The steps below provide a walkthrough of the setup. After finishing this subsection, go to [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal).
 
 #### Step 1: Install/Enable WSL2
 
@@ -85,7 +85,7 @@ Note that the Kali Desktop running via WSL2 may sometimes be unstable, as this i
 
 ### 1.2 MacOS (Apple Silicon)
 
-For MacOS with Apple Silicon (e.g., M1/M2/M3 Chips), you should use **UTM** to run Linux. The steps below provide a walkthrough of the setup. 
+For MacOS with Apple Silicon (e.g., M1/M2/M3 Chips), you should use **UTM** to run Linux. The steps below provide a walkthrough of the setup. After finishing this subsection, go to [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal).
 
 #### Step 1: Download/Install UTM
 
@@ -107,7 +107,7 @@ Finally, click the `Play/Run` button (▶) on the sidebar, and wait for the VM t
 
 ### 1.3 MacOS (Intel/AMD)
 
-For older MacOS using Intel or AMD processors, it is recommended that you use **VirtualBox** to run Linux. Download VirtualBox for macOS [here](https://download.virtualbox.org/virtualbox/7.2.6/VirtualBox-7.2.6-172322-OSX.dmg).
+For older MacOS using Intel or AMD processors, it is recommended that you use **VirtualBox** to run Linux. Download VirtualBox for macOS [here](https://download.virtualbox.org/virtualbox/7.2.6/VirtualBox-7.2.6-172322-OSX.dmg). After finishing this subsection, go to [Section 2](lab-1-setting-up-your-laptop.md#id-2.-learning-the-kali-linux-bash-terminal).
 
 Once VirtualBox is installed, you need to download a pre-configured Kali Linux VM image [here](https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-virtualbox-amd64.7z). Alternatively, you can download it from the [official Kali website](https://www.kali.org/get-kali/#kali-virtual-machines).
 
