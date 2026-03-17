@@ -222,6 +222,8 @@ In the `/root` directory, create a directory called `cits1003`. In that director
 wget https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip
 ```
 
+An example output is shown below:
+
 ```bash
 --2022-01-25 06:49:37--  https://github.com/opentrace-community/opentrace-ios/archive/refs/heads/master.zip
 Resolving github.com (github.com)... 13.237.44.5
