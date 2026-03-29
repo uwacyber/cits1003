@@ -4,7 +4,9 @@ The project questions/challenges will become available on the CTF flag submissio
 
 ## Questions
 
-The theme of the project this year is ![Emu](../.gitbook/assets/Emu.jpg).
+The theme of the project this year is 
+
+![Emu](../.gitbook/assets/Emu.jpg)
 
 The project has four topics: (1) Vulnerabilities, (2) Linux and Networking, (3) Cryptography, and (4) Forensics. Each topic has four questions (16 questions in total) with varying difficulties. An Easy question is worth 10 points, a Medium question is worth 15 points, and a Hard question is worth 25 points. There is only one Super Hard question, which is worth 15 points. There are 250 points in total, worth 25% of the unit grade.
 
@@ -16,7 +18,7 @@ The project starts on Week 6 and will close on 11:59pm 19 May (Week 12). There s
 
 Similar to lab assignments, your task is to find flags for the provided 16 challenges/questions to obtain as many points as possible (the format for a flags is: UWA{xxx} where xxx is the flag you have found).
 
-Unlike the lab assignments, for the project, you are required to enter the flags you have found into the provided answer sheet, `studentid.xlsm`, available in our [github repo](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-project), and submit it via the LMS portal. We will grade ONLY the sheet you submit for the project, not the CTF flag submission site.
+Unlike the lab assignments, for the project, you are required to enter the flags you have found into the provided answer sheet, **YourStudentID.xlsm**, available in our [github repo](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-project), and submit it via the LMS portal. We will grade ONLY the sheet you submit for the project, not the CTF flag submission site.
 
 Among the 16 questions, 6 challenges use unique flags to help mitigate cheating. This means each student will receive a different flag for those challenges. These 6 challenges are: *Emu Hack #1 - Backdoored*, *FeatheredForum - Part 1*, *FeatheredForum - Part 2*, *FeatheredForum - Part 3*, *EWT*, and *Emu in the Shell*.  
 
