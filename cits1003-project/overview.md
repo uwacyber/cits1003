@@ -16,9 +16,9 @@ The project starts on Week 6 and will close on 11:59pm 19 May (Week 12). There s
 
 ## Your task and how the project is graded
 
-Similar to lab assignments, your task is to find flags for the provided 16 challenges/questions to obtain as many points as possible (the format for a flags is: UWA{xxx} where xxx is the flag you have found).
+Similar to lab assignments, your task is to find flags for the provided 16 challenges/questions to obtain as many points as possible (the format for a flags is: **UWA{xxx}** where xxx is specific to a challenge).
 
-Unlike the lab assignments, for the project, you are required to enter the flags you have found into the provided answer sheet, **YourStudentID.xlsm**, available in our [github repo](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-project), and submit it via the LMS portal. We will grade ONLY the sheet you submit for the project, not the CTF flag submission site.
+Unlike the lab assignments, for the project, you are required to enter the flags (with the format of **UWA{xxx}**) you have found into the provided answer sheet, **YourStudentID.xlsm**, available in our [github repo](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-project), and submit it via the LMS portal. We will grade ONLY the sheet you submit for the project, not the CTF flag submission site.
 
 Among the 16 questions, 6 challenges use unique flags to help mitigate cheating. This means each student will receive a different flag for those challenges. These 6 challenges are: *Emu Hack #1 - Backdoored*, *FeatheredForum - Part 1*, *FeatheredForum - Part 2*, *FeatheredForum - Part 3*, *EWT*, and *Emu in the Shell*.  
 
