@@ -20,9 +20,9 @@ Similar to lab assignments, your task is to find flags for the provided 16 chall
 
 Unlike the lab assignments, for the project, you are required to enter the flags (with the format of **UWA{xxx}**) you have found into the provided answer sheet, **YourStudentID.xlsm**, available in our [github repo](https://github.com/uwacyber/cits1003/tree/2022s1/cits1003-project), and submit it via the LMS portal. We will grade ONLY the sheet you submit for the project, not the CTF flag submission site.
 
-Among the 16 questions, 6 challenges use unique flags to help mitigate cheating. This means each student will receive a different flag for those challenges. These 6 challenges are: *Emu Hack #1 - Backdoored*, *FeatheredForum - Part 1*, *FeatheredForum - Part 2*, *FeatheredForum - Part 3*, *EWT*, and *Emu in the Shell*.  
+Among the 16 questions, 6 challenges use unique flags to help mitigate cheating. This means each student will receive a different flag for those challenges. These 6 challenges are: **Emu Hack #1 - Backdoored**, **FeatheredForum - Part 1**, **FeatheredForum - Part 2**, **FeatheredForum - Part 3**, **EWT**, and **Emu in the Shell**.  
 
-**NOTE**: You will not be able to verify these 6 flags using the 10-attempt verification on the CTF flag submission site. Instead, enter them directly into the provided `studentid.xlsm` sheet for grading. For the other 10 challenges, you can use the 10-attempt verification to check whether your flags are correct, and then enter your final flags into the sheet before submission.
+**NOTE**: You will not be able to verify these 6 flags using the 10-attempt verification on the CTF flag submission site. Instead, enter them directly into your **YourStudentID.xlsm** sheet for grading. For the other 10 challenges, you can use the 10-attempt verification to check whether your flags are correct, and then enter your final flags into the sheet before submission.
 
 ### Flag submission
 
