@@ -28,7 +28,7 @@ Among the 16 questions, 6 questions use unique flags to help mitigate cheating. 
 
 Your answer sheet is submitted to LMS. The sheet must be named in the format as: **YourStudentID.xlsm**. If the filename does not follow this format exactly, a penalty of 10 points will be deducted from the total score you've got for the project.
 
-The submission portal will be open on LMS in week 7. The submission is due at 11:59pm 19 May. To avoid last-minute problems (e.g., internet outages), submit your answer sheet several hours before the deadline. To ensure fair evaluation for all students, late submission penalties will apply. For the late submission details, refer to the unit outline on LMS.
+The submission portal is now open on LMS under the **Assessments** category. The submission is due at 11:59pm 19 May. To avoid last-minute problems (e.g., internet outages), submit your answer sheet several hours before the deadline. To ensure fair evaluation for all students, late submission penalties will apply. For the late submission details, refer to the unit outline on LMS.
 
 ## Getting help
 
