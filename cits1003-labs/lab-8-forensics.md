@@ -434,7 +434,15 @@ Run the Python script:
 python bin_dump_to_image.py
 ```
 
-You should now get a new image file `2424.png` which you can open.
+{% hint style="note" %}
+If you get an error that looks something like `ModuleNotFoundError: No module named 'PIL'`, then try running this command in Kali:
+
+```
+sudo apt install python3-pillow
+```
+{% endhint %}
+
+You should now get a new image file `2424.png` which you can open via: `open 2424.png`.
 
 {% hint style="note" %}
 The script uses parameters `offset = 5233385, width = 1640, height = 350 and bpp = 3`. What do these define? How are they used? Discuss with your peers and lab facilitators.
