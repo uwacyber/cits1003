@@ -1,7 +1,7 @@
 # Lab 7: Incidents
 
 {% hint style="danger" %}
-This lab will be using live malware samples. Although the samples we use are not capable of breaking out of docker containers, it is best to minimize the risk by doing this lab within a virtual machine (VM), such as using VirtualBox with Ubuntu. Please check the [Setup VM for Labs](setting-up-your-laptop.md#1.-setting-up-virtual-machine-vm-to-do-labs) section to do this. If you are doing the lab directly from your host machine, you should delete the container once you have finished the lab to remove all malware samples - otherwise your antivirus software may not be happy and throw a tantrum. You can automatically delete the container by adding `--rm` flag when running the container.
+This lab will be using live malware samples. Although the samples we use are not capable of breaking out of docker containers, we should do this lab within a virtual machine (VM).
 {% endhint %}
 
 Walkthrough video:
