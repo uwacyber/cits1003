@@ -34,7 +34,7 @@ If you do not have a laptop, the Student Success and Wellbeing IT Equipment Sche
 
 Note that UWA loan laptops come with standard suite of software installed, but may not be capable of running some specialist software. Laptops available for permanent ownership include base installation of Windows, and may require the student to install drivers from the manufacturer to enable full function. 
 
-> Students can apply for either a loan or permanent laptop through this link: [https://uwa-advocate.symplicity.com/care_report/index.php/pid985847?]
+> Students can apply for either a loan or permanent laptop through this link: [https://uwa-advocate.symplicity.com/care_report/index.php/pid985847?](https://uwa-advocate.symplicity.com/care_report/index.php/pid985847?)
 >
 > For further assistance or information, please access [Need Help?](https://aus01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.uwa.edu.au%2Fstudents%2Fneed-help\&data=04%7C01%7Crachel.cardell-oliver%40uwa.edu.au%7C5a6f3222227746b0415208d9345171f7%7C05894af0cb2846d8871674cdb46e2226%7C1%7C0%7C637598346674569365%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000\&sdata=L6WXXt2Tyy81xZJIXdtn3atlzvWvmSd%2BsKR0Whsf7HQ%3D\&reserved=0). Alternatively, you can email [studentwelfare-studserv@uwa.edu.au](mailto:studentwelfare-studserv@uwa.edu.au)
 
