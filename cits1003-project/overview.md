@@ -10,6 +10,10 @@ The theme of the project this year is
 
 The project has four topics: (1) Vulnerabilities, (2) Linux and Networking, (3) Cryptography, and (4) Forensics. Each topic has four questions (16 questions in total) with varying difficulties. An Easy question is worth 10 points, a Medium question is worth 15 points, and a Hard question is worth 25 points. There is only one Super Hard question, which is worth 15 points. There are 250 points in total, worth 25% of the unit grade.
 
+## Report
+
+For all four hard questions/challenges, you need to submit a report on them. Without a report on its solution, the mark will be **zero** even though the flag is correct. Instructions on the report and its marking rubrics are at: [https://docs.google.com/document/d/1zciYii2HqCxdhoCIIkzL2WfRrYmRhpAh6ja0XmLdsE4/edit?usp=sharing](https://docs.google.com/document/d/1zciYii2HqCxdhoCIIkzL2WfRrYmRhpAh6ja0XmLdsE4/edit?usp=sharing).
+
 ## Duration
 
 The project starts on Week 6 and will close on 11:59pm 12 Oct (Week 12). There should be plenty of time to complete the project.
