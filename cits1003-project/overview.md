@@ -4,10 +4,6 @@ The project will become available on the CTF flag submission site: [https://labs
 
 ## Questions
 
-The theme of the project this year is 
-
-![Cat](../.gitbook/assets/cat.jpg)
-
 The project has four topics: (1) Vulnerabilities, (2) Linux and Networking, (3) Cryptography, and (4) Forensics. Each topic has four questions (16 questions in total) with varying difficulties. An Easy question is worth 10 points, a Medium question is worth 15 points, and a Hard question is worth 30 points. There are 250 points in total, worth 25% of the unit grade.
 
 ## Report
